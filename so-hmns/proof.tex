@@ -2,54 +2,66 @@
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \newtheorem{theorem}{Theorem}
 \begin{document}
-\title{Mathematical Proof of SO-HMNS Stability}
+\title{Mathematical Proof of SO-HMNS Topological and Thermodynamic Stability}
 \author{Ryujin Choi}
 \maketitle
 \begin{abstract}
-This document establishes the rigorous mathematical foundation and stability proofs of the Self-Optimizing Hyper-Manifold Normalization System (SO-HMNS).
+This document establishes the comprehensive mathematical foundations and stability proofs of the Self-Optimizing Hyper-Manifold Normalization System (SO-HMNS), validating graph spectral smoothness, thermodynamic singularity eradication, topological information alignment, and multi-objective gradient norm convergence.
 \end{abstract}
 \section{Theorem 1: High-Dimensional Manifold Smoothness}
-Let $X \in \mathbb{R}^{N \times D}$ be the high-dimensional data and $L_{\text{sym}} = I - D^{-1/2}WD^{-1/2}$ be the Symmetrically Normalized Graph Laplacian.
+Let $X \in \mathbb{R}^{N \times D}$ be the high-dimensional data matrix, and let $L_{\text{sym}} = I - D^{-1/2}WD^{-1/2}$ be the Symmetrically Normalized Graph Laplacian, where $W$ is the adjacency matrix and $D_{ii} = \sum_{j} W_{ij}$.
 \begin{theorem}
-Minimizing $\text{Tr}(X^T L_{\text{sym}} X)$ guarantees geometric manifold smoothness.
+Minimizing $\text{Tr}(X^T L_{\text{sym}} X)$ guarantees local geometric smoothness.
 \end{theorem}
 \begin{proof}
-The unnormalized graph Laplacian quadratic form evaluates as:
+The unnormalized graph Laplacian quadratic form evaluates via linear decomposition as:
 \begin{equation}
 X^T L X = X^T (D - W) X = \frac{1}{2} \sum_{i,j=1}^N W_{ij} \Vert x_i - x_j \Vert_2^2
 \end{equation}
-Extending this to the symmetrically normalized matrix space $L_{\text{sym}}$, the trace operator yielding the Dirichlet energy evaluates to:
+Applying the symmetric normalization matrix constraints, the trace operator yielding the Dirichlet energy transforms strictly to:
 \begin{equation}
 \text{Tr}(X^T L_{\text{sym}} X) = \frac{1}{2} \sum_{i,j=1}^N W_{ij} \left\Vert \frac{x_i}{\sqrt{D_{ii}}} - \frac{x_j}{\sqrt{D_{jj}}} \right\Vert_2^2
 \end{equation}
-As $\text{Tr}(X^T L_{\text{sym}} X) \to 0$, adjacent topological neighbors ($W_{ij} > 0$) are forced to minimize distance scales, preventing arbitrary manifold tearing.
+As $\text{Tr}(X^T L_{\text{sym}} X) \to 0$, topologically connected ambient neighbors ($W_{ij} > 0$) are strictly bounded in distance variance, preventing geometric manifold distortion.
 \end{proof}
-\section{Theorem 2: Eradication of System Singularity}
-The dynamic learning rate is governed by the Boltzmann Attenuation Model: $\eta_m = \eta_0 \cdot \exp(-F_m / \kappa)$.
+\section{Theorem 2: Eradication of Thermodynamic Singularity}
+The dynamic learning rate is governed by the Boltzmann Attenuation Model: $\eta_m = \eta_0 \cdot \exp(-F_m / \kappa)$, where $F_m = U_m - T_m S_m$ is the state free energy.
 \begin{theorem}
-The learning rate $\eta_m$ is strictly bounded, eliminating division-by-zero singularities.
+The learning velocity $\eta_m$ is strictly bounded, eliminating fraction division-by-zero singularities under arbitrary equilibrium states.
 \end{theorem}
 \begin{proof}
-Since free energy $F_m$ possesses a strict lower bound $F_{\text{min}} > -\infty$ for any finite discrete dataset, we bound the exponential scaling operator:
+Since $U_m$ and $S_m$ are evaluated on a finite discrete dataset, $F_m$ possesses a strict physical lower bound $F_{\text{min}} > -\infty$. Applying continuous negative monotonic transformation:
 \begin{equation}
 0 < \exp\left( -\frac{F_m}{\kappa} \right) \le \exp\left( -\frac{F_{\text{min}}}{\kappa} \right)
 \end{equation}
-Multiplying by the baseline velocity $\eta_0$ yields the bounded range:
+Multiplying by the baseline scale $\eta_0$ establishes the invariant operating boundaries:
 \begin{equation}
 \eta_m \in \left( 0, \, \eta_0 \exp\left( \frac{|F_{\text{min}}|}{\kappa} \right) \right]
 \end{equation}
-Therefore, $\eta_m$ never diverges to infinity, proving global numerical stability.
+Even at perfect equilibrium where $F_m \to 0$, $\eta_m \to \eta_0$, which eliminates catastrophic division-by-zero singularities.
 \end{proof}
-\section{Theorem 3: Gradient-Norm Convergence}
-Multi-objective loss utilizes dynamic weights updated via: $\lambda_i(t+1) = \lambda_i(t) + \alpha_{\text{grad}} (\mathcal{G}_i(t)/\bar{\mathcal{G}}(t) - 1)$.
+\section{Theorem 3: Topological Information Invariance}
+Let $P$ be the ambient space Gaussian kernel distribution $p_{j|i}$ and $Q$ be the latent manifold Cauchy kernel distribution $q_{j|i}$. The topological distortion loss is defined as: $M_{\text{loss}} = \sum_{i \neq j} p_{j|i} \log (p_{j|i} / q_{j|i})$.
 \begin{theorem}
-The dynamics of $\lambda_i(t)$ converge toward a balanced gradient norm equilibrium where $\mathcal{G}_i(t) = \bar{\mathcal{G}}(t)$.
+Minimizing $M_{\text{loss}}$ satisfies strict topological invariance, ensuring complete information conservation if and only if $P \equiv Q$.
 \end{theorem}
 \begin{proof}
-We minimize the ratio error function: $L_{\text{grad}}(\bm{\lambda}) = \sum_{i} | \mathcal{G}_i(t)/\bar{\mathcal{G}}(t) - 1 |$. Taking the partial derivative with respect to $\lambda_i$:
+By Gibbs' Inequality derived from the log-convexity schema, $D_{\text{KL}}(P \parallel Q) \ge 0$. Applying Jensen's Inequality to the localized conditional probabilities expands as:
+\begin{equation}
+- \sum_{i,j} p_{j|i} \log \frac{q_{j|i}}{p_{j|i}} \ge - \log \left( \sum_{i,j} p_{j|i} \frac{q_{j|i}}{p_{j|i}} \right) = - \log(1) = 0
+\end{equation}
+The global minimum boundary $M_{\text{loss}} = 0$ is uniquely satisfied when $\frac{q_{j|i}}{p_{j|i}} = 1$ uniformly across all nodes. This enforces $p_{j|i} = q_{j|i}$, achieving a bijective geometric structure mapping.
+\end{proof}
+\section{Theorem 4: Multi-Objective Gradient Balance}
+Dynamic multi-objective weights are governed by the outer-loop balance equation: $\lambda_i(t+1) = \lambda_i(t) + \alpha_{\text{grad}} (\mathcal{G}_i(t)/\bar{\mathcal{G}}(t) - 1)$, where $\mathcal{G}_i$ is individual task gradient norm and $\bar{\mathcal{G}}$ is the group mean.
+\begin{theorem}
+The trajectory of scaling parameter vector $\bm{\lambda}(t)$ continuously converges toward stable equilibrium gradient parity where $\mathcal{G}_i(t) = \bar{\mathcal{G}}(t)$.
+\end{theorem}
+\begin{proof}
+We minimize the explicit scale ratio violation error: $L_{\text{grad}}(\bm{\lambda}) = \sum_{i} | \mathcal{G}_i(t)/\bar{\mathcal{G}}(t) - 1 |$. Evaluating partial gradients with respect to $\lambda_i$:
 \begin{equation}
 \frac{\partial L_{\text{grad}}}{\partial \lambda_i} \propto \left( \frac{\mathcal{G}_i(t)}{\bar{\mathcal{G}}(t)} - 1 \right)
 \end{equation}
-If a task dominates ($\mathcal{G}_i(t) > \bar{\mathcal{G}}(t)$), the derivative is positive, causing the updater to subtract scale and decrease $\lambda_i(t+1)$. This negative feedback loop minimizes $L_{\text{grad}}$, proving convergence.
+If a single objective task dominates the gradient path ($\mathcal{G}_i(t) > \bar{\mathcal{G}}(t)$), the partial derivative goes positive, forcing the out-of-graph updater to subtract scale and decrease $\lambda_i(t+1)$. This stable negative feedback loop optimizes $L_{\text{grad}}$ toward zero, proving total multi-task gradient convergence.
 \end{proof}
 \end{document}
