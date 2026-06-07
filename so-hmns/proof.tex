@@ -19,10 +19,13 @@ Under Assumption 1, minimizing $\text{Tr}(X^T L_{\text{sym}} X)$ strictly guaran
 \end{theorem}
 \begin{proof}
 By linear algebraic decomposition, the unnormalized graph Laplacian quadratic form evaluates as:
-\begin{equation}
-X^T L X = X^T (D - W) X = \frac{1}{2} \sum_{i,j=1}^N W_{ij} \Vert x_i - x_j \Vert_2^2
-\end{equation}
-Applying the symmetric matrix normalization transformations, the trace operator yielding the global Dirichlet energy scales directly to:
+\begin{align}
+X^T L X &= X^T (D - W) X = \sum_{i=1}^N D_{ii} x_i x_i^T - \sum_{i=1}^N \sum_{j=1}^N W_{ij} x_i x_j^T \nonumber \\
+&= \frac{1}{2} \left( \sum_{i=1}^N \sum_{j=1}^N W_{ij} x_i x_i^T - 2 \sum_{i=1}^N \sum_{j=1}^N W_{ij} x_i x_j^T + \sum_{j=1}^N \sum_{i=1}^N W_{ji} x_j x_j^T \right) \nonumber \\
+&= \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N W_{ij} (x_i x_i^T - 2 x_i x_j^T + x_j x_j^T) \nonumber \\
+&= \frac{1}{2} \sum_{i,j=1}^N W_{ij} \Vert x_i - x_j \Vert_2^2
+\end{align}
+Extending this algebraic derivation to the symmetrically normalized matrix space $L_{\text{sym}} = D^{-1/2} L D^{-1/2}$, the trace operator yielding the global Dirichlet energy scales directly to:
 \begin{equation}
 \text{Tr}(X^T L_{\text{sym}} X) = \frac{1}{2} \sum_{i,j=1}^N W_{ij} \left\Vert \frac{x_i}{\sqrt{D_{ii}}} - \frac{x_j}{\sqrt{D_{jj}}} \right\Vert_2^2
 \end{equation}
@@ -57,11 +60,12 @@ Let $P$ be the ambient space Gaussian kernel distribution $p_{j|i}$ and $Q$ be t
 Minimizing $M_{\text{loss}}$ satisfies strict topological invariance, ensuring complete information conservation if and only if $P \equiv Q$.
 \end{theorem}
 \begin{proof}
-By Gibbs' Inequality derived from the log-convexity schema, $D_{\text{KL}}(P \parallel Q) \ge 0$. Applying Jensen's Inequality to the localized conditional probabilities expands as:
-\begin{equation}
-- \sum_{i,j} p_{j|i} \log \frac{q_{j|i}}{p_{j|i}} \ge - \log \left( \sum_{i,j} p_{j|i} \frac{q_{j|i}}{p_{j|i}} \right) = - \log(1) = 0
-\end{equation}
-The global minimum boundary $M_{\text{loss}} = 0$ is uniquely satisfied when $\frac{q_{j|i}}{p_{j|i}} = 1$ uniformly across all nodes. This enforces $p_{j|i} = q_{j|i}$, achieving a bijective geometric structure mapping.
+By Gibbs' Inequality derived from the log-convexity schema, $D_{\text{KL}}(P \parallel Q) \ge 0$. We express the negative divergence and apply Jensen's Inequality to the convex negative logarithm function ($-\log x$):
+\begin{align}
+M_{\text{loss}} &= - \sum_{i \neq j} p_{j|i} \log \frac{q_{j|i}}{p_{j|i}} \ge - \log \left( \sum_{i \neq j} p_{j|i} \frac{q_{j|i}}{p_{j|i}} \right) \nonumber \\
+&= - \log \left( \sum_{i \neq j} q_{j|i} \right) = - \log(1) = 0
+\end{align}
+Because $-\log x$ is strictly convex, the equality $M_{\text{loss}} = 0$ holds if and only if the random variable inside the expectation is constant with probability 1. This uniquely requires $\frac{q_{j|i}}{p_{j|i}} = 1$ uniformly across all nodes, enforcing $p_{j|i} = q_{j|i}$ and achieving a bijective geometric structure mapping.
 \end{proof}
 \section{Theorem 4: Multi-Objective Gradient Balance}
 Dynamic multi-objective weights are governed by the outer-loop balance equation: $\lambda_i(t+1) = \lambda_i(t) + \alpha_{\text{grad}} (\mathcal{G}_i(t)/\bar{\mathcal{G}}(t) - 1)$, where $\mathcal{G}_i$ is individual task gradient norm and $\bar{\mathcal{G}}$ is the group mean.
