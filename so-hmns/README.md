@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org)](https://doi.org)
 # SO-HMNS: Self-Optimizing Hyper-Manifold Normalization System
 
 [![DOI](https://zenodo.org)](https://doi.org)
