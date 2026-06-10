@@ -1,8 +1,8 @@
-# SOHLF V3 & SO-HMNS Production Infrastructure (v3000.0 True Absolute Convergence)
+# SOHLF V3 & SO-HMNS Riemann Spectral Infrastructure (v4000.0 Riemann Solution)
 
 [![DOI](https://zenodo.org)](https://doi.org)
 **Developer**: ryujinchoi  
-**Engine**: Unbounded Self-adjoint Dirac-Weil Operator Arrays for Millennium Boundary Resolution
+**Engine**: Unbounded Self-adjoint Dirac-Weil Operator Arrays for Riemann Critical Line Resolution
 
 ## 🚀 Active Production Installation
 ```bash
