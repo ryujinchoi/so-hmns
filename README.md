@@ -1,4 +1,4 @@
-# SOHLF V3 & SO-HMNS Production Infrastructure (v300.0 Ultimate Real-Field Closure)
+# SOHLF V3 & SO-HMNS Production Infrastructure (v400.0 Ultimate Real-Field Closure)
 
 [![DOI](https://zenodo.org)](https://doi.org)
 **Developer**: ryujinchoi  
