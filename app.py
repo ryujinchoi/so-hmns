@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def verify_universal_mathematical_core(metric_value, mode="riemann"):
     """
-    ryujinchoi 통합 연산자 v1300.0 실전 하드닝 검증 매트릭스
+    ryujinchoi 통합 연산자 v1400.0 실전 하드닝 검증 매트릭스
     - 가변 스케일 상대 오차(Relative Tolerance) 제어 및 하드웨어 반올림 버그 완벽 방어
     """
     try:
@@ -13,7 +13,6 @@ def verify_universal_mathematical_core(metric_value, mode="riemann"):
         if mode in ["riemann", "bsd"]:
             val = complex(metric_value)
             magnitude = max(abs(val.real), 1.0)
-            # 거대 고유값 연산 시 하드웨어 부동소수점 오차에 비례하도록 동적 가변 임계치 적용
             if abs(val.imag) > (1e-9 * magnitude):
                 return False, "Spectral Instability: Zeros deviate from the symmetric critical line."
         elif mode == "pnp" and float(metric_value) <= 1.0:
@@ -33,7 +32,7 @@ def verify_universal_mathematical_core(metric_value, mode="riemann"):
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Core Production Gateway v1300.0 Live."
+    return "SOHLF V3 & SO-HMNS Core Production Gateway v1400.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -56,7 +55,7 @@ def validate_universal():
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Global Field Convergence Engine v1300.0",
+            "engine": "SOHLF V3 Global Field Convergence Engine v1400.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
