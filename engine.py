@@ -62,14 +62,12 @@ class InfiniteSpectralValidator:
         
         # 연산자 놈 제곱의 최대 한계 경계 (||T||^2 = \lambda_1^2 = 1.0)
         operator_norm_squared = 1.0
-        max_estimated_energy = truncated_energy + self.tail_error_bound
         
         # 보존 밀도 기반 신뢰 점수 추출
         hallucination_free_score = truncated_energy / operator_norm_squared
         
-        # 가변형 수치 가드를 적용한 함수해석학적 유계 부등식 완결 검증
-        is_strictly_bounded = (truncated_energy <= operator_norm_squared + self.numerical_guard) and \
-                              (max_estimated_energy <= (operator_norm_squared + self.tail_error_bound + self.numerical_guard))
+        # [엄밀성 최종 완결] 유한 절단 에너지가 컴팩트 연산자의 유계 영역 상한을 절대 초과하지 않는지 검증
+        is_strictly_bounded = (truncated_energy <= operator_norm_squared + self.numerical_guard)
         
         return {
             "truncated_energy": truncated_energy,
