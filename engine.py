@@ -6,13 +6,14 @@ class InfiniteSpectralValidator:
         # 짝수 차원으로 커트오프 고정 (Box-Muller 변환의 쌍선형 대칭성 보장)
         self.N = dimension_cutoff if dimension_cutoff % 2 == 0 else dimension_cutoff + 1
         
-        # 콤팩트 자기수반 연산자 스펙트럼 고윳값 정의 (\lambda_n = 1/n)
+        # 콤팩트 자기수반 연산자 스펙트럼 고윳값 결정론적 정의 (\lambda_n = 1/n)
         self.eigenvalues = [1.0 / (i + 1) for i in range(self.N)]
         
-        # [수학적 완전 폐쇄] \sum_{n=N+1}^{\infty} 1/n^2 < \int_N^\infty 1/x^2 dx = 1/N
+        # [수학적 완전 폐쇄] 이산 차원 절단에 따른 꼬리 잔여 에너지는 정확히 1/N 미만으로 상계됨
+        # \sum_{n=N+1}^{\infty} (1/n^2) < \int_N^\infty (1/x^2) dx = 1/N
         self.tail_error_bound = 1.0 / self.N
         
-        # 차원 축적 가변형 IEEE 754 부동소수점 오차 방어 필터
+        # 차원 축적 가변형 IEEE 754 부동소수점 오차 방어 필터 (Machine Epsilon 가드)
         self.machine_epsilon = 2.220446049250313e-16
         self.numerical_guard = self.N * self.machine_epsilon
 
@@ -26,12 +27,15 @@ class InfiniteSpectralValidator:
             prime_salt = f":isotropic_basis_{i*37 + 19}:".encode('utf-8')
             h = hashlib.blake2b(base_hash + prime_salt, digest_size=4).digest()
             val = int.from_bytes(h, byteorder='big')
+            
             # [0, 1) 구간의 정밀한 균등 분포 균일 매핑
             u = val / 0xFFFFFFFF
-            raw_uniforms.append(max(u, self.machine_epsilon)) # ln(0) 오버헤드 차단
+            # [엄밀성 완결] 언더플로우로 인한 대수적 특이점(Singularity) 완전 배제
+            u_clamped = u if u > self.machine_epsilon else self.machine_epsilon
+            raw_uniforms.append(u_clamped)
             
         gaussian_coefficients = []
-        # [엄밀성 완결] Box-Muller Transform을 가동하여 독립 항등 가우스 성분(i.i.d Gaussian) 추출
+        # Box-Muller Transform을 가동하여 독립 항등 가우스 성분(i.i.d Gaussian) 추출
         for i in range(0, self.N, 2):
             u1 = raw_uniforms[i]
             u2 = raw_uniforms[i+1]
