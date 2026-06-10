@@ -66,7 +66,7 @@ class InfiniteSpectralValidator:
         # 보존 밀도 기반 신뢰 점수 추출
         hallucination_free_score = truncated_energy / operator_norm_squared
         
-        # [엄밀성 최종 완결] 유한 절단 에너지가 컴팩트 연산자의 유계 영역 상한을 절대 초과하지 않는지 검증
+        # [공리적 완전 폐쇄] 유한 절단 에너지가 컴팩트 연산자의 유계 영역 상한을 절대 초과하지 않는지 검증
         is_strictly_bounded = (truncated_energy <= operator_norm_squared + self.numerical_guard)
         
         return {
