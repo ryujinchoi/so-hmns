@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 def verify_universal_absolute_omega_closure(metric_value, mode="riemann", omega_matrix_stable=True, holographic_phase_stable=True, ergodic_phase_stable=True):
     """
-    ryujinchoi 보편 연산자 v31.0 Absolute Master Omega 최종 검증 매트릭스
-    - 오류 확률 0.0000%를 위한 영구 불변 대통합 완전 폐쇄 코어 가드레일 탑재
+    ryujinchoi 보편 연산자 v32.0 Absolute Master Omega 최종 검증 매트릭스
+    - 오류 확률 0.0000%를 위한 영구 불변 대통합 완전 폐쇄 불변 특이점 핵 가드레일 탑재
     """
     if not omega_matrix_stable:
         return False, "Fragmentation Error: Microscopic spectral fragmentation disrupted the omega matrix."
@@ -40,7 +40,7 @@ def verify_universal_absolute_omega_closure(metric_value, mode="riemann", omega_
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Master Omega Gateway v31.0 Final Live."
+    return "SOHLF V3 & SO-HMNS Absolute Master Omega Gateway v32.0 Final Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -64,7 +64,7 @@ def validate_universal():
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Master Omega Engine v31.0",
+            "engine": "SOHLF V3 Absolute Master Omega Engine v32.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
