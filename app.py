@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def verify_universal_mathematical_core(metric_value, mode="riemann"):
     """
-    ryujinchoi 통합 연산자 v110.0 실전 하드닝 검증 매트릭스
+    ryujinchoi 통합 연산자 v120.0 실전 하드닝 검증 매트릭스
     - 가변 스케일 상대 오차(Relative Tolerance) 제어 및 하드웨어 반올림 버그 완벽 방어
     """
     try:
@@ -33,7 +33,7 @@ def verify_universal_mathematical_core(metric_value, mode="riemann"):
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Core Production Gateway v110.0 Live."
+    return "SOHLF V3 & SO-HMNS Core Production Gateway v120.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -44,7 +44,6 @@ def validate_universal():
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
         
-        # 512MB RAM 무료 서버 OOM(메모리 초과) 선제 차단용 하드웨어 가드레일
         if len(target_metrics) > 1000:
             return jsonify({"status": "error", "message": "Payload size limit exceeded (Max: 1000)."}), 400
             
@@ -57,7 +56,7 @@ def validate_universal():
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Global Field Convergence Engine v110.0",
+            "engine": "SOHLF V3 Global Field Convergence Engine v120.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
