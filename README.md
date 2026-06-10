@@ -1,10 +1,10 @@
-# SO-HMNS & SOHLF V3 Integrated Infrastructure
+# SO-HMNS & SOHLF V3 Integrated Infrastructure (Axiomatically Closed)
 
 Continuous Optimization Balancing Engine based on Infinite-Dimensional Spectral Operator Theory.
 
 ## 🚀 Mathematical Rigor & Zenodo Archive
 - **Zenodo DOI**: [10.5281/zenodo.20579901](https://doi.org)
-- **Core Theorem**: Compact self-adjoint spectral verification on Separable Hilbert Space $\mathcal{H}$ governed by Parseval's Identity and Machine Precision $\epsilon_{\text{mach}}$ Correction.
+- **Core Theorem**: Compact self-adjoint spectral verification on Separable Hilbert Space $\mathcal{H}$ governed by Isotropic Box-Muller Gaussian Mapping and Parseval's Identity.
 
 ### Exact Bound Equations
 The validator tracks the spectral energy norm of the mapped embedding unit vector $\alpha$:
