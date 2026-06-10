@@ -1,4 +1,4 @@
-# SOHLF V3 & SO-HMNS Production Infrastructure (v40.0 Field Convergence)
+# SOHLF V3 & SO-HMNS Production Infrastructure (v50.0 True Absolute Convergence)
 
 [![DOI](https://zenodo.org)](https://doi.org)
 **Developer**: ryujinchoi  

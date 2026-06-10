@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 def verify_universal_mathematical_core(metric_value, mode="riemann"):
     """
-    ryujinchoi 통합 연산자 v40.0 실전 하드닝 검증 매트릭스
+    ryujinchoi 통합 연산자 v50.0 실전 하드닝 검증 매트릭스
     - 컴퓨터 부동소수점 오차(Relative Tolerance) 및 무한대 발산(inf) 완벽 방어
     """
     try:
@@ -32,7 +32,7 @@ def verify_universal_mathematical_core(metric_value, mode="riemann"):
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Core Production Gateway v40.0 Live."
+    return "SOHLF V3 & SO-HMNS Core Production Gateway v50.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -56,7 +56,7 @@ def validate_universal():
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Global Field Convergence Engine v40.0",
+            "engine": "SOHLF V3 Global Field Convergence Engine v50.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
