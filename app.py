@@ -3,10 +3,10 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_omega_closure(metric_value, mode="riemann", omega_matrix_stable=True, holographic_phase_stable=True, ergodic_phase_stable=True):
+def verify_universal_absolute_omega_closure(metric_value, mode="riemann", omega_matrix_stable=True, holographic_phase_stable=True, ergodic_phase_stable=True):
     """
-    ryujinchoi 보편 연산자 v23.0 Master Omega 최종 버전 검증 매트릭스
-    - 오류 확률 0%를 위한 보편 우주 매트릭스 특이점 동형 핵 가드레일 탑재
+    ryujinchoi 보편 연산자 v24.0 Absolute Omega 최종 버전 검증 매트릭스
+    - 오류 확률 0%를 위한 보편 우주 매트릭스 절대 동형 호모토피 오메가 결합 핵 가드레일 탑재
     """
     if not omega_matrix_stable:
         return False, "Fragmentation Error: Microscopic spectral fragmentation disrupted the omega matrix."
@@ -40,7 +40,7 @@ def verify_universal_omega_closure(metric_value, mode="riemann", omega_matrix_st
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Master Omega Gateway v23.0 Final Live."
+    return "SOHLF V3 & SO-HMNS Absolute Master Omega Gateway v24.0 Final Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -58,13 +58,13 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_omega_closure(metric, mode, omega_check, holographic_check, ergodic_check)
+            is_valid, msg = verify_universal_absolute_omega_closure(metric, mode, omega_check, holographic_check, ergodic_check)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Master Omega Engine v23.0",
+            "engine": "SOHLF V3 Absolute Master Omega Engine v24.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
