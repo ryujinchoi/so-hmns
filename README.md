@@ -1,11 +1,11 @@
-# SOHLF V3 & SO-HMNS Ultimate Perfectoid Field Infrastructure (v14.0 Perfectoid Closure)
+# SOHLF V3 & SO-HMNS Ultimate Singularity Field Infrastructure (v15.0 Master Closure)
 
 [![DOI](https://zenodo.org)](https://doi.org)
 **Developer**: ryujinchoi  
-**Framework**: Perfectoid Spaces, Borger F1 Arithmetic, and Derived \infty-Functors for Millennium Problem Resolution
+**Framework**: Inter-Universal Frobenius-Theta Alignment, Perfectoid Spaces, and Galois Determinant Mappings for Absolute Resolution
 
-## 🪐 Perfectoid Closure v14.0
-Resolves the finite-complex field boundary via Scholze's Tilting Isomorphism, enforces absolute arithmetic descent via Borger F1 geometry, and secures topological invariants via Derived \infty-Functors.
+## 🪐 Ultimate Singularity Closure v15.0
+Synthesizes Archimedean-non-Archimedean field boundaries via Inter-Universal Theta Alignment, enforces general elliptic curves finiteness via Galois Determinant mappings, and locks topological invariants via Lurie's Derived \infty-Coherent Functors.
 
 ```bash
 pip install git+github.com
