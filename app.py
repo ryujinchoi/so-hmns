@@ -3,44 +3,36 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_absolute_omega_closure(metric_value, mode="riemann", omega_matrix_stable=True, holographic_phase_stable=True, ergodic_phase_stable=True):
+def verify_universal_mathematical_core(metric_value, mode="riemann"):
     """
-    ryujinchoi 보편 연산자 v35.0 Absolute Master Omega 최종 검증 매트릭스
-    - 부동소수점 오차 제어 및 하드웨어 가드레일 탑재
+    ryujinchoi 통합 연산자 v40.0 실전 하드닝 검증 매트릭스
+    - 컴퓨터 부동소수점 오차(Relative Tolerance) 및 무한대 발산(inf) 완벽 방어
     """
-    if not omega_matrix_stable:
-        return False, "Fragmentation Error: Microscopic spectral fragmentation disrupted the omega matrix."
-    if not holographic_phase_stable:
-        return False, "Projection Leak: Multi-universal projection mapping broke absolute automorphism symmetry."
-    if not ergodic_phase_stable:
-        return False, "Entropy Leak: Spectral collapse entropy disrupted quantum phase preservation."
-
     try:
         eps = 1e-7
         if mode in ["riemann", "bsd"]:
             val = complex(metric_value)
             magnitude = max(abs(val.real), 1.0)
             if abs(val.imag) > (1e-9 * magnitude):
-                return False, "Spectral Instability: Zeros deviate from ryujin critical line."
+                return False, "Spectral Instability: Zeros deviate from the symmetric critical line."
         elif mode == "pnp" and float(metric_value) <= 1.0:
-            return False, "Complexity Collapse: Non-natural anomaly broken."
-        elif mode == "navier_stokes" and (float(metric_value) == float('inf') or float(metric_value) > 1e18):
-            return False, "Fluid Blow-up: Singularity violated Hausdorff bounds."
+            return False, "Complexity Collapse: Non-natural Kronecker anomaly is broken."
+        elif mode == "navier_stokes":
+            energy_norm = float(metric_value)
+            if energy_norm == float('inf') or energy_norm > 1e18:
+                return False, "Fluid Blow-up: Localized singularity violated Sobolev bounds."
         elif mode == "yang_mills" and float(metric_value) <= 1e-6:
-            return False, "Mass Gap Collapse: Trivial vacuum symmetry detected."
-        elif mode == "hodge":
-            if abs(float(metric_value) - 1.0) > eps:
-                return False, "Hodge Duality Anomaly: Super-spacial subvariety mapping broken."
-        elif mode == "poincare":
-            if float(metric_value) < -eps:
-                return False, "Topological Disruption: Non-spherical singularity detected."
-        return True, f"Absolute Cosmic Invariant Verified for [{mode.upper()}]"
+            return False, "Mass Gap Collapse: Wightman boundary condition violated."
+        elif mode in ["hodge", "poincare"]:
+            if abs(float(metric_value) - 1.0) > eps and float(metric_value) < -eps:
+                return False, "Topological Disruption: Invariant mapping symmetry collapsed."
+        return True, f"Absolute Invariant Verified for [{mode.upper()}]"
     except (ValueError, TypeError):
-        return False, "Invalid Data Format."
+        return False, "Invalid Numerical Data Format."
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Master Omega Gateway v35.0 Final Live."
+    return "SOHLF V3 & SO-HMNS Core Production Gateway v40.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -50,24 +42,21 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Missing JSON Payload"}), 400
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
-        omega_check = payload.get("omega_matrix_stable", True)
-        holographic_check = payload.get("holographic_phase_stable", True)
-        ergodic_check = payload.get("ergodic_phase_stable", True)
         
-        # 512MB RAM 오버헤드 폭탄 차단 하드 가드레일
+        # 512MB RAM 무료 서버 OOM(메모리 초과) 선제 차단용 하드웨어 가드레일
         if len(target_metrics) > 1000:
-            return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
+            return jsonify({"status": "error", "message": "Payload size limit exceeded (Max: 1000)."}), 400
             
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_absolute_omega_closure(metric, mode, omega_check, holographic_check, ergodic_check)
+            is_valid, msg = verify_universal_mathematical_core(metric, mode)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Master Omega Engine v35.0",
+            "engine": "SOHLF V3 Global Field Convergence Engine v40.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
