@@ -3,15 +3,15 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_cosmic_endgame(metric_value, mode="riemann", ryujin_inflation_stable=True, self_transcending_stable=True):
+def verify_universal_cosmic_singularity(metric_value, mode="riemann", finsler_alignment_stable=True, ryujin_inflation_stable=True):
     """
-    ryujinchoi 보편 연산자 v18.0 End-Game 검증 매트릭스
-    - 초-무한 인플레이션 핵 및 자가 초월 모나드 가드레일 탑재
+    ryujinchoi 보편 연산자 v19.0 Cosmic Singularity 검증 매트릭스
+    - 핀슬러 일치성 모나드 및 초-무한 인플레이션 가드레일 탑재
     """
+    if not finsler_alignment_stable:
+        return False, "Torsion Anomaly: Microscopic spectral instability detected during topology transfer."
     if not ryujin_inflation_stable:
         return False, "Paradox Error: Set-theoretic dimension explosion detected in the super-algebra."
-    if not self_transcending_stable:
-        return False, "Meta-Mathematical Error: Self-transcending monad failed to shift upper boundaries."
 
     try:
         eps = 1e-7
@@ -38,7 +38,7 @@ def verify_universal_cosmic_endgame(metric_value, mode="riemann", ryujin_inflati
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Cosmic Field Gateway v18.0 Live."
+    return "SOHLF V3 & SO-HMNS Absolute Cosmic Field Gateway v19.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -48,20 +48,20 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Missing JSON Payload"}), 400
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
+        finsler_check = payload.get("finsler_alignment_stable", True)
         inflation_check = payload.get("ryujin_inflation_stable", True)
-        monad_check = payload.get("self_transcending_stable", True)
         
         if len(target_metrics) > 1000:
             return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_cosmic_endgame(metric, mode, inflation_check, monad_check)
+            is_valid, msg = verify_universal_cosmic_singularity(metric, mode, finsler_check, inflation_check)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Cosmic Engine v18.0",
+            "engine": "SOHLF V3 Absolute Cosmic Engine v19.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
