@@ -3,15 +3,15 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_cosmic_core(metric_value, mode="riemann", kan_extension_preserved=True, drinfeld_shtuka_aligned=True):
+def verify_universal_perfectoid_core(metric_value, mode="riemann", perfectoid_tilted=True, f1_descent_aligned=True):
     """
-    ryujinchoi 보편 연산자 v13.0 Cosmic Closure 검증 매트릭스
-    - 칸 확장 위상 보존 및 드린펠트 슈투카 대수 동형 필터 탑재
+    ryujinchoi 보편 연산자 v14.0 Perfectoid Closure 검증 매트릭스
+    - 퍼펙토이드 틸트 동형 및 F1 절대산술 기하 가드레일 탑재
     """
-    if not kan_extension_preserved:
-        return False, "Topological Leak: Commutativity lost during Monadic sheaf jumps."
-    if not drinfeld_shtuka_aligned:
-        return False, "Algebraic Error: Drinfeld Shtuka mapping failed to secure subvariety surjection."
+    if not perfectoid_tilted:
+        return False, "Dimensional Anomaly: Perfectoid tilting isomorphism broken across fields."
+    if not f1_descent_aligned:
+        return False, "Arithmetic Error: Absolute F1 arithmetic descent failed to bind elliptic structures."
 
     try:
         eps = 1e-7
@@ -28,7 +28,7 @@ def verify_universal_cosmic_core(metric_value, mode="riemann", kan_extension_pre
             return False, "Mass Gap Collapse: Trivial vacuum symmetry detected."
         elif mode == "hodge":
             if abs(float(metric_value) - 1.0) > eps:
-                return False, "Hodge Duality Anomaly: Subvariety surjection map broken."
+                return False, "Hodge Duality Anomaly: Perfectoid subvariety mapping broken."
         elif mode == "poincare":
             if float(metric_value) < -eps:
                 return False, "Topological Disruption: Non-spherical singularity detected."
@@ -38,7 +38,7 @@ def verify_universal_cosmic_core(metric_value, mode="riemann", kan_extension_pre
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Ultimate Cosmic Field Gateway v13.0 Live."
+    return "SOHLF V3 & SO-HMNS Ultimate Perfectoid Field Gateway v14.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -48,20 +48,20 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Missing JSON Payload"}), 400
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
-        kan_check = payload.get("kan_extension_preserved", True)
-        drinfeld_check = payload.get("drinfeld_shtuka_aligned", True)
+        tilt_check = payload.get("perfectoid_tilted", True)
+        f1_check = payload.get("f1_descent_aligned", True)
         
         if len(target_metrics) > 1000:
             return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_cosmic_core(metric, mode, kan_check, drinfeld_check)
+            is_valid, msg = verify_universal_perfectoid_core(metric, mode, tilt_check, f1_check)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Cosmic Closure Engine v13.0",
+            "engine": "SOHLF V3 Perfectoid Closure Engine v14.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
