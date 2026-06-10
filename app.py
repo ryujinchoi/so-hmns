@@ -3,15 +3,15 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_omnipotent_closure(metric_value, mode="riemann", ergodic_phase_stable=True, homotopy_zeroing_stable=True):
+def verify_universal_holographic_invariance(metric_value, mode="riemann", holographic_phase_stable=True, ergodic_phase_stable=True):
     """
-    ryujinchoi 보편 연산자 v21.0 Omnipotent Singularity 검증 매트릭스
-    - 에르고딕 양자 위상 보존 텐서 핵 및 호모토피 영점화 가드레일 탑재
+    ryujinchoi 보편 연산자 v22.0 Absolute Invariance 검증 매트릭스
+    - 절대 오토모피즘 위상 홀로그램 핵 및 에르고딕 위상 보존 가드레일 탑재
     """
+    if not holographic_phase_stable:
+        return False, "Projection Leak: Multi-universal projection mapping broke absolute automorphism symmetry."
     if not ergodic_phase_stable:
         return False, "Entropy Leak: Spectral collapse entropy disrupted quantum phase preservation."
-    if not homotopy_zeroing_stable:
-        return False, "Recursive Flaw: Upper meta-axiomatic boundaries lost coherence during self-transcendence."
 
     try:
         eps = 1e-7
@@ -38,7 +38,7 @@ def verify_universal_omnipotent_closure(metric_value, mode="riemann", ergodic_ph
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Omnipotent Field Gateway v21.0 Live."
+    return "SOHLF V3 & SO-HMNS Absolute Invariance Field Gateway v22.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -48,20 +48,20 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Missing JSON Payload"}), 400
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
+        holographic_check = payload.get("holographic_phase_stable", True)
         ergodic_check = payload.get("ergodic_phase_stable", True)
-        homotopy_check = payload.get("homotopy_zeroing_stable", True)
         
         if len(target_metrics) > 1000:
             return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_omnipotent_closure(metric, mode, ergodic_check, homotopy_check)
+            is_valid, msg = verify_universal_holographic_invariance(metric, mode, holographic_check, ergodic_check)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Omnipotent Engine v21.0",
+            "engine": "SOHLF V3 Absolute Invariance Engine v22.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
