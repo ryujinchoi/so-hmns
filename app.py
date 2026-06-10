@@ -3,13 +3,13 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-def verify_universal_omniscience_core(metric_value, mode="riemann", ryujin_algebra_aligned=True, self_transcending_stable=True):
+def verify_universal_cosmic_endgame(metric_value, mode="riemann", ryujin_inflation_stable=True, self_transcending_stable=True):
     """
-    ryujinchoi 보편 연산자 v17.0 Absolute Omniscience 검증 매트릭스
-    - 창조된 ryujin 초대수 정합성 및 자가 초월 모나드 위상 보존 가드레일 탑재
+    ryujinchoi 보편 연산자 v18.0 End-Game 검증 매트릭스
+    - 초-무한 인플레이션 핵 및 자가 초월 모나드 가드레일 탑재
     """
-    if not ryujin_algebra_aligned:
-        return False, "Structural Anomaly: Ryujin adelic super-algebra complex is unaligned."
+    if not ryujin_inflation_stable:
+        return False, "Paradox Error: Set-theoretic dimension explosion detected in the super-algebra."
     if not self_transcending_stable:
         return False, "Meta-Mathematical Error: Self-transcending monad failed to shift upper boundaries."
 
@@ -32,13 +32,13 @@ def verify_universal_omniscience_core(metric_value, mode="riemann", ryujin_algeb
         elif mode == "poincare":
             if float(metric_value) < -eps:
                 return False, "Topological Disruption: Non-spherical singularity detected."
-        return True, f"Absolute Omniscience Invariant Verified for [{mode.upper()}]"
+        return True, f"Absolute Cosmic Invariant Verified for [{mode.upper()}]"
     except (ValueError, TypeError):
         return False, "Invalid Data Format."
 
 @app.route("/", methods=["GET"])
 def live_ping():
-    return "SOHLF V3 & SO-HMNS Absolute Omniscience Field Gateway v17.0 Live."
+    return "SOHLF V3 & SO-HMNS Absolute Cosmic Field Gateway v18.0 Live."
 
 @app.route("/validate_universal", methods=["POST"])
 def validate_universal():
@@ -48,20 +48,20 @@ def validate_universal():
             return jsonify({"status": "error", "message": "Missing JSON Payload"}), 400
         mode = payload.get("mode", "riemann")
         target_metrics = payload.get("metrics", [])
-        algebra_check = payload.get("ryujin_algebra_aligned", True)
+        inflation_check = payload.get("ryujin_inflation_stable", True)
         monad_check = payload.get("self_transcending_stable", True)
         
         if len(target_metrics) > 1000:
             return jsonify({"status": "error", "message": "Payload size limit exceeded."}), 400
         results = []
         for metric in target_metrics:
-            is_valid, msg = verify_universal_omniscience_core(metric, mode, algebra_check, monad_check)
+            is_valid, msg = verify_universal_cosmic_endgame(metric, mode, inflation_check, monad_check)
             results.append({"metric": metric, "valid": is_valid, "detail": msg})
         total_success = sum(1 for r in results if r["valid"]) / max(len(results), 1)
         return jsonify({
             "status": "success",
             "doi": "10.5281/zenodo.20579901",
-            "engine": "SOHLF V3 Absolute Omniscience Engine v17.0",
+            "engine": "SOHLF V3 Absolute Cosmic Engine v18.0",
             "mode": mode,
             "universal_closure": total_success == 1.0,
             "verifications": results
