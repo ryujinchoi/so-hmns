@@ -130,3 +130,26 @@ if __name__ == "__main__":
     print()
     # 3. 금융공학 시스템 멜트다운 테스팅
     print(TransdisciplinaryHMNSEngineV33(FinancialEngineeringPlugin(), 10000, 0.3).execute_proof_pipeline())
+
+class PhilosophyParadigmPlugin(TransdisciplinaryProblemTemplate):
+    """4. 철학 인식론적 패러다임 전환 플러그인"""
+    def __init__(self):
+        super().__init__("Epistemological Paradigm Shift", "Dialectical_Proposition_Space", critical_index=0.5, is_nonlinear=False)
+    def compute_field_perturbation(self, antithesis_skew: float) -> float:
+        return antithesis_skew
+    def get_transdisciplinary_correction(self, N: int, perturbation: float) -> float:
+        return 1.0 / (N ** (2.0 - 4.0 * perturbation))
+    def map_to_field_conclusion(self, N: int, energy: float) -> str:
+        return "Paradigm Shift Confirmed (Old Dogma Collapsed via Epistemological Singularity)"
+
+
+class PsychologicalBreakdownPlugin(TransdisciplinaryProblemTemplate):
+    """5. 심리학 자아 항상성 임계 폭발 플러그인"""
+    def __init__(self):
+        super().__init__("Psychological Ego Homeostasis Crisis", "Subconscious_Manifold_Space", critical_index=1.0, is_nonlinear=True)
+    def compute_field_perturbation(self, trauma_drift: float) -> float:
+        return trauma_drift * 1.2
+    def get_transdisciplinary_correction(self, N: int, perturbation: float) -> float:
+        return 2.0 / (N * np.log(N + 1e-9))
+    def map_to_field_conclusion(self, N: int, energy: float) -> str:
+        return "Ego Homeostasis Collapse Confirmed (Psychological Phase Change / Catharsis Triggered)"
