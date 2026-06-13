@@ -5,39 +5,27 @@ import threading
 import copy
 from decimal import Decimal, localcontext
 
-# [SO-HMNS v18.0] 5000자리 임의 정밀도 기저 완전 고정
 getcontext().prec = 5000
 
 class SovereignOmniTopologyEncoderV18:
-    """v18.0 옴니 주권 인코더: float 자료형의 개입을 원천 차단하여 이진 근사 노이즈 0%화"""
     @staticmethod
     def encode_sovereign_string(raw_data_str: str) -> Decimal:
         if not isinstance(raw_data_str, str):
             raise TypeError("Sovereign topological inputs must be a strict string to prevent binary noise.")
         return Decimal(raw_data_str.strip())
 
-
 class SovereignUnifiedFieldEngineV18:
-    """
-    SO-HMNS v18.0 (Sovereign Absolute Invariant Truth Core)
-    - 0.00%의 미세 티끌 소멸: clear_flags() 가드 매립으로 하드웨어 레지스터 잔여 비트 오염률 완전 제로화
-    - 이산-연속 대통합 수식과 독자적 격리 난수 인스턴스가 완벽하게 결착된 최종 마스터피스
-    """
     STATIC_SPHERE_SAMPLE_SIZE = 1000
     _GLOBAL_STATIC_SPHERE = None
     _LOCK = threading.Lock()
     _EPS_MACH = sys.float_info.epsilon
 
     def __init__(self, target_system_name: str, topological_dimension: int, space_type: int, is_nonlinear: bool):
-        """
-        space_type: 0 = Continuous Manifold (Sobolev), 1 = Discrete Graph/Arithmetic (Dirichlet)
-        """
         self.system_name = target_system_name
         self.d = Decimal(str(topological_dimension))
         self.space_type = space_type
         self.sigma = Decimal('1.0') if is_nonlinear else Decimal('0.0')
         
-        # Sobolev 임베딩 정리 및 그래프 라플라시안 스펙트럼 공리에 따른 상수의 실시간 자동 유도
         if space_type == 0:
             self.embedding_constant = (self.d / Decimal('2.0')) + (Decimal('0.5') * self.sigma)
             self.cascade_factor = Decimal('1.0') + self.sigma
@@ -71,7 +59,6 @@ class SovereignUnifiedFieldEngineV18:
         with localcontext() as local_ctx:
             local_ctx.prec = required_precision
             critical_index = Decimal(str(critical_index_str))
-            
             perturbation = strict_perturbation * self.embedding_constant
             N = 10000
             
@@ -87,13 +74,10 @@ class SovereignUnifiedFieldEngineV18:
                 try:
                     nonlinear_multiplier = self.cascade_factor
                     dec_N = Decimal(N)
-                    
                     p_factor = Decimal('1.0') - Decimal('4.0') * perturbation
                     p_factor_2 = Decimal('2.0') - Decimal('4.0') * perturbation
-                    
                     continuous_integral = Decimal('1.0') / (p_factor * (dec_N ** p_factor))
                     space_correction = Decimal('1.0') / (Decimal('2.0') * (dec_N ** p_factor_2))
-                    
                     raw_energy = (continuous_integral + space_correction) * nonlinear_multiplier
                     energy = copy.deepcopy(raw_energy)
                 except Exception:
@@ -106,7 +90,6 @@ class SovereignUnifiedFieldEngineV18:
             status = "Q.E.D. (Sovereign Invariant Contradiction Established)" if contradiction_detected else "STABLE_SYSTEM"
             final_conclusion = field_conclusion_template if contradiction_detected else "The system remains within bounded stability."
 
-            # [최종 그랜드 가드 명시적 집행] 스레드 탈출 직전 레지스터 및 산술 플래그를 물리적으로 소멸 클리어
             local_ctx.clear_flags()
 
             return {
@@ -122,15 +105,3 @@ class SovereignUnifiedFieldEngineV18:
                 "Academic_Field_Conclusion": final_conclusion,
                 "Status": status
             }
-
-if __name__ == "__main__":
-    print("[SO-HMNS v18.0] 레지스터 클리어링 가드 이식 완료. 통일장 코어 빌드 고정.\n")
-    engine = SovereignUnifiedFieldEngineV18(
-        target_system_name="P vs NP Complexity Collapse",
-        topological_dimension=1,
-        space_type=1,
-        is_nonlinear=True
-    )
-    strict_p = SovereignOmniTopologyEncoderV18.encode_sovereign_string("0.2499999999999999999999999999999999999999")
-    res = engine.execute_sovereign_validation(strict_p, "1.0", "Complexity Equality P = NP Confirmed to be Impossible via v18.0 Core")
-    print(f"[{res['Target_System_Name']}] -> {res['Status']}\n")
