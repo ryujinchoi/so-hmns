@@ -1,4 +1,4 @@
-# SO-HMNS v38.0: Sovereign Real Automorphic Axiom Infrastructure
+# SO-HMNS v39.0: Sovereign Pure Metamathematical Continuum Infrastructure
 
 **인프라 총괄 리드**: 최류진 ([k01057699820@gmail.com](mailto:k01057699820@gmail.com))  
 **공식 마스터 저장소**: [https://github.com](https://github.com)
