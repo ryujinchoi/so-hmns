@@ -90,3 +90,23 @@ If you leverage the SO-HMNS framework or its mathematical stability proofs withi
   url          = {https://doi.org}
 }
 ```
+
+---
+
+## 🧠 Complete Theoretical Hardening Against Discretization Leaps
+
+To guarantee that any observed numerical divergence represents a true mathematical singularity rather than a artifact of finite computer logic, **SO-HMNS** enforces a dual-layered algorithmic guard framework:
+
+### 1. High-Frequency Tail Leakage Defense via Weyl's Law
+When truncating an infinite-dimensional Laplace-Beltrami operator into a finite $N \times N$ discrete grid matrix, the uncalculated high-frequency spectrum must remain asymptotically bounded. We enforce strict validation against Weyl's asymptotic law:
+
+$$\lambda_N \le C_{Weyl} \cdot N^{\frac{2}{d}}$$
+
+If a residual exceeds this bound under high-dimensional iterations, the platform flags the state as a discretization artifact and suppresses false positives.
+
+### 2. Backward Error & Topological Invariance
+Every potential contradiction or blow-up point discovered in our arbitrary-precision `Decimal` engine is reverse-verified through **Backward Error Analysis**. The system validates a state transition as a genuine topological singularity if and only if the backward error satisfies the dynamic machine precision barrier:
+
+$$\text{Backward Error Bound} = \frac{\| \text{Residual} \|}{\| \text{Matrix Norm} \|} \le \epsilon \cdot 10^{\min(\log \kappa, 50)}$$
+
+Where $\kappa$ represents the exponentially expanding condition number. Furthermore, to eliminate pre-metric asymmetries inherent in vanilla Kullback-Leibler (KL) divergences, a symmetric **Jensen-Shannon Topological Regularizer** is structurally bound, anchoring the continuous-discrete manifold mappings into a completely invariant global optimization layer.
