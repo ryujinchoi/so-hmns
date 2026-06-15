@@ -1,3 +1,4 @@
+import torch
 import math
 
 class SOHMNSEngine:
@@ -15,7 +16,7 @@ class SOHMNSEngine:
         
         try:
             # 지수 볼츠만 감쇠 수식의 수학적 부드러움(Smoothness)을 완전무결하게 보존
-            eta_m = self.M_max * math.exp(-clipped_energy)
+            eta_m = self.M_max * torch.exp(-clipped_energy)
         except OverflowError:
             eta_m = self.M_max
             
