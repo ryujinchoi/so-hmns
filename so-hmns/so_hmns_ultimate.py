@@ -2,6 +2,7 @@ import hashlib
 import sys
 import time
 
+# [제한 완전 해제] 거대 정수 대수 연산 및 문자열 인출 한계 무한 개방
 sys.set_int_max_str_digits(10000000)
 
 class SOHMNS_Hash_Challenge_Solver:
@@ -22,6 +23,7 @@ class SOHMNS_Hash_Challenge_Solver:
             checked_count += 1
             input_str = f"{self.base_data}{ryujin_number}"
             
+            # [최류진 끝자리 필터]: 10진법 잉여류 기하학 결합
             if (ryujin_number % 10) in {1, 3, 7, 9}:
                 hash_result = hashlib.sha256(input_str.encode()).hexdigest()
                 
