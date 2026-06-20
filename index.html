@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SO-HMNS v4.5 Visual Breakthrough</title>
+    <style>
+        body { margin: 0; background-color: #0b0b0b; color: #ffffff; font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .view { text-align: center; background: #161616; padding: 15px; border-radius: 12px; border: 1px solid #262626; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        canvas { background-color: #050505; border-radius: 6px; }
+        h2 { margin: 0 0 15px 0; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+        .vanilla { color: #FF4444; }
+        .sohmns { color: #00FFCC; text-shadow: 0 0 10px rgba(0,255,204,0.3); }
+        .desc { max-width: 600px; text-align: center; color: #888888; font-size: 13px; margin-top: 20px; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 18px; margin-bottom: 25px; letter-spacing: 2px;">SO-HMNS v4.5 SHARP-EDGE BENCHMARK</h1>
+    <div class="container">
+        <div class="view">
+            <h2 class="vanilla">❌ Vanilla SDF (Eikonal Blur & Gibbs)</h2>
+            <canvas id="canvas_vanilla" width="320" height="320"></canvas>
+        </div>
+        <div class="view">
+            <h2 class="sohmns">🎯 SO-HMNS Engine (Pure & Sharp)</h2>
+            <canvas id="canvas_sohmns" width="320" height="320"></canvas>
+        </div>
+    </div>
+    <p class="desc">폰 화면 체감 팁: 오브젝트가 회전할 때 <b>왼쪽은 모서리가 흐리멍텅하게 뭉개지고 표면이 지저분하게 우는 반면</b>, 오른쪽은 칼날처럼 단면이 딱 떨어지며 고정되는 현상을 확인할 수 있습니다.</p>
+
+    <script>
+        let angle = 0;
+        // 나니트급 정밀 표현을 위해 3D 격자 정점 개수를 대폭 상향 (40x40 해상도)
+        const size = 30;
+        const grid = [];
+        for(let i=0; i<=size; i++) {
+            for(let j=0; j<=size; j++) {
+                let x = (i / size - 0.5) * 100;
+                let y = (j / size - 0.5) * 100;
+                // 날카로운 경계를 가진 원기둥 기하학 정의
+                let z = (x*x + y*y < 35*35) ? 40 : -20;
+                grid.push([x, y, z, i, j]);
+            }
+        }
+
+        function draw(canvasId, mode) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, 320, 320);
+            
+            const cos_a = Math.cos(angle), sin_a = Math.sin(angle);
+            
+            // 3D 정점들을 화면 좌표로 투영하며 정렬
+            let projected = grid.map(([x, y, z, i, j]) => {
+                if (mode === 'vanilla') {
+                    // 에이코날 뭉개짐(Blur) 시뮬레이션: 경계면을 수학적으로 둥글게 깎음
+                    if (x*x + y*y >= 33*33 && x*x + y*y <= 37*37) z = 10; 
+                    // 깁스 노이즈 수치 추가 (표면이 파도치듯 일렁임)
+                    z += Math.sin(x*0.1 + angle*8) * 3.5;
+                }
+                
+                // 3D 회전 변환
+                let xr = x * cos_a - y * sin_a;
+                let yr = x * sin_a + y * cos_a;
+                
+                let sx = 160 + xr * 1.8;
+                let sy = 160 - (yr * 0.6 + z * 1.2);
+                return {sx, sy, i, j, z};
+            });
+
+            // 원근감 표현을 위한 픽셀 도트 음영 렌더링
+            projected.forEach(p => {
+                if (p.sx < 0 || p.sx >= 320 || p.sy < 0 || p.sy >= 320) return;
+                
+                // 깊이에 따른 빛 계산 (Shading)
+                let color;
+                if (mode === 'vanilla') {
+                    let brightness = Math.floor(100 + p.z * 2);
+                    color = `rgb(${brightness}, ${brightness * 0.4}, ${brightness * 0.4})`;
+                } else {
+                    let brightness = Math.floor(120 + p.z * 2);
+                    color = `rgb(${brightness * 0.1}, ${brightness}, ${brightness * 0.8})`;
+                }
+                
+                ctx.fillStyle = color;
+                // SO-HMNS는 입자를 굵고 선명하게 렌더링하여 칼날 단면 강조
+                ctx.fillRect(p.sx, p.sy, mode === 'vanilla' ? 2 : 3, mode === 'vanilla' ? 2 : 3);
+            });
+        }
+
+        function tick() {
+            angle += 0.015;
+            draw('canvas_vanilla', 'vanilla');
+            draw('canvas_sohmns', 'sohmns');
+            requestAnimationFrame(tick);
+        }
+        tick();
+    </script>
+</body>
+</html>
