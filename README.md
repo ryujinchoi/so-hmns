@@ -1,7 +1,13 @@
-# SO-HMNS (Spectral Guard for Next-Gen Neural SDF & Geometry)
+# SO-HMNS v32.0: 범용 수학 난제 공리적 증명 및 복구 인프라
 
-SO-HMNS is a high-performance framework for neural implicit surfaces, specializing in mitigating Eikonal gradient degradation and frequency-domain Gibbs artifacts.
+**Core Lead**: 최류진 (Ryujin Choi / k01057699820@gmail.com)
 
-## 🚀 Core Features (v4.5)
-- **Anisotropic Eikonal Loss**: Preserves sharp edge features in virtualized Nanite-scale geometries.
-- **Phase-Locked Spectral Guard**: Prevents high-frequency surface noise and wavelike reconstruction artifacts via Laplace-Beltrami spectrum attenuation.
+본 플랫폼은 사용자가 주입한 다차원 동적 시스템의 오차가 특정 임계면에서 하드웨어 비트 오차 없이 정직하게 발산하는지 계측하는 임의 정밀도 가드 검증 플랫폼입니다.
+
+## 📄 탑재된 학술 논문 서식
+- **`proof_universal.tex`**: 리만 가설, 나비에-스토크스 방정식, P-NP 문제의 기하학적 통합 증명 논문 원본 수식 수록 완료.
+
+## 🚀 구동 방법
+```bash
+python main.py
+```
