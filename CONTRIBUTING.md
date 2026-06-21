@@ -1,17 +1,11 @@
-# 🤝 Contributing to SO-HMNS (Self-Optimizing Hyper-Manifold Normalization System)
+# Contributing to so-hmns
 
-Thank you for contributing! Please adhere to these guidelines to maintain mathematical integrity and topological stability.
+We welcome contributions from computational chemists, physicists, and mathematicians to push the absolute limits of arbitrary-precision verification.
 
-## 🚀 Core Philosophy
-* Ensure all contributions eliminate numerical instabilities (Topological Collapse/Division-by-Zero).
-* Adhere to the Exponential Boltzmann Attenuation Model constraints ($\eta_m \in (0, M_{\max}]$).
-
-## 🛠 Contribution Guidelines
-1.  **Issues:** Report numerical anomalies with minimal reproducible Python scripts, using the base URL: https://github.com/ryujinchoi/so-hmns.
-2.  **Pull Requests (PRs):** Fork, create a feature branch, and submit code passing strict type-checking. Update `proof.tex` for mathematical changes.
-3.  **Verification:** PRs must be free of floating-point vulnerabilities, maintain PyTorch object compatibility, and preserve global continuity.
-
-## 📧 Contact
-For academic inquiries or direct review, contact the lead architect:
-*   **Email:** k01057699820@gmail.com
-*   **Repository:** https://github.com/ryujinchoi/so-hmns
+## How to Contribute
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/AmazingInvariants`).
+3. Ensure your mathematical logic preserves the Zero-Gap hardware sterilization layer.
+4. Commit your changes (`git commit -m 'Add some mathematical guard bindings'`).
+5. Push to the branch (`git push origin feature/AmazingInvariants`).
+6. Open a Pull Request.
