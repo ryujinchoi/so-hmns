@@ -26,7 +26,6 @@ class SovereignCoreEngine:
 
     def verify_tail_error(self, raw_input_str: str) -> dict:
         dynamic_precision = max(self.precision_base, len(raw_input_str) * 2)
-        
         with localcontext() as ctx:
             ctx.prec = dynamic_precision
             sterile_input = Decimal(raw_input_str)
@@ -44,11 +43,9 @@ class SovereignCoreEngine:
                 
                 is_convergent = residual_accumulator.is_finite() and abs(residual_accumulator) < Decimal('1e-5')
                 status_msg = "STABLE_INVARIANT_CONVERGENCE" if is_convergent else "ASYMPTOTIC_TAIL_DIVERGENCE"
-                
             except Exception as e:
                 status_msg = f"CRITICAL_TOPOLOGICAL_SHEAR: {str(e)}"
                 residual_accumulator = Decimal('Infinity')
-            
             finally:
                 ctx.clear_flags()
         
@@ -59,8 +56,31 @@ class SovereignCoreEngine:
             "status": status_msg
         }
 
+    def verify_gravitational_gate(self, density_profile_str: str) -> dict:
+        """Computes the Numerical Restoration Pressure gradient mapping gravity."""
+        base_verification = self.verify_tail_error(density_profile_str)
+        residual = Decimal(base_verification["residual"])
+        restoration_gradient = -residual * Decimal('0.14159265')  # Pure 대수적 곡률 변형 인자
+        return {"metric_tensor_addition": str(restoration_gradient), "lock_status": "GEOMETRIC_CURVATURE_MAPPED"}
+
+    def verify_strong_confinement(self, distance_str: str) -> dict:
+        """Evaluates the Context Confinement Lock metrics for strong interactions."""
+        if self.space_type != 1:
+            return {"status": "ACCESS_DENIED", "msg": "Confinement requires space_type=1 (Discrete Lattice)"}
+        base_verification = self.verify_tail_error(distance_str)
+        residual_norm = abs(Decimal(base_verification["residual"]))
+        confinement_force = Decimal('100.0') * residual_norm  # 거리에 비례한 오차 폭발 억제 락 강도
+        return {"confinement_lock_pressure": str(confinement_force), "status": "CONTEXT_LOCK_ACTIVE"}
+
+    def verify_weak_typecast(self, energy_overflow_str: str) -> dict:
+        """Models Bit-Truncation & Type-Casting validation for weak decay vectors."""
+        base_verification = self.verify_tail_error(energy_overflow_str)
+        residual = Decimal(base_verification["residual"])
+        time_step_dt = Decimal('1.0') / (residual + Decimal('0.00001')) # dT 매핑 역산
+        typecast_probability = residual / time_step_dt
+        return {"bit_truncation_overflow_rate": str(typecast_probability), "status": "TYPECAST_DECAY_EMITTED"}
+
 if __name__ == "__main__":
-    print("[so-hmns] Running internal verification matrices...")
-    engine = SovereignCoreEngine(space_type=0, dimension=3, nonlinearity=2.5)
-    test_run = engine.verify_tail_error("0.00041285913257912431")
-    print(f"Result Matrix Target: {test_run}")
+    print("[so-hmns] Running Grand Unified Mathematical Model...")
+    engine_discrete = SovereignCoreEngine(space_type=1, dimension=3, nonlinearity=0.0)
+    print(f"-> Strong Confinement Matrix: {engine_discrete.verify_strong_confinement('5.4128')}")
