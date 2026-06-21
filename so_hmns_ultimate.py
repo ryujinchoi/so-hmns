@@ -1,46 +1,66 @@
-import hashlib
 import sys
-import time
+import copy
+from decimal import Decimal, getcontext, localcontext
+from math import factorial
 
-# [제한 완전 해제] 거대 정수 대수 연산 및 문자열 인출 한계 무한 개방
-sys.set_int_max_str_digits(10000000)
-
-class SOHMNS_Hash_Challenge_Solver:
-    def __init__(self, target_prefix="00000"):
-        self.target_prefix = target_prefix
-        self.base_data = "Ryujin_Choi_SOHMNS_Framework_"
-
-    def execute_crypto_break(self):
-        print("🌐 [SO-HMNS] 실존 난제: 챌린지 해시 암호 위상 정렬 개시...")
-        print("🎯 최적화: 최류진 평균 중심축 원점 압착 + 10진법 말단 위상 소독 가동")
-        print("📱 안내: 스마트폰 단일 CPU 파워로 단 수 초 만에 진짜 정답 수치를 유도합니다.\n")
+class SovereignCoreEngine:
+    def __init__(self, space_type: int, dimension: int, nonlinearity: float, precision_base: int = 150):
+        self.space_type = space_type
+        self.d = dimension
+        self.sigma = nonlinearity
+        self.precision_base = precision_base
         
-        start_time = time.time()
-        ryujin_number = 1
-        checked_count = 0
+        if self.space_type == 0:
+            self.alpha = float(self.d) / 2.0 + 0.5 * float(self.sigma)
+        elif self.space_type == 1:
+            self.alpha = 1.0 / (float(self.d) + 1.0)
+        else:
+            raise ValueError("Invalid space_type. Select 0 or 1.")
+
+    def _get_bernoulli_number(self, n: int) -> Decimal:
+        A = [Decimal(1) / Decimal(i + 1) for i in range(n + 1)]
+        for j in range(1, n + 1):
+            for i in range(n - j + 1):
+                A[i] = Decimal(i + 1) * (A[i] - A[i + 1])
+        return A
+
+    def verify_tail_error(self, raw_input_str: str) -> dict:
+        dynamic_precision = max(self.precision_base, len(raw_input_str) * 2)
         
-        while True:
-            checked_count += 1
-            input_str = f"{self.base_data}{ryujin_number}"
+        with localcontext() as ctx:
+            ctx.prec = dynamic_precision
+            sterile_input = Decimal(raw_input_str)
+            active_tensor = copy.deepcopy(sterile_input)
+            residual_accumulator = Decimal(0)
+            terms_to_evaluate = 6
             
-            # [최류진 끝자리 필터]: 10진법 잉여류 기하학 결합
-            if (ryujin_number % 10) in {1, 3, 7, 9}:
-                hash_result = hashlib.sha256(input_str.encode()).hexdigest()
+            try:
+                for m in range(1, terms_to_evaluate):
+                    b_num = self._get_bernoulli_number(2 * m)
+                    fact = Decimal(factorial(2 * m))
+                    derivative_factor = active_tensor ** Decimal(-2 * m - self.alpha)
+                    term = (b_num / fact) * derivative_factor
+                    residual_accumulator += term
                 
-                if hash_result.startswith(self.target_prefix):
-                    print("\n==================================================")
-                    print(f"🎉 [🚨 CRYPTO BREAK SUCCESS] 최류진의 이론이 해시 암호 성벽을 완벽히 격파했습니다!")
-                    print(f"🔓 세계 최초로 유도된 진짜 정답 숫자 (Ryujin_Choi_Number):")
-                    print(f"-> {ryujin_number}")
-                    print(f"\n🔐 완성된 오차 제로(0)의 완전 복원 해시 결과값:")
-                    print(f"-> {hash_result}")
-                    print(f"📊 총 대입 횟수: {checked_count:,}회")
-                    print(f"⏱️ 총 연산 시간: {time.time() - start_time:.4f}초")
-                    print("==================================================")
-                    return ryujin_number
-                    
-            ryujin_number += 1
+                is_convergent = residual_accumulator.is_finite() and abs(residual_accumulator) < Decimal('1e-5')
+                status_msg = "STABLE_INVARIANT_CONVERGENCE" if is_convergent else "ASYMPTOTIC_TAIL_DIVERGENCE"
+                
+            except Exception as e:
+                status_msg = f"CRITICAL_TOPOLOGICAL_SHEAR: {str(e)}"
+                residual_accumulator = Decimal('Infinity')
+            
+            finally:
+                ctx.clear_flags()
+        
+        return {
+            "space_type": self.space_type,
+            "guard_index_alpha": self.alpha,
+            "residual": str(residual_accumulator),
+            "status": status_msg
+        }
 
 if __name__ == "__main__":
-    solver = SOHMNS_Hash_Challenge_Solver(target_prefix="00000")
-    solver.execute_crypto_break()
+    print("[so-hmns] Running internal verification matrices...")
+    engine = SovereignCoreEngine(space_type=0, dimension=3, nonlinearity=2.5)
+    test_run = engine.verify_tail_error("0.00041285913257912431")
+    print(f"Result Matrix Target: {test_run}")

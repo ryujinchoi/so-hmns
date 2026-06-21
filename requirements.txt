@@ -1,5 +1,2 @@
-# 나노 편집기를 다시 열어 처음부터 깔끔하게 작성하기
-nano requirements.txt
-torch>=2.0.0
-numpy
-
+numpy>=1.22.0
+scipy>=1.8.0

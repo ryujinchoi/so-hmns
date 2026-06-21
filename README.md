@@ -1,16 +1,17 @@
-# SO-HMNS v32.0: 범용 수학 난제 공리적 증명 및 복구 인프라
+# so-hmns: Sovereign Absolute Invariant Truth Infrastructure
 
-**Core Lead**: 최류진 (Ryujin Choi / k01057699820@gmail.com)
+An open-source numerical verification guard framework designed for measuring compact operator boundedness, boundary divergence, and infinite-dimensional dynamical system paradoxes via non-perturbative symbolic algebras.
 
-본 플랫폼은 사용자가 주입한 다차원 동적 시스템의 오차가 특정 임계면에서 하드웨어 비트 오차 없이 정직하게 발산하는지 계측하는 임의 정밀도 가드 검증 플랫폼입니다.
+## Core Architecture
+1. **Zero-Gap Ingest Layer:** Strict string-to-decimal parsing to completely bypass initial binary representation noise.
+2. **Unbounded Dynamic Precision:** Auto-scaling context matching input matrix complexity dynamically on-demand.
+3. **Context Isolation:** Pure `localcontext()` allocation combined with atomic deep-copying to prevent multi-thread cross-contamination.
+4. **Register Clearing Guard:** Direct virtual register clearing (`.clear_flags()`) at runtime blocks to prevent virtualized hardware residue leaks.
 
-## 📄 프로젝트 핵심 자산 및 문서 정보
-- **`main.py`**: 근사값 공백을 0.00% 제로화한 기호 대수학 참값 연산 마스터 엔진.
-- **`proof_universal.tex`**: 6대 전 공간의 핵심 텐서 수식이 수록된 1,000줄급 그랜드 통합 학술 논문 원문.
-- **`qna.md`**: 해외 학계 및 외부 AI의 기술적 태클을 수식으로 선제 격파하는 **[공식 학술 Q&A 무인 방어벽 매트릭스]** 추가 완료.
-- **📥 [최신 학술지 규격 PDF 논문 다운로드 링크](https://github.com)** (GitHub Actions 자동 빌드)
-
-## 🚀 구동 방법
-```bash
-python main.py
+## Quick Start
+```python
+from so_hmns_ultimate import SovereignCoreEngine
+engine = SovereignCoreEngine(space_type=0, dimension=3, nonlinearity=2)
+result = engine.verify_tail_error("0.14159265358979323846")
+print(f"Status: {result['status']}")
 ```
