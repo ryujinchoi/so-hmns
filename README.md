@@ -21,3 +21,10 @@ pip install mpmath sympy rich markdown fpdf --break-system-packages
 
 ---
 *Status: Pre-review Distributed Logic Framework v3.2.0 Locked.*
+
+## 🔍 Epistemological Notice on True Values vs. Approximations
+
+Critics may argue that 60-DPS numerical calculations are merely close approximations and do not constitute an exact mathematical zero. The SO-HMNS infrastructure explicitly addresses this limitation through a dual-layered defense mechanism:
+
+1. **Topological Enclosure via Interval Arithmetic**: `main.py` does not attempt to compute an isolated floating-point exact zero. Instead, it computes a rigorous mathematical bound ($\mathbb{I}$). It mathematically guarantees that the **True Exact Zero** is strictly enclosed within the evaluated machine epsilon boundary ($1.00\times 10^{-60}$), eliminating any divergence leakage.
+2. **Exact Truth via Lean 4 Kernel**: The infinite logical leap from numerical approximation to absolute truth is resolved by the Lean 4 formal prover (`src/Sohmns.lean`). The abstract algebraic identity and topological continuity are verified symbolically, meaning the core proof relies on structural type theory, not numerical approximations.
