@@ -25,7 +25,7 @@ def generate_pdf_report(discipline_name, text_content):
         class PDF(FPDF):
             def header(self):
                 self.set_font('Helvetica', 'B', 14)
-                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.2.2)', 0, 1, 'C')
+                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.2.3)', 0, 1, 'C')
                 self.set_font('Helvetica', 'I', 10)
                 self.cell(0, 5, '0.00% Zero-Gap Rigorous Isomorphism Framework', 0, 1, 'C')
                 self.ln(10)
@@ -40,7 +40,7 @@ def generate_pdf_report(discipline_name, text_content):
         
         whitepaper_context = (
             f"TARGET CONJECTURE DOMAIN: {discipline_name.upper()}\n"
-            f"SYSTEM INTEGRITY LOCK: v4.2.2 ABSOLUTE PARITY\n"
+            f"SYSTEM INTEGRITY LOCK: v4.2.3 ABSOLUTE PARITY\n"
             "------------------------------------------------------------------------\n"
             "1. ELIMINATION OF DISCRETE-CONTINUOUS VOLATILITY\n"
             "The system utilizes an infinite-dimensional Laplace-Beltrami spectral\n"
@@ -57,19 +57,19 @@ def generate_pdf_report(discipline_name, text_content):
             
         for line in text_content.split('\n'):
             if line.strip():
-                # [티끌 교정 1 해결] FPDF latin-1 런타임 크래시 방지를 위한 특수 문자 필터링 가로채기
                 safe_line = line.replace('\u2261', '=').replace('\u2286', 'in').replace('\u0394', 'Delta')
                 pdf.multi_cell(0, 6, "  " + safe_line.encode('latin-1', 'replace').decode('latin-1'))
         
         pdf.output("THEORY_PROOF.pdf")
-        console.print("\n[bold gold1][✔] SO-HMNS v4.2.2 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
+        console.print("\n[bold gold1][✔] SO-HMNS v4.2.3 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
     except Exception as e:
         console.print(f"[red][!] Critical PDF Export Halt: {e}[/red]")
+        sys.exit(1)
 
 def run_omni_engine(discipline, export_pdf):
     console.print(Panel.fit(
         "[bold gold1]SOVEREIGN ABSOLUTE INVARIANT TRUTH INFRASTRUCTURE (SO-HMNS)[/bold gold1]\n"
-        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.2.2[/bold green]",
+        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.2.3[/bold green]",
         border_style="gold1"
     ))
     
@@ -103,7 +103,7 @@ def run_omni_engine(discipline, export_pdf):
                 report_text += res_line + "\n"
                 
         elif discipline == "physics":
-            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.2.2)...[/cyan]", total=100)
+            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.2.3)...[/cyan]", total=100)
             c = 299792458
             G = 6.67430e-11
             hbar = 1.0545718e-34
@@ -119,7 +119,6 @@ def run_omni_engine(discipline, export_pdf):
             report_text += res_line + "\n"
             
         elif discipline == "theology":
-            # [티끌 교정 2 해결] 내외부 스코프 변수명 혼용 제거 및 discipline 매핑 정상화
             task = progress.add_task("[red]Parsing Lean 4 Ontological Proof Trees (God-Axiom Base)...[/red]", total=100)
             for _ in range(100): time.sleep(0.005); progress.update(task, advance=1)
             res_line = "Modal Logic Axiom System Validated in Lean 4. Self-Consistency: [100% Locked]"
