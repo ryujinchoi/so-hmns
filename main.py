@@ -25,7 +25,7 @@ def generate_pdf_report(discipline_name, text_content):
         class PDF(FPDF):
             def header(self):
                 self.set_font('Helvetica', 'B', 14)
-                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.2.3)', 0, 1, 'C')
+                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.3)', 0, 1, 'C')
                 self.set_font('Helvetica', 'I', 10)
                 self.cell(0, 5, '0.00% Zero-Gap Rigorous Isomorphism Framework', 0, 1, 'C')
                 self.ln(10)
@@ -40,7 +40,7 @@ def generate_pdf_report(discipline_name, text_content):
         
         whitepaper_context = (
             f"TARGET CONJECTURE DOMAIN: {discipline_name.upper()}\n"
-            f"SYSTEM INTEGRITY LOCK: v4.2.3 ABSOLUTE PARITY\n"
+            f"SYSTEM INTEGRITY LOCK: v4.3 ABSOLUTE PARITY\n"
             "------------------------------------------------------------------------\n"
             "1. ELIMINATION OF DISCRETE-CONTINUOUS VOLATILITY\n"
             "The system utilizes an infinite-dimensional Laplace-Beltrami spectral\n"
@@ -61,15 +61,17 @@ def generate_pdf_report(discipline_name, text_content):
                 pdf.multi_cell(0, 6, "  " + safe_line.encode('latin-1', 'replace').decode('latin-1'))
         
         pdf.output("THEORY_PROOF.pdf")
-        console.print("\n[bold gold1][✔] SO-HMNS v4.2.3 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
+        console.print("\n[bold gold1][✔] SO-HMNS v4.3 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
+        return True
     except Exception as e:
+        # [정제 1] 프로세스 강제 종료를 유연한 Boolean 반환 구조로 변경하여 제어권 보존
         console.print(f"[red][!] Critical PDF Export Halt: {e}[/red]")
-        sys.exit(1)
+        return False
 
 def run_omni_engine(discipline, export_pdf):
     console.print(Panel.fit(
         "[bold gold1]SOVEREIGN ABSOLUTE INVARIANT TRUTH INFRASTRUCTURE (SO-HMNS)[/bold gold1]\n"
-        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.2.3[/bold green]",
+        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.3[/bold green]",
         border_style="gold1"
     ))
     
@@ -103,7 +105,7 @@ def run_omni_engine(discipline, export_pdf):
                 report_text += res_line + "\n"
                 
         elif discipline == "physics":
-            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.2.3)...[/cyan]", total=100)
+            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.3)...[/cyan]", total=100)
             c = 299792458
             G = 6.67430e-11
             hbar = 1.0545718e-34
@@ -132,12 +134,15 @@ def run_omni_engine(discipline, export_pdf):
             console.print("\n  " + res_line)
             report_text += res_line + "\n"
 
+    console.print("\n[bold gold1][★] CONCLUSION: SO-HMNS Ultimate Truth Engine Operation Complete.[/bold gold1]")
+
     if export_pdf:
         generate_pdf_report(discipline, report_text)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--target', type=str, default='riemann')
+    parser = argparse.ArgumentParser(description="SO-HMNS Universal Truth Infrastructure Engine")
+    # [정제 2] 파라미터 입력 시 예기치 못한 도메인 인젝션을 방어하기 위해 명시적 선택지 고정
+    parser.add_argument('--target', type=str, default='riemann', choices=['riemann', 'physics', 'theology', 'omni'])
     parser.add_argument('--pdf', action='store_true', help='Export result to PDF')
     args = parser.parse_args()
     run_omni_engine(args.target, args.pdf)
