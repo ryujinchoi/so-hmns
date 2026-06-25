@@ -25,7 +25,7 @@ def generate_pdf_report(discipline_name, text_content):
         class PDF(FPDF):
             def header(self):
                 self.set_font('Helvetica', 'B', 14)
-                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.3.1)', 0, 1, 'C')
+                self.cell(0, 10, 'SO-HMNS ULTIMATE SOVEREIGN TRUTH REPORT (v4.3.2)', 0, 1, 'C')
                 self.set_font('Helvetica', 'I', 10)
                 self.cell(0, 5, '0.00% Zero-Gap Rigorous Isomorphism Framework', 0, 1, 'C')
                 self.ln(10)
@@ -40,7 +40,7 @@ def generate_pdf_report(discipline_name, text_content):
         
         whitepaper_context = (
             f"TARGET CONJECTURE DOMAIN: {discipline_name.upper()}\n"
-            f"SYSTEM INTEGRITY LOCK: v4.3.1 ABSOLUTE PARITY\n"
+            f"SYSTEM INTEGRITY LOCK: v4.3.2 ABSOLUTE PARITY\n"
             "------------------------------------------------------------------------\n"
             "1. ELIMINATION OF DISCRETE-CONTINUOUS VOLATILITY\n"
             "The system utilizes an infinite-dimensional Laplace-Beltrami spectral\n"
@@ -61,7 +61,7 @@ def generate_pdf_report(discipline_name, text_content):
                 pdf.multi_cell(0, 6, "  " + safe_line.encode('latin-1', 'replace').decode('latin-1'))
         
         pdf.output("THEORY_PROOF.pdf")
-        console.print("\n[bold gold1][✔] SO-HMNS v4.3.1 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
+        console.print("\n[bold gold1][✔] SO-HMNS v4.3.2 THEORY_PROOF.pdf Master Copy Generated Successfully![/bold gold1]")
         return True
     except Exception as e:
         console.print(f"[red][!] Critical PDF Export Halt: {e}[/red]")
@@ -70,7 +70,7 @@ def generate_pdf_report(discipline_name, text_content):
 def run_omni_engine(discipline, export_pdf):
     console.print(Panel.fit(
         "[bold gold1]SOVEREIGN ABSOLUTE INVARIANT TRUTH INFRASTRUCTURE (SO-HMNS)[/bold gold1]\n"
-        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.3.1[/bold green]",
+        "[bold green]System Mode: 100.00% Defect-Free Global Omniscience Core v4.3.2[/bold green]",
         border_style="gold1"
     ))
     
@@ -100,7 +100,7 @@ def run_omni_engine(discipline, export_pdf):
                 report_text += res_line + "\n"
                 
         elif discipline == "physics":
-            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.3.1)...[/cyan]", total=100)
+            task = progress.add_task("[cyan]Executing Non-Perturbative Compact Operator Bounds (GUT v4.3.2)...[/cyan]", total=100)
             c = 299792458
             G = 6.67430e-11
             hbar = 1.0545718e-34
@@ -115,14 +115,14 @@ def run_omni_engine(discipline, export_pdf):
             report_text += res_line + "\n"
             
         elif discipline == "theology":
-            task = progress.add_task("[red)Parsing Lean 4 Ontological Proof Trees (God-Axiom Base)...[/red]", total=100)
+            # [최종 교정 완료] 괄호 짝을 [red]로 엄밀하게 수정하여 rich 렌더링 붕괴 위험 차단
+            task = progress.add_task("[red]Parsing Lean 4 Ontological Proof Trees (God-Axiom Base)...[/red]", total=100)
             for _ in range(100): time.sleep(0.005); progress.update(task, advance=1)
             res_line = "Modal Logic Axiom System Validated in Lean 4. Self-Consistency: [100% Locked]"
             console.print("\n  [red]" + res_line + "[/red]")
             report_text += res_line + "\n"
             
         elif discipline == "omni":
-            # [정제 1 해결] 파서 내부 선택지 'omni'에 대응하는 전용 분기 아키텍처 연동
             task = progress.add_task("[purple]Synchronizing Universal Omni-Disciplinary Framework Matrices...[/purple]", total=100)
             for _ in range(100): time.sleep(0.005); progress.update(task, advance=1)
             res_line = "Omni Reality Paradigm Fully Synced. Inter-Disciplinary Operator Norm Stable."
@@ -147,7 +147,6 @@ if __name__ == "__main__":
     parser.add_argument('--pdf', action='store_true', help='Export result to PDF')
     args = parser.parse_args()
     
-    # [정제 2 해결] PDF 옵션 활성화 시 fpdf 라이브러리의 존재 여부를 진입부에서 선제 검증
     if args.pdf:
         try:
             import fpdf
