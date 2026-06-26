@@ -24,3 +24,7 @@ def verify_well_ordering(array_data):
     if not array_data: return None
     min_val = min(array_data)
     return all(min_val <= x for x in array_data)
+
+def verify_compact_boundary(val, lower, upper):
+    # Enforces strict Bolzano-Weierstrass confinement inside compact boundaries
+    return lower <= val <= upper
