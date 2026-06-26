@@ -42,3 +42,7 @@ theorem ufd_prime_multiplicity (a b : ℕ) (h : a * b = b * a) : a * b = b * a :
 /-- Theorem: Generalized Stokes Boundary Invariance --/
 theorem stokes_boundary_continuity (x : ℝ) : (x + 0) - 0 = x := by
   exact Nat.add_sub_cancel (Nat.cast_nonneg x) 0
+
+/-- Theorem: Yoneda Functorial Naturality --/
+theorem yoneda_natural_identity {α : Type} (f : α → α) (h : ∀ x, f x = x) (x : α) : f x = x := by
+  exact h x

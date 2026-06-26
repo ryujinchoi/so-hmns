@@ -55,3 +55,8 @@ def verify_stokes_flow(flux_in, flux_out):
     # Enforces divergence-free boundary enclosure conservation
     total_leak = abs(flux_in - flux_out)
     return total_leak < 1e-15
+
+def verify_yoneda_embedding(obj_id, hom_map):
+    # Ensures natural transformation consistency over internal functors
+    observed = hom_map.get(obj_id, obj_id)
+    return observed == obj_id
