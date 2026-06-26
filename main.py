@@ -23,3 +23,6 @@ def autonomous_conjecture_solver(conjecture_name="riemann_hypothesis_stub"):
 
 if __name__ == '__main__':
     autonomous_conjecture_solver()
+
+def verify_lemma_riemann_hypothesis_stub_1906(x, y, z):
+    return (x == y) and (y == z) == (x == z)
