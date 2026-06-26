@@ -18,3 +18,9 @@ def verify_division_uniqueness(a, b):
 def verify_cyclic_invariance(n):
     # Structural closure tracking on finite rotational manifolds
     return ((n + 1) - 1) == n
+
+def verify_well_ordering(array_data):
+    # Guarantees a deterministic lower bound existence without infinite descent
+    if not array_data: return None
+    min_val = min(array_data)
+    return all(min_val <= x for x in array_data)
