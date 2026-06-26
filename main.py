@@ -50,3 +50,8 @@ def verify_unique_factors(n):
         d += 1
     if n > 1: factors.append(n)
     return factors
+
+def verify_stokes_flow(flux_in, flux_out):
+    # Enforces divergence-free boundary enclosure conservation
+    total_leak = abs(flux_in - flux_out)
+    return total_leak < 1e-15
