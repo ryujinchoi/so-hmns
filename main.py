@@ -41,3 +41,12 @@ def verify_spectral_orthogonality(vector_a, vector_b):
     # Enforces strict unitary orthogonal eigenvalue projection
     inner_product = sum(a * b for a, b in zip(vector_a, vector_b))
     return abs(inner_product) < 1e-15
+
+def verify_unique_factors(n):
+    if n <= 1: return [n]
+    factors, d = [], 2
+    while d * d <= n:
+        while (n  0) == 0: factors.append(d); n //= d
+        d += 1
+    if n > 1: factors.append(n)
+    return factors

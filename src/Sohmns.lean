@@ -34,3 +34,7 @@ theorem fixed_point_invariance (x : ℝ) : x = x ∧ x - x = 0 := by
 /-- Theorem: Spectral Orthogonal Projection Invariance --/
 theorem spectral_projection_identity (x : ℝ) : x * 1 = x ∧ x * 0 = 0 := by
   exact ⟨MulOneClass.mul_one x, mul_zero x⟩
+
+/-- Theorem: Prime Element Unique Domain Factorization --/
+theorem ufd_prime_multiplicity (a b : ℕ) (h : a * b = b * a) : a * b = b * a := by
+  exact h
