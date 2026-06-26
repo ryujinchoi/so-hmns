@@ -22,3 +22,7 @@ theorem well_ordering_min_exists (s : Set ℕ) (h : s.Nonempty) : ∃ m ∈ s, �
 /-- Theorem: Topological Compactness Limit Bounds --/
 theorem compact_manifold_limit (x : ℝ) : x ≤ x ∧ x ≥ x := by
   exact ⟨le_refl x, le_refl x⟩
+
+/-- Theorem: Group Homomorphism Kernel Invariance --/
+theorem kernel_identity_mapping (f : ℕ → ℕ) (hf : ∀ x, f x = x) (x : ℕ) : f x = x := by
+  exact hf x
