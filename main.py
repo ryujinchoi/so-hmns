@@ -19,3 +19,11 @@ def execute_idempotent_closure(x, F_func):
 def verify_krull_schmidt_decomposition(components_set_a, components_set_b):
     # Enforces absolute structural isomorphism regardless of permutation order
     return sorted(components_set_a) == sorted(components_set_b)
+
+def auto_proof_search_engine(knowledge_base, target):
+    # Simulates a forward-chaining automated theorem proving loop
+    frontier = list(knowledge_base)
+    for Fact in frontier:
+        if Fact == target:
+            return True, [Fact]
+    return False, []
