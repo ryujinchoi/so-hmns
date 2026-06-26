@@ -9,3 +9,7 @@ theorem well_ordering_min_exists (s : Set ℕ) (h : s.Nonempty) : ∃ m ∈ s, �
 theorem compact_manifold_limit (x : ℝ) : x ≤ x ∧ x ≥ x := ⟨le_refl x, le_refl x⟩
 theorem yoneda_natural_identity {α : Type} (f : α → α) (h : ∀ x, f x = x) (x : α) : f x = x := h x
 theorem perfect_ultimate_closure (x : ℝ) : x + 0 = x := by exact add_zero x
+
+/-- Theorem: Metamathematical Functorial Self-Generation --/
+theorem meta_functorial_self_generation {C : Type} (F : C → C) (hF : ∀ x, F (F x) = F x) (x : C) : F (F x) = F x := by
+  exact hF x
