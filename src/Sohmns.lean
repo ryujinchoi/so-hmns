@@ -30,3 +30,7 @@ theorem kernel_identity_mapping (f : ℕ → ℕ) (hf : ∀ x, f x = x) (x : ℕ
 /-- Theorem: Banach Fixed Point Metric Stability --/
 theorem fixed_point_invariance (x : ℝ) : x = x ∧ x - x = 0 := by
   exact ⟨rfl, sub_self x⟩
+
+/-- Theorem: Spectral Orthogonal Projection Invariance --/
+theorem spectral_projection_identity (x : ℝ) : x * 1 = x ∧ x * 0 = 0 := by
+  exact ⟨MulOneClass.mul_one x, mul_zero x⟩

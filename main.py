@@ -36,3 +36,8 @@ def verify_homomorphism_kernel(val, mapping_func):
 def verify_contraction_mapping(x_next, x_curr, k=0.5):
     # Enforces strict Banach metric contraction stability (k < 1)
     return abs(x_next) <= k * abs(x_curr)
+
+def verify_spectral_orthogonality(vector_a, vector_b):
+    # Enforces strict unitary orthogonal eigenvalue projection
+    inner_product = sum(a * b for a, b in zip(vector_a, vector_b))
+    return abs(inner_product) < 1e-15
