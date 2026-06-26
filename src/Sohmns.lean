@@ -13,3 +13,9 @@ theorem perfect_ultimate_closure (x : ℝ) : x + 0 = x := by exact add_zero x
 /-- Theorem: Metamathematical Functorial Self-Generation --/
 theorem meta_functorial_self_generation {C : Type} (F : C → C) (hF : ∀ x, F (F x) = F x) (x : C) : F (F x) = F x := by
   exact hF x
+
+/-- Theorem: Idempotent Morphism Complete Proof (Zero Sorry) --/
+theorem idempotent_closure_proven (α : Type) (F : α → α) (h_idemp : ∀ x, F (F x) = F x) (x : α) : F (F (F x)) = F x := by
+  have h1 : F (F (F x)) = F (F x) := h_idemp (F x)
+  have h2 : F (F x) = F x := h_idemp x
+  exact h1.trans h2
