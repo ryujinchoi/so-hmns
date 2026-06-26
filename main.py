@@ -37,3 +37,10 @@ def auto_generate_and_prove_theorem(knowledge_base, seed):
         knowledge_base.append(new_theorem_name)
         return True, new_theorem_name
     return False, None
+
+def execute_safe_halting_monitor(logic_state):
+    # Ultimate safety trigger: Halts immediately if contradiction (p and not p) is detected
+    p_state, not_p_state = logic_state
+    if p_state and not_p_state:
+        raise SystemExit('[SO-HMNS HALTING ACTIVE]: Contradiction detected. Safe escape executed.')
+    return True

@@ -31,3 +31,7 @@ theorem automated_inference_unification {α : Type} (p q r : α) (hpq : p = q) (
 /-- Theorem: Structural Induction for Automated Theorem Generation --/
 theorem auto_theorem_generation_induction (P : ℕ → Prop) (base : P 0) (step : ∀ n, P n → P (n + 1)) (n : ℕ) : P n := by
   exact Nat.recOn n base step
+
+/-- Theorem: Godel-Turing Bounded Exception Halting --/
+theorem turing_bounded_halting (p q : Prop) (h : p ∧ ¬p) : q := by
+  exact False.elim (h.left h.right)
