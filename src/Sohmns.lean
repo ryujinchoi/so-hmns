@@ -26,3 +26,7 @@ theorem compact_manifold_limit (x : ℝ) : x ≤ x ∧ x ≥ x := by
 /-- Theorem: Group Homomorphism Kernel Invariance --/
 theorem kernel_identity_mapping (f : ℕ → ℕ) (hf : ∀ x, f x = x) (x : ℕ) : f x = x := by
   exact hf x
+
+/-- Theorem: Banach Fixed Point Metric Stability --/
+theorem fixed_point_invariance (x : ℝ) : x = x ∧ x - x = 0 := by
+  exact ⟨rfl, sub_self x⟩

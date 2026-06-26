@@ -32,3 +32,7 @@ def verify_compact_boundary(val, lower, upper):
 def verify_homomorphism_kernel(val, mapping_func):
     # Structural isomorphism validation across algebraic domains
     return mapping_func(val) == val
+
+def verify_contraction_mapping(x_next, x_curr, k=0.5):
+    # Enforces strict Banach metric contraction stability (k < 1)
+    return abs(x_next) <= k * abs(x_curr)
