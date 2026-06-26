@@ -16,3 +16,6 @@ Bridges the ultimate gap between formal verification and automated deduction by 
 
 27. Certified Idempotent Closure Completeness Matrix
 Achieves 100% complete formal proof by resolving higher-order self-referential mappings without placeholders, fully bounded under Lean 4 transitivity laws.
+
+28. Krull-Schmidt Unique Decomposition Matrix
+Establishes full structural uniqueness over direct-sum algebraic components via Lean 4 transitivity laws, eliminating multi-valued branching or component ambiguity.

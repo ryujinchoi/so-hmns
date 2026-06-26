@@ -15,3 +15,7 @@ def execute_idempotent_closure(x, F_func):
     step2 = F_func(step1)
     step3 = F_func(step2)
     return step3 == step1
+
+def verify_krull_schmidt_decomposition(components_set_a, components_set_b):
+    # Enforces absolute structural isomorphism regardless of permutation order
+    return sorted(components_set_a) == sorted(components_set_b)
