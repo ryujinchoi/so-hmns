@@ -2,3 +2,7 @@ import Mathlib.Data.Real.Basic
 
 /-- Theorem: Absolute Identity Invariance (Pure Certified Truth) --/
 theorem absolute_identity_invariance (α : Type) (x : α) : x = x := rfl
+
+/-- Theorem: Modular Congruence Reflexivity (Zero-Gap) --/
+theorem mod_congruence_reflexivity (a n : ℕ) : a ≡ a [MOD n] := by
+  rfl
