@@ -111,7 +111,7 @@ def generate_web_dashboard(stations):
         elif "미국_산안드레아스" in name:
             l_ko, l_en, l_ja, l_zh = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带"
             t_ko, t_en, t_ja, t_zh = "판 경계 대형 단층 지진", "Transform Fault Earthquake", "トランスフォーム断層型地震", "转换断层大地震"
-        elif "이탈リア_베수비오" in name:
+        elif "이탈리아_베수비오" in name:
             l_ko, l_en, l_ja, l_zh = "캄파니아 나폴리 동부 (북위 40.8°, 동경 14.4°)", "East of Naples (40.8°N, 14.4°E)", "ナポリ東部", "那不勒斯东部"
             t_ko, t_en, t_ja, t_zh = "활화산 연쇄 폭발 분화", "Active Volcanic Eruption", "活火山連鎖爆発噴火", "活火山连锁爆发喷发"
         elif "대한민국_양산단층" in name:
@@ -134,7 +134,7 @@ def generate_web_dashboard(stations):
 
         cards_html += f"""
         <div class="card" style="background:{bg};border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);" 
-             data-name-ko="{name.replace('_',' ')}" data-name-en="{name.replace('_',' ')}" data-name-ja="{name.replace('_',' ')}" data-name-zh="{name.replace('_',' ')}"
+             data-name-ko="{name.replace('_',' ')}" data-name-en="{name}" data-name-ja="{name}" data-name-zh="{name}"
              data-loc-ko="{l_ko}" data-loc-en="{l_en}" data-loc-ja="{l_ja}" data-loc-zh="{l_zh}"
              data-type-ko="{t_ko}" data-type-en="{t_en}" data-type-ja="{t_ja}" data-type-zh="{t_zh}"
              data-tsunami-status="{t_stat}" data-tsunami-val="{tsu_final_height:.2f}m">
@@ -173,10 +173,10 @@ def generate_web_dashboard(stations):
     <footer style="max-w:600px;margin:40px auto 0;padding:20px 16px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;font-size:13px;color:#64748b;font-weight:bold;"><p id="footerText">© 2026 SO-HMNS 인프라. 구체화된 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다.</p></footer>
     <script>
     const langDict = {{
-        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 깃허브 전세계 활성 단층대 실시간 데이터셋(USGS API)을 기반으로 누구나 조회 가능한 전세계 재해 통합 감시 대시보드입니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ft: "© 2026 SO-HMNS 인프라. 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다." }},
+        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 깃허브 전세계 활성 단층대 실시간 데이터셋(USGS API)을 기반으로 누구나 조회 가능한 전세계 재해 통합 감시 대시보드입니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ft: "© 2026 SO-HMNS 인프라. GitHub Pages 개방망으로 전세계 배포됩니다." }},
         en: {{ nt: "Global Disaster Information System", nd: "This dashboard delivers real-time hazard warnings driven by USGS APIs. It tracks precise latitude/longitude hazard locations and specific event classifications (Earthquake, Volcano, Tsunami) distributed internationally.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
-        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグを統合追跡してリアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ft: "© 2026 SO-HMNS 防災インフラ. 詳細な複合災害ノード를 GitHub Pagesを通じて配信中。" }},
-        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建的综合防护系统。系统全面跟踪精确的经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }}
+        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグ를 統合追跡してリアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ft: "© 2026 SO-HMNS 防災インフラ. 詳細な複合災害ノード를 GitHub Pagesを通じて配信中。" }},
+        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建的综合防护系统。系统全面跟踪精确의 经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }}
     }};
     function changeLanguage() {{
         const l = document.getElementById("langSelect").value, t = langDict[l];
