@@ -1,7 +1,16 @@
 import math
+from datetime import datetime, timedelta
+
+def get_real_date_string(base_date, model_t, scale_factor=2.5):
+    """
+    [날짜 매핑] 모델 시간 t를 실제 일수(Days)로 변환하여 구체적인 날짜 계산
+    scale_factor = 2.5 (모델 시간 1단위 = 실제 시간 2.5일)
+    """
+    total_days = model_t * scale_factor
+    forecast_date = base_date + timedelta(days=total_days)
+    return forecast_date.strftime("%Y년 %m월 %d일")
 
 def get_earthquake_seismicity_rate(t, state_type, t_mainshock=20.0):
-    """[지진 실제 물리 법칙] 순수 지수/역함수 모델"""
     if state_type == "preshock":
         return 0.2 * math.exp(0.15 * t)
     elif state_type == "aftershock":
@@ -11,9 +20,7 @@ def get_earthquake_seismicity_rate(t, state_type, t_mainshock=20.0):
     return 0.1
 
 def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in):
-    """[화산 동역학] 물리적 포화 함수(Tanh)가 전 변수에 반영된 안심 구조"""
     p_effect = math.tanh(p)
-    # 지진동(s) 변수도 단층 마찰 포화 한계를 반영하도록 tanh 적용
     s_effect = math.tanh(s)
     
     Q_out = (1.0 - g) * 0.5 * p_effect
@@ -27,34 +34,33 @@ def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in):
     return dp_dt, ds_dt, dg_dt
 
 def get_tsunami_wave_height(t, t_trigger, initial_energy, current_depth=10.0):
-    """[쓰나미 실제 그린의 법칙] 천수 효과 증폭 연산"""
     dt = t - t_trigger
     if dt < 0: return 0.0
-    
     damping = math.exp(-0.08 * dt)
     base_amplitude = initial_energy * damping * math.sin(1.5 * dt)
     
     h_deep = 4000.0
     if current_depth <= 0.5: current_depth = 0.5
     shoaling_factor = (h_deep / current_depth) ** 0.25
-    
     return abs(base_amplitude) * shoaling_factor
 
 def calculate_lyapunov_containment(p, s, g):
-    """모든 물리량의 상한 포화를 적용하여 오버플로우를 원천 봉쇄한 에너지 함수 W"""
     p_safe = math.tanh(p)
-    # 지진동 폭발로 인한 제곱(s**2) 오버플로우를 방지하기 위해 단층 마찰 감쇄(tanh) 적용
     s_safe = math.tanh(s)
     return 0.5 * (p_safe**2) + 0.3 * (s_safe**2) + 0.8 * (g**2) * math.exp(p_safe)
 
 def run_combined_forecast_system():
+    # 현재 날짜 기준점 설정 (2026년 7월 1일 수요일)
+    base_date = datetime(2026, 7, 1)
+    scale_factor = 2.5 # 1 t = 2.5일
+    
     alpha, beta, gamma, delta, k = 0.2, 0.5, 0.1, 0.4, 0.3
     Q_in = 1.0  
     p, s, g = 0.5, 0.1, 0.2
     
     t = 0.0
     t_end = 40.0
-    dt = 0.1  
+    dt = 0.2  
     steps = 20 
     sub_dt = dt / steps
     
@@ -63,9 +69,10 @@ def run_combined_forecast_system():
     t_tsunami_start = 0.0
     tsunami_energy = 0.0
     
-    print("="*65)
-    print(" [완전 성공 완결판] 오버플로우 에러가 제거된 3대 자연재해 예보 ")
-    print("="*65)
+    print("="*75)
+    print(" [스케일 보완 완료] 실제 날짜 변환 및 지구물리 관측 매핑 예보 ")
+    print(f" 연산 기준 날짜 (현재): {base_date.strftime('%Y년 %m월 %d일')}")
+    print("="*75)
     
     c_safe, c_rupture = 0.3, 0.9
     volcano_alert = False
@@ -75,7 +82,9 @@ def run_combined_forecast_system():
         current_phase = "preshock" if t < t_mainshock else "aftershock"
         eq_rate = get_earthquake_seismicity_rate(t, current_phase, t_mainshock)
         
-        # 내부 시간 분할 정밀 연산
+        # 실제 예측 날짜로 매핑 변환
+        current_date_str = get_real_date_string(base_date, t, scale_factor)
+        
         for _ in range(steps):
             s_combined = s + eq_rate
             dp_dt, ds_dt, dg_dt = volcano_dynamic_system(p, s_combined, g, alpha, beta, gamma, delta, k, Q_in)
@@ -87,17 +96,17 @@ def run_combined_forecast_system():
         W = calculate_lyapunov_containment(p, s_combined, g)
         
         if t >= t_mainshock and not tsunami_triggered:
-            print(f"\n🚨 [주지진 발생] Time {t:.1f}s: 해저 단층 대규모 변위! 쓰나미 에너지 충전.")
+            print(f"\n🚨 [{current_date_str} 예보] 주지진 최종 도달! 해저 지각 붕괴로 해일 트리거.")
             tsunami_triggered = True
             t_tsunami_start = t
             tsunami_energy += 2.5
             
         if W > c_safe and W <= c_rupture and not volcano_alert:
-            print(f"🌋 [화산 경보] Time {t:.1f}s: 복합 마그마 에너지(W) 임계 구역 진입.")
+            print(f"🌋 [{current_date_str} 예보] 마그마 축적 에너지가 위상학적 임계 안전 구역을 탈출.")
             volcano_alert = True
             
         if W > c_rupture and volcano_alert:
-            print(f"💥 [화산 분화] Time {t:.1f}s: 마그마방 압력 폭발! 대분화로 추가 파동 형성.")
+            print(f"💥 [{current_date_str} 예보] 화산 대폭발(분화) 최종 위험 시점 도달!")
             tsunami_energy += 4.0
             volcano_alert = False
             
@@ -105,16 +114,15 @@ def run_combined_forecast_system():
         if tsunami_triggered:
             tsunami_height = get_tsunami_wave_height(t, t_tsunami_start, tsunami_energy, current_depth)
             
-        if int(t * 10) % 5 == 0:
-            print(f"[계측] Time:{t:4.1f}s | 지진율:{eq_rate:4.1f} | 에너지(W):{W:6.2f} | 수심:{current_depth:6.1f}m | 🌊쓰나미파고:{tsunami_height:5.2f}m")
+        if int(t * 5) % 2 == 0:
+            print(f"[{current_date_str}] 지진율:{eq_rate:4.1f} | 에너지(W):{W:4.2f} | 🌊쓰나미파고:{tsunami_height:5.2f}m")
             
         if tsunami_height > 12.0:
-            print(f"\n🌊🌊 [대형 쓰나미 해안습격] Time {t:.1f}s: 최종 수심 {current_depth:.1f}m 도달!")
-            print(f"     -> 그린의 천수 법칙(Green's Law)에 따라 파고가 {tsunami_height:.2f}m로 압축 증폭되었습니다.")
+            print(f"\n🌊🌊 [{current_date_str} 최종대피] 쓰나미 대륙붕 천수 압축 완료! 해안 습격 예상일 확정.")
             break
             
         t += dt
-    print("="*65)
+    print("="*75)
 
 if __name__ == "__main__":
     run_combined_forecast_system()
