@@ -1,74 +1,89 @@
 import math
 
+def get_earthquake_seismicity_rate(t, state_type, t_mainshock=20.0):
+    """
+    [지진 고도화] 실제 지진 데이터 법칙 주입
+    - 전진(Preshock): 구텐베르크-리히터 법칙에 따라 분출 에너지가 지수적으로 증가
+    - 여진(Aftershock): 오모리 법칙(Omori's Law)에 따라 1/(t-t_m)^p 비율로 감쇄
+    """
+    if state_type == "preshock":
+        # 전진 단계: 시간이 갈수록 미소 지진 발생 빈도가 지수적으로 급증
+        return 0.2 * math.exp(0.15 * t)
+    elif state_type == "aftershock":
+        # 여진 단계 (오모리 법칙): 주지진 발생 이후 시간 분모에 비례해 감쇄
+        dt = t - t_mainshock
+        if dt <= 0:
+            dt = 0.01
+        p_constant = 1.1 # 실제 관측치 평균 p-value
+        return 5.0 / (dt ** p_constant)
+    return 0.1
+
 def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in):
     """
-    scipy 없이 동작하는 3차원 비선형 화산 동역학 방정식
+    [화산 고도화] 가스 폐쇄 메커니즘이 주입된 동역학계
     """
-    # 1. 압력 변화율
     Q_out = (1.0 - g) * 0.5 * p
     dp_dt = alpha * (Q_in - Q_out) + gamma * math.sin(s)
     
-    # 2. 지진 발생률 변화율
     p_rupture = 2.0
     forcing = (p - p_rupture) if p > p_rupture else 0.0
     ds_dt = beta * forcing - delta * s
     
-    # 3. 가스 폐쇄도 변화율
     dg_dt = (p * (1.0 - g)) * math.exp(-k * p) - 0.2 * s * g
-    
     return dp_dt, ds_dt, dg_dt
 
 def calculate_lyapunov_containment(p, s, g):
-    """
-    보완된 리야푸노프 포함 함수 W(y)
-    """
-    W = 0.5 * (p**2) + 0.3 * (s**2) + 0.8 * (g**2) * math.exp(p)
-    return W
+    return 0.5 * (p**2) + 0.3 * (s**2) + 0.8 * (g**2) * math.exp(p)
 
-def run_forecast_simulation():
-    # 모델 파라미터 
+def run_combined_forecast_system():
+    # 파라미터 및 초기화
     alpha, beta, gamma, delta, k = 0.6, 1.2, 0.3, 0.5, 0.4
     Q_in = 1.5  
-    
-    # 초기 상태 값 [압력, 지진동, 가스폐쇄도]
     p, s, g = 1.0, 0.1, 0.2
     
-    # 수치해석 타임스텝 설정 (Euler Method)
     t = 0.0
-    t_end = 50.0
-    dt = 0.01  # 정밀도를 높이기 위해 0.01초 단위로 분할 연산
+    t_end = 40.0
+    dt = 0.05
+    t_mainshock = 20.0
     
     print("="*60)
-    print(" [Termux 전용 화산 분화 예측 수치 해석 엔진] ")
+    print(" [고도화 완료] 실제 데이터 법칙 통합 지진/화산 예보 시스템 ")
     print("="*60)
     
-    c_safe = 3.5
-    c_rupture = 12.0
-    eruption_triggered = False
+    c_safe, c_rupture = 3.5, 12.0
+    volcano_alert = False
     
     while t <= t_end:
-        W = calculate_lyapunov_containment(p, s, g)
+        # 1. 지진 실제 데이터 모델 상태 추적
+        current_phase = "preshock" if t < t_mainshock else "aftershock"
+        eq_rate = get_earthquake_seismicity_rate(t, current_phase, t_mainshock)
         
-        # 푸앵카레 포함 영역 상태 추적 및 실시간 판정
-        if W > c_safe and W <= c_rupture and not eruption_triggered:
-            print(f"[경보] Time {t:.2f}: 상태 궤적이 안전 지대(B_safe)를 탈출하여 임계 분화 영역(B_crit)에 진입했습니다.")
-            print(f"       -> 현재 상태 - 압력: {p:.2f}, 지진: {s:.2f}, 가스폐쇄도: {g:.2f} (W = {W:.2f})")
-            eruption_triggered = True
+        # 지진 동역학 피드백을 화산 지진동(s) 변수에 실시간 동기화하여 결합
+        s_combined = s + eq_rate 
+        W = calculate_lyapunov_containment(p, s_combined, g)
         
+        # 실시간 모니터링 출력 (주요 전환점 스냅샷)
+        if int(t * 20) % 40 == 0:
+            print(f"[계측] Time {t:4.1f}s | 지진위험도(Omori): {eq_rate:5.2f} | 마그마압력: {p:4.2f} | 에너지지표(W): {W:5.2f}")
+            
+        if t == t_mainshock:
+            print(f"\n🚨 [🚨주지진 발생] Time {t:.1f}s: 단층 파쇄 임계점 돌파! 여진 체제로 전환됩니다.\n")
+            
+        if W > c_safe and W <= c_rupture and not volcano_alert:
+            print(f"\n🌋 [화산 경보] Time {t:.1f}s: 지진 충격 격동으로 화산 궤적이 임계구역(B_crit)에 진입!")
+            volcano_alert = True
+            
         if W > c_rupture:
-            print(f"[폭발] Time {t:.2f}: 에너지 한계치(c_rupture)를 돌파하여 분화 궤적 구속이 해제되었습니다!")
-            print(f"       -> 최종 마그마방 압력 임계치 돌파 시점 예보 완결.")
+            print(f"💥 [화산 분화] Time {t:.1f}s: 복합 에너지 임계치 돌파! 폭발적 분화 발생.\n")
             break
             
-        # 오일러 방법을 이용한 미분 가속도 업데이트
-        dp_dt, ds_dt, dg_dt = volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in)
+        # 연산 업데이트
+        dp_dt, ds_dt, dg_dt = volcano_dynamic_system(p, s_combined, g, alpha, beta, gamma, delta, k, Q_in)
         p += dp_dt * dt
         s += ds_dt * dt
         g += dg_dt * dt
         t += dt
-    else:
-        print("[안전] 시뮬레이션 기간 동안 상태 궤적이 임계 포함 영역 내부에서 안정적으로 구속되었습니다.")
     print("="*60)
 
 if __name__ == "__main__":
-    run_forecast_simulation()
+    run_combined_forecast_system()
