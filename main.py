@@ -45,36 +45,54 @@ def calculate_lyapunov_containment(p, s, g):
     return 0.5 * (p_safe**2) + 0.3 * (s_safe**2) + 0.8 * (g**2) * math.exp(p_safe)
 
 def run_combined_forecast_system():
-    base_date = datetime(2026, 7, 1) # 현재 시점 기준 날짜
+    base_date = datetime(2026, 7, 1) # 현재 연산 개시일
     
-    print("="*65)
-    print(" [지역 매핑 적용] 실제 단층 데이터 기반 임계 시점 시뮬레이터 ")
-    print("="*65)
-    print("분석할 위험 단층대를 선택하세요:")
-    print("1: 일본 난카이 해곡 (초대형 판 경계 지진 및 쓰나미 결합 시나리오)")
-    print("2: 대한민국 양산 단층대 (판 내부 활성단층 내륙형 지진 시나리오)")
+    print("="*75)
+    print(" [전 세계 확장 완료] 글로벌 단층·재해 실제 데이터 매핑 시뮬레이터 ")
+    print("="*75)
+    print("분석할 글로벌 위험 영역을 선택하세요:")
+    print("1: 북미 산안드레아스 단층대 (미국 캘리포니아 대지진 시나리오)")
+    print("2: 이탈리아 베수비오/에트나 마그마계 (지중해 연쇄 폭발 시나리오)")
+    print("3: 인도네시아 순다 열도 (환태평양 초강진 및 대형 쓰나미 시나리오)")
+    print("4: 대한민국 양산 단층대 (판 내부 내륙 안정 지각 섭동 시나리오)")
     
     try:
-        choice = input("선택 (1 또는 2): ").strip()
+        choice = input("글로벌 타겟 선택 (1~4): ").strip()
     except:
-        choice = "1" # Non-interactive 환경 백업
+        choice = "3"
         
-    if choice == "2":
-        target_name = "대한민국 양산 단층대 (경주/포항 인근)"
-        scale_factor = 15.0  # 응력 축적이 느리므로 1 t = 실제 시간 15일 매핑
+    if choice == "1":
+        target_name = "미국 산안드레아스 단층대 (San Andreas Fault)"
+        scale_factor = 4.0   
+        alpha, beta, gamma, delta, k = 0.15, 0.45, 0.05, 0.5, 0.35
+        Q_in = 1.1
+        h_deep = 100.0  
+        p_slope = 0.12  
+        tsunami_active = False # 변환 단층 위주 (해일 위험 낮음)
+    elif choice == "2":
+        target_name = "이탈리아 베수비오 화산대 (Mount Vesuvius)"
+        scale_factor = 3.2   
+        alpha, beta, gamma, delta, k = 0.3, 0.6, 0.15, 0.4, 0.25
+        Q_in = 1.6 # 고농도 마그마 공급
+        h_deep = 2000.0 
+        p_slope = 0.05  
+        tsunami_active = True
+    elif choice == "3":
+        target_name = "인도네시아 순다 해구 (Sunda Trench)"
+        scale_factor = 1.8   # 판 충돌이 매우 격렬하여 타임스텝 스케일이 촘촘함
+        alpha, beta, gamma, delta, k = 0.25, 0.55, 0.12, 0.35, 0.28
+        Q_in = 1.3
+        h_deep = 6000.0 # 초심해 구조 반영
+        p_slope = 0.18  # 전조 현상 급증 속도 매우 빠름
+        tsunami_active = True
+    else:
+        target_name = "대한민국 양산 단층대 (Yangsan Fault)"
+        scale_factor = 15.0  
         alpha, beta, gamma, delta, k = 0.05, 0.3, 0.02, 0.7, 0.4
         Q_in = 0.8
-        h_deep = 200.0  # 동해 평균 수심 반영
-        p_slope = 0.08  # 완만한 전조 급증
-        tsunami_active = False # 내륙형 위주 (해일 위험 낮음)
-    else:
-        target_name = "일본 난카이 해곡 (Nankai Trough)"
-        scale_factor = 2.5   # 단층 활동이 급격하므로 1 t = 실제 시간 2.5일 매핑
-        alpha, beta, gamma, delta, k = 0.2, 0.5, 0.1, 0.4, 0.3
-        Q_in = 1.0
-        h_deep = 4000.0 # 심해 수심 반영
-        p_slope = 0.15  # 가파른 전조 급증
-        tsunami_active = True
+        h_deep = 200.0  
+        p_slope = 0.08  
+        tsunami_active = False
 
     p, s, g = 0.5, 0.1, 0.2
     t, t_end, dt = 0.0, 40.0, 0.2
@@ -88,12 +106,11 @@ def run_combined_forecast_system():
     volcano_alert = False
     c_safe, c_rupture = 0.3, 0.9
     
-    print(f"\n▶ 타겟 지역 설정 완료: {target_name}")
-    print(f"▶ 연산 개시일: {base_date.strftime('%Y년 %m월 %d일')}")
-    print("-"*65)
+    print(f"\n▶ 글로벌 타겟 매핑 완료: {target_name}")
+    print(f"▶ 예측 연산 기준일: {base_date.strftime('%Y년 %m월 %d일')}")
+    print("-"*75)
     
     while t <= t_end:
-        # 수심 변화 시나리오 매핑
         if tsunami_active:
             current_depth = h_deep if t < 32.0 else max(10.0, h_deep - ((h_deep - 10.0) * (t - 32.0) / 8.0))
         else:
@@ -113,37 +130,34 @@ def run_combined_forecast_system():
         s_combined = s + eq_rate
         W = calculate_lyapunov_containment(p, s_combined, g)
         
-        # 1. 주지진 임계점 판단
         if t >= t_mainshock and not tsunami_triggered:
-            print(f"\n🚨 [{current_date_str} 예측] 단층 파쇄 임계 돌파! 주지진(Mainshock) 대지진 발생.")
+            print(f"\n🚨 [{current_date_str} 예측] {target_name} 임계 응력 초과! 본진(Mainshock) 발생.")
             tsunami_triggered = True
             t_tsunami_start = t
             tsunami_energy += 2.5
             
-        # 2. 화산 에너지 전조 판단
         if W > c_safe and W <= c_rupture and not volcano_alert:
-            print(f"🌋 [{current_date_str} 예측] 지각 격동으로 주변 화산 마그마방 포함 영역(B_crit) 진입.")
+            print(f"🌋 [{current_date_str} 예측] 마그마 축적 에너지가 위상학적 경계(B_crit)에 진입.")
             volcano_alert = True
             
         if W > c_rupture and volcano_alert:
-            print(f"💥 [{current_date_str} 예측] 연쇄 반응으로 인한 화산 폭발 위험 임계점 도달!")
+            print(f"💥 [{current_date_str} 예측] 지각 연쇄 격동으로 인한 분화 한계치 도달!")
             tsunami_energy += 4.0
             volcano_alert = False
             
-        # 3. 쓰나미 천수 효과 판단
         tsunami_height = 0.0
         if tsunami_triggered and tsunami_active:
             tsunami_height = get_tsunami_wave_height(t, t_tsunami_start, tsunami_energy, current_depth, h_deep)
             
         if int(t * 5) % 4 == 0:
-            print(f"[{current_date_str}] 지진율:{eq_rate:4.1f} | 복합에너지(W):{W:4.2f} | 🌊쓰나미파고:{tsunami_height:5.2f}m")
+            print(f"[{current_date_str}] 지진동 지표:{eq_rate:4.1f} | 포함 에너지(W):{W:4.2f} | 🌊쓰나미파고:{tsunami_height:5.2f}m")
             
         if tsunami_height > 12.0 and tsunami_active:
-            print(f"\n🌊🌊 [{current_date_str} 최종예보] 그린의 천수 법칙에 따른 쓰나미 해안 도달 시점 확정!")
+            print(f"\n🌊🌊 [{current_date_str} 최종대피] 천수 변환(Green's Law) 완료. 쓰나미 해안 도달 임계점 확정.")
             break
             
         t += dt
-    print("="*65)
+    print("="*75)
 
 if __name__ == "__main__":
     run_combined_forecast_system()
