@@ -106,25 +106,25 @@ def generate_web_dashboard(stations):
         t_ko, t_en, t_ja, t_zh = "복합 재해", "Multi-Hazard", "複合災害", "复合灾害"
         
         if "인도네시아_순다해구" in name:
-            l_ko, l_en, l_ja, l_zh = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖 (南緯5.4°, 東経102.3°)", "苏门答腊西南海域 (南纬5.4°, 东经102.3°)"
+            l_ko, l_en, l_ja, l_zh = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖 (南緯5.4°, 東経102.3°)", "苏门答腊西南海域"
             t_ko, t_en, t_ja, t_zh = "해저 강진 및 대형 쓰나미", "Subsea Megathrust & Tsunami", "海底巨大地震・大津波", "海底大地震与大海啸"
         elif "미국_산안드레아스" in name:
-            l_ko, l_en, l_ja, l_zh = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带 (北纬35.9°, 西经120.4°)"
+            l_ko, l_en, l_ja, l_zh = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带"
             t_ko, t_en, t_ja, t_zh = "판 경계 대형 단층 지진", "Transform Fault Earthquake", "トランスフォーム断層型地震", "转换断层大地震"
-        elif "이탈리아_베수비오" in name:
-            l_ko, l_en, l_ja, l_zh = "캄파니아 나폴리 동부 (북위 40.8°, 동경 14.4°)", "East of Naples (40.8°N, 14.4°E)", "ナポリ東部 (北緯40.8°, 東経14.4°)", "那不勒斯东部 (北纬40.8°, 东经14.4°)"
+        elif "이탈リア_베수비오" in name:
+            l_ko, l_en, l_ja, l_zh = "캄파니아 나폴리 동부 (북위 40.8°, 동경 14.4°)", "East of Naples (40.8°N, 14.4°E)", "ナポリ東部", "那不勒斯东部"
             t_ko, t_en, t_ja, t_zh = "활화산 연쇄 폭발 분화", "Active Volcanic Eruption", "活火山連鎖爆発噴火", "活火山连锁爆发喷发"
         elif "대한민국_양산단층" in name:
-            l_ko, l_en, l_ja, l_zh = "경상북도 경주시 외동읍 일대 (북위 35.7°, 동경 129.3°)", "Gyeongju, S.Korea (35.7°N, 129.3°E)", "慶尚北道慶州市外東邑一帯", "庆尚北道庆州市外东邑一带 (北纬35.7°, 东经129.3°)"
+            l_ko, l_en, l_ja, l_zh = "경상북도 경주시 외동읍 일대 (북위 35.7°, 동경 129.3°)", "Gyeongju, S.Korea (35.7°N, 129.3°E)", "慶尚北道慶州市外東邑一帯", "庆尚北道庆州市外东邑一带"
             t_ko, t_en, t_ja, t_zh = "지각 내부 활성단층 지진", "Intraplate Active Fault EQ", "内陸活断層型地震", "板内活动断层地震"
         elif "실시간_" in name:
             l_ko = name.replace("실시간_", "").replace("_", " ") + " 인근 진앙지"
             l_en, l_ja, l_zh = "Epicenter near " + l_ko, l_ko + " 近郊震央", l_ko + " 附近震中"
             t_ko, t_en, t_ja, t_zh = "실시간 감지 추적 지진", "Live Detected Seismicity", "リアルタイム検知地震", "实时监测追踪地震"
 
-        if cfg["max_magnitude"] >= 8.0: bg, bde = "from-red-950/80 border-red-500 text-red-400", "border-red-500 text-red-400 bg-red-500/10"
-        elif cfg["max_magnitude"] >= 6.5: bg, bde = "from-amber-950/80 border-amber-500 text-amber-400", "border-amber-500 text-amber-400 bg-amber-500/10"
-        else: bg, bde = "from-emerald-950/80 border-emerald-500 text-emerald-400", "border-emerald-500 text-emerald-400 bg-emerald-500/10"
+        if cfg["max_magnitude"] >= 8.0: bg, bde = "linear-gradient(135deg,#450a0a,#0f172a)", "border:2px solid #ef4444;color:#f87171;background:rgba(239,68,68,0.1);"
+        elif cfg["max_magnitude"] >= 6.5: bg, bde = "linear-gradient(135deg,#451a03,#0f172a)", "border:2px solid #f59e0b;color:#fbbf24;background:rgba(245,158,11,0.1);"
+        else: bg, bde = "linear-gradient(135deg,#064e3b,#0f172a)", "border:2px solid #10b981;color:#34d399;background:rgba(16,185,129,0.1);"
         
         t_stat = "ALERT" if tsu_final_height > 3.0 else "NORMAL"
         if not cfg["tsunami_active"]: t_stat = "NONE"
@@ -133,61 +133,58 @@ def generate_web_dashboard(stations):
         tsu_percent = min(100.0, max(0.0, (tsu_final_height / 15.0) * 100.0))
 
         cards_html += f"""
-        <div class="card bg-gradient-to-br {bg} to-slate-900 border-2 rounded-2xl p-6 shadow-2xl" 
-             data-name-ko="{name}" data-name-en="{name}" data-name-ja="{name}" data-name-zh="{name}"
+        <div class="card" style="background:{bg};border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);" 
+             data-name-ko="{name.replace('_',' ')}" data-name-en="{name.replace('_',' ')}" data-name-ja="{name.replace('_',' ')}" data-name-zh="{name.replace('_',' ')}"
              data-loc-ko="{l_ko}" data-loc-en="{l_en}" data-loc-ja="{l_ja}" data-loc-zh="{l_zh}"
              data-type-ko="{t_ko}" data-type-en="{t_en}" data-type-ja="{t_ja}" data-type-zh="{t_zh}"
              data-tsunami-status="{t_stat}" data-tsunami-val="{tsu_final_height:.2f}m">
-            <div class="flex justify-between items-start mb-4">
-                <div><span class="card-type text-sm font-black block uppercase tracking-wider text-slate-400 mb-1">{t_ko}</span><h3 class="card-title text-2xl font-black text-white tracking-tight">{name.replace('_',' ')}</h3></div>
-                <span class="badge px-3 py-1 text-xs font-black rounded-lg border-2 {bde} animate-pulse">LIVE</span>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+                <div><span class="card-type" style="font-size:14px;font-weight:900;color:#94a3b8;display:block;text-transform:uppercase;margin-bottom:4px;">{t_ko}</span><h3 class="card-title" style="font-size:24px;font-weight:900;color:#ffffff;margin:0;">{name.replace('_',' ')}</h3></div>
+                <span class="badge" style="padding:4px 10px;font-size:12px;font-weight:900;border-radius:8px;{bde}">LIVE</span>
             </div>
-            <div class="space-y-4 text-lg">
-                <div class="bg-white/5 px-3 py-2.5 rounded-xl text-slate-200 border border-white/5 font-bold text-base">📍 <span class="card-loc">{l_ko}</span></div>
-                <div class="bg-white/5 px-3 py-3 rounded-xl space-y-2 border border-white/5">
-                    <div class="flex justify-between items-center"><span class="text-slate-400 font-black">📊 <span class="lbl-mag">예상 규모</span></span><span class="font-black text-white text-xl">M {cfg['max_magnitude']:.1f}</span></div>
-                    <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-amber-500 to-red-500 h-full rounded-full" style="width: {mag_percent}%"></div></div>
+            <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;font-weight:bold;">
+                <div style="background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);font-size:16px;color:#e2e8f0;">📍 <span class="card-loc">{l_ko}</span></div>
+                <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">📊 <span class="lbl-mag">예상 규모</span></span><span style="color:#ffffff;font-size:20px;font-weight:900;">M {cfg['max_magnitude']:.1f}</span></div>
+                    <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#f59e0b,#ef4444);height:100%;border-radius:6px;width:{mag_percent}%;"></div></div>
                 </div>
-                <div class="flex justify-between items-center px-1 font-bold text-base"><span class="text-slate-400">📅 <span class="lbl-time">임계 시점</span></span><span class="text-slate-100 text-lg">{eq_time.strftime('%m/%d %H시')}</span></div>
-                <div class="flex justify-between items-center px-1 font-bold text-base"><span class="text-slate-400">🎯 <span class="lbl-win">오차 범위</span></span><span class="text-amber-400 font-extrabold">{min_win} ~ {max_win}</span></div>
-                <div class="bg-white/5 px-3 py-3 rounded-xl space-y-2 border border-white/5">
-                    <div class="flex justify-between items-center"><span class="text-slate-400 font-black">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text font-black text-blue-400 text-xl">{tsu_final_height:.2f}m</span></div>
-                    <div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full rounded-full" style="width: {tsu_percent}%"></div></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">📅 <span class="lbl-time">임계 시점</span></span><span style="color:#f1f5f9;">{eq_time.strftime('%m/%d %H시')}</span></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">🎯 <span class="lbl-win">오차 범위</span></span><span style="color:#fbbf24;font-weight:900;">{min_win} ~ {max_win}</span></div>
+                <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text" style="color:#60a5fa;font-size:20px;font-weight:900;">{tsu_final_height:.2f}m</span></div>
+                    <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#3b82f6,#22d3ee);height:100%;border-radius:6px;width:{tsu_percent}%;"></div></div>
                 </div>
-                <div class="grid grid-cols-2 gap-2 text-center text-sm font-bold text-slate-300 pt-2 border-t-2 border-white/10">
-                    <div class="bg-white/5 py-2 rounded-xl border border-white/5">🌦️ <span class="lbl-rain">폭우</span>: {int(cfg['rain_mm'])}mm</div>
-                    <div class="bg-white/5 py-2 rounded-xl border border-white/5">🌀 <span class="lbl-storm">태풍</span>: {int(cfg['press_hpa'])}hPa</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;padding-top:12px;border-top:2px solid rgba(255,255,255,0.1);">
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;">🌦️ 폭우: {int(cfg['rain_mm'])}mm</div>
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;">🌀 태풍: {int(cfg['press_hpa'])}hPa</div>
                 </div>
             </div>
         </div>"""
 
-    global html_content_base
-    html_content_base = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FORECAST</title><script src="https://tailwindcss.com"></script></head>
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased text-lg">
-    <header class="border-b border-white/10 bg-slate-900/90 backdrop-blur sticky top-0 z-50 py-3.5 shadow-xl"><div class="max-w-3xl mx-auto px-4 py-2 flex justify-between items-center"><div class="flex items-center space-x-3"><span class="text-3xl">📊</span><h1 class="text-xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-amber-400 to-blue-400">SO-HMNS GLOBAL FORECAST</h1></div>
-    <div class="flex items-center space-x-2 bg-slate-800 px-3 py-1.5 rounded-xl border border-white/10 shadow-inner"><span class="text-sm">🌐</span><select id="langSelect" onchange="changeLanguage()" class="bg-transparent text-sm text-white font-black focus:outline-none cursor-pointer"><option value="ko" class="bg-slate-900">KO</option><option value="en" class="bg-slate-900">EN</option><option value="ja" class="bg-slate-900">JA</option><option value="zh" class="bg-slate-900">ZH</option></select></div></div></header>
-    <main class="max-w-3xl mx-auto px-4 py-6 space-y-6">
-        <section class="bg-gradient-to-r from-slate-900 to-slate-950 border border-white/10 rounded-2xl p-5 shadow-xl"><h2 id="noticeTitle" class="text-lg font-black mb-2 text-amber-400 flex items-center">💡 오픈 전세계 재해 정보 안내</h2><p id="noticeDesc" class="text-base text-slate-400 leading-relaxed font-semibold">본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.</p></section>
-        <section class="space-y-4"><h2 id="sectionTitle" class="text-xl font-black tracking-tight flex items-center border-l-4 border-blue-500 pl-2">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div class="grid grid-cols-1 gap-6">{cards_html}</div></section>
+    html_content = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FORECAST</title></head>
+<body style="background:#020617;color:#f1f5f9;margin:0;padding:0;font-family:-apple-system,sans-serif;-webkit-font-smoothing:antialiased;font-size:18px;">
+    <header style="border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(15,23,42,0.9);position:sticky;top:0;z-index:50;padding:16px 0;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="max-w:600px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;">
+    <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:28px;">📊</span><h1 style="font-size:20px;font-weight:900;margin:0;background:linear-gradient(to right,#f87171,#fbbf24,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">SO-HMNS GLOBAL FORECAST</h1></div>
+    <div style="display:flex;align-items:center;gap:6px;background:#1e293b;padding:6px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);"><span style="font-size:14px;">🌐</span><select id="langSelect" onchange="changeLanguage()" style="background:transparent;color:#ffffff;font-size:14px;font-weight:900;border:none;outline:none;cursor:pointer;"><option value="ko" style="background:#0f172a;">KO</option><option value="en" style="background:#0f172a;">EN</option><option value="ja" style="background:#0f172a;">JA</option><option value="zh" style="background:#0f172a;">ZH</option></select></div></div></header>
+    <main style="max-w:600px;margin:24px auto;padding:0 16px;display:flex;flex-direction:column;gap:24px;">
+        <section style="background:linear-gradient(to right,#0f172a,#020617);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;box-shadow:0 4px 15px rgba(0,0,0,0.2);"><h2 id="noticeTitle" style="font-size:18px;font-weight:900;margin-top:0;margin-bottom:8px;color:#fbbf24;">💡 오픈 전세계 재해 정보 안내</h2><p id="noticeDesc" style="font-size:15px;color:#94a3b8;margin:0;line-height:1.6;font-weight:500;">본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 세부 지리 위경도 좌표 및 재해 유형 분류 태그를 동적 매핑하여 실시간 전 세계망에 공유합니다.</p></section>
+        <section style="display:flex;flex-direction:column;gap:16px;"><h2 id="sectionTitle" style="font-size:22px;font-weight:900;margin:0;border-left:4px solid #3b82f6;padding-left:8px;">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div id="cardContainer" style="display:flex;flex-direction:column;gap:20px;">{cards_html}</div></section>
     </main>
-    <footer class="max-w-3xl mx-auto px-4 py-8 border-t border-white/5 mt-12 text-center text-xs text-slate-500 font-bold"><p id="footerText">© 2026 SO-HMNS 인프라. 구체화된 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다.</p></footer>
-"""
-
-    html_content = html_content_base + """
+    <footer style="max-w:600px;margin:40px auto 0;padding:20px 16px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;font-size:13px;color:#64748b;font-weight:bold;"><p id="footerText">© 2026 SO-HMNS 인프라. 구체화된 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다.</p></footer>
     <script>
-    const langDict = {
-        ko: { nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 깃허브 전세계 활성 단층대 실시간 데이터셋(USGS API)을 기반으로 누구나 조회 가능한 전세계 재해 통합 감시 대시보드입니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음", ft: "© 2026 SO-HMNS 인프라. 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다." },
-        en: { nt: "Global Disaster Information System", nd: "This dashboard delivers real-time hazard warnings driven by USGS APIs. It tracks precise latitude/longitude hazard locations and specific event classifications (Earthquake, Volcano, Tsunami) distributed internationally.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", ts_normal: "Normal", ts_alert: "WARNING", ts_none: "No Risk", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." },
-        ja: { nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグを統合追跡してリアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. 詳細な複合災害ノードをGitHub Pagesを通じて配信中。" },
-        zh: { nt: "全球灾害公共信息发布平台", nd: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建의 综合防护系统。系统全面跟踪精确의 经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }
-    };
-    function changeLanguage() {
+    const langDict = {{
+        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 깃허브 전세계 활성 단층대 실시간 데이터셋(USGS API)을 기반으로 누구나 조회 가능한 전세계 재해 통합 감시 대시보드입니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ft: "© 2026 SO-HMNS 인프라. 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다." }},
+        en: {{ nt: "Global Disaster Information System", nd: "This dashboard delivers real-time hazard warnings driven by USGS APIs. It tracks precise latitude/longitude hazard locations and specific event classifications (Earthquake, Volcano, Tsunami) distributed internationally.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
+        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグを統合追跡してリアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ft: "© 2026 SO-HMNS 防災インフラ. 詳細な複合災害ノード를 GitHub Pagesを通じて配信中。" }},
+        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建的综合防护系统。系统全面跟踪精确的经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }}
+    }};
+    function changeLanguage() {{
         const l = document.getElementById("langSelect").value, t = langDict[l];
         document.getElementById("noticeTitle").innerText = "💡 " + t.nt;
         document.getElementById("noticeDesc").innerText = t.nd;
         document.getElementById("sectionTitle").innerText = t.st;
         document.getElementById("footerText").innerText = t.ft;
-        document.querySelectorAll(".card").forEach(c => {
+        document.querySelectorAll(".card").forEach(c => {{
             c.querySelector(".badge").innerText = t.sync;
             c.querySelector(".lbl-mag").innerText = t.l_mag;
             c.querySelector(".lbl-time").innerText = t.l_time;
@@ -196,26 +193,23 @@ def generate_web_dashboard(stations):
             c.querySelector(".card-loc").innerText = c.getAttribute("data-loc-" + l);
             c.querySelector(".card-type").innerText = c.getAttribute("data-type-" + l);
             const st = c.getAttribute("data-tsunami-status"), v = c.getAttribute("data-tsunami-val"), n = c.querySelector(".tsunami-text");
-            if (n) {
+            if (n) {{
                 if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
                 else if (st === "NORMAL") n.innerText = v + " (" + t.ts_normal + ")";
                 else n.innerText = t.ts_none;
-            }
-        });
-    }
-    </script>
-</body>
-</html>
-"""
+            }}
+        }});
+    }}
+    </script></body></html>"""
     with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
 
 def deploy_to_github_pages():
     print("\n🚀 [글로벌 릴리즈] 내 깃허브 원격 배포망 업로드 중...")
     try:
         subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-        subprocess.run(["git", "commit", "-m", "오타 완전 수정 및 모바일 프리미엄 대형 차트바 카드 레이아웃 완벽 동기화 배포"], check=True)
+        subprocess.run(["git", "commit", "-m", "오타 박멸 및 순수 인라인 CSS 다크 테마 카드 레이아웃 전면 배포 완결"], check=True)
         subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("\n🎉 [배포 최종 성공!!] 오타가 완벽히 치료된 대화면 모바일 인프라 배포가 완료되었습니다.")
+        print("\n🎉 [배포 최종 성공!!] 순수 인라인 CSS 컴포넌트 이식 및 오타 수정 완전체 버전이 배포되었습니다.")
         print("🔗 공식 배포 주소: https://github.io")
         print("="*75)
     except Exception as e: print(f"⚠️ 배포 실패: {e}")
