@@ -201,15 +201,14 @@ def generate_web_dashboard(stations):
     with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
 
 def deploy_to_github_pages():
-    print("\n🚀 [글로벌 릴리즈] 내 깃허브 원격 배포망 업로드 중...")
+    print("\n🚀 [배포 인프라 기동] 데이터 최신화 완료")
     try:
-        subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-        subprocess.run(["git", "commit", "-m", "AttributeError 튜플 변수 해결 및 임계시점 4자리 연도 추가 완결"], check=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("\n🎉 [최종 마스터피스 완성!!] 튜플 에러 박멸 및 연도(2026/) 탑재 대시보드가 정상 릴리즈되었습니다.")
-        print("🔗 공식 배포 주소: https://github.io")
-        print("="*75)
-    except Exception as e: print(f"⚠️ 배포 실패: {e}")
+        if not os.environ.get("GITHUB_ACTIONS"):
+            subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
+            subprocess.run(["git", "commit", "-m", "🔄 실시간 지진 감시망 무인 가동 동기화"], check=True)
+            subprocess.run(["git", "push", "origin", "main"], check=True)
+            print("🔗 공식 배포 주소: https://github.io")
+    except Exception as e: print(f"로컬 푸시 생략 (자동화 엔진 대기): {e}")
 
 if __name__ == "__main__":
     st = load_dynamic_observation_stations()

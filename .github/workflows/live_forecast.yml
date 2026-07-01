@@ -1,0 +1,35 @@
+name: 24H Live Multi-Hazard Forecast Sync
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # [30분 주기 무인 가동] 전 세계 USGS 실시간 지진 감시 노드 매 30분마다 무한 추적
+  workflow_dispatch:      # 깃허브 웹페이지에서 수동으로 즉시 갱신 버튼을 누를 수도 있도록 허용
+
+jobs:
+  run-simulation-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout Master Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python Environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Execute Seismicity Integration Solver
+      run: python main.py
+
+    - name: Auto Sync & Global Release to Pages
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@://github.com"
+        git add index.html stations.txt main.py
+        if ! git diff --staged --quiet; then
+          git commit -m "📊 [무인 자동화 릴리즈] USGS API 실시간 강진 관측소 노드 최신화 및 2026/2027 연도 예보 동기화 완료"
+          git push origin main
+        else
+          echo "실시간 재해 변동 데이터가 없어 배포를 스킵합니다."
+        fi
