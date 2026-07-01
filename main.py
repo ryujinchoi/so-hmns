@@ -128,6 +128,9 @@ def generate_web_dashboard(stations):
         t_stat = "ALERT" if tsu_final_height > 3.0 else "NORMAL"
         if not cfg["tsunami_active"]: t_stat = "NONE"
 
+        mag_percent = min(100.0, max(0.0, (cfg["max_magnitude"] / 10.0) * 100.0))
+        tsu_percent = min(100.0, max(0.0, (tsu_final_height / 15.0) * 100.0))
+
         cards_html += f"""
         <div class="card bg-gradient-to-br {bg} to-slate-950 border rounded-2xl p-5 shadow-2xl transition duration-300 hover:border-white/40" 
              data-name-ko="{name}" data-name-en="{name}" data-name-ja="{name}" data-name-zh="{name}"
@@ -138,12 +141,18 @@ def generate_web_dashboard(stations):
                 <div><span class="card-type text-[10px] font-bold block uppercase tracking-wider text-slate-400 mb-0.5">{t_ko}</span><h3 class="card-title text-sm font-black text-white tracking-tight">{name}</h3></div>
                 <span class="badge px-2 py-0.5 text-[10px] font-bold rounded border {bde} animate-pulse">LIVE</span>
             </div>
-            <div class="space-y-2 text-xs">
+            <div class="space-y-2.5 text-xs">
                 <div class="bg-white/5 px-2.5 py-1.5 rounded-lg text-slate-300 border border-white/5">📍 <span class="card-loc font-medium">{l_ko}</span></div>
-                <div class="flex justify-between items-center bg-white/5 px-2.5 py-1.5 rounded-lg"><span class="text-slate-400 font-medium">📊 <span class="lbl-mag">예상 규모</span></span><span class="font-black text-white">M {cfg['max_magnitude']:.1f}</span></div>
+                <div class="bg-white/5 px-2.5 py-2 rounded-lg space-y-1.5 border border-white/5">
+                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">📊 <span class="lbl-mag">예상 규모</span></span><span class="font-black text-white">M {cfg['max_magnitude']:.1f}</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-amber-500 to-red-500 h-full" style="width: {mag_percent}%"></div></div>
+                </div>
                 <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">📅 <span class="lbl-time">임계 시점</span></span><span class="font-bold text-slate-200">{eq_time.strftime('%m/%d %H시')}</span></div>
                 <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">🎯 <span class="lbl-win">오차 범위</span></span><span class="font-bold text-amber-400">{min_win} ~ {max_win}</span></div>
-                <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text font-bold text-blue-400">{tsu_final_height:.2f}m</span></div>
+                <div class="bg-white/5 px-2.5 py-2 rounded-lg space-y-1.5 border border-white/5">
+                    <div class="flex justify-between items-center"><span class="text-slate-400 font-medium">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text font-bold text-blue-400">{tsu_final_height:.2f}m</span></div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-blue-500 to-cyan-400 h-full" style="width: {tsu_percent}%"></div></div>
+                </div>
                 <div class="grid grid-cols-2 gap-1.5 text-center text-[10px] font-semibold text-slate-400 pt-1.5 border-t border-white/10">
                     <div class="bg-white/5 py-1 rounded">🌦️ <span class="lbl-rain">폭우</span>: {int(cfg['rain_mm'])}mm</div>
                     <div class="bg-white/5 py-1 rounded">🌀 <span class="lbl-storm">태풍</span>: {int(cfg['press_hpa'])}hPa</div>
@@ -157,8 +166,8 @@ def generate_web_dashboard(stations):
     <header class="border-b border-white/10 bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-7xl mx-auto px-4 py-2.5 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-lg">📊</span><h1 class="text-base font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-blue-400">SO-HMNS GLOBAL FORECAST</h1></div>
     <div class="flex items-center space-x-1.5 bg-slate-800 px-2.5 py-1 rounded-lg border border-white/10"><span class="text-xs">🌐</span><select id="langSelect" onchange="changeLanguage()" class="bg-transparent text-xs text-white font-bold focus:outline-none cursor-pointer"><option value="ko" class="bg-slate-900">KO</option><option value="en" class="bg-slate-900">EN</option><option value="ja" class="bg-slate-900">JA</option><option value="zh" class="bg-slate-900">ZH</option></select></div></div></header>
     <main class="max-w-7xl mx-auto px-4 py-4">
-        <section class="mb-5 bg-slate-900/50 border border-white/10 rounded-xl p-4"><h2 id="noticeTitle" class="text-xs font-bold mb-1 text-amber-400">💡 오픈 전세계 재해 정보 공개망 안내</h2><p id="noticeDesc" class="text-[11px] text-slate-400 leading-relaxed">본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.</p></section>
-        <section><h2 id="sectionTitle" class="text-sm font-black mb-4 flex items-center">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{cards_html}</div></section>
+        <section class="mb-5 bg-slate-900/50 border border-white/10 rounded-xl p-4"><h2 id="noticeTitle" class="text-xs font-bold mb-1 text-amber-400">💡 오픈 전세계 재해 정보 공개망 안내</h2><p id="noticeDesc" class="text-[11px] text-slate-400 leading-relaxed">본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.</p></section>
+        <section><h2 id="sectionTitle" class="text-sm font-black mb-4 flex items-center">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{{cards_html}}</div></section>
     </main>
     <footer class="max-w-7xl mx-auto px-4 py-4 border-t border-white/5 mt-8 text-center text-[10px] text-slate-500"><p id="footerText">© 2026 SO-HMNS 인프라. 구체화된 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다.</p></footer>
 """
@@ -166,10 +175,10 @@ def generate_web_dashboard(stations):
     html_content = html_content_base + """
     <script>
     const langDict = {
-        ko: { notice_title: "오픈 전세계 재해 정보 안내", notice_desc: "본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", section_title: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음", ft: "© 2026 SO-HMNS 인프라. 구체화된 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다." },
+        ko: { notice_title: "오픈 전세계 재해 정보 안내", notice_desc: "본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 세부 지리 위경도 좌표 및 재해 유형(지진, 화산, 쓰나미 등) 분류 태그를 동적 매핑하여 실시간 전 세계망에 공유합니다.", section_title: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음", ft: "© 2026 SO-HMNS 인프라. 다중 재해 분류 노드를 통해 GitHub Pages 개방망으로 전세계 배포됩니다." },
         en: { notice_title: "Global Disaster Information System", notice_desc: "This dashboard delivers real-time hazard warnings driven by USGS APIs. It tracks precise latitude/longitude hazard locations and specific event classifications (Earthquake, Volcano, Tsunami) distributed internationally.", section_title: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", ts_normal: "Normal", ts_alert: "WARNING", ts_none: "No Risk", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." },
         ja: { notice_title: "全世界災害情報公開システム", notice_desc: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグを統合追跡してリアルタイムに共有します。", section_title: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. 詳細な複合災害ノードをGitHub Pagesを通じて配信中。" },
-        zh: { notice_title: "全球灾害公共信息发布平台", notice_desc: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建的综合防护系统。系统全面跟踪精确的经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", section_title: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }
+        zh: { notice_title: "全球灾害公共信息发布平台", notice_desc: "本网站是基于GitHub Action与USGS全球实时地震监测站API构建의 综合防护系统。系统全面跟踪精确的经纬度地理坐标与灾害事件分类标签（地震、火山、海啸等），提供全天候多国语言联合预警。", section_title: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放多元化灾难节点查询。" }
     };
     function changeLanguage() {
         const l = document.getElementById("langSelect").value, t = langDict[l];
@@ -186,9 +195,11 @@ def generate_web_dashboard(stations):
             c.querySelector(".card-loc").innerText = c.getAttribute("data-loc-" + l);
             c.querySelector(".card-type").innerText = c.getAttribute("data-type-" + l);
             const st = c.getAttribute("data-tsunami-status"), v = c.getAttribute("data-tsunami-val"), n = c.querySelector(".tsunami-text");
-            if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
-            else if (st === "NORMAL") n.innerText = v + " (" + t.ts_normal + ")";
-            else n.innerText = t.ts_none;
+            if (n) {
+                if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
+                else if (st === "NORMAL") n.innerText = v + " (" + t.ts_normal + ")";
+                else n.innerText = t.ts_none;
+            }
         });
     }
     </script>
@@ -201,9 +212,9 @@ def deploy_to_github_pages():
     print("\n🚀 [글로벌 릴리즈] 내 깃허브 원격 배포망 업로드 중...")
     try:
         subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-        subprocess.run(["git", "commit", "-m", "정밀 위경도 정보 및 재해 유형별 분류 태그 완전체 분할 융합 배포"], check=True)
+        subprocess.run(["git", "commit", "-m", "상용화 프로그레스 차트바 및 데이터 가드 완전체 통합 배포"], check=True)
         subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("\n🎉 [배포 최종 성공!!] 구체적인 발생 위치 정보 및 재해 분류 시스템이 완벽하게 반영되었습니다.")
+        print("\n🎉 [배포 최종 성공!!] 가로형 프로그레스바 및 예외 방어 처리가 완전체로 통합되었습니다.")
         print("🔗 공식 배포 주소: https://github.io")
         print("="*75)
     except Exception as e: print(f"⚠️ 배포 실패: {e}")
