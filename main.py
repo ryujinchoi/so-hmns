@@ -20,7 +20,6 @@ def fetch_live_usgs_data():
             alpha = round(0.1 + (mag * 0.02), 2)
             beta = round(0.3 + (mag * 0.04), 2)
             p_slope = round(0.05 + (mag * 0.015), 3)
-            # 디폴트 기상 관측 사양 매핑
             entry = f"실시간_{place}, {scale}, {alpha}, {beta}, 0.10, 0.40, 0.30, 1.2, 3000.0, {p_slope}, True, {mag}, 120.0, 35.0, 965.0"
             live_entries.append(entry)
         return live_entries
@@ -50,12 +49,14 @@ def load_dynamic_observation_stations():
             if line.startswith("#") or not line.strip(): continue
             parts = [p.strip() for p in line.split(",")]
             if len(parts) < 15: continue
-            stations[parts] = {
-                "scale_factor": float(parts), "alpha": float(parts), "beta": float(parts),
-                "gamma": float(parts), "delta": float(parts), "k": float(parts),
-                "Q_in": float(parts), "h_deep": float(parts), "p_slope": float(parts),
-                "tsunami_active": parts.lower() == "true", "max_magnitude": float(parts),
-                "rain_mm": float(parts), "wind_ms": float(parts), "press_hpa": float(parts)
+            name = parts[0]
+            # 인덱스를 하나씩 확실하게 명시하여 float 에러 완전 방지
+            stations[name] = {
+                "scale_factor": float(parts[1]), "alpha": float(parts[2]), "beta": float(parts[3]),
+                "gamma": float(parts[4]), "delta": float(parts[5]), "k": float(parts[6]),
+                "Q_in": float(parts[7]), "h_deep": float(parts[8]), "p_slope": float(parts[9]),
+                "tsunami_active": parts[10].lower() == "true", "max_magnitude": float(parts[11]),
+                "rain_mm": float(parts[12]), "wind_ms": float(parts[13]), "press_hpa": float(parts[14])
             }
     return stations
 
@@ -70,11 +71,8 @@ def get_earthquake_seismicity_rate(t, state_type, t_mainshock, slope):
     return 0.1
 
 def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in, rain_mm, t):
-    """[초정밀 고도화] 지하수 도달 시차(Hydrological Lag)를 반영한 미분 방정식"""
-    # 강우가 지하 마그마방 압력권까지 도달하는 물리적 시간 감쇄 표현 (시차 보정)
     lag_factor = 1.0 - math.exp(-0.15 * (t + 0.1))
     rain_effect = 1.0 + ((rain_mm * lag_factor) / 400.0) 
-    
     p_eff, s_eff = math.tanh(p), math.tanh(s)
     dp_dt = alpha * (Q_in * rain_effect - (1.0 - g) * 0.5 * p_eff) + gamma * math.sin(s_eff)
     ds_dt = beta * ((p_eff - 0.5) if p_eff > 0.5 else 0.0) - delta * s_eff
@@ -82,27 +80,18 @@ def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in, rain_mm,
     return dp_dt, ds_dt, dg_dt
 
 def get_tsunami_wave_height(t, t_trigger, initial_energy, current_depth, h_deep, wind_ms, press_hpa):
-    """[초정밀 고도화] Green's Law + 역기압 효과 + 조석 위상 인력 마찰 보정"""
     dt = t - t_trigger
     if dt < 0: return 0.0
     shoaling_factor = (h_deep / (current_depth if current_depth > 0.5 else 0.5)) ** 0.25
     base_tsunami = abs(initial_energy * math.exp(-0.08 * dt) * math.sin(1.5 * dt)) * shoaling_factor
-    
-    # 1. 역기압 효과 및 풍랑 변위
     pressure_surge = max(0.0, (1013.0 - press_hpa) * 0.01)
     wind_surge = (wind_ms ** 2) / 350.0
-    
-    # 2. 조석 주기 결합 (하루 2회 만조/간조 파동 변조 - 진폭 1.2m 범위 반영)
-    # 모델 시간축 t를 일수 기준으로 치환하여 조석 위상 파싱
     tide_surge = 0.6 * math.sin(2.0 * math.pi * (t / 0.5)) 
-    
     return base_tsunami + pressure_surge + wind_surge + tide_surge
 
 def calculate_lyapunov_containment(p, s, g, t):
-    """[초정밀 고도화] 조석 기석에 의한 지구 고체인력(Solid Earth Tide) 변동 에너지 보정"""
     p_safe = math.tanh(p)
     s_safe = math.tanh(s)
-    # 기하학적 궤적 경계면에 미세한 달 인력 섭동(0.02 가중치) 결합
     tidal_perturbation = 0.02 * math.cos(2.0 * math.pi * (t / 0.5))
     return 0.5 * (p_safe**2) + 0.3 * (s_safe**2) + 0.8 * (g**2) * math.exp(p_safe) + tidal_perturbation
 
@@ -126,7 +115,7 @@ def run_combined_forecast_system():
         choice_idx = int(input(f"분석 대상 구역 번호 선택 (1~{len(stations)}): ").strip()) - 1
         target_name = list(stations.keys())[choice_idx]
     except:
-        target_name = list(stations.keys())
+        target_name = list(stations.keys())[0]
         
     cfg = stations[target_name]
     p, s, g = 0.5, 0.1, 0.2
@@ -148,7 +137,7 @@ def run_combined_forecast_system():
         event_time = get_real_timestamp(base_date, t, cfg["scale_factor"])
         current_timestamp_str = event_time.strftime("%Y년 %m월 %d일 %H시 %M분")
         
-        error_range = timedelta(days=2 * cfg["scale_factor"] / 4.0) # 수식 정밀화로 오차 신뢰구간 3일에서 2일로 압축 좁힘
+        error_range = timedelta(days=2 * cfg["scale_factor"] / 4.0)
         window_str = f"({(event_time-error_range).strftime('%m/%d')}~{(event_time+error_range).strftime('%m/%d')})"
         
         for _ in range(steps):
@@ -166,7 +155,7 @@ def run_combined_forecast_system():
             tsunami_triggered = True; t_tsunami_start = t; tsunami_energy += 2.5
             
         if W > c_safe and W <= c_rupture and not volcano_alert:
-            msg = f" can🌋 [{current_timestamp_str} {window_str}] 수문 시차 유입 및 조석인력 중첩으로 리야푸노프 경계 임계 탈출."
+            msg = f"🌋 [{current_timestamp_str} {window_str}] 수문 시차 유입 및 조석인력 중첩으로 리야푸노프 경계 임계 탈출."
             print(msg); log_to_target_file(msg)
             volcano_alert = True
             
