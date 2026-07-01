@@ -33,7 +33,8 @@ def load_dynamic_observation_stations():
             if line.startswith("#") or not line.strip(): continue
             pt = [p.strip() for p in line.split(",")]
             if len(pt) < 15: continue
-            stations[pt[0]] = {
+            name = pt[0]
+            stations[name] = {
                 "scale_factor": float(pt[1]), "alpha": float(pt[2]), "beta": float(pt[3]),
                 "gamma": float(pt[4]), "delta": float(pt[5]), "k": float(pt[6]),
                 "Q_in": float(pt[7]), "h_deep": float(pt[8]), "p_slope": float(pt[9]),
@@ -42,16 +43,68 @@ def load_dynamic_observation_stations():
             }
     return stations
 
+def get_earthquake_seismicity_rate(t, t_m, slope):
+    if t < t_m: return 0.2 * math.exp(slope * t)
+    return 5.0 / (((t - t_m) if (t - t_m) > 0 else 0.01) ** 1.1)
+
+def volcano_dynamic_system(p, s, g, alpha, beta, gamma, delta, k, Q_in, rain, t):
+    rain_effect = 1.0 + ((rain * (1.0 - math.exp(-0.15 * (t + 0.1)))) / 400.0)
+    p_e, s_e = math.tanh(p), math.tanh(s)
+    dp = alpha * (Q_in * rain_effect - (1.0 - g) * 0.5 * p_e) + gamma * math.sin(s_e)
+    ds = beta * ((p_e - 0.5) if p_e > 0.5 else 0.0) - delta * s_e
+    dg = (p_e * (1.0 - g)) * math.exp(-k * p_e) - 0.2 * s_e * g
+    return dp, ds, dg
+
+def calculate_lyapunov_containment(p, s, g, t):
+    p_s, s_s = math.tanh(p), math.tanh(s)
+    return 0.5 * (p_s**2) + 0.3 * (s_s**2) + 0.8 * (g**2) * math.exp(p_s) + 0.02 * math.cos(2.0 * math.pi * (t / 0.5))
+
 def generate_web_dashboard(stations):
     base_date = datetime.now()
     cards_html = ""
     for name, cfg in stations.items():
-        eq_time = base_date + timedelta(days=20.0 * cfg["scale_factor"])
+        p, s, g = 0.5, 0.1, 0.2
+        t, t_end, dt, steps = 0.0, 40.0, 0.2, 20
+        sub_dt = dt / steps
+        t_m = 20.0
+        tsunami_triggered = False
+        t_tsu_start, tsu_energy, forecast_t, tsu_final_height = 0.0, 0.0, t_end, 0.0
+        
+        while t <= t_end:
+            eq_rate = get_earthquake_seismicity_rate(t, t_m, cfg["p_slope"])
+            for _ in range(steps):
+                s_comb = s + eq_rate
+                dp, ds, dg = volcano_dynamic_system(p, s_comb, g, cfg["alpha"], cfg["beta"], cfg["gamma"], cfg["delta"], cfg["k"], cfg["Q_in"], cfg["rain_mm"], t)
+                p += dp * sub_dt; s += ds * sub_dt; g += dg * sub_dt
+            
+            s_comb = s + eq_rate
+            W = calculate_lyapunov_containment(p, s_comb, g, t)
+            
+            if t >= t_m and not tsunami_triggered:
+                tsunami_triggered = True
+                t_tsu_start = t
+                tsu_energy += 2.5
+                
+            if W > 0.9 and tsunami_triggered:
+                tsu_energy += 4.0
+                
+            if tsunami_triggered and cfg["tsunami_active"]:
+                dt_tsu = t - t_tsu_start
+                if dt_tsu >= 0:
+                    c_depth = cfg["h_deep"] if t < 32.0 else max(10.0, cfg["h_deep"] - ((cfg["h_deep"] - 10.0) * (t - 32.0) / 8.0))
+                    sh_factor = (cfg["h_deep"] / (c_depth if c_depth > 0.5 else 0.5)) ** 0.25
+                    tsu_h = abs(tsu_energy * math.exp(-0.08 * dt_tsu) * math.sin(1.5 * dt_tsu)) * sh_factor
+                    tsu_h += 0.6 * math.sin(2.0 * math.pi * (t / 0.5))
+                    if tsu_h > tsu_final_height:
+                        tsu_final_height = tsu_h
+                    if tsu_h > 12.0:
+                        forecast_t = t
+                        break
+            t += dt
+            
+        eq_time = base_date + timedelta(days=forecast_t * cfg["scale_factor"])
         err = 2 * cfg["scale_factor"] / 4.0
         min_win, max_win = (eq_time - timedelta(days=err)).strftime("%m/%d"), (eq_time + timedelta(days=err)).strftime("%m/%d")
-        p_surge = max(0.0, (1013.0 - cfg["press_hpa"]) * 0.01)
-        w_surge = (cfg["wind_ms"] ** 2) / 350.0
-        calc_tsunami = (2.5 * math.exp(-0.08 * 12.0)) * ((cfg["h_deep"]/10.0)**0.25) + p_surge + w_surge if cfg["tsunami_active"] else 0.0
         
         if cfg["max_magnitude"] >= 8.0: bg, bde = "from-red-950 border-red-500 text-red-400", "bg-red-500/20 text-red-400 border-red-500"
         elif cfg["max_magnitude"] >= 6.5: bg, bde = "from-amber-950 border-amber-500 text-amber-400", "bg-amber-500/20 text-amber-400 border-amber-500"
@@ -60,17 +113,17 @@ def generate_web_dashboard(stations):
         en = name.replace('인도네시아_순다해구','Sunda Trench').replace('미국_산안드레아스','San Andreas').replace('이탈리아_베수비오','Vesuvius').replace('대한민국_양산단층','Yangsan Fault').replace('실시간_', 'Live_')
         ja = name.replace('인도네시아_순다해구','スンダ海溝').replace('미국_산안드레아스','サンアンドレアス断層').replace('이탈리아_베수비오','ヴェスヴィオ').replace('대한민국_양산단층','梁山断層').replace('실시간_', 'リアルタイム_')
         zh = name.replace('인도네시아_순다해구','苏恩达海沟').replace('미국_산안드레아스','圣安德烈亚斯断层').replace('이탈리아_베수비오','维苏威火山').replace('대한민국_양산단층','梁山断层').replace('실시간_', '实时_')
-        t_stat = "ALERT" if calc_tsunami > 3.0 else "NORMAL"
+        t_stat = "ALERT" if tsu_final_height > 3.0 else "NORMAL"
         if not cfg["tsunami_active"]: t_stat = "NONE"
 
         cards_html += f"""
-        <div class="card bg-gradient-to-br {bg} to-slate-950 border rounded-2xl p-5 shadow-2xl transition duration-300 hover:border-white/40" data-name-ko="{name}" data-name-en="{en}" data-name-ja="{ja}" data-name-zh="{zh}" data-tsunami-status="{t_stat}" data-tsunami-val="{calc_tsunami:.2f}m">
+        <div class="card bg-gradient-to-br {bg} to-slate-950 border rounded-2xl p-5 shadow-2xl transition duration-300 hover:border-white/40" data-name-ko="{name}" data-name-en="{en}" data-name-ja="{ja}" data-name-zh="{zh}" data-tsunami-status="{t_stat}" data-tsunami-val="{tsu_final_height:.2f}m">
             <div class="flex justify-between items-center mb-3"><h3 class="card-title text-base font-black text-white tracking-tight">{name}</h3><span class="badge px-2 py-0.5 text-[10px] font-bold rounded border {bde} animate-pulse">LIVE</span></div>
             <div class="space-y-2.5 text-xs">
                 <div class="flex justify-between items-center bg-white/5 px-2.5 py-1.5 rounded-lg"><span class="text-slate-400 font-medium">📊 <span class="lbl-mag">예상 규모</span></span><span class="font-black text-white">M {cfg['max_magnitude']:.1f}</span></div>
                 <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">📅 <span class="lbl-time">임계 시점</span></span><span class="font-bold text-slate-200">{eq_time.strftime('%m/%d %H시')}</span></div>
                 <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">🎯 <span class="lbl-win">오차 범위</span></span><span class="font-bold text-amber-400">{min_win} ~ {max_win}</span></div>
-                <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text font-bold text-blue-400">{calc_tsunami:.2f}m</span></div>
+                <div class="flex justify-between items-center px-1"><span class="text-slate-400 font-medium">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text font-bold text-blue-400">{tsu_final_height:.2f}m</span></div>
                 <div class="grid grid-cols-2 gap-1.5 text-center text-[10px] font-semibold text-slate-400 pt-1.5 border-t border-white/10">
                     <div class="bg-white/5 py-1 rounded">🌦️ <span class="lbl-rain">폭우</span>: {int(cfg['rain_mm'])}mm</div>
                     <div class="bg-white/5 py-1 rounded">🌀 <span class="lbl-storm">태풍</span>: {int(cfg['press_hpa'])}hPa</div>
@@ -78,7 +131,8 @@ def generate_web_dashboard(stations):
             </div>
         </div>"""
 
-    html = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>FORECAST</title><script src="https://tailwindcss.com"></script></head>
+    global html_content_base
+    html_content_base = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>FORECAST</title><script src="https://tailwindcss.com"></script></head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased">
     <header class="border-b border-white/10 bg-slate-900/80 backdrop-blur sticky top-0 z-50"><div class="max-w-7xl mx-auto px-4 py-2.5 flex justify-between items-center"><div class="flex items-center space-x-2"><span class="text-lg">📊</span><h1 class="text-base font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-blue-400">SO-HMNS GLOBAL FORECAST</h1></div>
     <div class="flex items-center space-x-1.5 bg-slate-800 px-2.5 py-1 rounded-lg border border-white/10"><span class="text-xs">🌐</span><select id="langSelect" onchange="changeLanguage()" class="bg-transparent text-xs text-white font-bold focus:outline-none cursor-pointer"><option value="ko" class="bg-slate-900">KO</option><option value="en" class="bg-slate-900">EN</option><option value="ja" class="bg-slate-900">JA</option><option value="zh" class="bg-slate-900">ZH</option></select></div></div></header>
@@ -87,44 +141,49 @@ def generate_web_dashboard(stations):
         <section><h2 id="sectionTitle" class="text-sm font-black mb-4 flex items-center">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">{cards_html}</div></section>
     </main>
     <footer class="max-w-7xl mx-auto px-4 py-4 border-t border-white/5 mt-8 text-center text-[10px] text-slate-500"><p id="footerText">© 2026 SO-HMNS 인프라. GitHub Pages 개방망을 통해 전세계 배포됩니다.</p></footer>
+"""
+
+    html_content = html_content_base + """
     <script>
-    const d = {{
-        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 푸앵카레 포함 정리 역학을 통해 재해 발생 임계 타임라인 신뢰 오차 범위를 극한으로 압축하여 실시간 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sy: "실시간 동기화", lm: "예상 규모", lt: "임계 시점", lw: "오차 범위", lts: "쓰나미 파고", lr: "폭우", ls: "태풍", tn: "정상", ta: "대형 경보", tno: "위험 없음", ft: "© 2026 SO-HMNS 인프라. GitHub Pages 개방망을 통해 전세계 배포됩니다." }},
-        en: {{ nt: "Global Disaster Info System", nd: "This dashboard delivers real-time hazard warnings driven by USGS APIs. Utilizing Poincaré containment dynamic laws, our system traps uncertainties to broadcast optimal alert time-windows.", st: "📡 Live Global Hazard Forecast Network", sy: "LIVE SYNC", lm: "Predicted Mag", lt: "Threshold Time", lw: "Confidence Win", lts: "Tsunami Height", lr: "Rain", ls: "Storm", tn: "Normal", ta: "WARNING", tno: "No Risk", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
-        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連携しています。ポアンカレ包含定理による多重物理方程式を駆使し、超高精度な災害予測タイムラインをグローバルに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sy: "リアルタイム同期", lm: "予測規模", lt: "臨界予測日時", lw: "信頼誤差範囲", lts: "複合津波波高", lr: "豪雨", ls: "台風", tn: "正常", ta: "大津波警報", tno: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. GitHub Pagesネットワークを通じて配信中。" }},
-        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本系统基于GitHub Action与USGS全球实时监测站构建。利用庞加莱包含定理多维动力学，锁定高度可靠的灾害临界突变时间，提供全天候联合预警。", st: "📡 全球全量数据实时联合预警网络", sy: "实时同步中", lm: "预估震级", lt: "爆发时间", lw: "置信范围", lts: "海啸波高", lr: "暴雨", ls: "台风", tn: "正常", ta: "海啸预警", tno: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 面向全球用户通过 GitHub Pages 开放查询。" }}
-    }};
-    function changeLanguage() {{
-        const l = document.getElementById("langSelect").value, t = d[l];
-        document.getElementById("noticeTitle").innerText = "💡 " + t.nt;
-        document.getElementById("noticeDesc").innerText = t.nd;
-        document.getElementById("sectionTitle").innerText = t.st;
-        document.getElementById("footerText").innerText = t.ft;
-        document.querySelectorAll(".card").forEach(c => {{
+    const langDict = {
+        ko: { notice_title: "오픈 전세계 재해 정보 안내", notice_desc: "본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 푸앵카레 포함 정리 역학을 통해 재해 발생 임계 타임라인 신뢰 오차 범위를 극한으로 압축하여 실시간 공유합니다.", section_title: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", l_rain: "폭우", l_storm: "태풍", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음" },
+        en: { notice_title: "Global Disaster Info System", notice_desc: "This dashboard delivers real-time hazard warnings driven by USGS APIs. Utilizing Poincaré containment dynamic laws, our system traps uncertainties to broadcast optimal alert time-windows.", section_title: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", l_rain: "Rain", l_storm: "Storm", ts_normal: "Normal", ts_alert: "WARNING", ts_none: "No Risk" },
+        ja: { notice_title: "全世界災害情報公開システム", notice_desc: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。ポアンカレ包含定理による多重物理方程式を駆使し、超高精度な災害予測タイムラインをグローバルに共有します。", section_title: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", l_rain: "豪雨", l_storm: "台風", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし" },
+        zh: { notice_title: "全球灾害公共信息发布平台", notice_desc: "本系统基于GitHub Action与USGS全球实时监测站构建。利用庞加莱包含定理多维动力学，锁定高度可靠的灾害临界突变时间，提供全天候联合预警。", section_title: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", l_rain: "暴雨", l_storm: "台风", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险" }
+    };
+    function changeLanguage() {
+        const l = document.getElementById("langSelect").value, t = langDict[l];
+        document.getElementById("noticeTitle").innerText = "💡 " + t.notice_title;
+        document.getElementById("noticeDesc").innerText = t.notice_desc;
+        document.getElementById("sectionTitle").innerText = t.section_title;
+        document.querySelectorAll(".card").forEach(c => {
             c.querySelector(".card-title").innerText = c.getAttribute("data-name-" + l);
-            c.querySelector(".badge").innerText = t.sy;
-            c.querySelector(".lbl-mag").innerText = t.lm;
-            c.querySelector(".lbl-time").innerText = t.lt;
-            c.querySelector(".lbl-win").innerText = t.lw;
-            c.querySelector(".lbl-tsunami").innerText = t.lts;
-            c.querySelector(".lbl-rain").innerText = t.lr;
-            c.querySelector(".lbl-storm").innerText = t.ls;
+            c.querySelector(".badge").innerText = t.sync;
+            c.querySelector(".lbl-mag").innerText = t.l_mag;
+            c.querySelector(".lbl-time").innerText = t.l_time;
+            c.querySelector(".lbl-win").innerText = t.l_win;
+            c.querySelector(".lbl-tsunami").innerText = t.l_tsunami;
+            c.querySelector(".lbl-rain").innerText = t.l_rain;
+            c.querySelector(".lbl-storm").innerText = t.l_storm;
             const st = c.getAttribute("data-tsunami-status"), v = c.getAttribute("data-tsunami-val"), n = c.querySelector(".tsunami-text");
-            if (st === "ALERT") n.innerText = v + " (" + t.ta + ")";
-            else if (st === "NORMAL") n.innerText = v + " (" + t.tn + ")";
-            else n.innerText = t.tno;
-        }});
-    }}
-    </script></body></html>"""
-    with open("index.html", "w", encoding="utf-8") as f: f.write(html)
+            if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
+            else if (st === "NORMAL") n.innerText = v + " (" + t.ts_normal + ")";
+            else n.innerText = t.ts_none;
+        });
+    }
+    </script>
+</body>
+</html>
+"""
+    with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
 
 def deploy_to_github_pages():
     print("\n🚀 [글로벌 릴리즈] 내 깃허브 원격 배포망 업로드 중...")
     try:
         subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-        subprocess.run(["git", "commit", "-m", "가독성 대폭 개편 및 컴팩트 레이아웃 갱신 배포"], check=True)
+        subprocess.run(["git", "commit", "-m", "상미분 적분 연산 솔버 완전 복구 및 다국어 프리미엄 UI 배포 완결"], check=True)
         subprocess.run(["git", "push", "origin", "main"], check=True)
-        print("\n🎉 [대시보드 리뉴얼 성공!] 약 30초 후 새로고침하여 깔끔해진 UI를 감상해 보세요:")
+        print("\n🎉 [배포 최종 성공!!] 연산 수식 및 인터페이스 통합 완료.")
         print("🔗 공식 배포 주소: https://github.io")
         print("="*75)
     except Exception as e: print(f"⚠️ 배포 실패: {e}")
