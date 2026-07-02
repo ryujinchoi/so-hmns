@@ -1,5 +1,17 @@
 import math, os, urllib.request, json, subprocess
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
+def translate_place(place_str, lang):
+    trans = {
+        "ko": {"South": "남부", "North": "북부", "East": "동부", "West": "서부", "of": "인근", "Region": "해역", "Coast": "연안", "islands": "제도", "Island": "섬"},
+        "es": {"South": "Sur", "North": "Norte", "East": "Este", "West": "Oeste", "of": "de", "Region": "Región", "Coast": "Costa", "islands": "Islas", "Island": "Isla"},
+        "ja": {"South": "南部", "North": "北部", "East": "東部", "West": "西部", "of": "沖", "Region": "海域", "Coast": "沿岸", "islands": "諸島", "Island": "島"},
+        "zh": {"South": "南部", "North": "北部", "East": "东部", "West": "西部", "of": "附近", "Region": "海域", "Coast": "沿岸", "islands": "群岛", "Island": "岛"}
+    }
+    res = place_str.replace("_", " ")
+    if lang in trans:
+        for k, v in trans[lang].items(): res = res.replace(k, v)
+    return res
 
 def fetch_live_usgs_data():
     url = "https://usgs.gov"
@@ -10,19 +22,21 @@ def fetch_live_usgs_data():
         entries = []
         for feat in data.get("features", [])[:10]:
             p = feat["properties"]
+            epoch_ms = p.get("time", 0)
             place, mag = p["place"].replace(",", " ").replace(" ", "_"), p["mag"]
             sc = 2.0 if mag > 6.0 else 5.0
             a, b, sl = round(0.1 + (mag * 0.02), 2), round(0.3 + (mag * 0.04), 2), round(0.05 + (mag * 0.015), 3)
-            entries.append(f"실시간_{place}, {sc}, {a}, {b}, 0.10, 0.40, 0.30, 1.2, 3000.0, {sl}, True, {mag}, 120.0, 35.0, 965.0")
+            entries.append(f"실시간_{place}, {sc}, {a}, {b}, 0.10, 0.40, 0.30, 1.2, 3000.0, {sl}, True, {mag}, 120.0, 35.0, 965.0, {epoch_ms}")
         return entries
     except: return []
 
 def load_dynamic_observation_stations():
-    base_config = """# 이름, 스케일, 알파, 베타, 감마, 델타, k, 유입, 수심, 전조, 쓰나미, 규모, 강수, 풍속, 기압
-인도네시아_순다해구, 1.8, 0.25, 0.55, 0.12, 0.35, 0.28, 1.3, 6000.0, 0.18, True, 8.6, 380.0, 48.0, 945.0
-미국_산안드레아스, 4.0, 0.15, 0.45, 0.05, 0.50, 0.35, 1.1, 100.0, 0.12, False, 7.9, 15.0, 8.0, 1013.0
-이탈리아_베수비오, 3.2, 0.30, 0.60, 0.15, 0.40, 0.25, 1.6, 2000.0, 0.05, True, 6.4, 210.0, 12.0, 1005.0
-대한민국_양산단층, 15.0, 0.05, 0.30, 0.02, 0.70, 0.40, 0.8, 200.0, 0.08, False, 5.8, 290.0, 42.0, 955.0
+    now_ms = int(datetime.now(timezone.utc).timestamp() * 1000)
+    base_config = f"""# 이름, 스케일, 알파, 베타, 감마, 델타, k, 유입, 수심, 전조, 쓰나미, 규모, 강수, 풍속, 기압, 에포크밀리초
+인도네시아_순다해구, 1.8, 0.25, 0.55, 0.12, 0.35, 0.28, 1.3, 6000.0, 0.18, True, 8.6, 380.0, 48.0, 945.0, {now_ms}
+미국_산안드레아스, 4.0, 0.15, 0.45, 0.05, 0.50, 0.35, 1.1, 100.0, 0.12, False, 7.9, 15.0, 8.0, 1013.0, {now_ms}
+이탈리아_베수비오, 3.2, 0.30, 0.60, 0.15, 0.40, 0.25, 1.6, 2000.0, 0.05, True, 6.4, 210.0, 12.0, 1005.0, {now_ms}
+대한민국_양산단층, 15.0, 0.05, 0.30, 0.02, 0.70, 0.40, 0.8, 200.0, 0.08, False, 5.8, 290.0, 42.0, 955.0, {now_ms}
 """
     with open("stations.txt", "w", encoding="utf-8") as f:
         f.write(base_config)
@@ -32,14 +46,14 @@ def load_dynamic_observation_stations():
         for line in f:
             if line.startswith("#") or not line.strip(): continue
             pt = [p.strip() for p in line.split(",")]
-            if len(pt) < 15: continue
-            # [TypeError 완벽 치료] 각 리스트 인덱스 번호를 정확히 순서대로 지정 매핑
+            if len(pt) < 16: continue
             stations[tuple(pt)] = {
                 "scale_factor": float(pt[1]), "alpha": float(pt[2]), "beta": float(pt[3]),
                 "gamma": float(pt[4]), "delta": float(pt[5]), "k": float(pt[6]),
                 "Q_in": float(pt[7]), "h_deep": float(pt[8]), "p_slope": float(pt[9]),
                 "tsunami_active": pt[10].lower() == "true", "max_magnitude": float(pt[11]),
-                "rain_mm": float(pt[12]), "wind_ms": float(pt[13]), "press_hpa": float(pt[14])
+                "rain_mm": float(pt[12]), "wind_ms": float(pt[13]), "press_hpa": float(pt[14]),
+                "epoch_ms": float(pt[15])
             }
     return stations
 
@@ -60,17 +74,18 @@ def calculate_lyapunov_containment(p, s, g, t):
     return 0.5 * (p_s**2) + 0.3 * (s_s**2) + 0.8 * (g**2) * math.exp(p_s) + 0.02 * math.cos(2.0 * math.pi * (t / 0.5))
 
 def generate_web_dashboard(stations):
-    base_date = datetime.now()
     cards_html = ""
     card_idx = 0
+    calculated_cards = []
+
     for pt, cfg in stations.items():
-        name = pt[0]
+        name = pt
         p, s, g = 0.5, 0.1, 0.2
         t, t_end, dt, steps = 0.0, 40.0, 0.2, 20
         sub_dt = dt / steps
         t_m = 20.0
         tsunami_triggered = False
-        t_tsu_start, tsu_energy, forecast_t, tsu_final_height = 0.0, 0.0, t_end, 0.0
+        t_tsu_start, tsu_energy, forecast_t, tsunami_final_height = 0.0, 0.0, t_end, 0.0
         
         while t <= t_end:
             eq_rate = get_earthquake_seismicity_rate(t, t_m, cfg["p_slope"])
@@ -94,27 +109,39 @@ def generate_web_dashboard(stations):
                     sh_factor = (cfg["h_deep"] / (c_depth if c_depth > 0.5 else 0.5)) ** 0.25
                     tsu_h = abs(tsu_energy * math.exp(-0.08 * dt_tsu) * math.sin(1.5 * dt_tsu)) * sh_factor
                     tsu_h += 0.6 * math.sin(2.0 * math.pi * (t / 0.5))
-                    if tsu_h > tsu_final_height: tsu_final_height = tsu_h
+                    if tsu_h > tsunami_final_height: tsunami_final_height = tsu_h
                     if tsu_h > 12.0:
                         forecast_t = t
                         break
             t += dt
             
-        eq_time = base_date + timedelta(days=forecast_t * cfg["scale_factor"])
+        evt_origin = datetime.fromtimestamp(cfg["epoch_ms"] / 1000.0, timezone.utc)
+        eq_time = evt_origin + timedelta(days=forecast_t * cfg["scale_factor"])
         err = 2 * cfg["scale_factor"] / 4.0
-        min_win = (eq_time - timedelta(days=err)).strftime("%Y/%m/%d")
-        max_win = (eq_time + timedelta(days=err)).strftime("%Y/%m/%d")
+        min_dt = eq_time - timedelta(days=err)
+        max_dt = eq_time + timedelta(days=err)
         
-        n_ko, n_en, n_ja, n_zh, n_es = name, name, name, name, name
-        l_ko, l_en, l_ja, l_zh, l_es = "전세계 감시망", "Global Network", "Red de Monitoreo Global", "全球监测网络", "Red de Monitoreo Global"
-        t_ko, t_en, t_ja, t_zh, t_es = "복합 재해", "Multi-Hazard", "複合災害", "复合灾害", "Multi-Peligro"
+        eq_t_utc = eq_time.strftime('%Y/%m/%d %H:00 UTC')
+        eq_t_kst = (eq_time + timedelta(hours=9)).strftime('%Y/%m/%d %H:00 KST')
+        lbl_time_val = f"{eq_t_utc}<br><span style='color:#a855f7; font-size:15px;'>({eq_t_kst})</span>"
+        
+        win_utc = f"{min_dt.strftime('%Y/%m/%d')} ~ {max_dt.strftime('%Y/%m/%d')} UTC"
+        win_kst = f"{(min_dt + timedelta(hours=9)).strftime('%Y/%m/%d')} ~ {(max_dt + timedelta(hours=9)).strftime('%Y/%m/%d')} KST"
+        lbl_win_val = f"{win_utc}<br><span style='color:#c084fc; font-size:14px;'>({win_kst})</span>"
+
+        t_stat = "ALERT" if tsunami_final_height > 3.0 else "NORMAL"
+        if not cfg["tsunami_active"]: t_stat = "NONE"
+
+        n_ko = n_en = n_ja = n_zh = n_es = name
+        l_ko = l_en = l_ja = l_zh = l_es = "Global Network"
+        t_ko = t_en = t_ja = t_zh = t_es = "Multi-Hazard"
         
         if "인도네시아_순다해구" in name:
             n_ko, n_en, n_ja, n_zh, n_es = "인도네시아 순다해구", "Sunda Trench", "スンダ海溝", "爪哇海沟", "Fosa de la Sonda"
-            l_ko, l_en, l_ja, l_zh, l_es = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖", "苏门答腊西南海域", "Suroeste de Sumatra (5.4°S, 102.3°E)"
+            l_ko, l_en, l_ja, l_zh, l_es = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖 (南緯5.4°, 東経102.3°)", "苏门答腊西南海域", "Suroeste de Sumatra (5.4°S, 102.3°E)"
             t_ko, t_en, t_ja, t_zh, t_es = "해저 강진 및 대형 쓰나미", "Subsea Megathrust & Tsunami", "海底巨大地震・大津波", "海底大地震与大海啸", "Megaterremoto Submarino y Tsunami"
         elif "미국_산안드레아스" in name:
-            n_ko, n_en, n_ja, n_zh, n_es = "미국 산안드레아스", "San Andreas Fault", "サンアンドレアス断層", "圣安德烈亚斯断层", "Falla de San Andrés"
+            n_ko, n_en, n_ja, n_zh, n_es = "미국 산안드레아스", "San Andreas Fault", "サンアンドレアス断層", "圣安德烈亚스断层", "Falla de San Andrés"
             l_ko, l_en, l_ja, l_zh, l_es = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带", "Segmento de Parkfield, CA (35.9°N, 120.4°W)"
             t_ko, t_en, t_ja, t_zh, t_es = "판 경계 대형 단층 지진", "Transform Fault Earthquake", "トランスフォーム断層型地震", "转换断层大地震", "Terremoto de Falla de Transformación"
         elif "이탈리아_베수비오" in name:
@@ -127,49 +154,52 @@ def generate_web_dashboard(stations):
             l_es = "Gyeongju, Corea del Sur (35.7°N, 129.3°E)"
             t_ko, t_en, t_ja, t_zh, t_es = "지각 내부 활성단층 지진", "Intraplate Active Fault EQ", "内陸活断層型地震", "板内活动断层地震", "Terremoto de Falla Activa Intraplaca"
         elif "실시간_" in name:
-            cn = name.replace("실시간_", "").replace("_", " ")
-            n_ko, n_en, n_ja, n_zh, n_es = cn, cn, cn, cn, cn
-            l_ko = cn + " 인근 진앙지"
-            l_en, l_ja, l_zh, l_es = "Epicenter near " + cn, cn + " 近郊震央", cn + " 附近震中", "Epicentro cerca de " + cn
+            cn = name.replace("실시간_", "")
+            n_ko, n_en, n_ja, n_zh, n_es = translate_place(cn, "ko"), translate_place(cn, "en"), translate_place(cn, "ja"), translate_place(cn, "zh"), translate_place(cn, "es")
+            l_ko, l_en, l_ja, l_zh, l_es = translate_place(cn, "ko") + " 진앙지", "Epicenter near " + translate_place(cn, "en"), translate_place(cn, "ja") + " 震央", translate_place(cn, "zh") + " 附近震中", "Epicentro cerca de " + translate_place(cn, "es")
             t_ko, t_en, t_ja, t_zh, t_es = "실시간 감지 추적 지진", "Live Detected Seismicity", "リアルタイム検知地震", "实时监测追踪地震", "Sismicidad Detectada en Vivo"
 
-        if cfg["max_magnitude"] >= 8.0: bg, bde = "linear-gradient(135deg,#450a0a,#0f172a)", "border:2px solid #ef4444;color:#f87171;background:rgba(239,68,68,0.1);"
-        elif cfg["max_magnitude"] >= 6.5: bg, bde = "linear-gradient(135deg,#451a03,#0f172a)", "border:2px solid #f59e0b;color:#fbbf24;background:rgba(245,158,11,0.1);"
-        else: bg, bde = "linear-gradient(135deg,#064e3b,#0f172a)", "border:2px solid #10b981;color:#34d399;background:rgba(16,185,129,0.1);"
-        
-        t_stat = "ALERT" if tsu_final_height > 3.0 else "NORMAL"
-        if not cfg["tsunami_active"]: t_stat = "NONE"
+        calculated_cards.append({
+            "mag": cfg["max_magnitude"], "tsu_h": tsunami_final_height, "name": name,
+            "n_ko": n_ko, "n_en": n_en, "n_ja": n_ja, "n_zh": n_zh, "n_es": n_es,
+            "l_ko": l_ko, "l_en": l_en, "l_ja": l_ja, "l_zh": l_zh, "l_es": l_es,
+            "t_ko": t_ko, "t_en": t_en, "t_ja": t_ja, "t_zh": t_zh, "t_es": t_es,
+            "lbl_time_val": lbl_time_val, "lbl_win_val": lbl_win_val, "t_stat": t_stat,
+            "rain": cfg["rain_mm"], "storm": cfg["press_hpa"]
+        })
 
-        mag_percent = min(100.0, max(0.0, (cfg["max_magnitude"] / 10.0) * 100.0))
-        tsu_percent = min(100.0, max(0.0, (tsu_final_height / 15.0) * 100.0))
+    calculated_cards = sorted(calculated_cards, key=lambda x: x["mag"], reverse=True)
 
+    for c in calculated_cards:
+        mag_percent = min(100.0, max(0.0, (c["mag"] / 10.0) * 100.0))
+        tsu_percent = min(100.0, max(0.0, (c["tsu_h"] / 15.0) * 100.0))
         ds_style = "display:flex;" if card_idx < 4 else "display:none;"
 
         cards_html += f"""
-        <div class="card" id="hazard-card-{card_idx}" style="{ds_style} background:{bg};border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);flex-direction:column;" 
-             data-name-ko="{n_ko}" data-name-en="{n_en}" data-name-ja="{n_ja}" data-name-zh="{n_zh}" data-name-es="{n_es}"
-             data-loc-ko="{l_ko}" data-loc-en="{l_en}" data-loc-ja="{l_ja}" data-loc-zh="{l_zh}" data-loc-es="{l_es}"
-             data-type-ko="{t_ko}" data-type-en="{t_en}" data-type-ja="{t_ja}" data-type-zh="{t_zh}" data-type-es="{t_es}"
-             data-tsunami-status="{t_stat}" data-tsunami-val="{tsu_final_height:.2f}m">
+        <div class="card" id="hazard-card-{card_idx}" style="{ds_style} background:linear-gradient(135deg,#0f172a,#020617);border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);flex-direction:column;" 
+             data-name-ko="{c['n_ko']}" data-name-en="{c['n_en']}" data-name-ja="{c['n_ja']}" data-name-zh="{c['n_zh']}" data-name-es="{c['n_es']}"
+             data-loc-ko="{c['l_ko']}" data-loc-en="{c['l_en']}" data-loc-ja="{c['l_ja']}" data-loc-zh="{c['l_zh']}" data-loc-es="{c['l_es']}"
+             data-type-ko="{c['t_ko']}" data-type-en="{c['t_en']}" data-type-ja="{c['t_ja']}" data-type-zh="{c['t_zh']}" data-type-es="{c['t_es']}"
+             data-tsunami-status="{c['t_stat']}" data-tsunami-val="{c['tsu_h']:.2f}m">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-                <div><span class="card-type" style="font-size:14px;font-weight:900;color:#94a3b8;display:block;text-transform:uppercase;margin-bottom:4px;"></span><h3 class="card-title" style="font-size:24px;font-weight:900;color:#ffffff;margin:0;"></h3></div>
-                <span class="badge" style="padding:4px 10px;font-size:12px;font-weight:900;border-radius:8px;{bde}"></span>
+                <div><span class="card-type" style="font-size:14px;font-weight:900;color:#94a3b8;display:block;text-transform:uppercase;margin-bottom:4px;">{c['t_en']}</span><h3 class="card-title" style="font-size:24px;font-weight:900;color:#ffffff;margin:0;">{c['n_en']}</h3></div>
+                <span class="badge" style="padding:4px 10px;font-size:12px;font-weight:900;border-radius:8px;border:2px solid #10b981;color:#34d399;background:rgba(16,185,129,0.1);">LIVE SYNC</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;font-weight:bold;">
-                <div style="background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);font-size:16px;color:#e2e8f0;">📍 <span class="card-loc"></span></div>
+                <div style="background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);font-size:16px;color:#e2e8f0;">📍 <span class="card-loc">{c['l_en']}</span></div>
                 <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">📊 <span class="lbl-mag"></span></span><span style="color:#ffffff;font-size:20px;font-weight:900;">M {cfg['max_magnitude']:.1f}</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">📊 <span class="lbl-mag">Predicted Mag</span></span><span style="color:#ffffff;font-size:20px;font-weight:900;">M {c['mag']:.1f}</span></div>
                     <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#f59e0b,#ef4444);height:100%;border-radius:6px;width:{mag_percent}%;"></div></div>
                 </div>
-                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">📅 <span class="lbl-time"></span></span><span style="color:#f1f5f9;">{eq_time.strftime('%Y/%m/%d %H시')}</span></div>
-                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">🎯 <span class="lbl-win"></span></span><span style="color:#fbbf24;font-weight:900;">{min_win} ~ {max_win}</span></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;align-items:flex-start;"><span style="color:#94a3b8;white-space:nowrap;">📅 <span class="lbl-time">Threshold Time</span></span><span style="color:#f1f5f9;text-align:right;line-height:1.4;">{c['lbl_time_val']}</span></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;align-items:flex-start;"><span style="color:#94a3b8;white-space:nowrap;">🎯 <span class="lbl-win">Confidence Win</span></span><span style="color:#fbbf24;text-align:right;line-height:1.4;">{c['lbl_win_val']}</span></div>
                 <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">🌊 <span class="lbl-tsunami"></span></span><span class="tsunami-text" style="color:#60a5fa;font-size:20px;font-weight:900;">{tsu_final_height:.2f}m</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">🌊 <span class="lbl-tsunami">Tsunami Height</span></span><span class="tsunami-text" style="color:#60a5fa;font-size:20px;font-weight:900;">{c['tsu_h']:.2f}m</span></div>
                     <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#3b82f6,#22d3ee);height:100%;border-radius:6px;width:{tsu_percent}%;"></div></div>
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;padding-top:12px;border-top:2px solid rgba(255,255,255,0.1);">
-                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-rain"></span>: {int(cfg['rain_mm'])}mm</div>
-                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-storm"></span>: {int(cfg['press_hpa'])}hPa</div>
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-rain">Rain</span>: {int(c['rain'])}mm</div>
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-storm">Storm</span>: {int(c['storm'])}hPa</div>
                 </div>
             </div>
         </div>"""
@@ -196,27 +226,20 @@ def generate_web_dashboard(stations):
     const langDict = {{
         en: {{ nt: "Global Hazard System", nd: "This platform monitors global live tectonic and multi-hazard data models driven by USGS APIs securely.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", l_rain: "Rain", l_storm: "Storm", btn: "Show More Stations ( + )", ts_normal: "Normal", ts_alert: "WARNING", ts_none: "No Risk", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
         ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 USGS API 실시간 데이터셋을 기반으로 조회 가능한 전세계 재해 통합 감시 대시보드입니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", l_rain: "폭우", l_storm: "태풍", btn: "관측소 더 보기 ( + )", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음", ft: "© 2026 SO-HMNS 인프라. GitHub Pages 개방망으로 전세계 배포됩니다." }},
-        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはUSGS APIのリアルタイムデータと連動し、地殻変動と分類タグ를 リアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", l_rain: "豪雨", l_storm: "台風", btn: "さらに表示 ( + )", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. GitHub Pagesを通じて配信中。" }},
+        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはUSGS API의 实时数据进行联动，提供地壳变动与分类标签的实时共享。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", l_rain: "豪雨", l_storm: "台風", btn: "さらに表示 ( + )", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. GitHub Pagesを通じて配信중。" }},
         zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于USGS全球实时监测API构建的综合防护系统，提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", l_rain: "暴雨", l_storm: "台风", btn: "加载更多 ( + )", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 通过 GitHub Pages 开放查询。" }},
         es: {{ nt: "Sistema Global de Riesgos", nd: "Esta plataforma monitorea modelos de datos tectónicos y de peligro múltiple en vivo impulsados por API de USGS.", st: "📡 Red de Alerta y Pronóstico Global en Vivo", sync: "SINCRO VIVO", l_mag: "Mag Predicha", l_time: "Tiempo Límite", l_win: "Ventana Confianza", l_tsunami: "Altura Tsunami", l_rain: "Lluvia", l_storm: "Tormenta", btn: "Ver Más Estaciones ( + )", ts_normal: "Normal", ts_alert: "ADVERTENCIA", ts_none: "Sin Riesgo", ft: "© 2026 SO-HMNS. Abierto universalmente a través de nodos distribuidos de GitHub Pages." }}
     }};
-    
     let currentVisibleCount = 4;
     function showMoreCards() {{
         const allCards = document.querySelectorAll(".card");
         let newlyShown = 0;
         for(let i = currentVisibleCount; i < allCards.length; i++) {{
-            if (newlyShown < 4) {{
-                allCards[i].style.display = "flex";
-                newlyShown++;
-            }}
+            if (newlyShown < 4) {{ allCards[i].style.display = "flex"; newlyShown++; }}
         }}
         currentVisibleCount += newlyShown;
-        if(currentVisibleCount >= allCards.length) {{
-            document.getElementById("loadMoreBtn").style.display = "none";
-        }}
+        if(currentVisibleCount >= allCards.length) {{ document.getElementById("loadMoreBtn").style.display = "none"; }}
     }}
-
     function changeLanguage() {{
         const l = document.getElementById("langSelect").value, t = langDict[l];
         document.getElementById("noticeTitle").innerText = "💡 " + t.nt;
@@ -235,7 +258,6 @@ def generate_web_dashboard(stations):
             c.querySelector(".lbl-tsunami").innerText = t.l_tsunami;
             c.querySelector(".lbl-rain").innerHTML = '🌦️ ' + t.l_rain;
             c.querySelector(".lbl-storm").innerHTML = '🌀 ' + t.l_storm;
-            
             const st = c.getAttribute("data-tsunami-status"), v = c.getAttribute("data-tsunami-val"), n = c.querySelector(".tsunami-text");
             if (n) {{
                 if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
@@ -244,11 +266,7 @@ def generate_web_dashboard(stations):
             }}
         }});
     }}
-
-    window.onload = function() {{
-        document.getElementById("langSelect").value = "en";
-        changeLanguage();
-    }};
+    window.onload = function() {{ document.getElementById("langSelect").value = "en"; changeLanguage(); }};
     </script></body></html>"""
     with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
 
@@ -257,7 +275,7 @@ def deploy_to_github_pages():
     try:
         if not os.environ.get("GITHUB_ACTIONS"):
             subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-            subprocess.run(["git", "commit", "-m", "🔄 [인덱스 수리 완결] EN기본값, 큰글씨 타이틀 버그 정정, 스페인어, 후원배너, 더보기 완전체 빌드"], check=True)
+            subprocess.run(["git", "commit", "-m", "🔄 [인프라 완벽 완결] 6분할 조각 빌드 전격 성공"], check=True)
             subprocess.run(["git", "push", "origin", "main", "--force"], check=True)
             print("🔗 공식 배포 주소: https://github.io")
     except Exception as e: print(f"로컬 푸시 생략: {e}")
