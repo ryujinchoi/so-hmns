@@ -8,7 +8,7 @@ def fetch_live_usgs_data():
         with urllib.request.urlopen(req, timeout=5) as res:
             data = json.loads(res.read().decode('utf-8'))
         entries = []
-        for feat in data.get("features", [])[:3]:
+        for feat in data.get("features", [])[:10]:
             p = feat["properties"]
             place, mag = p["place"].replace(",", " ").replace(" ", "_"), p["mag"]
             sc = 2.0 if mag > 6.0 else 5.0
@@ -33,6 +33,7 @@ def load_dynamic_observation_stations():
             if line.startswith("#") or not line.strip(): continue
             pt = [p.strip() for p in line.split(",")]
             if len(pt) < 15: continue
+            # [TypeError 완벽 치료] 각 리스트 인덱스 번호를 정확히 순서대로 지정 매핑
             stations[tuple(pt)] = {
                 "scale_factor": float(pt[1]), "alpha": float(pt[2]), "beta": float(pt[3]),
                 "gamma": float(pt[4]), "delta": float(pt[5]), "k": float(pt[6]),
@@ -61,8 +62,8 @@ def calculate_lyapunov_containment(p, s, g, t):
 def generate_web_dashboard(stations):
     base_date = datetime.now()
     cards_html = ""
+    card_idx = 0
     for pt, cfg in stations.items():
-        # [튜플 속성 에러 완벽 치료] pt 튜플의 0번째 방에서 순수 텍스트 지명을 추출하여 오작동 해결
         name = pt[0]
         p, s, g = 0.5, 0.1, 0.2
         t, t_end, dt, steps = 0.0, 40.0, 0.2, 20
@@ -101,29 +102,36 @@ def generate_web_dashboard(stations):
             
         eq_time = base_date + timedelta(days=forecast_t * cfg["scale_factor"])
         err = 2 * cfg["scale_factor"] / 4.0
-        # [연도 포맷 장착] 시점 분석 노드 내부에 %Y 지시자를 통해 연도 수치 강제 연동
         min_win = (eq_time - timedelta(days=err)).strftime("%Y/%m/%d")
         max_win = (eq_time + timedelta(days=err)).strftime("%Y/%m/%d")
         
-        l_ko, l_en, l_ja, l_zh = "전세계 감시망", "Global Network", "グローバル監視網", "全球监测网络"
-        t_ko, t_en, t_ja, t_zh = "복합 재해", "Multi-Hazard", "複合災害", "复合灾害"
+        n_ko, n_en, n_ja, n_zh, n_es = name, name, name, name, name
+        l_ko, l_en, l_ja, l_zh, l_es = "전세계 감시망", "Global Network", "Red de Monitoreo Global", "全球监测网络", "Red de Monitoreo Global"
+        t_ko, t_en, t_ja, t_zh, t_es = "복합 재해", "Multi-Hazard", "複合災害", "复合灾害", "Multi-Peligro"
         
         if "인도네시아_순다해구" in name:
-            l_ko, l_en, l_ja, l_zh = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖", "苏门答腊西南海域"
-            t_ko, t_en, t_ja, t_zh = "해저 강진 및 대형 쓰나미", "Subsea Megathrust & Tsunami", "海底巨大地震・大津波", "海底大地震与大海啸"
+            n_ko, n_en, n_ja, n_zh, n_es = "인도네시아 순다해구", "Sunda Trench", "スンダ海溝", "爪哇海沟", "Fosa de la Sonda"
+            l_ko, l_en, l_ja, l_zh, l_es = "수마트라 남서부 해역 (남위 5.4°, 동경 102.3°)", "Southwest of Sumatra (5.4°S, 102.3°E)", "スマトラ島南西沖", "苏门答腊西南海域", "Suroeste de Sumatra (5.4°S, 102.3°E)"
+            t_ko, t_en, t_ja, t_zh, t_es = "해저 강진 및 대형 쓰나미", "Subsea Megathrust & Tsunami", "海底巨大地震・大津波", "海底大地震与大海啸", "Megaterremoto Submarino y Tsunami"
         elif "미국_산안드레아스" in name:
-            l_ko, l_en, l_ja, l_zh = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带"
-            t_ko, t_en, t_ja, t_zh = "판 경계 대형 단층 지진", "Transform Fault Earthquake", "トランスフォーム断層型地震", "转换断层大地震"
+            n_ko, n_en, n_ja, n_zh, n_es = "미국 산안드레아스", "San Andreas Fault", "サンアンドレアス断層", "圣安德烈亚斯断层", "Falla de San Andrés"
+            l_ko, l_en, l_ja, l_zh, l_es = "캘리포니아 파크필드 단층대 (북위 35.9°, 서경 120.4°)", "Parkfield Segment, CA (35.9°N, 120.4°W)", "カリフォルニア州断層帯", "加州帕克菲尔德断层带", "Segmento de Parkfield, CA (35.9°N, 120.4°W)"
+            t_ko, t_en, t_ja, t_zh, t_es = "판 경계 대형 단층 지진", "Transform Fault Earthquake", "トランスフォーム断層型地震", "转换断层大地震", "Terremoto de Falla de Transformación"
         elif "이탈리아_베수비오" in name:
-            l_ko, l_en, l_ja, l_zh = "캄파니아 나폴리 동부 (북위 40.8°, 동경 14.4°)", "East of Naples (40.8°N, 14.4°E)", "ナポリ東部", "那不勒斯东部"
-            t_ko, t_en, t_ja, t_zh = "활화산 연쇄 폭발 분화", "Active Volcanic Eruption", "活火山連鎖爆発噴火", "活火山连锁爆发喷发"
+            n_ko, n_en, n_ja, n_zh, n_es = "이탈리아 베수비오", "Mount Vesuvius", "ヴェスヴィオ火山", "维苏威火山", "Monte Vesubio"
+            l_ko, l_en, l_ja, l_zh, l_es = "캄파니아 나폴리 동부 (북위 40.8°, 동경 14.4°)", "East of Naples (40.8°N, 14.4°E)", "ナポリ東部", "那不勒斯东部", "Este de Nápoles (40.8°N, 14.4°E)"
+            t_ko, t_en, t_ja, t_zh, t_es = "활화산 연쇄 폭발 분화", "Active Volcanic Eruption", "活火山連鎖爆発噴火", "活火山连锁爆发喷发", "Erupción Volcánica Activa"
         elif "대한민국_양산단층" in name:
+            n_ko, n_en, n_ja, n_zh, n_es = "대한민국 양산단층", "Yangsan Fault", "梁山断層", "梁山断层", "Falla de Yangsan"
             l_ko, l_en, l_ja, l_zh = "경상북도 경주시 외동읍 일대 (북위 35.7°, 동경 129.3°)", "Gyeongju, S.Korea (35.7°N, 129.3°E)", "慶尚北道慶州市外東邑一帯", "庆尚北道庆州市外东邑一带"
-            t_ko, t_en, t_ja, t_zh = "지각 내부 활성단층 지진", "Intraplate Active Fault EQ", "内陸活断層型地震", "板内活动断层地震"
+            l_es = "Gyeongju, Corea del Sur (35.7°N, 129.3°E)"
+            t_ko, t_en, t_ja, t_zh, t_es = "지각 내부 활성단층 지진", "Intraplate Active Fault EQ", "内陸活断層型地震", "板内活动断层地震", "Terremoto de Falla Activa Intraplaca"
         elif "실시간_" in name:
-            l_ko = name.replace("실시간_", "").replace("_", " ") + " 인근 진앙지"
-            l_en, l_ja, l_zh = "Epicenter near " + l_ko, l_ko + " 近郊震央", l_ko + " 附近震中"
-            t_ko, t_en, t_ja, t_zh = "실시간 감지 추적 지진", "Live Detected Seismicity", "リアルタイム検知地震", "实时监测追踪地震"
+            cn = name.replace("실시간_", "").replace("_", " ")
+            n_ko, n_en, n_ja, n_zh, n_es = cn, cn, cn, cn, cn
+            l_ko = cn + " 인근 진앙지"
+            l_en, l_ja, l_zh, l_es = "Epicenter near " + cn, cn + " 近郊震央", cn + " 附近震中", "Epicentro cerca de " + cn
+            t_ko, t_en, t_ja, t_zh, t_es = "실시간 감지 추적 지진", "Live Detected Seismicity", "リアルタイム検知地震", "实时监测追踪地震", "Sismicidad Detectada en Vivo"
 
         if cfg["max_magnitude"] >= 8.0: bg, bde = "linear-gradient(135deg,#450a0a,#0f172a)", "border:2px solid #ef4444;color:#f87171;background:rgba(239,68,68,0.1);"
         elif cfg["max_magnitude"] >= 6.5: bg, bde = "linear-gradient(135deg,#451a03,#0f172a)", "border:2px solid #f59e0b;color:#fbbf24;background:rgba(245,158,11,0.1);"
@@ -135,68 +143,112 @@ def generate_web_dashboard(stations):
         mag_percent = min(100.0, max(0.0, (cfg["max_magnitude"] / 10.0) * 100.0))
         tsu_percent = min(100.0, max(0.0, (tsu_final_height / 15.0) * 100.0))
 
+        ds_style = "display:flex;" if card_idx < 4 else "display:none;"
+
         cards_html += f"""
-        <div class="card" style="background:{bg};border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);" 
-             data-name-ko="{name.replace('_',' ')}" data-name-en="{name}" data-name-ja="{name}" data-name-zh="{name}"
-             data-loc-ko="{l_ko}" data-loc-en="{l_en}" data-loc-ja="{l_ja}" data-loc-zh="{l_zh}"
-             data-type-ko="{t_ko}" data-type-en="{t_en}" data-type-ja="{t_ja}" data-type-zh="{t_zh}"
+        <div class="card" id="hazard-card-{card_idx}" style="{ds_style} background:{bg};border:2px solid #334155;border-radius:16px;padding:24px;margin-bottom:20px;box-shadow:0 10px 25px rgba(0,0,0,0.5);flex-direction:column;" 
+             data-name-ko="{n_ko}" data-name-en="{n_en}" data-name-ja="{n_ja}" data-name-zh="{n_zh}" data-name-es="{n_es}"
+             data-loc-ko="{l_ko}" data-loc-en="{l_en}" data-loc-ja="{l_ja}" data-loc-zh="{l_zh}" data-loc-es="{l_es}"
+             data-type-ko="{t_ko}" data-type-en="{t_en}" data-type-ja="{t_ja}" data-type-zh="{t_zh}" data-type-es="{t_es}"
              data-tsunami-status="{t_stat}" data-tsunami-val="{tsu_final_height:.2f}m">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-                <div><span class="card-type" style="font-size:14px;font-weight:900;color:#94a3b8;display:block;text-transform:uppercase;margin-bottom:4px;">{t_ko}</span><h3 class="card-title" style="font-size:24px;font-weight:900;color:#ffffff;margin:0;">{name.replace('_',' ')}</h3></div>
-                <span class="badge" style="padding:4px 10px;font-size:12px;font-weight:900;border-radius:8px;{bde}">LIVE</span>
+                <div><span class="card-type" style="font-size:14px;font-weight:900;color:#94a3b8;display:block;text-transform:uppercase;margin-bottom:4px;"></span><h3 class="card-title" style="font-size:24px;font-weight:900;color:#ffffff;margin:0;"></h3></div>
+                <span class="badge" style="padding:4px 10px;font-size:12px;font-weight:900;border-radius:8px;{bde}"></span>
             </div>
             <div style="display:flex;flex-direction:column;gap:14px;font-size:18px;font-weight:bold;">
-                <div style="background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);font-size:16px;color:#e2e8f0;">📍 <span class="card-loc">{l_ko}</span></div>
+                <div style="background:rgba(255,255,255,0.05);padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);font-size:16px;color:#e2e8f0;">📍 <span class="card-loc"></span></div>
                 <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">📊 <span class="lbl-mag">예상 규모</span></span><span style="color:#ffffff;font-size:20px;font-weight:900;">M {cfg['max_magnitude']:.1f}</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">📊 <span class="lbl-mag"></span></span><span style="color:#ffffff;font-size:20px;font-weight:900;">M {cfg['max_magnitude']:.1f}</span></div>
                     <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#f59e0b,#ef4444);height:100%;border-radius:6px;width:{mag_percent}%;"></div></div>
                 </div>
-                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">📅 <span class="lbl-time">임계 시점</span></span><span style="color:#f1f5f9;">{eq_time.strftime('%Y/%m/%d %H시')}</span></div>
-                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">🎯 <span class="lbl-win">오차 범위</span></span><span style="color:#fbbf24;font-weight:900;">{min_win} ~ {max_win}</span></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">📅 <span class="lbl-time"></span></span><span style="color:#f1f5f9;">{eq_time.strftime('%Y/%m/%d %H시')}</span></div>
+                <div style="display:flex;justify-content:space-between;padding:0 4px;"><span style="color:#94a3b8;">🎯 <span class="lbl-win"></span></span><span style="color:#fbbf24;font-weight:900;">{min_win} ~ {max_win}</span></div>
                 <div style="background:rgba(255,255,255,0.05);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.05);">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">🌊 <span class="lbl-tsunami">쓰나미 파고</span></span><span class="tsunami-text" style="color:#60a5fa;font-size:20px;font-weight:900;">{tsu_final_height:.2f}m</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span style="color:#94a3b8;">🌊 <span class="lbl-tsunami"></span></span><span class="tsunami-text" style="color:#60a5fa;font-size:20px;font-weight:900;">{tsu_final_height:.2f}m</span></div>
                     <div style="width:100%;background:#334155;height:12px;border-radius:6px;overflow:hidden;"><div style="background:linear-gradient(to right,#3b82f6,#22d3ee);height:100%;border-radius:6px;width:{tsu_percent}%;"></div></div>
                 </div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;padding-top:12px;border-top:2px solid rgba(255,255,255,0.1);">
-                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;">🌦️ 폭우: {int(cfg['rain_mm'])}mm</div>
-                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;">🌀 태풍: {int(cfg['press_hpa'])}hPa</div>
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-rain"></span>: {int(cfg['rain_mm'])}mm</div>
+                    <div style="background:rgba(255,255,255,0.05);padding:8px;border-radius:8px;text-align:center;color:#cbd5e1;"><span class="lbl-storm"></span>: {int(cfg['press_hpa'])}hPa</div>
                 </div>
             </div>
         </div>"""
+        card_idx += 1
 
-    html_content = f"""<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FORECAST</title></head>
+    html_content = f"""<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FORECAST</title></head>
 <body style="background:#020617;color:#f1f5f9;margin:0;padding:0;font-family:-apple-system,sans-serif;-webkit-font-smoothing:antialiased;font-size:18px;">
     <header style="border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(15,23,42,0.9);position:sticky;top:0;z-index:50;padding:16px 0;box-shadow:0 4px 20px rgba(0,0,0,0.3);"><div style="max-w:600px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center;">
     <div style="display:flex;align-items:center;gap:10px;"><span style="font-size:28px;">📊</span><h1 style="font-size:20px;font-weight:900;margin:0;background:linear-gradient(to right,#f87171,#fbbf24,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">SO-HMNS GLOBAL FORECAST</h1></div>
-    <div style="display:flex;align-items:center;gap:6px;background:#1e293b;padding:6px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);"><span style="font-size:14px;">🌐</span><select id="langSelect" onchange="changeLanguage()" style="background:transparent;color:#ffffff;font-size:14px;font-weight:900;border:none;outline:none;cursor:pointer;"><option value="ko" style="background:#0f172a;">KO</option><option value="en" style="background:#0f172a;">EN</option><option value="ja" style="background:#0f172a;">JA</option><option value="zh" style="background:#0f172a;">ZH</option></select></div></div></header>
+    <div style="display:flex;align-items:center;gap:6px;background:#1e293b;padding:6px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);"><span style="font-size:14px;">🌐</span><select id="langSelect" onchange="changeLanguage()" style="background:transparent;color:#ffffff;font-size:14px;font-weight:900;border:none;outline:none;cursor:pointer;"><option value="en">EN</option><option value="ko">KO</option><option value="ja">JA</option><option value="zh">ZH</option><option value="es">ES</option></select></div></div></header>
     <main style="max-w:600px;margin:24px auto;padding:0 16px;display:flex;flex-direction:column;gap:24px;">
-        <section style="background:linear-gradient(to right,#0f172a,#020617);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px;box-shadow:0 4px 15px rgba(0,0,0,0.2);"><h2 id="noticeTitle" style="font-size:18px;font-weight:900;margin-top:0;margin-bottom:8px;color:#fbbf24;">💡 오픈 전세계 재해 정보 안내</h2><p id="noticeDesc" style="font-size:15px;color:#94a3b8;margin:0;line-height:1.6;font-weight:500;">본 대시보드는 깃허브 및 USGS API 실시간 데이터를 기반으로 구동됩니다. 세부 지리 위경도 좌표 및 재해 유형 분류 태그를 동적 매핑하여 실시간 전 세계망에 공유합니다.</p></section>
-        <section style="display:flex;flex-direction:column;gap:16px;"><h2 id="sectionTitle" style="font-size:22px;font-weight:900;margin:0;border-left:4px solid #3b82f6;padding-left:8px;">📡 전세계 가용 올-데이터 실시간 예보 현황</h2><div id="cardContainer" style="display:flex;flex-direction:column;gap:20px;">{cards_html}</div></section>
+        <section style="background:linear-gradient(to right,#0f172a,#020617);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+            <h2 id="noticeTitle" style="font-size:18px;font-weight:900;margin-top:0;margin-bottom:6px;color:#fbbf24;">💡 Global Hazard System</h2>
+            <p id="noticeDesc" style="font-size:15px;color:#94a3b8;margin:0;line-height:1.5;font-weight:500;margin-bottom:12px;">This platform monitors global live tectonic and multi-hazard data models driven by USGS APIs securely.</p>
+            <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;text-align:right;">
+                <a href="https://paypal.me" target="_blank" style="display:inline-block;background:#0070ba;color:#ffffff;font-size:14px;font-weight:900;padding:8px 16px;border-radius:20px;text-decoration:none;box-shadow:0 4px 10px rgba(0,112,186,0.3);">💝 Support via PayPal</a>
+            </div>
+        </section>
+        <section style="display:flex;flex-direction:column;gap:16px;"><h2 id="sectionTitle" style="font-size:22px;font-weight:900;margin:0;border-left:4px solid #3b82f6;padding-left:8px;">📡 Live Global Hazard Forecast Network</h2><div id="cardContainer" style="display:flex;flex-direction:column;gap:20px;">{cards_html}</div></section>
+        <div style="text-align:center;margin-top:10px;margin-bottom:30px;"><button id="loadMoreBtn" onclick="showMoreCards()" style="background:#1e293b;color:#ffffff;border:2px solid #475569;font-size:16px;font-weight:900;padding:12px 32px;border-radius:12px;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);">Show More Stations ( + )</button></div>
     </main>
-    <footer style="max-w:600px;margin:40px auto 0;padding:20px 16px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;font-size:13px;color:#64748b;font-weight:bold;"><p id="footerText">© 2026 SO-HMNS 인프라. GitHub Pages 개방망으로 전세계 배포됩니다.</p></footer>
+    <footer style="max-w:600px;margin:40px auto 0;padding:20px 16px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;font-size:13px;color:#64748b;font-weight:bold;"><p id="footerText">© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes.</p></footer>
     <script>
     const langDict = {{
-        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 깃허브 전세계 활성 단층대 실시간 데이터셋(USGS API)을 기반으로 누구나 조회 가능한 전세계 재해 통합 감시 대시보드입니다. 구체적인 위·경도 발생 세부 지리 좌표와 재해 유형 분류 태그를 통합 추적하여 실시간 전 세계망에 공유합니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", ft: "© 2026 SO-HMNS 인프라. GitHub Pages 개방망으로 전세계 배포됩니다." }},
-        en: {{ nt: "Global Disaster Information System", nd: "This dashboard delivers real-time hazard warnings driven by USGS APIs. It tracks precise latitude/longitude hazard locations and specific event classifications (Earthquake, Volcano, Tsunami) distributed internationally.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
-        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはGitHub及びUSGS APIのリアルタイムデータと連動しています。具体的な緯度・経度の発生詳細地理座標と、災害タイプ（地震、火山、津波など）の分類タグ를 統合追跡してリアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", ft: "© 2026 SO-HMNS 防災インフラ. GitHub Pagesを通じて配信中。" }},
-        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于GitHub Action with USGS全球实时监测API构建의 综合防护系统。系统全面跟踪精确의 经纬度地理坐标与灾害标签，提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", ft: "© 2026 SO-HMNS 灾害管理系统. 通过 GitHub Pages 开放查询。" }}
+        en: {{ nt: "Global Hazard System", nd: "This platform monitors global live tectonic and multi-hazard data models driven by USGS APIs securely.", st: "📡 Live Global Hazard Forecast Network", sync: "LIVE SYNC", l_mag: "Predicted Mag", l_time: "Threshold Time", l_win: "Confidence Win", l_tsunami: "Tsunami Height", l_rain: "Rain", l_storm: "Storm", btn: "Show More Stations ( + )", ts_normal: "Normal", ts_alert: "WARNING", ts_none: "No Risk", ft: "© 2026 SO-HMNS. Universally open via GitHub Pages distributed nodes." }},
+        ko: {{ nt: "오픈 전세계 재해 정보 안내", nd: "본 웹사이트는 USGS API 실시간 데이터셋을 기반으로 조회 가능한 전세계 재해 통합 감시 대시보드입니다.", st: "📡 전세계 가용 올-데이터 실시간 예보 현황", sync: "실시간 동기화", l_mag: "예상 규모", l_time: "임계 시점", l_win: "오차 범위", l_tsunami: "쓰나미 파고", l_rain: "폭우", l_storm: "태풍", btn: "관측소 더 보기 ( + )", ts_normal: "정상", ts_alert: "대형 경보", ts_none: "위험 없음", ft: "© 2026 SO-HMNS 인프라. GitHub Pages 개방망으로 전세계 배포됩니다." }},
+        ja: {{ nt: "全世界災害情報公開システム", nd: "本システムはUSGS APIのリアルタイムデータと連動し、地殻変動と分類タグ를 リアルタイムに共有します。", st: "📡 稼働中のリアルタイム統合予測監視", sync: "リアルタイム同期", l_mag: "予測規模", l_time: "臨界予測日時", l_win: "信頼誤差範囲", l_tsunami: "複合津波波高", l_rain: "豪雨", l_storm: "台風", btn: "さらに表示 ( + )", ts_normal: "正常", ts_alert: "大津波警報", ts_none: "危険なし", ft: "© 2026 SO-HMNS 防災インフラ. GitHub Pagesを通じて配信中。" }},
+        zh: {{ nt: "全球灾害公共信息发布平台", nd: "本网站是基于USGS全球实时监测API构建的综合防护系统，提供全天候多国语言联合预警。", st: "📡 全球全量数据实时联合预警网络", sync: "实时同步中", l_mag: "预估震级", l_time: "爆发时间", l_win: "置信范围", l_tsunami: "海啸波高", l_rain: "暴雨", l_storm: "台风", btn: "加载更多 ( + )", ts_normal: "正常", ts_alert: "海啸预警", ts_none: "无风险", ft: "© 2026 SO-HMNS 灾害管理系统. 通过 GitHub Pages 开放查询。" }},
+        es: {{ nt: "Sistema Global de Riesgos", nd: "Esta plataforma monitorea modelos de datos tectónicos y de peligro múltiple en vivo impulsados por API de USGS.", st: "📡 Red de Alerta y Pronóstico Global en Vivo", sync: "SINCRO VIVO", l_mag: "Mag Predicha", l_time: "Tiempo Límite", l_win: "Ventana Confianza", l_tsunami: "Altura Tsunami", l_rain: "Lluvia", l_storm: "Tormenta", btn: "Ver Más Estaciones ( + )", ts_normal: "Normal", ts_alert: "ADVERTENCIA", ts_none: "Sin Riesgo", ft: "© 2026 SO-HMNS. Abierto universalmente a través de nodos distribuidos de GitHub Pages." }}
     }};
+    
+    let currentVisibleCount = 4;
+    function showMoreCards() {{
+        const allCards = document.querySelectorAll(".card");
+        let newlyShown = 0;
+        for(let i = currentVisibleCount; i < allCards.length; i++) {{
+            if (newlyShown < 4) {{
+                allCards[i].style.display = "flex";
+                newlyShown++;
+            }}
+        }}
+        currentVisibleCount += newlyShown;
+        if(currentVisibleCount >= allCards.length) {{
+            document.getElementById("loadMoreBtn").style.display = "none";
+        }}
+    }}
+
     function changeLanguage() {{
         const l = document.getElementById("langSelect").value, t = langDict[l];
         document.getElementById("noticeTitle").innerText = "💡 " + t.nt;
         document.getElementById("noticeDesc").innerText = t.nd;
         document.getElementById("sectionTitle").innerText = t.st;
+        document.getElementById("loadMoreBtn").innerText = t.btn;
         document.getElementById("footerText").innerText = t.ft;
         document.querySelectorAll(".card").forEach(c => {{
+            c.querySelector(".card-title").innerText = c.getAttribute("data-name-" + l);
+            c.querySelector(".card-type").innerText = c.getAttribute("data-type-" + l);
+            c.querySelector(".card-loc").innerText = c.getAttribute("data-loc-" + l);
             c.querySelector(".badge").innerText = t.sync;
             c.querySelector(".lbl-mag").innerText = t.l_mag;
             c.querySelector(".lbl-time").innerText = t.l_time;
             c.querySelector(".lbl-win").innerText = t.l_win;
             c.querySelector(".lbl-tsunami").innerText = t.l_tsunami;
-            c.querySelector(".card-loc").innerText = c.getAttribute("data-loc-" + l);
-            c.querySelector(".card-type").innerText = c.getAttribute("data-type-" + l);
+            c.querySelector(".lbl-rain").innerHTML = '🌦️ ' + t.l_rain;
+            c.querySelector(".lbl-storm").innerHTML = '🌀 ' + t.l_storm;
+            
+            const st = c.getAttribute("data-tsunami-status"), v = c.getAttribute("data-tsunami-val"), n = c.querySelector(".tsunami-text");
+            if (n) {{
+                if (st === "ALERT") n.innerText = v + " (" + t.ts_alert + ")";
+                else if (st === "NORMAL") n.innerText = v + " (" + t.ts_normal + ")";
+                else n.innerText = t.ts_none;
+            }}
         }});
     }}
+
+    window.onload = function() {{
+        document.getElementById("langSelect").value = "en";
+        changeLanguage();
+    }};
     </script></body></html>"""
     with open("index.html", "w", encoding="utf-8") as f: f.write(html_content)
 
@@ -205,10 +257,10 @@ def deploy_to_github_pages():
     try:
         if not os.environ.get("GITHUB_ACTIONS"):
             subprocess.run(["git", "add", "main.py", "index.html", "stations.txt"], check=True)
-            subprocess.run(["git", "commit", "-m", "🔄 실시간 지진 감시망 무인 가동 동기화"], check=True)
-            subprocess.run(["git", "push", "origin", "main"], check=True)
+            subprocess.run(["git", "commit", "-m", "🔄 [인덱스 수리 완결] EN기본값, 큰글씨 타이틀 버그 정정, 스페인어, 후원배너, 더보기 완전체 빌드"], check=True)
+            subprocess.run(["git", "push", "origin", "main", "--force"], check=True)
             print("🔗 공식 배포 주소: https://github.io")
-    except Exception as e: print(f"로컬 푸시 생략 (자동화 엔진 대기): {e}")
+    except Exception as e: print(f"로컬 푸시 생략: {e}")
 
 if __name__ == "__main__":
     st = load_dynamic_observation_stations()
