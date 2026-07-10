@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SO-HMNS LIVE MONITOR</title>
+    <style>
+        body { background: #0f172a; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; padding-bottom: 80px; }
+        header, .navbar, [class*="monitor-header"], [class*="global-monitor"], .top-bar { display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; align-items: center !important; gap: 12px !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; padding: 8px 12px !important; background: #1e293b; border-radius: 8px; margin-bottom: 20px; }
+        .paypal-support { background: #0284c7; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; white-space: nowrap !important; max-width: 100% !important; }
+        .btn-container { text-align: center; margin-top: 20px; }
+        #load-next-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 12px 24px; border-radius: 8px; font-weight: bold; width: 100%; box-sizing: border-box; font-size: 15px; transition: background 0.2s; cursor: pointer; }
+        #load-next-btn:active { background: #334155; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span style="font-weight:bold; font-size:15px;">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</span>
+        <a href="#" id="paypal-link" class="paypal-support" target="_blank">PayPal Support</a>
+    </div>
+
+    <!-- ⚡ 실제 좌표 추적 데이터 레이어가 들어설 타임라인 보드 -->
+    <div id="timeline-container"></div>
+
+    <div class="btn-container">
+        <button id="load-next-btn">Load Next 4 Real-time Timeline Predictions ▼</button>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pLink = document.getElementById("paypal-link");
+        if (pLink) {
+            const protocol = "https://";
+            const domain = "paypal.me";
+            const account = "/choiryujin";
+            pLink.href = protocol + domain + account;
+        }
+    });
+
+    let currentDisplayIndex = 0;
+    const displayBatchSize = 4;
+    let cachedForecasts = [];
+
+    function renderDynamicTimeline(data, isIncremental) {
+        const container = document.getElementById("timeline-container");
+        if (!container) return;
+        
+        if (!isIncremental) {
+            container.innerHTML = "";
+            currentDisplayIndex = 0;
+            if (data && data["forecasts"]) {
+                const forecastsArray = data["forecasts"];
+                if (forecastsArray.length > 1) {
+                    cachedForecasts = forecastsArray.sort((a, b) => a.forecast_time.localeCompare(b.forecast_time));
+                } else {
+                    cachedForecasts = forecastsArray;
+                }
+            } else {
+                cachedForecasts = [];
+            }
+        }
+        
+        const nextBatch = cachedForecasts.slice(currentDisplayIndex, currentDisplayIndex + displayBatchSize);
+        if (nextBatch.length === 0) return;
+        
+        nextBatch.forEach(item => {
+            const card = document.createElement("div");
+            card.style.cssText = "background:#1e293b; border-radius:12px; padding:20px; margin-bottom:16px; border-left:6px solid #ef4444; color:#fff;";
+            
+            // ⚠️ [완벽 방어 기믹] latitude나 longitude가 누락되어 들어와도 화면이 백화되지 않도록 예외 차단 필터 적용
+            const rawLat = item.latitude !== undefined ? Number(item.latitude) : 0.0;
+            const rawLon = item.longitude !== undefined ? Number(item.longitude) : 0.0;
+            const rawMag = item.magnitude !== undefined ? Number(item.magnitude) : 0.0;
+            
+            let cardContent = '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">';
+            cardContent += '  <span style="background:#ef4444; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">PREDICTED RISK</span>';
+            cardContent += '  <span style="color:#94a3b8; font-size:13px;">🕒 ' + item.forecast_time + ' GMT</span>';
+            cardContent += '</div>';
+            cardContent += '<div style="font-size: 24px; font-weight: 900; color: #4ade80; margin-bottom: 8px; letter-spacing: 0.5px;">🌍 ' + item.territory + '</div>';
+            cardContent += '<h3 style="margin:2px 0 8px 0; font-size:18px; font-weight:600; line-height:1.3;">' + item.location + '</h3>';
+            cardContent += '<p style="color:#cbd5e1; margin:4px 0; font-size:14px;">📍 GPS Lat/Lng: <span style="color:#38bdf8;">' + rawLat.toFixed(4) + '° N, ' + rawLon.toFixed(4) + '° E</span></p>';
+            cardContent += '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; font-size:14px; background:#0f172a; padding:12px; border-radius:8px;">';
+            cardContent += '  <div>⚡ Calibrated Moment: <span style="color:#fbbf24; font-weight:bold;">M ' + rawMag.toFixed(4) + '</span></div>';
+            cardContent += '  <div>🌊 Bounded Tsunami: <span style="color:#60a5fa; font-weight:bold;">' + item.max_tsunami + '</span></div>';
+            cardContent += '</div>';
+            cardContent += '<p style="color:#94a3b8; margin-top:12px; font-size:13px; font-style:italic;">🤖 Kernel Analysis: ' + item.message + '</p>';
+            
+            card.innerHTML = cardContent;
+            container.appendChild(card);
+        });
+        
+        currentDisplayIndex += nextBatch.length;
+        
+        const loadBtn = document.getElementById("load-next-btn");
+        if (loadBtn) {
+            if (currentDisplayIndex >= cachedForecasts.length) {
+                loadBtn.innerText = "All Active Long-Term Predictions Fully Loaded ▼";
+                loadBtn.style.opacity = "0.4";
+                loadBtn.style.pointerEvents = "none";
+            } else {
+                loadBtn.innerText = "Load Next 4 Real-time Timeline Predictions ▼";
+                loadBtn.style.opacity = "1";
+                loadBtn.style.pointerEvents = "auto";
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const loadBtn = document.getElementById("load-next-btn");
+        if (loadBtn) {
+            loadBtn.onclick = (e) => {
+                e.preventDefault();
+                renderDynamicTimeline({ forecasts: cachedForecasts }, true);
+            };
+        }
+    });
+
+    let lastDataHash = "";
+    function runLiveRefreshEngine() {
+        fetch("data.json?v=" + new Date().getTime(), { cache: "no-store" })
+            .then(res => res.json())
+            .then(currentData => {
+                const currentHash = JSON.stringify(currentData);
+                if (lastDataHash !== "" && lastDataHash !== currentHash) {
+                    if (currentDisplayIndex <= 4) {
+                        renderDynamicTimeline(currentData, false);
+                    }
+                } else if (lastDataHash === "") {
+                    renderDynamicTimeline(currentData, false);
+                }
+                lastDataHash = currentHash;
+            }).catch(err => {});
+    }
+    setInterval(runLiveRefreshEngine, 5000);
+    runLiveRefreshEngine();
+    </script>
+</body>
+</html>
