@@ -7,82 +7,111 @@ import math
 import test_conjectures
 import so_formula_matrix
 
+# 미국지질조사국(USGS) 공식 실시간 전세계 진도 4.5 이상 피드 (인위적 데이터 전면 폐기)
+USGS_API_URL = "https://usgs.gov"
 DATA_FILE = "data.json"
 
-def generate_failback_infinite_matrix():
+def reverse_geocode_territory(lat, lon, place_raw):
+    place_upper = place_raw.upper()
+    if "," in place_raw:
+        possible_country = place_raw.split(",")[-1].strip().upper()
+        if possible_country: return possible_country
+    return "GLOBAL SEISMIC GRID"
+
+def fetch_and_train_usgs_live():
+    # 💡 인위적인 가짜 백업 함수(generate_failback_infinite_matrix)를 호출하던 모든 루프를 파괴했습니다.
+    # 이제 인터넷 연결이 실패하면 가짜 데이터를 만들지 않고 정직하게 에러를 내며 멈춥니다.
+    
+    req = urllib.request.Request(USGS_API_URL, headers={"User-Agent": "SO-HMNS-Continuous-Bot"})
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    
+    with urllib.request.urlopen(req, timeout=12, context=ctx) as response:
+        geojson_data = json.loads(response.read().decode("utf-8"))
+        
+    features = geojson_data.get("features", [])
+    if not features:
+        raise Exception("USGS 서버에 현재 실시간 데이터가 비어있습니다.")
+        
     current_data = {"forecasts": []}
+    existing_ids = []
     
-    # 🌍 전 세계 6대주(아시아·유럽·아프리카·아메리카·오세아니아) 누락 없는 16대 핵심 지진 벨트 조율
-    global_scenarios = [
-        ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast)", 7.0732, 125.6128, 6.8, "Coast"),
-        ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.2, "Coast"),
-        ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.9, "Inland"),
-        ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.8, "Coast"),
-        ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.8, "Inland"),
-        ("EAST AFRICA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.5, "Inland"),
-        ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.5, "Coast"),
-        ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 7.0, "Coast"),
-        ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.4, "Coast"),
-        ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.2, "Coast"),
-        ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.1, "Inland"),
-        ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 6.3, "Inland"),
-        ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.4, "Coast"),
-        ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.5, "Inland"),
-        ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.5, "Coast"),
-        ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.6, "Inland")
-    ]
-    
-    base_now = int(time.time())
-    for idx in range(32):
-        # 날짜 간격 하루 반(1.5일) 주기로 자연스러운 흐름 생성
-        future_epoch = base_now + (idx * 129600) + 14400
+    for event in features:
+        event_id = event.get("id")
+        if event_id in existing_ids: continue 
         
-        scenario_idx = idx % len(global_scenarios)
-        t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
+        properties = event.get("properties", {})
+        observed_mag = properties.get("mag")
         
-        # 주기적 파동 방정식을 통한 완벽한 진도 분산 연산 (M 5.1 ~ M 8.2)
-        variance = math.sin(idx * 0.9) * 0.45 + math.cos(idx * 0.5) * 0.25
-        observed_mag = round(base_mag + variance, 2)
-        if observed_mag < 4.5: observed_mag = 4.95
-        if observed_mag > 8.5: observed_mag = 8.15
+        # 실시간 발생 진도가 4.0 미만인 마이너 지진은 필터링
+        if observed_mag is None or observed_mag < 4.0: continue 
         
-        forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 25.0)
+        epoch_time = properties.get("time", 0) / 1000.0
+        geom = event.get("geometry", {})
+        coords = geom.get("coordinates", [])
         
-        # 💡 [글자 짤림 및 공백 결함 완전 청소]: 내륙 지진이거나 진도가 낮으면 명확하게 N/A 문구 지정
-        if zone_type == "Inland" or observed_mag < 6.7:
+        if len(coords) < 2: continue
+        
+        # 100% 실제 USGS 원본 좌표 그대로 추출
+        coords_iter = iter(coords)
+        lon_val = float(next(coords_iter))
+        lat_val = float(next(coords_iter))
+        try:
+            depth_val = float(next(coords_iter))
+        except StopIteration:
+            depth_val = 15.0
+            
+        target_territory = reverse_geocode_territory(lat_val, lon_val, properties.get("place", "Active Tectonic Fault Line"))
+        
+        # 진짜 실시간 관측 진도와 깊이를 감쇄 수식 모듈에 주입하여 예측 타임라인 연산
+        forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val)
+        
+        # 실시간 데이터를 기반으로 한 쓰나미 정밀 판정
+        place_upper = properties.get("place", "").upper()
+        if "REGION" in place_upper or "COAST" in place_upper or "OCEAN" in place_upper or "SEA" in place_upper:
+            if observed_mag >= 7.0:
+                calculated_tsunami = (observed_mag - 6.5) * 2.2
+                tsunami_display = f"{max(calculated_tsunami, 0.5):.1f}m"
+                risk_level_msg = "⚠️ TSUNAMI WARNING"
+            else:
+                tsunami_display = "0.0m"
+                risk_level_msg = "PREDICTED RISK"
+        else:
             tsunami_display = "N/A (Inland Fault)"
             risk_level_msg = "PREDICTED RISK"
-        else:
-            calculated_tsunami = (observed_mag - 6.5) * 2.4 + (idx % 3) * 0.4
-            tsunami_display = f"{max(calculated_tsunami, 0.5):.1f}m"
-            risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.2 else "PREDICTED RISK"
-                
+            
         if observed_mag >= 7.7:
             risk_level_msg = "💥 CRITICAL BREAK"
             
         mock_item = {
-            "id": f"hmns_global_matrix_{idx}",
+            "id": event_id,
             "forecast_time": forecast_time,
-            "territory": t,
-            "location": loc,
-            "latitude": lat,
-            "longitude": lon,
+            "territory": target_territory,
+            "location": properties.get("place", "Active Tectonic Fault Line"),
+            "latitude": lat_val,
+            "longitude": lon_val,
             "seismic_energy": 10 ** (1.5 * observed_mag + 4.8),
-            "focal_depth": round(10.0 + (idx * 14.2) % 140.0, 1),
-            "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0,
+            "focal_depth": max(depth_val, 5.0),
+            "bathymetry_depth": 15.0,
             "magnitude": observed_mag,
             "max_tsunami": tsunami_display,
             "risk_level": risk_level_msg,
-            "message": f"GPS Coordinate Attenuation Matrix Correlated. Target: {t} [{zone_type}]"
+            "message": f"Real-time USGS Stream Synced. Attenuation Factor: {round(dynamic_attenuation_factor, 2)}"
         }
         mock_item = test_conjectures.refine_prediction_engine(mock_item)
         current_data["forecasts"].append(mock_item)
+        existing_ids.append(event_id)
         
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(current_data, f, ensure_ascii=False, indent=4)
 
-def fetch_and_train_usgs_live():
-    generate_failback_infinite_matrix()
-
 if __name__ == "__main__":
-    generate_failback_infinite_matrix()
+    while True:
+        try:
+            fetch_and_train_usgs_live()
+        except Exception as e:
+            # 인터넷이 끊기면 가짜 데이터를 쓰지 않고 로그에 정직하게 에러를 기록함
+            with open("usgs_bot.log", "a") as log_f:
+                log_f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] 수집 에러 발생: {str(e)}\n")
+        time.sleep(300)
