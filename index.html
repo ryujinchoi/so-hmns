@@ -7,7 +7,7 @@
     <style>
         body { background-color: #0f172a; color: #ffffff; font-family: sans-serif; margin: 0; padding: 20px; }
         .monitor-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
-        .paypal-btn { background-color: #0070ba; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 20px; }
+        .paypal-btn { background-color: #0070ba; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 20px; width: 100%; text-align: center; }
         .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
         .earthquake-card { background-color: #1e293b; border-left: 5px solid transparent; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
@@ -27,14 +27,17 @@
 <body>
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
-        <button class="paypal-btn" onclick="window.open('https://paypal.com')">PayPal Support</button>
+        
+        <!-- 💡 [교정 핵심]: 잘려있던 주소를 고유 주소인 https://paypal.me/choiryujin 주소로 완전 결합 이식 -->
+        <button class="paypal-btn" onclick="window.open('https://paypal.me/choiryujin', '_blank')">PayPal Support</button>
+        
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
 
     <script>
         let allForecasts = [];
-        let currentVisibleCount = 4; // 💡 첫 진입 시 노출할 카드 기본 한계치 정의
+        let currentVisibleCount = 4;
 
         async function fetchSeismicData() {
             try {
@@ -51,7 +54,6 @@
             const container = document.getElementById('monitor-target-grid');
             container.innerHTML = '';
             
-            // 💡 [핵심 알고리즘]: 전체 배열 중 currentVisibleCount 개수만큼 슬라이싱 절단 출력
             const visibleItems = allForecasts.slice(0, currentVisibleCount);
 
             visibleItems.forEach(item => {
@@ -92,7 +94,6 @@
                 container.appendChild(card);
             });
 
-            // 모든 예측 카드가 화면에 뿌려지면 더보기 버튼 투명화 숨김 처리
             const actionBtn = document.getElementById('load-more-action');
             if (currentVisibleCount >= allForecasts.length) {
                 actionBtn.style.display = 'none';
@@ -101,7 +102,6 @@
             }
         }
 
-        // 💡 더보기 버튼 클릭 시 4개씩 누적 증가 스크립트 코어 구동
         function renderNextBatch() {
             currentVisibleCount += 4;
             renderGrid();
