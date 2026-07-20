@@ -72,7 +72,7 @@
             const rawMag = item.magnitude !== undefined ? Number(item.magnitude) : 0.0;
             
             let cardContent = '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">';
-            cardContent += '  <span style="background:#ef4444; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">PREDICTED RISK</span>';
+            cardContent += '  <span style="background:#ef4444; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">${item.risk_level}</span>';
             cardContent += '  <span style="color:#94a3b8; font-size:13px;">🕒 ' + item.forecast_time + ' GMT</span>';
             cardContent += '</div>';
             cardContent += '<div style="font-size: 24px; font-weight: 900; color: #4ade80; margin-bottom: 8px; letter-spacing: 0.5px;">🌍 ' + item.territory + '</div>';
