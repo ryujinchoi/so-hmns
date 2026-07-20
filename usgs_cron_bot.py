@@ -34,7 +34,6 @@ def generate_failback_infinite_matrix():
         scenario_idx = idx % len(global_scenarios)
         t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
         
-        # 진도 파동 정밀 분산 연산 (M 5.1 ~ M 8.2)
         variance = math.sin(idx * 0.9) * 0.45 + math.cos(idx * 0.5) * 0.25
         observed_mag = round(base_mag + variance, 2)
         if observed_mag < 4.5: observed_mag = 4.95
@@ -42,18 +41,14 @@ def generate_failback_infinite_matrix():
         
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 25.0)
         
-        # 💡 [UI 렌더링 텍스트 교정]: 껍데기 영문 텍스트 대신 '내륙 지역 (쓰나미 없음)'으로 표기 다듬기
-        if zone_type == "Inland":
-            tsunami_display = "N/A (Inland Fault)"
+        # 💡 [핵심 UI 개선]: 0.0m 또는 내륙 구역이면 공백처리하여 클라이언트 단에서 숨김 처리 유도
+        if zone_type == "Inland" or observed_mag < 6.7:
+            tsunami_display = ""
             risk_level_msg = "PREDICTED RISK"
         else:
-            if observed_mag < 6.7:
-                tsunami_display = "0.0m"
-                risk_level_msg = "PREDICTED RISK"
-            else:
-                calculated_tsunami = (observed_mag - 6.5) * 2.4 + (idx % 3) * 0.4
-                tsunami_display = f"{max(calculated_tsunami, 0.5):.1f}m"
-                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.2 else "PREDICTED RISK"
+            calculated_tsunami = (observed_mag - 6.5) * 2.4 + (idx % 3) * 0.4
+            tsunami_display = f"{max(calculated_tsunami, 0.5):.1f}m"
+            risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.2 else "PREDICTED RISK"
                 
         if observed_mag >= 7.7:
             risk_level_msg = "💥 CRITICAL BREAK"
