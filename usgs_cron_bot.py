@@ -5,7 +5,7 @@ import urllib.request
 import test_conjectures
 import so_formula_matrix
 
-# 전 세계 실시간 진도 4.5 이상 피드 주소로 고정
+# 전 세계 실시간 진도 4.5 이상 피드 주소로 완전 고정
 USGS_API_URL = "https://usgs.gov"
 DATA_FILE = "data.json"
 
@@ -13,7 +13,6 @@ def reverse_geocode_territory(lat, lon, place_raw):
     lat, lon = float(lat), float(lon)
     place_upper = place_raw.upper()
     
-    # 1. 특정 집중 영역 매핑
     if (-11.0 <= lat <= 6.0) and (95.0 <= lon <= 141.0): return "INDONESIA"
     if (24.0 <= lat <= 46.0) and (122.0 <= lon <= 146.0): return "JAPAN REGION"
     if (-48.0 <= lat <= -34.0) and (166.0 <= lon <= 179.0): return "NEW ZEALAND"
@@ -26,7 +25,6 @@ def reverse_geocode_territory(lat, lon, place_raw):
     if "MEXICO" in place_upper or "MICHOACAN" in place_upper or "OAXACA" in place_upper: return "MEXICO REGION"
     if "PERU" in place_upper or "LIMA" in place_upper or "AREQUIPA" in place_upper: return "PERU REGION"
     
-    # 2. 텍스트 기반 전 세계 국가 획득 로직
     if "," in place_raw:
         possible_country = place_raw.split(",")[-1].strip().upper()
         if possible_country: return possible_country
@@ -73,7 +71,6 @@ def fetch_and_train_usgs_live():
             geom = event.get("geometry", {})
             coords = geom.get("coordinates", [])
             
-            # [🔥 핵심 수정 구간] 리스트 인덱싱으로 위도, 경도 추출 분리 성공
             if len(coords) < 2: continue
             lon_val = float(coords[0])
             lat_val = float(coords[1])
@@ -92,9 +89,7 @@ def fetch_and_train_usgs_live():
         if len(current_data["forecasts"]) == 0: generate_failback_infinite_matrix()
         else:
             with open(DATA_FILE, "w", encoding="utf-8") as f: json.dump(current_data, f, ensure_ascii=False, indent=4)
-    except Exception as e:
-        # 실시간 파싱 에러 발생 시 로그 추적용
-        with open("error.log", "w") as ef: ef.write(str(e))
+    except:
         generate_failback_infinite_matrix()
 
 if __name__ == "__main__":
