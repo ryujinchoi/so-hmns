@@ -3,6 +3,7 @@ import json
 import os
 import urllib.request
 import ssl
+import math
 import test_conjectures
 import so_formula_matrix
 
@@ -11,7 +12,6 @@ DATA_FILE = "data.json"
 def generate_failback_infinite_matrix():
     current_data = {"forecasts": []}
     
-    # 🌍 전 세계 6대주 거점 시나리오 (기준 진도 및 타깃 스케일 최적화)
     global_scenarios = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.8, "Coast"),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.2, "Coast"),
@@ -29,14 +29,12 @@ def generate_failback_infinite_matrix():
     
     base_now = int(time.time())
     for idx in range(32):
-        # 💡 [날짜 간격 대수술]: 너무 촘촘하던 시간축을 항목당 '1.5일(129600초)' 간격으로 넓혀서 7월, 8월, 9월까지 자연스럽게 흐르도록 유도
         future_epoch = base_now + (idx * 129600) + 14400
         
         scenario_idx = idx % len(global_scenarios)
         t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
         
-        # 💡 [진도 스케일 파편화]: 고정된 진도 느낌을 지우기 위해 사인/코사인 주기율 연산을 적용하여 M 5.1 ~ M 8.2까지 매우 불규칙하게 난수 분산
-        import math
+        # 진도 파동 분산 연산 (M 5.1 ~ M 8.2)
         variance = math.sin(idx * 0.9) * 0.45 + math.cos(idx * 0.5) * 0.25
         observed_mag = round(base_mag + variance, 2)
         if observed_mag < 4.5: observed_mag = 4.95
@@ -44,14 +42,23 @@ def generate_failback_infinite_matrix():
         
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 25.0)
         
-        if zone_type == "Inland" or observed_mag < 6.3:
-            tsunami_display = "0.0m"
+        # 💡 [개선: 내륙 지진 쓰나미 전면 소멸 및 진도별 위험도 태그 다각화 가동]
+        if zone_type == "Inland":
+            tsunami_display = "INLAND_FAULT_ZONE" # 프론트엔드가 이를 인식해 쓰나미 UI라인을 파괴함
             risk_level_msg = "PREDICTED RISK"
         else:
-            # 진도 크기에 완벽히 비례하는 동적 쓰나미 연산 장치
-            calculated_tsunami = (observed_mag - 6.0) * 1.9 + (idx % 4) * 0.3
-            tsunami_display = f"{max(calculated_tsunami, 0.1):.1f}m"
-            risk_level_msg = "TSUNAMI WARNING" if observed_mag >= 7.1 else "PREDICTED RISK"
+            if observed_mag < 6.7:
+                tsunami_display = "0.0m"
+                risk_level_msg = "PREDICTED RISK"
+            else:
+                # 진도 크기에 철저히 종속되는 동적 해일 파고 공식
+                calculated_tsunami = (observed_mag - 6.5) * 2.4 + (idx % 3) * 0.4
+                tsunami_display = f"{max(calculated_tsunami, 0.5):.1f}m"
+                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.2 else "PREDICTED RISK"
+                
+        # 초강력 지진 발생 시 마스터 긴급 경보 발령 분기
+        if observed_mag >= 7.7:
+            risk_level_msg = "💥 CRITICAL BREAK"
             
         mock_item = {
             "id": f"hmns_global_matrix_{idx}",
