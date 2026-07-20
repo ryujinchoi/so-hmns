@@ -9,10 +9,7 @@
         .monitor-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
         .paypal-btn { background-color: #0070ba; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 20px; }
         .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
-        
-        /* 💡 고정되어 있던 border-left 색상을 인라인 스타일로 제어하기 위해 기본 속성에서 제거 */
         .earthquake-card { background-color: #1e293b; border-left: 5px solid transparent; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #ffffff; }
         .time-stamp { color: #94a3b8; font-size: 12px; display: flex; align-items: center; gap: 5px; }
@@ -24,7 +21,7 @@
         .metric-label { color: #fbbf24; }
         .metric-value { color: #38bdf8; }
         .kernel-msg { font-size: 11px; color: #64748b; font-style: italic; }
-        .load-more-btn { background-color: #0369a1; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
+        .load-more-btn { background-color: #0369a1; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; display: block; }
     </style>
 </head>
 <body>
@@ -32,61 +29,85 @@
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
         <button class="paypal-btn" onclick="window.open('https://paypal.com')">PayPal Support</button>
         <div id="monitor-target-grid"></div>
-        <button class="load-more-btn">Load Next 4 Real-time Timeline Predictions ▼</button>
+        <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
 
     <script>
-        async function loadSeismicGrid() {
+        let allForecasts = [];
+        let currentVisibleCount = 4; // 💡 첫 진입 시 노출할 카드 기본 한계치 정의
+
+        async function fetchSeismicData() {
             try {
                 const response = await fetch('data.json?t=' + new Date().getTime());
                 const data = await response.json();
-                const container = document.getElementById('monitor-target-grid');
-                container.innerHTML = '';
-
-                data.forecasts.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'earthquake-card';
-                    
-                    // 💡 위험도 등급에 따라 배너와 테두리 선의 색상을 실시간 동기화
-                    let themeColor = '#e65100'; // 기본 주황색
-                    if (item.risk_level.includes('CRITICAL')) themeColor = '#ff0055'; // 분홍색
-                    else if (item.risk_level.includes('WARNING')) themeColor = '#ff3300'; // 빨간색
-
-                    // 왼쪽 세로선의 색상을 실시간 테마 컬러로 강제 동적 바인딩
-                    card.style.borderLeftColor = themeColor;
-
-                    const isInland = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '';
-                    const tsunamiRowHtml = isInland ? '' : `
-                        <div class="metric-row">
-                            <span style="color:#fbbf24;">🌊 Bounded Tsunami:</span>
-                            <span style="color:#38bdf8;">${item.max_tsunami}</span>
-                        </div>
-                    `;
-
-                    card.innerHTML = `
-                        <div class="card-header">
-                            <div class="badge" style="background: ${themeColor};">${item.risk_level}</div>
-                            <div class="time-stamp">🕒 ${item.forecast_time} GMT</div>
-                        </div>
-                        <h2 class="country-title">🌍 ${item.territory}</h2>
-                        <div class="location-text">${item.location}</div>
-                        <div class="gps-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
-                        <div class="metrics-zone">
-                            <div class="metric-row">
-                                <span class="metric-label">⚡ Calibrated Moment:</span>
-                                <span class="metric-value" style="color:#f59e0b;">M ${item.magnitude.toFixed(2)}</span>
-                            </div>
-                            ${tsunamiRowHtml}
-                        </div>
-                        <div class="kernel-msg">🤖 Kernel Analysis: ${item.message}</div>
-                    `;
-                    container.appendChild(card);
-                });
+                allForecasts = data.forecasts || [];
+                renderGrid();
             } catch (e) {
                 document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;">데이터 코어 동기화 실패</div>';
             }
         }
-        window.onload = loadSeismicGrid;
+
+        function renderGrid() {
+            const container = document.getElementById('monitor-target-grid');
+            container.innerHTML = '';
+            
+            // 💡 [핵심 알고리즘]: 전체 배열 중 currentVisibleCount 개수만큼 슬라이싱 절단 출력
+            const visibleItems = allForecasts.slice(0, currentVisibleCount);
+
+            visibleItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'earthquake-card';
+                
+                let themeColor = '#e65100';
+                if (item.risk_level.includes('CRITICAL')) themeColor = '#ff0055';
+                else if (item.risk_level.includes('WARNING')) themeColor = '#ff3300';
+
+                card.style.borderLeftColor = themeColor;
+
+                const isInland = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '';
+                const tsunamiRowHtml = isInland ? '' : `
+                    <div class="metric-row">
+                        <span style="color:#fbbf24;">🌊 Bounded Tsunami:</span>
+                        <span style="color:#38bdf8;">${item.max_tsunami}</span>
+                    </div>
+                `;
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="badge" style="background: ${themeColor};">${item.risk_level}</div>
+                        <div class="time-stamp">🕒 ${item.forecast_time} GMT</div>
+                    </div>
+                    <h2 class="country-title">🌍 ${item.territory}</h2>
+                    <div class="location-text">${item.location}</div>
+                    <div class="gps-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
+                    <div class="metrics-zone">
+                        <div class="metric-row">
+                            <span class="metric-label">⚡ Calibrated Moment:</span>
+                            <span class="metric-value" style="color:#f59e0b;">M ${item.magnitude.toFixed(2)}</span>
+                        </div>
+                        ${tsunamiRowHtml}
+                    </div>
+                    <div class="kernel-msg">🤖 Kernel Analysis: ${item.message}</div>
+                `;
+                container.appendChild(card);
+            });
+
+            // 모든 예측 카드가 화면에 뿌려지면 더보기 버튼 투명화 숨김 처리
+            const actionBtn = document.getElementById('load-more-action');
+            if (currentVisibleCount >= allForecasts.length) {
+                actionBtn.style.display = 'none';
+            } else {
+                actionBtn.style.display = 'block';
+            }
+        }
+
+        // 💡 더보기 버튼 클릭 시 4개씩 누적 증가 스크립트 코어 구동
+        function renderNextBatch() {
+            currentVisibleCount += 4;
+            renderGrid();
+        }
+
+        window.onload = fetchSeismicData;
     </script>
 </body>
 </html>
