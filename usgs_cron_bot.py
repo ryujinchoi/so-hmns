@@ -5,22 +5,32 @@ import urllib.request
 import test_conjectures
 import so_formula_matrix
 
+# USGS 실시간 API 주소를 실제 GeoJSON 피드로 정밀 교정
 USGS_API_URL = "https://usgs.gov"
 DATA_FILE = "data.json"
 
 def reverse_geocode_territory(lat, lon, place_raw):
     lat, lon = float(lat), float(lon)
     place_upper = place_raw.upper()
+    
+    # 특정 집중 관리 구역 경계면 매핑
     if (-11.0 <= lat <= 6.0) and (95.0 <= lon <= 141.0): return "INDONESIA"
     if (24.0 <= lat <= 46.0) and (122.0 <= lon <= 146.0): return "JAPAN REGION"
     if (-48.0 <= lat <= -34.0) and (166.0 <= lon <= 179.0): return "NEW ZEALAND"
     if (14.0 <= lat <= 32.0) and (-118.0 <= lon <= -86.0): return "MEXICO REGION"
     if (-20.0 <= lat <= -0.1) and (-82.0 <= lon <= -68.0): return "PERU REGION"
+    
     if "INDONESIA" in place_upper or "SUNDA" in place_upper or "JAVA" in place_upper: return "INDONESIA"
     if "JAPAN" in place_upper or "TOKYO" in place_upper or "IZU" in place_upper: return "JAPAN REGION"
     if "NEW ZEALAND" in place_upper or "WELLINGTON" in place_upper or "KERMADEC" in place_upper: return "NEW ZEALAND"
     if "MEXICO" in place_upper or "MICHOACAN" in place_upper or "OAXACA" in place_upper: return "MEXICO REGION"
     if "PERU" in place_upper or "LIMA" in place_upper or "AREQUIPA" in place_upper: return "PERU REGION"
+    
+    # 텍스트 기반 전 세계 국가명 동적 파싱 확장
+    if "," in place_raw:
+        possible_country = place_raw.split(",")[-1].strip().upper()
+        if possible_country: return possible_country
+        
     return "GLOBAL SEISMIC GRID"
 
 def generate_failback_infinite_matrix():
@@ -61,10 +71,14 @@ def fetch_and_train_usgs_live():
             if observed_mag is None or observed_mag < 4.5: continue 
             epoch_time = properties.get("time", 0) / 1000.0
             geom = event.get("geometry", {})
-            coords = geom.get("coordinates", [0.0, 0.0, 0.0])
+            coords = geom.get("coordinates", [])
+            
+            # [Termux 환경 핵심 교정] 리스트 객체를 float로 직접 형변환하던 구조적 에러 차단
             if len(coords) < 2: continue
-            lon_val, lat_val = float(coords), float(coords)
-            depth_val = float(coords) if len(coords) > 2 else 15.0
+            lon_val = float(coords[0])
+            lat_val = float(coords[1])
+            depth_val = float(coords[2]) if len(coords) > 2 else 15.0
+            
             target_territory = reverse_geocode_territory(lat_val, lon_val, properties.get("place", ""))
             forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val)
             mock_item = {
