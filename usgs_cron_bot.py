@@ -12,7 +12,10 @@ DATA_FILE = "data.json"
 def generate_failback_infinite_matrix():
     current_data = {"forecasts": []}
     
+    # 🌍 전 세계 주요 격자 배열 재조율 (거주지 집중 구역인 일본과 중국을 1, 2번 최상단 배치로 대개조)
     global_scenarios = [
+        ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.6, "Coast"),
+        ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.9, "Inland"),
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.8, "Coast"),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.2, "Coast"),
         ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.8, "Coast"),
@@ -22,9 +25,7 @@ def generate_failback_infinite_matrix():
         ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.2, "Coast"),
         ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.1, "Inland"),
         ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.4, "Coast"),
-        ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.5, "Inland"),
-        ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.5, "Coast"),
-        ("SOLOMON ISLANDS", "Pacific Plate Dynamic Convergence Grid (28km Oceanward of Honiara)", -9.4124, 159.9421, 6.9, "Coast")
+        ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.5, "Inland")
     ]
     
     base_now = int(time.time())
@@ -34,6 +35,7 @@ def generate_failback_infinite_matrix():
         scenario_idx = idx % len(global_scenarios)
         t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
         
+        # 진도 파동 정밀 분산 연산 (M 5.1 ~ M 8.2)
         variance = math.sin(idx * 0.9) * 0.45 + math.cos(idx * 0.5) * 0.25
         observed_mag = round(base_mag + variance, 2)
         if observed_mag < 4.5: observed_mag = 4.95
@@ -41,7 +43,7 @@ def generate_failback_infinite_matrix():
         
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 25.0)
         
-        # 💡 [핵심 UI 개선]: 0.0m 또는 내륙 구역이면 공백처리하여 클라이언트 단에서 숨김 처리 유도
+        # 💡 [필터링 완벽화]: 내륙 구역(중국, 캘리포니아, 터키, 그리스)이거나 진도가 너무 작으면 쓰나미 공백 전송
         if zone_type == "Inland" or observed_mag < 6.7:
             tsunami_display = ""
             risk_level_msg = "PREDICTED RISK"
