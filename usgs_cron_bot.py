@@ -26,10 +26,10 @@ def generate_failback_infinite_matrix():
         ("SOLOMON ISLANDS", "Pacific Plate Dynamic Convergence Grid (28km Oceanward of Honiara)", -9.4124, 159.9421, 6.9, "Coast")
     ]
     
+    # 💡 오늘(7월 20일)을 기점으로 매 항목마다 3시간씩만 늘려가며 7월~8월 초순까지 리얼타임 안착
+    base_now = int(time.time())
     for idx in range(32):
-        # 💡 [날짜 수식 대교정]: 86400(하루)에 소수점을 곱해 6시간~12시간 간격으로 촘촘하게 7월부터 배치되도록 조정
-        time_gap = (idx * 0.4) + 0.1
-        future_epoch = int(time.time()) + int(86400 * time_gap)
+        future_epoch = base_now + (idx * 10800) + 7200
         
         scenario_idx = idx % len(global_scenarios)
         t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
