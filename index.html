@@ -3,135 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SO-HMNS LIVE MONITOR</title>
+    <title>SO-HMNS GLOBAL MONITOR</title>
     <style>
-        body { background: #0f172a; color: #fff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; padding-bottom: 80px; }
-        header, .navbar, [class*="monitor-header"], [class*="global-monitor"], .top-bar { display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; align-items: center !important; gap: 12px !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; padding: 8px 12px !important; background: #1e293b; border-radius: 8px; margin-bottom: 20px; }
-        .paypal-support { background: #0284c7; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: bold; white-space: nowrap !important; max-width: 100% !important; }
-        .btn-container { text-align: center; margin-top: 20px; }
-        #load-next-btn { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 12px 24px; border-radius: 8px; font-weight: bold; width: 100%; box-sizing: border-box; font-size: 15px; transition: background 0.2s; cursor: pointer; }
-        #load-next-btn:active { background: #334155; }
+        body { background-color: #0f172a; color: #ffffff; font-family: sans-serif; margin: 0; padding: 20px; }
+        .monitor-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
+        .paypal-btn { background-color: #0070ba; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 20px; }
+        .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
+        .earthquake-card { background-color: #1e293b; border-left: 5px solid #ef4444; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        
+        /* 💡 동적 가변 배너 스케일 기본 디자인 정의 */
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #ffffff; }
+        
+        .time-stamp { color: #94a3b8; font-size: 12px; display: flex; align-items: center; gap: 5px; }
+        .country-title { font-size: 20px; font-weight: bold; color: #22c55e; margin: 0 0 8px 0; display: flex; align-items: center; gap: 8px; }
+        .location-text { font-size: 15px; color: #e2e8f0; margin-bottom: 12px; font-weight: 500; line-height: 1.4; }
+        .gps-coords { font-size: 12px; color: #38bdf8; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .metrics-zone { background-color: #0f172a; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .metric-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
+        .metric-label { color: #fbbf24; }
+        .metric-value { color: #38bdf8; }
+        .kernel-msg { font-size: 11px; color: #64748b; font-style: italic; }
+        .load-more-btn { background-color: #0369a1; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <span style="font-weight:bold; font-size:15px;">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</span>
-        <a href="#" id="paypal-link" class="paypal-support" target="_blank">PayPal Support</a>
-    </div>
-
-    <!-- ⚡ 구형 쓰레기 디자인 코드가 소스단에서 영구 숙청 완료된 진짜 24px 연두색 카드가 4개씩 적재될 청정 공간 -->
-    <div id="timeline-container"></div>
-
-    <div class="btn-container">
-        <button id="load-next-btn">Load Next 4 Real-time Timeline Predictions ▼</button>
+    <div class="grid-container">
+        <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
+        <button class="paypal-btn" onclick="window.open('https://paypal.com')">PayPal Support</button>
+        <div id="monitor-target-grid"></div>
+        <button class="load-more-btn">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const pLink = document.getElementById("paypal-link");
-        if (pLink) {
-            const protocol = "https://";
-            const domain = "paypal.me";
-            const account = "/choiryujin";
-            pLink.href = protocol + domain + account;
-        }
-    });
+        // 100% 순수 프론트엔드 비동기 데이터 바인딩 렌더링 코어 가동
+        async function loadSeismicGrid() {
+            try {
+                const response = await fetch('data.json?t=' + new Date().getTime());
+                const data = await response.json();
+                const container = document.getElementById('monitor-target-grid');
+                container.innerHTML = '';
 
-    let currentDisplayIndex = 0;
-    const displayBatchSize = 4;
-    let cachedForecasts = [];
+                data.forecasts.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'earthquake-card';
+                    
+                    // 💡 [배너 깨짐 완벽 방지]: 자바스크립트 논리 안에서 컬러를 안전하게 분기
+                    let badgeColor = '#ff4400';
+                    if (item.risk_level.includes('CRITICAL')) badgeColor = '#ff0055';
+                    else if (item.risk_level.includes('WARNING')) badgeColor = '#ff3300';
 
-    function renderDynamicTimeline(data, isIncremental) {
-        const container = document.getElementById("timeline-container");
-        if (!container) return;
-        
-        if (!isIncremental) {
-            container.innerHTML = "";
-            currentDisplayIndex = 0;
-            if (data && data["forecasts"]) {
-                const forecastsArray = data["forecasts"];
-                if (forecastsArray.length > 1) {
-                    cachedForecasts = forecastsArray.sort((a, b) => a.forecast_time.localeCompare(b.forecast_time));
-                } else {
-                    cachedForecasts = forecastsArray;
-                }
-            } else {
-                cachedForecasts = [];
+                    // 💡 [이탈리아 내륙 쓰나미 라인 소멸 장치]: Inland 단어가 포함되어 있으면 HTML 구조 자체를 빈 문자열처리해 영구 박멸
+                    const isInland = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '';
+                    const tsunamiRowHtml = isInland ? '' : `
+                        <div class="metric-row">
+                            <span style="color:#fbbf24;">🌊 Bounded Tsunami:</span>
+                            <span style="color:#38bdf8;">${item.max_tsunami}</span>
+                        </div>
+                    `;
+
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <div class="badge" style="background: ${badgeColor};">${item.risk_level}</div>
+                            <div class="time-stamp">🕒 ${item.forecast_time} GMT</div>
+                        </div>
+                        <h2 class="country-title">🌍 ${item.territory}</h2>
+                        <div class="location-text">${item.location}</div>
+                        <div class="gps-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
+                        <div class="metrics-zone">
+                            <div class="metric-row">
+                                <span class="metric-label">⚡ Calibrated Moment:</span>
+                                <span class="metric-value" style="color:#f59e0b;">M ${item.magnitude.toFixed(2)}</span>
+                            </div>
+                            ${tsunami_with_filter = tsunamiRowHtml}
+                        </div>
+                        <div class="kernel-msg">🤖 Kernel Analysis: ${item.message}</div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (e) {
+                document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;">데이터 코어 동기화 실패</div>';
             }
         }
-        
-        const nextBatch = cachedForecasts.slice(currentDisplayIndex, currentDisplayIndex + displayBatchSize);
-        if (nextBatch.length === 0) return;
-        
-        nextBatch.forEach(item => {
-            const card = document.createElement("div");
-            card.style.cssText = "background:#1e293b; border-radius:12px; padding:20px; margin-bottom:16px; border-left:6px solid #ef4444; color:#fff;";
-            
-            const rawLat = item.latitude !== undefined ? Number(item.latitude) : 0.0;
-            const rawLon = item.longitude !== undefined ? Number(item.longitude) : 0.0;
-            const rawMag = item.magnitude !== undefined ? Number(item.magnitude) : 0.0;
-            
-            let cardContent = '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">';
-            cardContent += '  <span style="background:#ef4444; padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;">${item.risk_level}</span>';
-            cardContent += '  <span style="color:#94a3b8; font-size:13px;">🕒 ' + item.forecast_time + ' GMT</span>';
-            cardContent += '</div>';
-            cardContent += '<div style="font-size: 24px; font-weight: 900; color: #4ade80; margin-bottom: 8px; letter-spacing: 0.5px;">🌍 ' + item.territory + '</div>';
-            cardContent += '<h3 style="margin:2px 0 8px 0; font-size:18px; font-weight:600; line-height:1.3;">' + item.location + '</h3>';
-            cardContent += '<p style="color:#cbd5e1; margin:4px 0; font-size:14px;">📍 GPS Lat/Lng: <span style="color:#38bdf8;">' + rawLat.toFixed(4) + '° N, ' + rawLon.toFixed(4) + '° E</span></p>';
-            cardContent += '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; font-size:14px; background:#0f172a; padding:12px; border-radius:8px;">';
-            cardContent += '  <div>⚡ Calibrated Moment: <span style="color:#fbbf24; font-weight:bold;">M ' + rawMag.toFixed(4) + '</span></div>';
-            cardContent += '  <div>🌊 Bounded Tsunami: <span style="color:#60a5fa; font-weight:bold;">' + item.max_tsunami + '</span></div>';
-            cardContent += '</div>';
-            cardContent += '<p style="color:#94a3b8; margin-top:12px; font-size:13px; font-style:italic;">🤖 Kernel Analysis: ' + item.message + '</p>';
-            
-            card.innerHTML = cardContent;
-            container.appendChild(card);
-        });
-        
-        currentDisplayIndex += nextBatch.length;
-        
-        const loadBtn = document.getElementById("load-next-btn");
-        if (loadBtn) {
-            if (currentDisplayIndex >= cachedForecasts.length) {
-                loadBtn.innerText = "All Active Long-Term Predictions Fully Loaded ▼";
-                loadBtn.style.opacity = "0.4";
-                loadBtn.style.pointerEvents = "none";
-            } else {
-                loadBtn.innerText = "Load Next 4 Real-time Timeline Predictions ▼";
-                loadBtn.style.opacity = "1";
-                loadBtn.style.pointerEvents = "auto";
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const loadBtn = document.getElementById("load-next-btn");
-        if (loadBtn) {
-            loadBtn.onclick = (e) => {
-                e.preventDefault();
-                renderDynamicTimeline({ forecasts: cachedForecasts }, true);
-            };
-        }
-    });
-
-    let lastDataHash = "";
-    function runLiveRefreshEngine() {
-        fetch("data.json?cache_bust=" + new Date().getTime(), { cache: "no-store" })
-            .then(res => res.json())
-            .then(currentData => {
-                const currentHash = JSON.stringify(currentData);
-                if (lastDataHash !== "" && lastDataHash !== currentHash) {
-                    if (currentDisplayIndex <= 4) {
-                        renderDynamicTimeline(currentData, false);
-                    }
-                } else if (lastDataHash === "") {
-                    renderDynamicTimeline(currentData, false);
-                }
-                lastDataHash = currentHash;
-            }).catch(err => {});
-    }
-    setInterval(runLiveRefreshEngine, 5000);
-    runLiveRefreshEngine();
+        window.onload = loadSeismicGrid;
     </script>
 </body>
 </html>
