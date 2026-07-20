@@ -11,8 +11,6 @@ DATA_FILE = "data.json"
 def generate_failback_infinite_matrix():
     current_data = {"forecasts": []}
     
-    # 🌍 전 세계 6대주 거점 설정 및 해안(Coast)/내륙(Inland) 속성 추가
-    # 형식: (국가명, 세부위치, 위도, 경도, 기준진도, 지형속성)
     global_scenarios = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.8, "Coast"),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.2, "Coast"),
@@ -29,24 +27,22 @@ def generate_failback_infinite_matrix():
     ]
     
     for idx in range(32):
-        days_add = (idx * 3) + 8
-        future_epoch = int(time.time()) + (86400 * days_add)
+        # 💡 [날짜 수식 대교정]: 86400(하루)에 소수점을 곱해 6시간~12시간 간격으로 촘촘하게 7월부터 배치되도록 조정
+        time_gap = (idx * 0.4) + 0.1
+        future_epoch = int(time.time()) + int(86400 * time_gap)
         
         scenario_idx = idx % len(global_scenarios)
         t, loc, lat, lon, base_mag, zone_type = global_scenarios[scenario_idx]
         
-        # 1. [진도 다각화] 기준 진도에 인덱스 가중치를 부여하여 M 5.2 ~ M 8.1까지 다채롭게 연산
         observed_mag = base_mag + ((idx % 5) * 0.15) - 0.2
         if observed_mag < 4.5: observed_mag = 4.8
         
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 25.0)
         
-        # 2. [쓰나미 조건부 파쇄] 내륙 지역(Inland)이면 무조건 '0.0m (Inland)' 혹은 공백 처리 유도
         if zone_type == "Inland" or observed_mag < 6.5:
-            tsunami_display = "0.0m"  # UI 단에서 0.0m 또는 특정 문자열 매칭 시 히든 처리 가능하도록 연동
+            tsunami_display = "0.0m"
             risk_level_msg = "PREDICTED RISK"
         else:
-            # 해안 지역이면서 대형 지진인 경우 규모에 비례하여 쓰나미 높이 폭발 연산 (예: M 7.5 -> 3.2m)
             calculated_tsunami = (observed_mag - 6.0) * 1.8 + (idx % 3) * 0.5
             tsunami_display = f"{max(calculated_tsunami, 0.1):.1f}m"
             risk_level_msg = "TSUNAMI WARNING" if observed_mag >= 7.0 else "PREDICTED RISK"
