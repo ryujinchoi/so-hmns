@@ -11,7 +11,6 @@ DATA_FILE = "data.json"
 CONFIG_FILE = "bot_config.json"
 
 def load_upgrade_state():
-    # 💡 실행 횟수와 업그레이드 레벨을 기억하는 로컬 환경 저장소 작동
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, "r") as f:
             return json.load(f)
@@ -25,9 +24,8 @@ def generate_failback_infinite_matrix():
     current_data = {"forecasts": []}
     state = load_upgrade_state()
     
-    # 봇이 돌 때마다 횟수 누적 및 학습 가중치 증가
     run_count = state["run_count"]
-    upgrade_bias = math.log10(run_count + 9) * 0.05 # 시간이 흐를수록 상수 미세조정 자동화
+    upgrade_bias = math.log10(run_count + 9) * 0.05
     
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.75, "Coast"),
@@ -54,10 +52,13 @@ def generate_failback_infinite_matrix():
         time_step = (idx * 105000) + (int(math.sin(idx) * 25000))
         future_epoch = execution_time_seed + time_step + 7200
         
+        # 💡 [만료 파괴]: 예측 시간이 현재 폰 시계 기준 24시간 이상 지났다면 리스트 적재에서 패스
+        if execution_time_seed - future_epoch > 86400:
+            continue
+            
         scenario_idx = idx % len(tectonic_constants)
         t, loc, lat, lon, friction_k, zone_type = tectonic_constants[scenario_idx]
         
-        # 💡 [자동 업그레이드 수식 결합]: 진화 바이어스(upgrade_bias)를 대입하여 수식이 스스로 학습 및 최적화 진행
         adjusted_k = friction_k + upgrade_bias
         
         time_wave = math.sin(execution_time_seed % 500 + idx * 1.15) * 0.32
@@ -101,7 +102,6 @@ def generate_failback_infinite_matrix():
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(current_data, f, ensure_ascii=False, indent=4)
         
-    # 상태 갱신 세이브
     state["run_count"] += 1
     save_upgrade_state(state)
 
