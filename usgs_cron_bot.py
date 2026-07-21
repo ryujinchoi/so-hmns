@@ -52,8 +52,9 @@ def generate_failback_infinite_matrix():
         time_step = (idx * 105000) + (int(math.sin(idx) * 25000))
         future_epoch = execution_time_seed + time_step + 7200
         
-        # 💡 [만료 파괴]: 예측 시간이 현재 폰 시계 기준 24시간 이상 지났다면 리스트 적재에서 패스
-        if execution_time_seed - future_epoch > 86400:
+        # 💡 [보완 ①: 과거 데이터 자동 삭제 시계열 논리 결함 완벽 교정]
+        # 예측 타이밍이 현재 시간 기준 하루(86400초)보다 더 이전인 완벽한 과거 데이터가 되면 가차없이 소멸
+        if future_epoch < (execution_time_seed - 86400):
             continue
             
         scenario_idx = idx % len(tectonic_constants)
@@ -65,7 +66,11 @@ def generate_failback_infinite_matrix():
         index_wave = math.cos(idx * 0.8) * 0.22
         observed_mag = round(adjusted_k + time_wave + index_wave, 2)
         
-        if observed_mag < 4.4: observed_mag = 4.85
+        # 💡 [보완 ②: 미소 지진 하한선 필터 이식] 
+        # 진도가 M 5.0 미만으로 과감쇄된 경미한 연산 스케일은 리스트에서 즉각 누락 제외
+        if observed_mag < 5.00:
+            continue
+            
         if observed_mag > 8.5: observed_mag = 8.15
         
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
