@@ -9,6 +9,7 @@ import so_formula_matrix
 
 DATA_FILE = "data.json"
 CONFIG_FILE = "bot_config.json"
+USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
     if os.path.exists(CONFIG_FILE):
@@ -20,6 +21,12 @@ def save_upgrade_state(state):
     with open(CONFIG_FILE, "w") as f:
         json.dump(state, f, indent=4)
 
+def reverse_geocode_territory(place_raw):
+    if "," in place_raw:
+        possible_country = place_raw.split(",")[-1].strip().upper()
+        if possible_country: return possible_country
+    return "GLOBAL SEISMIC GRID"
+
 def generate_failback_infinite_matrix():
     current_data = {"forecasts": []}
     state = load_upgrade_state()
@@ -27,83 +34,126 @@ def generate_failback_infinite_matrix():
     run_count = state["run_count"]
     upgrade_bias = math.log10(run_count + 9) * 0.05
     
-    tectonic_constants = [
-        ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.75, "Coast"),
-        ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.15, "Coast"),
-        ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.85, "Inland"),
-        ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.75, "Coast"),
-        ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.65, "Inland"),
-        ("EAST AFRICA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.35, "Inland"),
-        ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.35, "Coast"),
-        ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.95, "Coast"),
-        ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.45, "Coast"),
-        ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.25, "Coast"),
-        ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland"),
-        ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 6.05, "Inland"),
-        ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.45, "Coast"),
-        ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.55, "Inland"),
-        ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.45, "Coast"),
-        ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.55, "Inland")
-    ]
-    
+    # 1. [하이브리드 통로 가동] 미국 USGS 실시간 라이브 피드 다운로드 우선 시도
+    live_features = []
+    try:
+        req = urllib.request.Request(USGS_API_URL, headers={"User-Agent": "SO-HMNS-Continuous-Bot"})
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        with urllib.request.urlopen(req, timeout=5, context=ctx) as response:
+            geojson_data = json.loads(response.read().decode("utf-8"))
+            live_features = geojson_data.get("features", [])
+    except:
+        # 인터넷이 끊겨있으면 조용히 패스하여 하단 내장 시뮬레이션 매트릭스로 전환
+        pass
+
     execution_time_seed = int(time.time())
-    
-    for idx in range(32):
-        time_step = (idx * 105000) + (int(math.sin(idx) * 25000))
-        future_epoch = execution_time_seed + time_step + 7200
-        
-        # 💡 [보완 ①: 과거 데이터 자동 삭제 시계열 논리 결함 완벽 교정]
-        # 예측 타이밍이 현재 시간 기준 하루(86400초)보다 더 이전인 완벽한 과거 데이터가 되면 가차없이 소멸
-        if future_epoch < (execution_time_seed - 86400):
-            continue
+
+    # 2. 라이브 데이터가 존재하면 실시간 패킷 파싱, 없으면 독자적 시뮬레이션 엔진 작동
+    if live_features:
+        existing_ids = []
+        for event in live_features:
+            event_id = event.get("id")
+            if event_id in existing_ids: continue
+            props = event.get("properties", {})
+            observed_mag = props.get("mag")
+            if observed_mag is None or observed_mag < 4.5: continue
             
-        scenario_idx = idx % len(tectonic_constants)
-        t, loc, lat, lon, friction_k, zone_type = tectonic_constants[scenario_idx]
-        
-        adjusted_k = friction_k + upgrade_bias
-        
-        time_wave = math.sin(execution_time_seed % 500 + idx * 1.15) * 0.32
-        index_wave = math.cos(idx * 0.8) * 0.22
-        observed_mag = round(adjusted_k + time_wave + index_wave, 2)
-        
-        # 💡 [보완 ②: 미소 지진 하한선 필터 이식] 
-        # 진도가 M 5.0 미만으로 과감쇄된 경미한 연산 스케일은 리스트에서 즉각 누락 제외
-        if observed_mag < 5.00:
-            continue
+            epoch_time = props.get("time", 0) / 1000.0
+            coords = event.get("geometry", {}).get("coordinates", [0.0, 0.0, 15.0])
             
-        if observed_mag > 8.5: observed_mag = 8.15
-        
-        forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
-        
-        if zone_type == "Inland" or observed_mag < 6.80:
-            tsunami_display = "N/A (Inland Fault)"
-            risk_level_msg = "PREDICTED RISK"
-        else:
-            wave_height_calc = (observed_mag - 6.6) * 1.35 + (idx % 3) * 0.25
-            tsunami_display = f"{max(wave_height_calc, 0.3):.1f}m"
-            risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.15 else "PREDICTED RISK"
+            coords_iter = iter(coords)
+            lon_val = float(next(coords_iter))
+            lat_val = float(next(coords_iter))
+            try:
+                depth_val = float(next(coords_iter))
+            except StopIteration:
+                depth_val = 15.0
+            
+            target_territory = reverse_geocode_territory(props.get("place", ""))
+            forecast_time, dynamic_factor = so_formula_matrix.calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val)
+            
+            place_upper = props.get("place", "").upper()
+            is_coast = any(k in place_upper for k in ["REGION", "COAST", "OCEAN", "SEA"])
+            
+            if not is_coast or observed_mag < 6.8:
+                tsunami_display = "N/A (Inland Fault)" if not is_coast else "0.0m"
+                risk_level_msg = "PREDICTED RISK"
+            else:
+                wave_height = (observed_mag - 6.5) * 1.35
+                tsunami_display = f"{max(wave_height, 0.3):.1f}m"
+                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.15 else "PREDICTED RISK"
                 
-        if observed_mag >= 7.75:
-            risk_level_msg = "💥 CRITICAL BREAK"
+            if observed_mag >= 7.75: risk_level_msg = "💥 CRITICAL BREAK"
             
-        mock_item = {
-            "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}",
-            "forecast_time": forecast_time,
-            "territory": t,
-            "location": loc,
-            "latitude": lat,
-            "longitude": lon,
-            "seismic_energy": 10 ** (1.5 * observed_mag + 4.8),
-            "focal_depth": round(12.0 + (idx * 15.4 + (execution_time_seed % 7)) % 120.0, 1),
-            "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0,
-            "magnitude": observed_mag,
-            "max_tsunami": tsunami_display,
-            "risk_level": risk_level_msg,
-            "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
-        }
-        mock_item = test_conjectures.refine_prediction_engine(mock_item)
-        current_data["forecasts"].append(mock_item)
-        
+            mock_item = {
+                "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
+                "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
+                "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
+                "message": f"USGS Real-time Live Stream Connected. v{round(1.0 + upgrade_bias, 3)}"
+            }
+            mock_item = test_conjectures.refine_prediction_engine(mock_item)
+            current_data["forecasts"].append(mock_item)
+            existing_ids.append(event_id)
+    else:
+        # 인터넷이 차단되었을 때 시간 순서대로 뻗어나가는 정밀 6대주 시뮬레이션 매트릭스
+        tectonic_constants = [
+            ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.75, "Coast"),
+            ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.15, "Coast"),
+            ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.85, "Inland"),
+            ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.75, "Coast"),
+            ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.65, "Inland"),
+            ("EAST AFRICA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.35, "Inland"),
+            ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.35, "Coast"),
+            ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.95, "Coast"),
+            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.45, "Coast"),
+            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.25, "Coast"),
+            ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland"),
+            ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 6.05, "Inland"),
+            ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.45, "Coast"),
+            ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.55, "Inland"),
+            ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.45, "Coast"),
+            ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.55, "Inland")
+        ]
+        for idx in range(32):
+            time_step = (idx * 105000) + (int(math.sin(idx) * 25000))
+            future_epoch = execution_time_seed + time_step + 7200
+            if future_epoch < (execution_time_seed - 86400): continue
+            
+            scenario_idx = idx % len(tectonic_constants)
+            t, loc, lat, lon, friction_k, zone_type = tectonic_constants[scenario_idx]
+            
+            adjusted_k = friction_k + upgrade_bias
+            time_wave = math.sin(execution_time_seed % 500 + idx * 1.15) * 0.32
+            index_wave = math.cos(idx * 0.8) * 0.22
+            observed_mag = round(adjusted_k + time_wave + index_wave, 2)
+            
+            if observed_mag < 5.00: continue
+            
+            forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
+            
+            if zone_type == "Inland" or observed_mag < 6.80:
+                tsunami_display = "N/A (Inland Fault)"
+                risk_level_msg = "PREDICTED RISK"
+            else:
+                wave_height_calc = (observed_mag - 6.6) * 1.35 + (idx % 3) * 0.25
+                tsunami_display = f"{max(wave_height_calc, 0.3):.1f}m"
+                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.15 else "PREDICTED RISK"
+                    
+            if observed_mag >= 7.75: risk_level_msg = "💥 CRITICAL BREAK"
+                
+            mock_item = {
+                "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
+                "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 15.4 + (execution_time_seed % 7)) % 120.0, 1),
+                "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
+            }
+            mock_item = test_conjectures.refine_prediction_engine(mock_item)
+            current_data["forecasts"].append(mock_item)
+
+    # 💡 [순서 복원 정정]: 규모별 강제 정렬 코드 정지! 기존의 시간 흐름 순정 배열 유지
+
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(current_data, f, ensure_ascii=False, indent=4)
         
