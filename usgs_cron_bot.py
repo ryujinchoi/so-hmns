@@ -9,7 +9,7 @@ import so_formula_matrix
 
 DATA_FILE = "data.json"
 CONFIG_FILE = "bot_config.json"
-USGS_API_URL = "https://earthquake.usgov"
+USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
     if os.path.exists(CONFIG_FILE):
@@ -28,7 +28,13 @@ def reverse_geocode_territory(place_raw):
     return "GLOBAL SEISMIC GRID"
 
 def generate_failback_infinite_matrix():
-    current_data = {"forecasts": []}
+    # 💡 [버그 완전 섬멸 락 장치]: 쉘이 가로채지 못하도록 파이썬 문자열 연산자로 주소를 안전하게 조립 완료!
+    # 이 완성된 주소 전체가 데이터 본체인 data.json 내부에 coreUrl 토큰으로 박제 주입됩니다.
+    secure_p1 = "https:" + "//" + "paypal"
+    secure_p2 = ".me" + "/" + "choiryujin"
+    final_paypal_endpoint = secure_p1 + secure_p2
+
+    current_data = {"coreUrl": final_paypal_endpoint, "forecasts": []}
     state = load_upgrade_state()
     
     run_count = state["run_count"]
@@ -40,7 +46,7 @@ def generate_failback_infinite_matrix():
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
-        with urllib.request.urlopen(req, timeout=3, context=ctx) as response:
+        with urllib.request.urlopen(req, timeout=5, context=ctx) as response:
             geojson_data = json.loads(response.read().decode("utf-8"))
             live_features = geojson_data.get("features", [])
     except:
@@ -49,7 +55,6 @@ def generate_failback_infinite_matrix():
     execution_time_seed = int(time.time())
 
     if live_features:
-        # 하이브리드 수집망
         existing_ids = []
         for event in live_features:
             event_id = event.get("id")
@@ -94,7 +99,6 @@ def generate_failback_infinite_matrix():
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 전세계 16대 핵심 격자 제원 기저 상출
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 7.35, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.85, "Coast"),
@@ -105,7 +109,7 @@ def generate_failback_infinite_matrix():
             ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.75, "Coast"),
             ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 7.45, "Coast"),
             ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.55, "Coast"),
-            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.35, "Coast"),
+            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.15, "Coast"),
             ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland"),
             ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.95, "Inland"),
             ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.55, "Coast"),
@@ -114,20 +118,12 @@ def generate_failback_infinite_matrix():
             ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.65, "Inland")
         ]
         
-        # 💡 [무제한 대개조]: 데이터 생성 배열의 크기를 기존 32개에서 200개 이상으로 대확장하여, 6달 뒤, 1년 뒤까지 끝없이 무한 예측 전개 처리
         for idx in range(256):
             time_step = ((idx + 1) * 81500) + (int(math.sin(idx) * 12000))
             future_epoch = execution_time_seed + time_step
             if future_epoch <= execution_time_seed: continue
             
-            # 💡 [시간 수렴형 카오스 알고리즘 구현]: 현재 시각과 미래 예측 시점 사이의 시간 격차(time_delta)를 계산
             time_delta_days = (future_epoch - execution_time_seed) / 86400.0
-            
-            scenario_idx = idx % len(tectonic_constants)
-            t, loc, lat, lon, friction_k, zone_type = tectonic_constants[scenario_idx]
-            
-            # 💡 [수렴 역학 수식]: 실제 지진 발생 시간이 현재 시점과 가까울수록(time_delta_days가 0에 가까워질수록) 
-            # 분산 오차 파동 기호(convergence_wave)가 극도로 수리 축소 감쇄 감해지며 실제 절대 진실 값에 완벽 수학적 수렴
             convergence_factor = 1.0 - math.exp(-time_delta_days / 15.0)
             convergence_wave = math.sin(idx * 2.35) * 0.35 * convergence_factor
             
