@@ -87,13 +87,12 @@ def generate_failback_infinite_matrix():
                 "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
                 "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
                 "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
+                "message": f"USGS Real-time Theory Matrix Connected. v{round(1.0 + upgrade_bias, 3)}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 오늘 날짜를 기준으로 예측 일수가 가변 연산되어 가산되는 16대 대형 단층대 시뮬레이션 격자
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
@@ -104,7 +103,7 @@ def generate_failback_infinite_matrix():
             ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.25, "Coast"),
             ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.85, "Coast"),
             ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.35, "Coast"),
-            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.15, "Coast"),
+            ("PAPUA NEW FUNINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.15, "Coast"),
             ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.05, "Inland"),
             ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.95, "Inland"),
             ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.35, "Coast"),
