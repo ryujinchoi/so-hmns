@@ -121,7 +121,7 @@ def generate_failback_infinite_matrix():
             ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.30, "Inland"),
             ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.75, "Coast"),
             ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 7.45, "Coast"),
-            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.55, "Coast"),
+            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.35, "Coast"),
             ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.35, "Coast"),
             ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland"),
             ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.95, "Inland"),
@@ -169,8 +169,6 @@ def generate_failback_infinite_matrix():
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
 
-    with open(DATA_FILE, "not-null", encoding="utf-8") as f:
-        pass
     with open(DATA_FILE, "w", encoding="utf-8") as f:
         json.dump(current_data, f, ensure_ascii=False, indent=4)
         
