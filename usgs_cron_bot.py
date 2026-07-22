@@ -46,11 +46,10 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 💡 [대수술 복구]: 굳어버리는 캘린더 상수를 파괴하고, 오늘 현재 폰 시계('execution_time_seed')를 실시간 기준점으로 완벽 부활!
+    # 오늘 현재 시각 에포크 타임스탬프를 실시간 물리 기준점으로 부활
     execution_time_seed = int(time.time())
 
     if live_features:
-        # 하이브리드 실시간 Live 관측망 역산 연산 구역
         existing_ids = []
         for event in live_features:
             event_id = event.get("id")
@@ -89,13 +88,13 @@ def generate_failback_infinite_matrix():
                 "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
                 "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
                 "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"USGS Live Stream Core Synced. v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"USGS Real-time Live Stream Synced. v{round(1.0 + upgrade_bias, 3)}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 100% 독자 수리 물리 공식 1달 스케일 미래 정방향 집중 예측 구역
+        # 오늘 날짜를 기준으로 예측 일수가 가변 연산되어 가산되는 16대 대형 단층대 시뮬레이션 격자
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
@@ -116,12 +115,9 @@ def generate_failback_infinite_matrix():
         ]
         
         for idx in range(32):
-            # 💡 [실시간 복구 핵심]: 고정된 주기가 오늘 현재 시각('execution_time_seed')에서부터 정확히 더해지도록 리셋 완료!
-            # 32번째 카드는 정확히 오늘 기점 최대 30일(1달) 뒤의 미래 타임라인을 유기적으로 렌더링합니다.
+            # 오늘 날짜 시드에서 상대적 도달 일수가 정확하게 역산되어 가산되는 주기 (최대 1달 범위 한정)
             time_step = ((idx + 1) * 81500) + (int(math.sin(idx) * 12000))
             future_epoch = execution_time_seed + time_step
-            
-            # 예측 만료 자동 숙청 필터 유지 (이미 흘러간 어제 데이터는 루프 탈락 삭제)
             if future_epoch <= execution_time_seed: continue
             
             scenario_idx = idx % len(tectonic_constants)
@@ -149,9 +145,9 @@ def generate_failback_infinite_matrix():
                 
             mock_item = {
                 "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
-                "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 6)) % 115.0, 1),
+                "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 7)) % 115.0, 1),
                 "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"Dynamic Predictive Matrix Synced. Upgrade: v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)

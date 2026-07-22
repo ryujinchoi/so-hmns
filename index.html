@@ -27,7 +27,10 @@
 <body>
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
-        <button class="paypal-btn" onclick="window.open('https://paypal.me', '_blank')">PayPal Support</button>
+        
+        <!-- 💡 [교정 핵심]: 문자열 유실 버그를 완전히 깨부수기 위해 변수 p1과 p2를 더해서 주소를 완성하도록 설계 -->
+        <button class="paypal-btn" onclick="const p1='https://paypal.me'; const p2='choiryujin'; window.open(p1+p2, '_blank');">PayPal Support</button>
+        
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
