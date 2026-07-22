@@ -2,10 +2,8 @@ import time
 import math
 
 def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val):
-    # 💡 [정밀 튜닝] 전세계 단층대별 해저 지형 마찰 감쇄 계수 최적화
     base_factor = 14.12
     depth_compensation = min(float(depth_val) / 60.0, 3.8)
-    
     bathymetry_factor = 0.0
     t_upper = target_territory.upper()
     
@@ -19,6 +17,5 @@ def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_
     nonlinear_curve = math.log10(1.0 + (magnitude_scale - 3.5) * 2.3) * 1.12
     dynamic_attenuation_factor = base_factor + depth_compensation + bathymetry_factor + nonlinear_curve
     
-    # 전달받은 실시간 에포크 타임을 기반으로 오차 없는 깨끗한 타임라인 추출
     forecast_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(epoch_time))
     return forecast_time, dynamic_attenuation_factor

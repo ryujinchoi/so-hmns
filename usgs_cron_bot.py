@@ -73,13 +73,13 @@ def generate_failback_infinite_matrix():
             place_upper = props.get("place", "").upper()
             is_coast = any(k in place_upper for k in ["REGION", "COAST", "OCEAN", "SEA"])
             
-            if not is_coast or observed_mag < 6.8:
+            if not is_coast or observed_mag < 7.15:
                 tsunami_display = "N/A (Inland Fault)" if not is_coast else "0.0m"
                 risk_level_msg = "PREDICTED RISK"
             else:
                 wave_height = (observed_mag - 6.6) * 1.22
                 tsunami_display = f"{max(wave_height, 0.3):.1f}m"
-                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.15 else "PREDICTED RISK"
+                risk_level_msg = "⚠️ TSUNAMI WARNING"
                 
             if observed_mag >= 7.75: risk_level_msg = "💥 CRITICAL BREAK"
             
@@ -87,7 +87,7 @@ def generate_failback_infinite_matrix():
                 "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
                 "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
                 "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"USGS Real-time Theory Matrix Connected. v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
@@ -113,7 +113,6 @@ def generate_failback_infinite_matrix():
         ]
         
         for idx in range(32):
-            # 💡 [1달 모드 골든타임 세팅]: 32번째 카드가 정확히 오늘 기점 30일 뒤에 도달하도록 시간 간격을 '81,500초(약 0.94일)' 주기로 정밀 스케일링 재조율!
             time_step = ((idx + 1) * 81500) + (int(math.sin(idx) * 12000))
             future_epoch = execution_time_seed + time_step
             if future_epoch <= execution_time_seed: continue
@@ -131,13 +130,13 @@ def generate_failback_infinite_matrix():
             
             forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
             
-            if zone_type == "Inland" or observed_mag < 6.80:
-                tsunami_display = "N/A (Inland Fault)"
+            if zone_type == "Inland" or observed_mag < 7.15:
+                tsunami_display = "N/A (Inland Fault)" if zone_type == "Inland" else "0.0m"
                 risk_level_msg = "PREDICTED RISK"
             else:
                 wave_height_calc = (observed_mag - 6.6) * 1.22 + (idx % 3) * 0.2
                 tsunami_display = f"{max(wave_height_calc, 0.3):.1f}m"
-                risk_level_msg = "⚠️ TSUNAMI WARNING" if observed_mag >= 7.15 else "PREDICTED RISK"
+                risk_level_msg = "⚠️ TSUNAMI WARNING"
                     
             if observed_mag >= 7.75: risk_level_msg = "💥 CRITICAL BREAK"
                 
@@ -145,7 +144,7 @@ def generate_failback_infinite_matrix():
                 "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
                 "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 7)) % 115.0, 1),
                 "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"Tectonic Friction Core Calibrated. Upgrade: v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
