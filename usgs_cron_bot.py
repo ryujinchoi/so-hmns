@@ -93,6 +93,7 @@ def generate_failback_infinite_matrix():
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
+        # 오늘 날짜를 기준으로 예측 일수가 가변 연산되어 가산되는 16대 대형 단층대 시뮬레이션 격자
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
