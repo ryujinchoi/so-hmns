@@ -27,7 +27,10 @@
 <body>
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
-        <button class="paypal-btn" onclick="window.open('https://paypal.me', '_blank')">PayPal Support</button>
+        
+        <!-- 💡 [교정 핵심]: 짤림 방지를 위해 싱글 인용부호 안에 개인 후원 직통 주소를 통째로 선언하여 연동 -->
+        <button class="paypal-btn" onclick="window.open('https://paypal.me/choiryujin', '_blank')">PayPal Support</button>
+        
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
