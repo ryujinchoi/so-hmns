@@ -91,12 +91,9 @@
                 container.appendChild(card);
             });
 
+            // 💡 무제한 개방을 위해 하단 더보기 버튼은 항상 활성화(숨기지 않음)되도록 형태 유지 변경
             const actionBtn = document.getElementById('load-more-action');
-            if (currentVisibleCount >= allForecasts.length) {
-                actionBtn.style.display = 'none';
-            } else {
-                actionBtn.style.display = 'block';
-            }
+            actionBtn.style.display = 'block';
         }
 
         function renderNextBatch() {
