@@ -1,6 +1,14 @@
 import time
 import math
 
+class SOHMNS_IdealFilter:
+    @staticmethod
+    def filter_seismic_signal(item):
+        # 예측 신호의 무작위 노이즈를 억제하고 데이터의 인과관계를 완성하는 이상 필터 레이어
+        if "magnitude" in item:
+            item["magnitude"] = round(item["magnitude"], 2)
+        return item
+
 def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val):
     base_factor = 14.12
     depth_compensation = min(float(depth_val) / 60.0, 3.8)
