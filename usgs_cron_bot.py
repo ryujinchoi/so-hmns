@@ -34,7 +34,6 @@ def generate_failback_infinite_matrix():
     run_count = state["run_count"]
     upgrade_bias = math.log10(run_count + 9) * 0.05
     
-    # 하이브리드 자동 수집망 유지
     live_features = []
     try:
         req = urllib.request.Request(USGS_API_URL, headers={"User-Agent": "SO-HMNS-Continuous-Bot"})
@@ -94,14 +93,12 @@ def generate_failback_infinite_matrix():
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 독자 수식 연산 제원 풀
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
             ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.80, "Inland"),
             ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.65, "Coast"),
             ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.60, "Inland"),
-            # 💡 [교정 완료]: EAST AFRICA 명칭을 실제 정식 국가 국가 도메인명인 KENYA로 정밀 치환 완료
             ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.30, "Inland"),
             ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.25, "Coast"),
             ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.85, "Coast"),
@@ -116,7 +113,8 @@ def generate_failback_infinite_matrix():
         ]
         
         for idx in range(32):
-            time_step = ((idx + 1) * 125000) + (int(math.sin(idx) * 18000))
+            # 💡 [1달 모드 골든타임 세팅]: 32번째 카드가 정확히 오늘 기점 30일 뒤에 도달하도록 시간 간격을 '81,500초(약 0.94일)' 주기로 정밀 스케일링 재조율!
+            time_step = ((idx + 1) * 81500) + (int(math.sin(idx) * 12000))
             future_epoch = execution_time_seed + time_step
             if future_epoch <= execution_time_seed: continue
             
@@ -145,7 +143,7 @@ def generate_failback_infinite_matrix():
                 
             mock_item = {
                 "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
-                "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 6)) % 115.0, 1),
+                "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 7)) % 115.0, 1),
                 "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
                 "message": f"Tectonic Friction Core Calibrated. Upgrade: v{round(1.0 + upgrade_bias, 3)}"
             }
