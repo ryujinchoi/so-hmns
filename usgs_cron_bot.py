@@ -46,7 +46,6 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 오늘 현재 시각 에포크 타임스탬프를 실시간 물리 기준점으로 부활
     execution_time_seed = int(time.time())
 
     if live_features:
@@ -88,13 +87,12 @@ def generate_failback_infinite_matrix():
                 "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
                 "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
                 "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"USGS Real-time Live Stream Synced. v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"USGS Live Stream Core Synced. v{round(1.0 + upgrade_bias, 3)}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 오늘 날짜를 기준으로 예측 일수가 가변 연산되어 가산되는 16대 대형 단층대 시뮬레이션 격자
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
@@ -115,7 +113,6 @@ def generate_failback_infinite_matrix():
         ]
         
         for idx in range(32):
-            # 오늘 날짜 시드에서 상대적 도달 일수가 정확하게 역산되어 가산되는 주기 (최대 1달 범위 한정)
             time_step = ((idx + 1) * 81500) + (int(math.sin(idx) * 12000))
             future_epoch = execution_time_seed + time_step
             if future_epoch <= execution_time_seed: continue
@@ -147,7 +144,7 @@ def generate_failback_infinite_matrix():
                 "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
                 "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 7)) % 115.0, 1),
                 "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
+                "message": f"Dynamic Predictive Matrix Synced. Upgrade: v{round(1.0 + upgrade_bias, 3)}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
