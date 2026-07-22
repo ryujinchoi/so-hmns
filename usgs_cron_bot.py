@@ -28,8 +28,7 @@ def reverse_geocode_territory(place_raw):
     return "GLOBAL SEISMIC GRID"
 
 def generate_failback_infinite_matrix():
-    # 💡 [버그 완전 섬멸 락 장치]: 쉘이 가로채지 못하도록 파이썬 문자열 연산자로 주소를 안전하게 조립 완료!
-    # 이 완성된 주소 전체가 데이터 본체인 data.json 내부에 coreUrl 토큰으로 박제 주입됩니다.
+    # 백엔드 다이렉트 슬래시 짤림 전면 방어 조립망
     secure_p1 = "https:" + "//" + "paypal"
     secure_p2 = ".me" + "/" + "choiryujin"
     final_paypal_endpoint = secure_p1 + secure_p2
@@ -100,22 +99,22 @@ def generate_failback_infinite_matrix():
             existing_ids.append(event_id)
     else:
         tectonic_constants = [
-            ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 7.35, "Coast"),
-            ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.85, "Coast"),
-            ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.95, "Inland"),
-            ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 8.15, "Coast"),
-            ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.75, "Inland"),
-            ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.25, "Inland"),
-            ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.75, "Coast"),
-            ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 7.45, "Coast"),
-            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.55, "Coast"),
+            ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
+            ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
+            ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.80, "Inland"),
+            ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.65, "Coast"),
+            ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.60, "Inland"),
+            ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.30, "Inland"),
+            ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.25, "Coast"),
+            ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.85, "Coast"),
+            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.35, "Coast"),
             ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.15, "Coast"),
             ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland"),
             ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.95, "Inland"),
             ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.55, "Coast"),
             ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.45, "Inland"),
-            ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.45, "Coast"),
-            ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.65, "Inland")
+            ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.35, "Coast"),
+            ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.45, "Inland")
         ]
         
         for idx in range(256):
@@ -125,8 +124,13 @@ def generate_failback_infinite_matrix():
             
             time_delta_days = (future_epoch - execution_time_seed) / 86400.0
             convergence_factor = 1.0 - math.exp(-time_delta_days / 15.0)
-            convergence_wave = math.sin(idx * 2.35) * 0.35 * convergence_factor
             
+            # 💡 [정밀 수술]: 리사이클 단층 상수를 먼저 정상적으로 언패킹한 뒤 하단의 연산식으로 연결
+            scenario_idx = idx % len(tectonic_constants)
+            t, loc, lat, lon, friction_k, zone_type = tectonic_constants[scenario_idx]
+            
+            # 이제 friction_k 변수가 확실하게 위에서 잡혔으므로 NameError 에러가 완벽히 소멸합니다.
+            convergence_wave = math.sin(idx * 2.35) * 0.35 * convergence_factor
             observed_mag = round(friction_k + convergence_wave + (upgrade_bias * 0.001), 2)
             
             if observed_mag < 5.00: continue
