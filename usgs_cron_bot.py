@@ -87,12 +87,13 @@ def generate_failback_infinite_matrix():
                 "id": event_id, "forecast_time": forecast_time, "territory": target_territory, "location": props.get("place", "Active Fault"),
                 "latitude": lat_val, "longitude": lon_val, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": max(depth_val, 5.0),
                 "bathymetry_depth": 15.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"USGS Live Stream Core Synced. v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
+        # 오늘 날짜 기반 상대 일수 가변형 16대 핵심 대륙 단층망
         tectonic_constants = [
             ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.70, "Coast"),
             ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.10, "Coast"),
@@ -144,7 +145,7 @@ def generate_failback_infinite_matrix():
                 "id": f"hmns_tuned_matrix_{idx}_{execution_time_seed % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
                 "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8 + (execution_time_seed % 7)) % 115.0, 1),
                 "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-                "message": f"Dynamic Predictive Matrix Synced. Upgrade: v{round(1.0 + upgrade_bias, 3)}"
+                "message": f"Auto-Upgrading Engine Active [v{round(1.0 + upgrade_bias, 3)}]. Run: {run_count}"
             }
             mock_item = test_conjectures.refine_prediction_engine(mock_item)
             current_data["forecasts"].append(mock_item)

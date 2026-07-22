@@ -27,10 +27,7 @@
 <body>
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
-        
-        <!-- 💡 [교정 핵심]: .me 뒤에 슬래시(/)가 증발하지 않도록 자바스크립트 내에서 슬래시 문자를 완전히 분리해 안전하게 직통 꽂히도록 이식 -->
-        <button class="paypal-btn" onclick="const b='https://paypal.me'; const s='/'; const u='choiryujin'; window.open(b+s+u, '_blank');">PayPal Support</button>
-        
+        <button class="paypal-btn" onclick="const p1='https://paypal.me'; const p2='choiryujin'; window.open(p1+p2, '_blank');">PayPal Support</button>
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
@@ -66,8 +63,9 @@
 
                 card.style.borderLeftColor = themeColor;
 
-                const isInland = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '';
-                const tsunamiRowHtml = isInland ? '' : `
+                // 💡 [UI 교정 ①]: 쓰나미 텍스트에 Inland가 포함되어 있거나, 수치가 0.0m 혹은 비어있으면 아예 마크업을 생성하지 않고 삭제 은폐함
+                const isTsunamiHidden = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '0.0m' || item.max_tsunami === '';
+                const tsunamiRowHtml = isTsunamiHidden ? '' : `
                     <div class="metric-row">
                         <span style="color:#fbbf24;">🌊 Bounded Tsunami:</span>
                         <span style="color:#38bdf8;">${item.max_tsunami}</span>
@@ -89,6 +87,7 @@
                         </div>
                         ${tsunamiRowHtml}
                     </div>
+                    <!-- 💡 [UI 교정 ②]: 고정 텍스트를 깨부수고 백엔드의 자가학습 업그레이드 수식 로그를 100% 온전하게 동적 연동 바인딩 -->
                     <div class="kernel-msg">🤖 Kernel Analysis: ${item.message}</div>
                 `;
                 container.appendChild(card);
