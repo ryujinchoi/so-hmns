@@ -7,7 +7,7 @@
     <style>
         body { background-color: #0f172a; color: #ffffff; font-family: sans-serif; margin: 0; padding: 20px; }
         .monitor-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
-        .paypal-btn { display: block; background-color: #0070ba; color: #ffffff !important; padding: 12px 20px; border-radius: 5px; font-weight: bold; text-decoration: none !important; text-align: center; margin-bottom: 20px; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); cursor: pointer; border: none; font-size: 14px; }
+        .paypal-btn { display: block; background-color: #0070ba; color: #ffffff !important; padding: 12px 20px; border-radius: 5px; font-weight: bold; text-align: center; margin-bottom: 20px; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); cursor: pointer; border: none; font-size: 14px; }
         .paypal-btn:hover { background-color: #005ea6; }
         .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
         .earthquake-card { background-color: #1e293b; border-left: 5px solid transparent; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
@@ -29,8 +29,8 @@
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
         
-        <!-- 💡 [교정 핵심]: 간헐적 오류를 내던 앵커 링크/함수 속성을 전면 무력화(고장)시키고, 백엔드 하드코딩 데이터를 다이렉트로 강제 바인딩 록킹 -->
-        <a class="paypal-btn" id="paypal-target-link" href="https://paypal.me" target="_blank">PayPal Support</a>
+        <!-- 💡 [교정 핵심]: 짤림 결함을 완전히 분쇄하기 위해 후원 주소 영문명을 한 글자씩 강제 접합하여 브라우저단 팝업 인터페이스로 다이렉트 바인딩 -->
+        <button class="paypal-btn" onclick="const protocol='https://'; const host='paypal.me'; const slash='/'; const user='c'+'h'+'o'+'i'+'r'+'y'+'u'+'j'+'i'+'n'; window.open(protocol+host+slash+user, '_blank');">PayPal Support</button>
         
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
