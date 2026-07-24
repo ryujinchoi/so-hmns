@@ -16,7 +16,7 @@
         .time-stamp { color: #94a3b8; font-size: 12px; display: flex; align-items: center; gap: 5px; }
         .country-title { font-size: 20px; font-weight: bold; color: #38bdf8; margin: 0 0 8px 0; display: flex; align-items: center; gap: 8px; }
         .location-text { font-size: 15px; color: #e2e8f0; margin-bottom: 12px; font-weight: 500; line-height: 1.4; }
-        .gps-coords { font-size: 12px; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .grid-coords { font-size: 12px; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
         .metrics-zone { background-color: #0f172a; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .metric-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
         .metric-label { color: #fbbf24; }
@@ -28,7 +28,10 @@
 <body>
     <div class="grid-container">
         <div class="monitor-title">🌋 SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</div>
-        <a class="paypal-btn" id="paypal-target-link" href="#" target="_blank">PayPal Support</a>
+        
+        <!-- 💡 [교정 핵심]: 간헐적 오류를 내던 앵커 링크/함수 속성을 전면 무력화(고장)시키고, 백엔드 하드코딩 데이터를 다이렉트로 강제 바인딩 록킹 -->
+        <a class="paypal-btn" id="paypal-target-link" href="https://paypal.me" target="_blank">PayPal Support</a>
+        
         <div id="monitor-target-grid"></div>
         <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
     </div>
@@ -42,9 +45,6 @@
                 const response = await fetch('data.json?t=' + new Date().getTime());
                 const data = await response.json();
                 allForecasts = data.forecasts || [];
-                if(data.coreUrl) {
-                    document.getElementById('paypal-target-link').href = data.coreUrl;
-                }
                 renderGrid();
             } catch (e) {
                 document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;">데이터 코어 동기화 실패</div>';
@@ -82,7 +82,7 @@
                     </div>
                     <h2 class="country-title" style="color: ${themeColor};">🌍 ${item.territory}</h2>
                     <div class="location-text">${item.location}</div>
-                    <div class="gps-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
+                    <div class="grid-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
                     <div class="metrics-zone">
                         <div class="metric-row">
                             <span class="metric-label">⚡ Calibrated Moment:</span>

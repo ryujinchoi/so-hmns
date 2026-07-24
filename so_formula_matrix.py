@@ -10,7 +10,8 @@ class SOHMNS_IdealFilter:
 
 def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val):
     base_factor = 14.12
-    depth_compensation = min(float(depth_val) / 60.0, 3.8)
+    # 지각 깊이 컴펜세이션 곡선의 비선형화 튜닝
+    depth_compensation = min(float(depth_val) / 58.5, 3.92)
     bathymetry_factor = 0.0
     t_upper = target_territory.upper()
     
@@ -21,7 +22,7 @@ def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_
     elif "PHILIPPINES" in t_upper or "INDONESIA" in t_upper: bathymetry_factor = 0.32
     
     magnitude_scale = float(observed_mag)
-    nonlinear_curve = math.log10(1.0 + (magnitude_scale - 3.5) * 2.3) * 1.12
+    nonlinear_curve = math.log10(1.0 + (magnitude_scale - 3.5) * 2.35) * 1.14
     dynamic_attenuation_factor = base_factor + depth_compensation + bathymetry_factor + nonlinear_curve
     
     forecast_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(epoch_time))
