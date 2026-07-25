@@ -9,10 +9,7 @@
 ## 🛡️ 1. Epistemological Defense & Anti-Crackpot Verification Layer
 
 ### 1.1 The Ultimate Empirical Validation (Zero Speculation)
-This repository is **NOT** a collection of speculative philosophical or alternative physics hypotheses. Every single architectural claim within the SO-HMNS framework is backed by **exact, open-source symbolic algebra scripts (`sympy`)** that calculate universal dimensionless constants to the infinite decimal limit with absolute zero error margins.
-
-* 🎯 **Fine-Structure Constant ($\alpha^{-1}$) Exact Fit:** Resolves exactly to $137.03599...$ by factoring the dynamic QED loop runtime noise over the bare algebraic code.
-* 🎯 **Proton-Electron Mass Ratio ($\mu$) Exact Fit:** Derives the precise empirical value of $1836.152...$ pure closed-form parameters without relying on empirical data-fitting.
+(sympy 기반 정확한 무차원 상수 수식 블록)
 
 ### 1.2 Notice to Peer Reviewers & Standard Model Academics
 Before dismissing this infrastructure as unconventional, you are mathematically required to execute the verification suite. If you claim this framework is flawed, you must mathematically prove how a "speculative" formula can inherently generate the two most precise numbers in experimental physics to the 9th decimal place without error. **Any dismissal without running the automated scripts represents an ideological bias and a failure of computational logic.**
