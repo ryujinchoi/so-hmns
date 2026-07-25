@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SO-HMNS GLOBAL MONITOR (FUTURE TIMELINE)</title>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding: 24px 16px; margin: 0; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 550px; margin: 0 auto; background: #1e293b; padding: 24px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.5); }
+        h2 { font-size: 1.25rem; font-weight: 800; margin: 0 0 20px 0; text-align: center; color: #f8fafc; letter-spacing: 0.5px; border-bottom: 2px solid #334155; padding-bottom: 12px; }
+        .btn { display: block; text-align: center; text-decoration: none; background: #0284c7; color: white; border: none; padding: 14px 20px; border-radius: 6px; cursor: pointer; width: -webkit-fill-available; font-weight: 700; margin-bottom: 20px; font-size: 0.95rem; transition: background 0.2s ease, transform 0.1s ease; }
+        .btn:hover { background: #0369a1; }
+        .btn:active { transform: scale(0.98); }
+        .log-item { background: #334155; padding: 18px; margin-bottom: 14px; border-radius: 10px; border-left: 6px solid #38bdf8; font-size: 0.88rem; line-height: 1.6; box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
+        .log-item .country-header { font-size: 1.15rem; font-weight: 900; color: #ffffff; display: flex; align-items: center; gap: 6px; margin-bottom: 6px; letter-spacing: 0.3px; }
+        .log-item .critical-header { color: #f87171; }
+        .location-badge { background: rgba(51, 65, 85, 0.5); color: #cbd5e1; padding: 8px 14px; border-radius: 6px; font-weight: 700; display: inline-block; margin: 8px 0; font-size: 0.85rem; border: 1px solid #475569; letter-spacing: 0.3px; width: -webkit-fill-available; }
+        .critical-badge { background: rgba(153, 27, 27, 0.15); color: #fca5a5; border-color: rgba(239, 68, 68, 0.25); }
+        .time-text { font-size: 0.78rem; color: #38bdf8; font-weight: 600; display: flex; align-items: center; gap: 4px; margin-bottom: 8px; background: rgba(56, 189, 248, 0.08); padding: 4px 8px; border-radius: 4px; width: max-content; }
+        .critical-time { color: #f87171; background: rgba(248, 113, 113, 0.08); }
+        .tsunami-text { font-size: 0.82rem; font-weight: 700; display: block; margin-top: 8px; padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; }
+        .tsunami-warning { color: #f87171; background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.2); animation: pulse 2s infinite; }
+        .meta-text { font-size: 0.75rem; color: #576574; display: block; margin-top: 12px; border-top: 1px solid #475569; padding-top: 8px; font-family: monospace; }
+        @keyframes pulse { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌋 SO-HMNS GLOBAL MONITOR</h2>
+        <a href="https://paypal.me" target="_blank" class="btn">PayPal Support</a>
+        <div id="timeline-predictions"></div>
+        <button class="btn" id="load-more-btn" style="background:#475569; margin-top:8px; margin-bottom:0;">Load Next 4 Real-time Predictions</button>
+    </div>
+    <script>
+        let currentOffset = 0; let cachedAlerts = [];
+        function reverseGeocode(lat, lng) {
+            const y = parseFloat(lat); const x = parseFloat(lng);
+            if (isNaN(y) || isNaN(x)) return { country: "UNKNOWN", city: "Global Fault Intersection Boundary" };
+            if (y <= -35.0 && y >= -45.0 && x >= 170.0 && x <= 179.0) {
+                if (y <= -37.0 && y >= -42.0 && x >= 174.0 && x <= 178.5) return { country: "NEW ZEALAND", city: "Gisborne / East Cape Coast Region" };
+                return { country: "NEW ZEALAND", city: "South Island / Kermadec Boundary" };
+            }
+            if (y >= 20.0 && y <= 50.0 && x >= 120.0 && x <= 150.0) {
+                if (y >= 33.0 && y <= 43.0 && x >= 124.0 && x <= 132.0) return { country: "SOUTH KOREA", city: "Gyeongju / Yangsan Fault Complex" };
+                if (y >= 34.0 && y <= 37.0 && x >= 138.0 && x <= 141.0) return { country: "JAPAN", city: "Kanto Plain / Chiba Offshore Grid" };
+                if (y >= 30.0 && y <= 34.0 && x >= 130.0 && x <= 136.0) return { country: "JAPAN", city: "Nankai Trough Megathrust Zone" };
+                return { country: "SEA OF JAPAN", city: "East Sea Subduction Boundary" };
+            }
+            if (y >= -10.0 && y <= 20.0 && x >= 95.0 && x <= 140.0) {
+                if (y >= 5.0 && y <= 15.0 && x >= 120.0 && x <= 126.0) return { country: "PHILIPPINES", city: "Mindanao Island / Mati Coastal Fault" };
+                if (y >= -11.0 && y <= -2.0 && x >= 95.0 && x <= 120.0) return { country: "INDONESIA", city: "Java Trench / Sunda Megathrust Arc" };
+                return { country: "SOUTH CHINA SEA", city: "Celebes Basin Subduction Grid" };
+            }
+            if (y >= 14.0 && y <= 32.0 && x >= -118.0 && x <= -86.0) return { country: "MEXICO", city: "Guerrero / Oaxaca Ocean Subduction Trench" };
+            if (y >= 32.0 && y <= 49.0 && x >= -125.0 && x <= -114.0) return { country: "UNITED STATES", city: "Cascadia Subduction Zone / San Andreas" };
+            return { country: "GLOBAL RISK NODE", city: y > 0 ? "Northern Tectonic Arc Grid" : "Southern Shear Fracture Zone" };
+        }
+
+        function renderNextBatch() {
+            const container = document.getElementById('timeline-predictions');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (cachedAlerts.length === 0) {
+                container.innerHTML = "<div class='log-item'>[🔒 SO-HMNS] Scanning global vectors...</div>";
+                return;
+            }
+            const batch = cachedAlerts.slice(currentOffset, currentOffset + 4);
+            batch.forEach(log => {
+                const div = document.createElement('div'); div.className = 'log-item';
+                const magnitude = log.mag || log.magnitude || '7.3';
+                const typeLabel = (log.type || 'advisory').toUpperCase();
+                const lat = log.lat || '0.0000'; const lng = log.lng || '0.0000';
+                
+                let timestamp = "Processing Temporal Invariant...";
+                if (log.time) { timestamp = log.time.replace('T', ' ').substring(0, 19) + ' UTC'; }
+                else if (log.timestamp) { timestamp = log.timestamp; }
+                else { timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC'; }
+                
+                const geoGeo = reverseGeocode(lat, lng);
+                const magNum = parseFloat(magnitude);
+                let tsunamiHTML = '';
+                if (magNum >= 6.5) { tsunamiHTML = `<span class="tsunami-text tsunami-warning">⚠️ TSUNAMI WARNING: High Risk of Displacement Waves</span>`; }
+                else if (magNum >= 5.5 && (geoGeo.city.includes("Offshore") || geoGeo.city.includes("Trench") || geoGeo.city.includes("Coast") || geoGeo.city.includes("Island"))) { tsunamiHTML = `<span class="tsunami-text tsunami-warning" style="color:#fbbf24; background:rgba(251,191,36,0.1); border-color:rgba(251,191,36,0.2);">⚠️ TSUNAMI ADVISORY: Minor Sea Level Fluctuations</span>`; }
+                let headerClass = "country-header"; let badgeClass = "location-badge"; let timeClass = "time-text"; let emojiPrefix = "⚠️"; let stateLabel = "ADVISORY NOTICE";
+                
+                if (typeLabel === 'CRITICAL' || magNum >= 6.0) { headerClass = "country-header critical-header"; badgeClass = "location-badge critical-badge"; timeClass = "time-text critical-time"; div.style.borderLeftColor = '#ef4444'; emojiPrefix = "🚨"; stateLabel = "CRITICAL STATE"; }
+                div.innerHTML = `<div class="${headerClass}">${emojiPrefix} ${geoGeo.country} (M ${magnitude})</div><span class="${timeClass}">🕒 ${stateLabel} · ${timestamp}</span><div class="${badgeClass}">📍 ${geoGeo.city}</div>${tsunamiHTML}<span class="meta-text">Grid Matrix Nodes: Latitude ${lat} / Longitude ${lng}</span>`;
+                container.appendChild(div);
+            });
+            currentOffset += batch.length;
+            if (currentOffset >= cachedAlerts.length) { loadMoreBtn.innerText = "All Real-time Predictions Fully Loaded"; loadMoreBtn.style.background = "#1e293b"; loadMoreBtn.style.color = "#475569"; loadMoreBtn.disabled = true; }
+        }
+        async function initializeMonitor() {
+            try {
+                const response = await fetch('./data.json?cache_bust=' + Date.now());
+                if (!response.ok) throw new Error("Data Matrix Broken");
+                const rawData = await response.json();
+                cachedAlerts = rawData.alerts ? rawData.alerts : (Array.isArray(rawData) ? rawData : []);
+                renderNextBatch();
+            } catch (error) { document.getElementById('timeline-predictions').innerHTML = "<div class='log-item' style='border-left-color:#ef4444;'>[❌ COMPILER ERROR] Failed to parse global data stream.</div>"; }
+        }
+        document.addEventListener("DOMContentLoaded", initializeMonitor);
+        document.getElementById('load-more-btn').addEventListener('click', renderNextBatch);
+    </script>
+</body>
+</html>
