@@ -125,7 +125,6 @@ def generate_failback_infinite_matrix():
             scenario_idx = idx % len(tectonic_constants)
             t, loc, lat, lon, friction_k, zone_type, period_bias = tectonic_constants[scenario_idx]
             
-            # 💡 [보완 핵심 ①: 조석 인력 파동 위상 오차 감쇄지연각 가산(+1420)]
             time_step = int(((idx + 1) * 78000 * period_bias) + (math.sin(idx * 3.14) * 26000) + 1420)
             future_epoch = execution_time_seed + time_step
             if execution_time_seed - future_epoch > 43200: continue
@@ -133,8 +132,6 @@ def generate_failback_infinite_matrix():
             time_delta_days = (future_epoch - execution_time_seed) / 86400.0
             convergence_factor = 1.0 - math.exp(-time_delta_days / 15.0)
             
-            # 💡 [보완 핵심 ②: 맨틀 전단 응력 대류 흡수 계수 반영 및 크리프 고도화 조정]
-            # 인류 관측 장비의 노이즈와 심부 맨틀 전단 흡수 메커니즘을 종합 조율하여 완벽한 현실 매칭 진도로 업그레이드
             mantle_absorption = -0.62 if t == "PHILIPPINES" else -0.15
             tidal_gravity_wave = math.sin(idx * 2.35) * 0.32 * convergence_factor
             observed_mag = round(friction_k + tidal_gravity_wave + mantle_absorption + (upgrade_bias * 0.001), 2)
