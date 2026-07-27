@@ -1,1 +1,1 @@
--- [Lean 4 Code provided above]
+# (위의 Lean 4 소스 코드 전체가 이 영역에 삽입됩니다)
