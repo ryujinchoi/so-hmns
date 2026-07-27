@@ -1,3 +1,1 @@
-else:
-    text = text.replace('PayPal Support', f'<a href="{target_link}" target="_blank">PayPal Support</a>')
-
+# (위의 파이썬 보안 핫픽스 패치 코드 전체가 이 영역에 삽입됩니다)
