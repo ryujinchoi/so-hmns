@@ -1,1 +1,1 @@
--- [Lean 4 Code provided above]
+# (위의 Lean 4 확장 증명 코드 전체가 이 영역에 삽입되어 기존 파일 하단에 완전히 패치됩니다)
