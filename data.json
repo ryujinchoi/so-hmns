@@ -2,8 +2,8 @@
     "coreUrl": "https://paypal.me",
     "forecasts": [
         {
-            "id": "hmns_convergence_pack_0_935",
-            "forecast_time": "2026-07-28 11:19:36",
+            "id": "hmns_convergence_pack_0_144",
+            "forecast_time": "2026-07-29 11:39:06",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -14,12 +14,12 @@
             "magnitude": 6.73,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 6.8%",
-            "raw_epoch": 1785237576
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 6.8%",
+            "raw_epoch": 1785325146
         },
         {
-            "id": "hmns_convergence_pack_2_935",
-            "forecast_time": "2026-07-29 22:11:13",
+            "id": "hmns_convergence_pack_2_144",
+            "forecast_time": "2026-07-30 22:30:43",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -30,12 +30,12 @@
             "magnitude": 5.75,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 15.4%",
-            "raw_epoch": 1785363073
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 15.4%",
+            "raw_epoch": 1785450643
         },
         {
-            "id": "hmns_convergence_pack_4_935",
-            "forecast_time": "2026-07-30 08:46:50",
+            "id": "hmns_convergence_pack_4_144",
+            "forecast_time": "2026-07-31 09:06:20",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -46,12 +46,12 @@
             "magnitude": 5.6,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 17.8%",
-            "raw_epoch": 1785401210
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 17.8%",
+            "raw_epoch": 1785488780
         },
         {
-            "id": "hmns_convergence_pack_1_935",
-            "forecast_time": "2026-07-30 18:35:17",
+            "id": "hmns_convergence_pack_1_144",
+            "forecast_time": "2026-07-31 18:54:47",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -62,12 +62,12 @@
             "magnitude": 7.75,
             "max_tsunami": "1.5m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 20.1%",
-            "raw_epoch": 1785436517
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 20.1%",
+            "raw_epoch": 1785524087
         },
         {
-            "id": "hmns_convergence_pack_3_935",
-            "forecast_time": "2026-08-04 04:46:40",
+            "id": "hmns_convergence_pack_3_144",
+            "forecast_time": "2026-08-05 05:06:10",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -78,12 +78,12 @@
             "magnitude": 8.09,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 40.5%",
-            "raw_epoch": 1785818800
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 40.5%",
+            "raw_epoch": 1785906370
         },
         {
-            "id": "hmns_convergence_pack_8_935",
-            "forecast_time": "2026-08-04 23:04:04",
+            "id": "hmns_convergence_pack_8_144",
+            "forecast_time": "2026-08-05 23:23:34",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -94,12 +94,12 @@
             "magnitude": 7.39,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 43.4%",
-            "raw_epoch": 1785884644
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 43.4%",
+            "raw_epoch": 1785972214
         },
         {
-            "id": "hmns_convergence_pack_10_935",
-            "forecast_time": "2026-08-05 04:01:41",
+            "id": "hmns_convergence_pack_10_144",
+            "forecast_time": "2026-08-06 04:21:11",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -110,12 +110,12 @@
             "magnitude": 5.86,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 44.2%",
-            "raw_epoch": 1785902501
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 44.2%",
+            "raw_epoch": 1785990071
         },
         {
-            "id": "hmns_convergence_pack_6_935",
-            "forecast_time": "2026-08-05 14:15:27",
+            "id": "hmns_convergence_pack_6_144",
+            "forecast_time": "2026-08-06 14:34:57",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -126,12 +126,12 @@
             "magnitude": 6.75,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 45.8%",
-            "raw_epoch": 1785939327
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 45.8%",
+            "raw_epoch": 1786026897
         },
         {
-            "id": "hmns_convergence_pack_20_935",
-            "forecast_time": "2026-08-08 17:55:47",
+            "id": "hmns_convergence_pack_20_144",
+            "forecast_time": "2026-08-09 18:15:17",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -142,12 +142,12 @@
             "magnitude": 5.62,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 56.0%",
-            "raw_epoch": 1786211747
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 56.0%",
+            "raw_epoch": 1786299317
         },
         {
-            "id": "hmns_convergence_pack_12_935",
-            "forecast_time": "2026-08-11 10:48:19",
+            "id": "hmns_convergence_pack_12_144",
+            "forecast_time": "2026-08-12 11:07:49",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -158,12 +158,12 @@
             "magnitude": 6.42,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 63.3%",
-            "raw_epoch": 1786445299
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 63.3%",
+            "raw_epoch": 1786532869
         },
         {
-            "id": "hmns_convergence_pack_18_935",
-            "forecast_time": "2026-08-12 04:56:10",
+            "id": "hmns_convergence_pack_18_144",
+            "forecast_time": "2026-08-13 05:15:40",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -174,12 +174,12 @@
             "magnitude": 5.59,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 65.1%",
-            "raw_epoch": 1786510570
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 65.1%",
+            "raw_epoch": 1786598140
         },
         {
-            "id": "hmns_convergence_pack_16_935",
-            "forecast_time": "2026-08-14 01:48:33",
+            "id": "hmns_convergence_pack_16_144",
+            "forecast_time": "2026-08-15 02:08:03",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -190,12 +190,12 @@
             "magnitude": 6.71,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 69.2%",
-            "raw_epoch": 1786672113
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 69.2%",
+            "raw_epoch": 1786759683
         },
         {
-            "id": "hmns_convergence_pack_11_935",
-            "forecast_time": "2026-08-14 07:32:11",
+            "id": "hmns_convergence_pack_11_144",
+            "forecast_time": "2026-08-15 07:51:41",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -206,12 +206,12 @@
             "magnitude": 5.95,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 69.7%",
-            "raw_epoch": 1786692731
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 69.7%",
+            "raw_epoch": 1786780301
         },
         {
-            "id": "hmns_convergence_pack_7_935",
-            "forecast_time": "2026-08-16 07:09:25",
+            "id": "hmns_convergence_pack_7_144",
+            "forecast_time": "2026-08-17 07:28:55",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -222,12 +222,12 @@
             "magnitude": 7.14,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 73.4%",
-            "raw_epoch": 1786864165
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 73.4%",
+            "raw_epoch": 1786951735
         },
         {
-            "id": "hmns_convergence_pack_9_935",
-            "forecast_time": "2026-08-16 11:30:48",
+            "id": "hmns_convergence_pack_9_144",
+            "forecast_time": "2026-08-17 11:50:18",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -238,12 +238,12 @@
             "magnitude": 6.38,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 73.7%",
-            "raw_epoch": 1786879848
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 73.7%",
+            "raw_epoch": 1786967418
         },
         {
-            "id": "hmns_convergence_pack_26_935",
-            "forecast_time": "2026-08-17 20:54:39",
+            "id": "hmns_convergence_pack_26_144",
+            "forecast_time": "2026-08-18 21:14:09",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -254,12 +254,12 @@
             "magnitude": 5.76,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 76.1%",
-            "raw_epoch": 1787000079
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 76.1%",
+            "raw_epoch": 1787087649
         },
         {
-            "id": "hmns_convergence_pack_36_935",
-            "forecast_time": "2026-08-18 03:04:46",
+            "id": "hmns_convergence_pack_36_144",
+            "forecast_time": "2026-08-19 03:24:16",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -270,12 +270,12 @@
             "magnitude": 5.65,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 76.5%",
-            "raw_epoch": 1787022286
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 76.5%",
+            "raw_epoch": 1787109856
         },
         {
-            "id": "hmns_convergence_pack_24_935",
-            "forecast_time": "2026-08-20 02:53:02",
+            "id": "hmns_convergence_pack_24_144",
+            "forecast_time": "2026-08-21 03:12:32",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -286,12 +286,12 @@
             "magnitude": 7.36,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 79.4%",
-            "raw_epoch": 1787194382
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 79.4%",
+            "raw_epoch": 1787281952
         },
         {
-            "id": "hmns_convergence_pack_13_935",
-            "forecast_time": "2026-08-21 02:03:34",
+            "id": "hmns_convergence_pack_13_144",
+            "forecast_time": "2026-08-22 02:23:04",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -302,12 +302,12 @@
             "magnitude": 5.1,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 80.7%",
-            "raw_epoch": 1787277814
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 80.7%",
+            "raw_epoch": 1787365384
         },
         {
-            "id": "hmns_convergence_pack_34_935",
-            "forecast_time": "2026-08-25 11:41:08",
+            "id": "hmns_convergence_pack_34_144",
+            "forecast_time": "2026-08-26 12:00:38",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -318,12 +318,12 @@
             "magnitude": 5.53,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 85.6%",
-            "raw_epoch": 1787658068
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 85.6%",
+            "raw_epoch": 1787745638
         },
         {
-            "id": "hmns_convergence_pack_17_935",
-            "forecast_time": "2026-08-26 12:06:19",
+            "id": "hmns_convergence_pack_17_144",
+            "forecast_time": "2026-08-27 12:25:49",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -334,12 +334,12 @@
             "magnitude": 7.92,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 86.5%",
-            "raw_epoch": 1787745979
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 86.5%",
+            "raw_epoch": 1787833549
         },
         {
-            "id": "hmns_convergence_pack_22_935",
-            "forecast_time": "2026-08-26 12:44:25",
+            "id": "hmns_convergence_pack_22_144",
+            "forecast_time": "2026-08-27 13:03:55",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -350,12 +350,12 @@
             "magnitude": 6.87,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 86.6%",
-            "raw_epoch": 1787748265
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 86.6%",
+            "raw_epoch": 1787835835
         },
         {
-            "id": "hmns_convergence_pack_52_935",
-            "forecast_time": "2026-08-27 12:13:45",
+            "id": "hmns_convergence_pack_52_144",
+            "forecast_time": "2026-08-28 12:33:15",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -366,12 +366,12 @@
             "magnitude": 5.69,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 87.4%",
-            "raw_epoch": 1787832825
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 87.4%",
+            "raw_epoch": 1787920395
         },
         {
-            "id": "hmns_convergence_pack_14_935",
-            "forecast_time": "2026-08-29 14:29:56",
+            "id": "hmns_convergence_pack_14_144",
+            "forecast_time": "2026-08-30 14:49:26",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -382,12 +382,12 @@
             "magnitude": 7.58,
             "max_tsunami": "1.4m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 89.1%",
-            "raw_epoch": 1788013796
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 89.1%",
+            "raw_epoch": 1788101366
         },
         {
-            "id": "hmns_convergence_pack_28_935",
-            "forecast_time": "2026-08-29 22:21:16",
+            "id": "hmns_convergence_pack_28_144",
+            "forecast_time": "2026-08-30 22:40:46",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -398,12 +398,12 @@
             "magnitude": 6.45,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 89.3%",
-            "raw_epoch": 1788042076
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 89.3%",
+            "raw_epoch": 1788129646
         },
         {
-            "id": "hmns_convergence_pack_42_935",
-            "forecast_time": "2026-08-30 13:47:38",
+            "id": "hmns_convergence_pack_42_144",
+            "forecast_time": "2026-08-31 14:07:08",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -414,12 +414,12 @@
             "magnitude": 5.72,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 89.7%",
-            "raw_epoch": 1788097658
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 89.7%",
+            "raw_epoch": 1788185228
         },
         {
-            "id": "hmns_convergence_pack_32_935",
-            "forecast_time": "2026-08-30 16:17:31",
+            "id": "hmns_convergence_pack_32_144",
+            "forecast_time": "2026-08-31 16:37:01",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -430,12 +430,12 @@
             "magnitude": 6.67,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 89.8%",
-            "raw_epoch": 1788106651
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 89.8%",
+            "raw_epoch": 1788194221
         },
         {
-            "id": "hmns_convergence_pack_19_935",
-            "forecast_time": "2026-09-04 06:17:42",
+            "id": "hmns_convergence_pack_19_144",
+            "forecast_time": "2026-09-05 06:37:12",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -446,12 +446,12 @@
             "magnitude": 8.18,
             "max_tsunami": "2.0m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 92.5%",
-            "raw_epoch": 1788502662
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 92.5%",
+            "raw_epoch": 1788590232
         },
         {
-            "id": "hmns_convergence_pack_40_935",
-            "forecast_time": "2026-09-04 06:42:00",
+            "id": "hmns_convergence_pack_40_144",
+            "forecast_time": "2026-09-05 07:01:30",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -462,12 +462,12 @@
             "magnitude": 7.33,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 92.5%",
-            "raw_epoch": 1788504120
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 92.5%",
+            "raw_epoch": 1788591690
         },
         {
-            "id": "hmns_convergence_pack_68_935",
-            "forecast_time": "2026-09-05 21:22:45",
+            "id": "hmns_convergence_pack_68_144",
+            "forecast_time": "2026-09-06 21:42:15",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -478,12 +478,12 @@
             "magnitude": 5.72,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 93.3%",
-            "raw_epoch": 1788643365
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 93.3%",
+            "raw_epoch": 1788730935
         },
         {
-            "id": "hmns_convergence_pack_27_935",
-            "forecast_time": "2026-09-07 03:43:13",
+            "id": "hmns_convergence_pack_27_144",
+            "forecast_time": "2026-09-08 04:02:43",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -494,12 +494,12 @@
             "magnitude": 5.97,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 93.8%",
-            "raw_epoch": 1788752593
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 93.8%",
+            "raw_epoch": 1788840163
         },
         {
-            "id": "hmns_convergence_pack_50_935",
-            "forecast_time": "2026-09-07 18:26:07",
+            "id": "hmns_convergence_pack_50_144",
+            "forecast_time": "2026-09-08 18:45:37",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -510,12 +510,12 @@
             "magnitude": 5.51,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 94.1%",
-            "raw_epoch": 1788805567
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 94.1%",
+            "raw_epoch": 1788893137
         },
         {
-            "id": "hmns_convergence_pack_15_935",
-            "forecast_time": "2026-09-08 01:14:57",
+            "id": "hmns_convergence_pack_15_144",
+            "forecast_time": "2026-09-09 01:34:27",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -526,12 +526,12 @@
             "magnitude": 6.31,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 94.2%",
-            "raw_epoch": 1788830097
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 94.2%",
+            "raw_epoch": 1788917667
         },
         {
-            "id": "hmns_convergence_pack_58_935",
-            "forecast_time": "2026-09-12 06:40:37",
+            "id": "hmns_convergence_pack_58_144",
+            "forecast_time": "2026-09-13 07:00:07",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -542,12 +542,12 @@
             "magnitude": 5.71,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 95.6%",
-            "raw_epoch": 1789195237
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 95.6%",
+            "raw_epoch": 1789282807
         },
         {
-            "id": "hmns_convergence_pack_84_935",
-            "forecast_time": "2026-09-15 06:31:48",
+            "id": "hmns_convergence_pack_84_144",
+            "forecast_time": "2026-09-16 06:51:18",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -558,12 +558,12 @@
             "magnitude": 5.75,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 96.4%",
-            "raw_epoch": 1789453908
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 96.4%",
+            "raw_epoch": 1789541478
         },
         {
-            "id": "hmns_convergence_pack_48_935",
-            "forecast_time": "2026-09-16 06:46:30",
+            "id": "hmns_convergence_pack_48_144",
+            "forecast_time": "2026-09-17 07:06:00",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -574,12 +574,12 @@
             "magnitude": 6.64,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 96.6%",
-            "raw_epoch": 1789541190
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 96.6%",
+            "raw_epoch": 1789628760
         },
         {
-            "id": "hmns_convergence_pack_38_935",
-            "forecast_time": "2026-09-16 11:13:23",
+            "id": "hmns_convergence_pack_38_144",
+            "forecast_time": "2026-09-17 11:32:53",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -590,12 +590,12 @@
             "magnitude": 6.9,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 96.7%",
-            "raw_epoch": 1789557203
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 96.7%",
+            "raw_epoch": 1789644773
         },
         {
-            "id": "hmns_convergence_pack_44_935",
-            "forecast_time": "2026-09-17 09:54:15",
+            "id": "hmns_convergence_pack_44_144",
+            "forecast_time": "2026-09-18 10:13:45",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -606,12 +606,12 @@
             "magnitude": 6.48,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 96.9%",
-            "raw_epoch": 1789638855
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 96.9%",
+            "raw_epoch": 1789726425
         },
         {
-            "id": "hmns_convergence_pack_25_935",
-            "forecast_time": "2026-09-17 13:17:50",
+            "id": "hmns_convergence_pack_25_144",
+            "forecast_time": "2026-09-18 13:37:20",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -622,12 +622,12 @@
             "magnitude": 6.45,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 96.9%",
-            "raw_epoch": 1789651070
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 96.9%",
+            "raw_epoch": 1789738640
         },
         {
-            "id": "hmns_convergence_pack_29_935",
-            "forecast_time": "2026-09-18 06:14:36",
+            "id": "hmns_convergence_pack_29_144",
+            "forecast_time": "2026-09-19 06:34:06",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -638,12 +638,12 @@
             "magnitude": 5.04,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 97.0%",
-            "raw_epoch": 1789712076
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 97.0%",
+            "raw_epoch": 1789799646
         },
         {
-            "id": "hmns_convergence_pack_56_935",
-            "forecast_time": "2026-09-19 10:31:00",
+            "id": "hmns_convergence_pack_56_144",
+            "forecast_time": "2026-09-20 10:50:30",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -654,12 +654,12 @@
             "magnitude": 7.29,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 97.3%",
-            "raw_epoch": 1789813860
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 97.3%",
+            "raw_epoch": 1789901430
         },
         {
-            "id": "hmns_convergence_pack_66_935",
-            "forecast_time": "2026-09-21 01:11:08",
+            "id": "hmns_convergence_pack_66_144",
+            "forecast_time": "2026-09-22 01:30:38",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -670,12 +670,12 @@
             "magnitude": 5.51,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 97.5%",
-            "raw_epoch": 1789953068
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 97.5%",
+            "raw_epoch": 1790040638
         },
         {
-            "id": "hmns_convergence_pack_33_935",
-            "forecast_time": "2026-09-22 05:37:21",
+            "id": "hmns_convergence_pack_33_144",
+            "forecast_time": "2026-09-23 05:56:51",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -686,12 +686,12 @@
             "magnitude": 7.96,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 97.7%",
-            "raw_epoch": 1790055441
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 97.7%",
+            "raw_epoch": 1790143011
         },
         {
-            "id": "hmns_convergence_pack_100_935",
-            "forecast_time": "2026-09-24 15:40:52",
+            "id": "hmns_convergence_pack_100_144",
+            "forecast_time": "2026-09-25 16:00:22",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -702,12 +702,12 @@
             "magnitude": 5.78,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 98.1%",
-            "raw_epoch": 1790264452
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 98.1%",
+            "raw_epoch": 1790352022
         },
         {
-            "id": "hmns_convergence_pack_74_935",
-            "forecast_time": "2026-09-24 23:33:38",
+            "id": "hmns_convergence_pack_74_144",
+            "forecast_time": "2026-09-25 23:53:08",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -718,12 +718,12 @@
             "magnitude": 5.72,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 98.1%",
-            "raw_epoch": 1790292818
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 98.1%",
+            "raw_epoch": 1790380388
         },
         {
-            "id": "hmns_convergence_pack_23_935",
-            "forecast_time": "2026-09-25 00:40:28",
+            "id": "hmns_convergence_pack_23_144",
+            "forecast_time": "2026-09-26 00:59:58",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -734,12 +734,12 @@
             "magnitude": 7.11,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 98.1%",
-            "raw_epoch": 1790296828
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 98.1%",
+            "raw_epoch": 1790384398
         },
         {
-            "id": "hmns_convergence_pack_43_935",
-            "forecast_time": "2026-09-30 23:54:15",
+            "id": "hmns_convergence_pack_43_144",
+            "forecast_time": "2026-10-02 00:13:45",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -750,12 +750,12 @@
             "magnitude": 5.96,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 98.7%",
-            "raw_epoch": 1790812455
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 98.7%",
+            "raw_epoch": 1790900025
         },
         {
-            "id": "hmns_convergence_pack_64_935",
-            "forecast_time": "2026-10-02 21:15:30",
+            "id": "hmns_convergence_pack_64_144",
+            "forecast_time": "2026-10-03 21:35:00",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -766,12 +766,12 @@
             "magnitude": 6.61,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 98.9%",
-            "raw_epoch": 1790975730
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 98.9%",
+            "raw_epoch": 1791063300
         },
         {
-            "id": "hmns_convergence_pack_30_935",
-            "forecast_time": "2026-10-03 23:38:54",
+            "id": "hmns_convergence_pack_30_144",
+            "forecast_time": "2026-10-04 23:58:24",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -782,12 +782,12 @@
             "magnitude": 7.61,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.0%",
-            "raw_epoch": 1791070734
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.0%",
+            "raw_epoch": 1791158304
         },
         {
-            "id": "hmns_convergence_pack_116_935",
-            "forecast_time": "2026-10-04 00:49:59",
+            "id": "hmns_convergence_pack_116_144",
+            "forecast_time": "2026-10-05 01:09:29",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -798,12 +798,12 @@
             "magnitude": 5.81,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.0%",
-            "raw_epoch": 1791074999
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.0%",
+            "raw_epoch": 1791162569
         },
         {
-            "id": "hmns_convergence_pack_82_935",
-            "forecast_time": "2026-10-04 07:56:10",
+            "id": "hmns_convergence_pack_82_144",
+            "forecast_time": "2026-10-05 08:15:40",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -814,12 +814,12 @@
             "magnitude": 5.52,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.0%",
-            "raw_epoch": 1791100570
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.0%",
+            "raw_epoch": 1791188140
         },
         {
-            "id": "hmns_convergence_pack_72_935",
-            "forecast_time": "2026-10-04 14:20:01",
+            "id": "hmns_convergence_pack_72_144",
+            "forecast_time": "2026-10-05 14:39:31",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -830,12 +830,12 @@
             "magnitude": 7.26,
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.0%",
-            "raw_epoch": 1791123601
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.0%",
+            "raw_epoch": 1791211171
         },
         {
-            "id": "hmns_convergence_pack_35_935",
-            "forecast_time": "2026-10-05 07:48:44",
+            "id": "hmns_convergence_pack_35_144",
+            "forecast_time": "2026-10-06 08:08:14",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -846,12 +846,12 @@
             "magnitude": 8.17,
             "max_tsunami": "2.1m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.1%",
-            "raw_epoch": 1791186524
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.1%",
+            "raw_epoch": 1791274094
         },
         {
-            "id": "hmns_convergence_pack_60_935",
-            "forecast_time": "2026-10-05 21:27:15",
+            "id": "hmns_convergence_pack_60_144",
+            "forecast_time": "2026-10-06 21:46:45",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -862,12 +862,12 @@
             "magnitude": 6.52,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.1%",
-            "raw_epoch": 1791235635
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.1%",
+            "raw_epoch": 1791323205
         },
         {
-            "id": "hmns_convergence_pack_54_935",
-            "forecast_time": "2026-10-07 09:42:22",
+            "id": "hmns_convergence_pack_54_144",
+            "forecast_time": "2026-10-08 10:01:52",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -878,12 +878,12 @@
             "magnitude": 6.9,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.2%",
-            "raw_epoch": 1791366142
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.2%",
+            "raw_epoch": 1791453712
         },
         {
-            "id": "hmns_convergence_pack_90_935",
-            "forecast_time": "2026-10-07 16:26:41",
+            "id": "hmns_convergence_pack_90_144",
+            "forecast_time": "2026-10-08 16:46:11",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -894,12 +894,12 @@
             "magnitude": 5.73,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.2%",
-            "raw_epoch": 1791390401
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.2%",
+            "raw_epoch": 1791477971
         },
         {
-            "id": "hmns_convergence_pack_132_935",
-            "forecast_time": "2026-10-13 09:59:10",
+            "id": "hmns_convergence_pack_132_144",
+            "forecast_time": "2026-10-14 10:18:40",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -910,12 +910,12 @@
             "magnitude": 5.83,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.4%",
-            "raw_epoch": 1791885550
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.4%",
+            "raw_epoch": 1791973120
         },
         {
-            "id": "hmns_convergence_pack_45_935",
-            "forecast_time": "2026-10-16 10:25:37",
+            "id": "hmns_convergence_pack_45_144",
+            "forecast_time": "2026-10-17 10:45:07",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -926,12 +926,12 @@
             "magnitude": 5.02,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.5%",
-            "raw_epoch": 1792146337
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.5%",
+            "raw_epoch": 1792233907
         },
         {
-            "id": "hmns_convergence_pack_98_935",
-            "forecast_time": "2026-10-17 14:41:14",
+            "id": "hmns_convergence_pack_98_144",
+            "forecast_time": "2026-10-18 15:00:44",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -942,12 +942,12 @@
             "magnitude": 5.54,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.6%",
-            "raw_epoch": 1792248074
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.6%",
+            "raw_epoch": 1792335644
         },
         {
-            "id": "hmns_convergence_pack_49_935",
-            "forecast_time": "2026-10-18 23:08:22",
+            "id": "hmns_convergence_pack_49_144",
+            "forecast_time": "2026-10-19 23:27:52",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -958,12 +958,12 @@
             "magnitude": 7.98,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.6%",
-            "raw_epoch": 1792364902
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.6%",
+            "raw_epoch": 1792452472
         },
         {
-            "id": "hmns_convergence_pack_80_935",
-            "forecast_time": "2026-10-19 11:44:32",
+            "id": "hmns_convergence_pack_80_144",
+            "forecast_time": "2026-10-20 12:04:02",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -974,12 +974,12 @@
             "magnitude": 6.58,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.6%",
-            "raw_epoch": 1792410272
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.6%",
+            "raw_epoch": 1792497842
         },
         {
-            "id": "hmns_convergence_pack_41_935",
-            "forecast_time": "2026-10-19 15:04:52",
+            "id": "hmns_convergence_pack_41_144",
+            "forecast_time": "2026-10-20 15:24:22",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -990,12 +990,12 @@
             "magnitude": 6.48,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.6%",
-            "raw_epoch": 1792422292
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.6%",
+            "raw_epoch": 1792509862
         },
         {
-            "id": "hmns_convergence_pack_88_935",
-            "forecast_time": "2026-10-19 18:09:03",
+            "id": "hmns_convergence_pack_88_144",
+            "forecast_time": "2026-10-20 18:28:33",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1006,12 +1006,12 @@
             "magnitude": 7.23,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.6%",
-            "raw_epoch": 1792433343
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.6%",
+            "raw_epoch": 1792520913
         },
         {
-            "id": "hmns_convergence_pack_106_935",
-            "forecast_time": "2026-10-20 09:19:47",
+            "id": "hmns_convergence_pack_106_144",
+            "forecast_time": "2026-10-21 09:39:17",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1022,12 +1022,12 @@
             "magnitude": 5.75,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.7%",
-            "raw_epoch": 1792487987
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.7%",
+            "raw_epoch": 1792575557
         },
         {
-            "id": "hmns_convergence_pack_31_935",
-            "forecast_time": "2026-10-20 16:05:59",
+            "id": "hmns_convergence_pack_31_144",
+            "forecast_time": "2026-10-21 16:25:29",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -1038,12 +1038,12 @@
             "magnitude": 6.32,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.7%",
-            "raw_epoch": 1792512359
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.7%",
+            "raw_epoch": 1792599929
         },
         {
-            "id": "hmns_convergence_pack_148_935",
-            "forecast_time": "2026-10-22 19:08:24",
+            "id": "hmns_convergence_pack_148_144",
+            "forecast_time": "2026-10-23 19:27:54",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1054,12 +1054,12 @@
             "magnitude": 5.85,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.7%",
-            "raw_epoch": 1792696104
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.7%",
+            "raw_epoch": 1792783674
         },
         {
-            "id": "hmns_convergence_pack_76_935",
-            "forecast_time": "2026-10-24 09:00:16",
+            "id": "hmns_convergence_pack_76_144",
+            "forecast_time": "2026-10-25 09:19:46",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1070,12 +1070,12 @@
             "magnitude": 6.54,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.7%",
-            "raw_epoch": 1792832416
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.7%",
+            "raw_epoch": 1792919986
         },
         {
-            "id": "hmns_convergence_pack_59_935",
-            "forecast_time": "2026-10-24 20:05:15",
+            "id": "hmns_convergence_pack_59_144",
+            "forecast_time": "2026-10-25 20:24:45",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1086,12 +1086,12 @@
             "magnitude": 5.93,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.7%",
-            "raw_epoch": 1792872315
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.7%",
+            "raw_epoch": 1792959885
         },
         {
-            "id": "hmns_convergence_pack_70_935",
-            "forecast_time": "2026-10-28 08:11:23",
+            "id": "hmns_convergence_pack_70_144",
+            "forecast_time": "2026-10-29 08:30:53",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1102,12 +1102,12 @@
             "magnitude": 6.89,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.8%",
-            "raw_epoch": 1793175083
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.8%",
+            "raw_epoch": 1793262653
         },
         {
-            "id": "hmns_convergence_pack_114_935",
-            "forecast_time": "2026-10-30 21:26:21",
+            "id": "hmns_convergence_pack_114_144",
+            "forecast_time": "2026-10-31 21:45:51",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1118,12 +1118,12 @@
             "magnitude": 5.56,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.8%",
-            "raw_epoch": 1793395581
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.8%",
+            "raw_epoch": 1793483151
         },
         {
-            "id": "hmns_convergence_pack_164_935",
-            "forecast_time": "2026-11-01 04:17:41",
+            "id": "hmns_convergence_pack_164_144",
+            "forecast_time": "2026-11-02 04:37:11",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1134,12 +1134,12 @@
             "magnitude": 5.87,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.8%",
-            "raw_epoch": 1793506661
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.8%",
+            "raw_epoch": 1793594231
         },
         {
-            "id": "hmns_convergence_pack_122_935",
-            "forecast_time": "2026-11-02 02:12:55",
+            "id": "hmns_convergence_pack_122_144",
+            "forecast_time": "2026-11-03 02:32:25",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1150,12 +1150,12 @@
             "magnitude": 5.77,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1793585575
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1793673145
         },
         {
-            "id": "hmns_convergence_pack_39_935",
-            "forecast_time": "2026-11-03 18:11:29",
+            "id": "hmns_convergence_pack_39_144",
+            "forecast_time": "2026-11-04 18:30:59",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -1166,12 +1166,12 @@
             "magnitude": 7.13,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1793729489
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1793817059
         },
         {
-            "id": "hmns_convergence_pack_104_935",
-            "forecast_time": "2026-11-03 21:58:09",
+            "id": "hmns_convergence_pack_104_144",
+            "forecast_time": "2026-11-04 22:17:39",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1182,12 +1182,12 @@
             "magnitude": 7.21,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1793743089
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1793830659
         },
         {
-            "id": "hmns_convergence_pack_96_935",
-            "forecast_time": "2026-11-05 02:13:36",
+            "id": "hmns_convergence_pack_96_144",
+            "forecast_time": "2026-11-06 02:33:06",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1198,12 +1198,12 @@
             "magnitude": 6.55,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1793844816
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1793932386
         },
         {
-            "id": "hmns_convergence_pack_51_935",
-            "forecast_time": "2026-11-05 09:19:45",
+            "id": "hmns_convergence_pack_51_144",
+            "forecast_time": "2026-11-06 09:39:15",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -1214,12 +1214,12 @@
             "magnitude": 8.14,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1793870385
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1793957955
         },
         {
-            "id": "hmns_convergence_pack_46_935",
-            "forecast_time": "2026-11-08 08:47:52",
+            "id": "hmns_convergence_pack_46_144",
+            "forecast_time": "2026-11-09 09:07:22",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -1230,12 +1230,12 @@
             "magnitude": 7.61,
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794127672
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794215242
         },
         {
-            "id": "hmns_convergence_pack_180_935",
-            "forecast_time": "2026-11-10 13:27:04",
+            "id": "hmns_convergence_pack_180_144",
+            "forecast_time": "2026-11-11 13:46:34",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1246,12 +1246,12 @@
             "magnitude": 5.89,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794317224
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794404794
         },
         {
-            "id": "hmns_convergence_pack_92_935",
-            "forecast_time": "2026-11-11 20:33:19",
+            "id": "hmns_convergence_pack_92_144",
+            "forecast_time": "2026-11-12 20:52:49",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1262,12 +1262,12 @@
             "magnitude": 6.57,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794429199
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794516769
         },
         {
-            "id": "hmns_convergence_pack_130_935",
-            "forecast_time": "2026-11-13 04:11:31",
+            "id": "hmns_convergence_pack_130_144",
+            "forecast_time": "2026-11-14 04:31:01",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1278,12 +1278,12 @@
             "magnitude": 5.58,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794543091
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794630661
         },
         {
-            "id": "hmns_convergence_pack_61_935",
-            "forecast_time": "2026-11-13 14:36:37",
+            "id": "hmns_convergence_pack_61_144",
+            "forecast_time": "2026-11-14 14:56:07",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -1294,12 +1294,12 @@
             "magnitude": 5.01,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794580597
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794668167
         },
         {
-            "id": "hmns_convergence_pack_65_935",
-            "forecast_time": "2026-11-14 16:39:22",
+            "id": "hmns_convergence_pack_65_144",
+            "forecast_time": "2026-11-15 16:58:52",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -1310,12 +1310,12 @@
             "magnitude": 8.0,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794674362
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794761932
         },
         {
-            "id": "hmns_convergence_pack_138_935",
-            "forecast_time": "2026-11-14 19:06:07",
+            "id": "hmns_convergence_pack_138_144",
+            "forecast_time": "2026-11-15 19:25:37",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1326,12 +1326,12 @@
             "magnitude": 5.79,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794683167
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1794770737
         },
         {
-            "id": "hmns_convergence_pack_75_935",
-            "forecast_time": "2026-11-17 16:16:14",
+            "id": "hmns_convergence_pack_75_144",
+            "forecast_time": "2026-11-18 16:35:44",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1342,12 +1342,12 @@
             "magnitude": 5.9,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794932174
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1795019744
         },
         {
-            "id": "hmns_convergence_pack_86_935",
-            "forecast_time": "2026-11-18 06:40:25",
+            "id": "hmns_convergence_pack_86_144",
+            "forecast_time": "2026-11-19 06:59:55",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1358,12 +1358,12 @@
             "magnitude": 6.88,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 99.9%",
-            "raw_epoch": 1794984025
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 99.9%",
+            "raw_epoch": 1795071595
         },
         {
-            "id": "hmns_convergence_pack_120_935",
-            "forecast_time": "2026-11-19 01:47:17",
+            "id": "hmns_convergence_pack_120_144",
+            "forecast_time": "2026-11-20 02:06:47",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1374,12 +1374,12 @@
             "magnitude": 7.18,
             "max_tsunami": "0.7m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795052837
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795140407
         },
         {
-            "id": "hmns_convergence_pack_196_935",
-            "forecast_time": "2026-11-19 22:36:31",
+            "id": "hmns_convergence_pack_196_144",
+            "forecast_time": "2026-11-20 22:56:01",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1390,12 +1390,12 @@
             "magnitude": 5.9,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795127791
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795215361
         },
         {
-            "id": "hmns_convergence_pack_57_935",
-            "forecast_time": "2026-11-20 16:51:53",
+            "id": "hmns_convergence_pack_57_144",
+            "forecast_time": "2026-11-21 17:11:23",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -1406,12 +1406,12 @@
             "magnitude": 6.49,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795193513
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795281083
         },
         {
-            "id": "hmns_convergence_pack_112_935",
-            "forecast_time": "2026-11-21 16:42:42",
+            "id": "hmns_convergence_pack_112_144",
+            "forecast_time": "2026-11-22 17:02:12",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1422,12 +1422,12 @@
             "magnitude": 6.53,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795279362
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795366932
         },
         {
-            "id": "hmns_convergence_pack_146_935",
-            "forecast_time": "2026-11-26 10:56:44",
+            "id": "hmns_convergence_pack_146_144",
+            "forecast_time": "2026-11-27 11:16:14",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1438,12 +1438,12 @@
             "magnitude": 5.6,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795690604
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795778174
         },
         {
-            "id": "hmns_convergence_pack_154_935",
-            "forecast_time": "2026-11-27 11:59:22",
+            "id": "hmns_convergence_pack_154_144",
+            "forecast_time": "2026-11-28 12:18:52",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1454,12 +1454,12 @@
             "magnitude": 5.82,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795780762
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1795868332
         },
         {
-            "id": "hmns_convergence_pack_212_935",
-            "forecast_time": "2026-11-29 07:46:03",
+            "id": "hmns_convergence_pack_212_144",
+            "forecast_time": "2026-11-30 08:05:33",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1470,12 +1470,12 @@
             "magnitude": 5.91,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1795938363
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796025933
         },
         {
-            "id": "hmns_convergence_pack_108_935",
-            "forecast_time": "2026-11-30 08:06:25",
+            "id": "hmns_convergence_pack_108_144",
+            "forecast_time": "2026-12-01 08:25:55",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1486,12 +1486,12 @@
             "magnitude": 6.6,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796025985
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796113555
         },
         {
-            "id": "hmns_convergence_pack_47_935",
-            "forecast_time": "2026-12-02 06:57:00",
+            "id": "hmns_convergence_pack_47_144",
+            "forecast_time": "2026-12-03 07:16:30",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -1502,12 +1502,12 @@
             "magnitude": 6.35,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796194620
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796282190
         },
         {
-            "id": "hmns_convergence_pack_136_935",
-            "forecast_time": "2026-12-04 05:36:28",
+            "id": "hmns_convergence_pack_136_144",
+            "forecast_time": "2026-12-05 05:55:58",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1518,12 +1518,12 @@
             "magnitude": 7.16,
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796362588
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796450158
         },
         {
-            "id": "hmns_convergence_pack_67_935",
-            "forecast_time": "2026-12-06 10:50:45",
+            "id": "hmns_convergence_pack_67_144",
+            "forecast_time": "2026-12-07 11:10:15",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -1534,12 +1534,12 @@
             "magnitude": 8.12,
             "max_tsunami": "2.0m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796554245
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796641815
         },
         {
-            "id": "hmns_convergence_pack_128_935",
-            "forecast_time": "2026-12-08 07:11:52",
+            "id": "hmns_convergence_pack_128_144",
+            "forecast_time": "2026-12-09 07:31:22",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1550,12 +1550,12 @@
             "magnitude": 6.5,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796713912
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796801482
         },
         {
-            "id": "hmns_convergence_pack_228_935",
-            "forecast_time": "2026-12-08 16:55:40",
+            "id": "hmns_convergence_pack_228_144",
+            "forecast_time": "2026-12-09 17:15:10",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1566,12 +1566,12 @@
             "magnitude": 5.92,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796748940
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796836510
         },
         {
-            "id": "hmns_convergence_pack_102_935",
-            "forecast_time": "2026-12-09 05:09:30",
+            "id": "hmns_convergence_pack_102_144",
+            "forecast_time": "2026-12-10 05:29:00",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1582,12 +1582,12 @@
             "magnitude": 6.86,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796792970
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796880540
         },
         {
-            "id": "hmns_convergence_pack_162_935",
-            "forecast_time": "2026-12-09 17:42:01",
+            "id": "hmns_convergence_pack_162_144",
+            "forecast_time": "2026-12-10 18:01:31",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1598,12 +1598,12 @@
             "magnitude": 5.63,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796838121
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796925691
         },
         {
-            "id": "hmns_convergence_pack_170_935",
-            "forecast_time": "2026-12-10 04:52:42",
+            "id": "hmns_convergence_pack_170_144",
+            "forecast_time": "2026-12-11 05:12:12",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1614,12 +1614,12 @@
             "magnitude": 5.84,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796878362
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1796965932
         },
         {
-            "id": "hmns_convergence_pack_81_935",
-            "forecast_time": "2026-12-11 10:10:20",
+            "id": "hmns_convergence_pack_81_144",
+            "forecast_time": "2026-12-12 10:29:50",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -1630,12 +1630,12 @@
             "magnitude": 8.01,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796983820
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797071390
         },
         {
-            "id": "hmns_convergence_pack_91_935",
-            "forecast_time": "2026-12-11 12:27:11",
+            "id": "hmns_convergence_pack_91_144",
+            "forecast_time": "2026-12-12 12:46:41",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1646,12 +1646,12 @@
             "magnitude": 5.87,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1796992031
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797079601
         },
         {
-            "id": "hmns_convergence_pack_77_935",
-            "forecast_time": "2026-12-11 18:47:36",
+            "id": "hmns_convergence_pack_77_144",
+            "forecast_time": "2026-12-12 19:07:06",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -1662,12 +1662,12 @@
             "magnitude": 5.0,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797014856
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797102426
         },
         {
-            "id": "hmns_convergence_pack_55_935",
-            "forecast_time": "2026-12-13 11:42:30",
+            "id": "hmns_convergence_pack_55_144",
+            "forecast_time": "2026-12-14 12:02:00",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -1678,12 +1678,12 @@
             "magnitude": 7.16,
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797162150
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797249720
         },
         {
-            "id": "hmns_convergence_pack_62_935",
-            "forecast_time": "2026-12-13 17:56:52",
+            "id": "hmns_convergence_pack_62_144",
+            "forecast_time": "2026-12-14 18:16:22",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -1694,12 +1694,12 @@
             "magnitude": 7.6,
             "max_tsunami": "1.4m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797184612
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797272182
         },
         {
-            "id": "hmns_convergence_pack_244_935",
-            "forecast_time": "2026-12-18 02:05:24",
+            "id": "hmns_convergence_pack_244_144",
+            "forecast_time": "2026-12-19 02:24:54",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1710,12 +1710,12 @@
             "magnitude": 5.92,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797559524
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797647094
         },
         {
-            "id": "hmns_convergence_pack_124_935",
-            "forecast_time": "2026-12-18 19:39:34",
+            "id": "hmns_convergence_pack_124_144",
+            "forecast_time": "2026-12-19 19:59:04",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1726,12 +1726,12 @@
             "magnitude": 6.62,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797622774
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797710344
         },
         {
-            "id": "hmns_convergence_pack_152_935",
-            "forecast_time": "2026-12-19 09:25:43",
+            "id": "hmns_convergence_pack_152_144",
+            "forecast_time": "2026-12-20 09:45:13",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1742,12 +1742,12 @@
             "magnitude": 7.14,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797672343
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1797759913
         },
         {
-            "id": "hmns_convergence_pack_73_935",
-            "forecast_time": "2026-12-22 18:38:52",
+            "id": "hmns_convergence_pack_73_144",
+            "forecast_time": "2026-12-23 18:58:22",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -1758,12 +1758,12 @@
             "magnitude": 6.5,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797964732
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1798052302
         },
         {
-            "id": "hmns_convergence_pack_186_935",
-            "forecast_time": "2026-12-22 21:46:06",
+            "id": "hmns_convergence_pack_186_144",
+            "forecast_time": "2026-12-23 22:05:36",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1774,12 +1774,12 @@
             "magnitude": 5.87,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797975966
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1798063536
         },
         {
-            "id": "hmns_convergence_pack_178_935",
-            "forecast_time": "2026-12-23 00:27:23",
+            "id": "hmns_convergence_pack_178_144",
+            "forecast_time": "2026-12-24 00:46:53",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1790,12 +1790,12 @@
             "magnitude": 5.66,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1797985643
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1798073213
         },
         {
-            "id": "hmns_convergence_pack_144_935",
-            "forecast_time": "2026-12-24 21:41:05",
+            "id": "hmns_convergence_pack_144_144",
+            "forecast_time": "2026-12-25 22:00:35",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1806,12 +1806,12 @@
             "magnitude": 6.48,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1798148465
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1798236035
         },
         {
-            "id": "hmns_convergence_pack_118_935",
-            "forecast_time": "2026-12-30 03:38:38",
+            "id": "hmns_convergence_pack_118_144",
+            "forecast_time": "2026-12-31 03:58:08",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1822,12 +1822,12 @@
             "magnitude": 6.84,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1798601918
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1798689488
         },
         {
-            "id": "hmns_convergence_pack_168_935",
-            "forecast_time": "2027-01-03 13:15:01",
+            "id": "hmns_convergence_pack_168_144",
+            "forecast_time": "2027-01-04 13:34:31",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1838,12 +1838,12 @@
             "magnitude": 7.12,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1798982101
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799069671
         },
         {
-            "id": "hmns_convergence_pack_107_935",
-            "forecast_time": "2027-01-04 08:38:05",
+            "id": "hmns_convergence_pack_107_144",
+            "forecast_time": "2027-01-05 08:57:35",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1854,12 +1854,12 @@
             "magnitude": 5.84,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799051885
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799139455
         },
         {
-            "id": "hmns_convergence_pack_202_935",
-            "forecast_time": "2027-01-04 14:39:34",
+            "id": "hmns_convergence_pack_202_144",
+            "forecast_time": "2027-01-05 14:59:04",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1870,12 +1870,12 @@
             "magnitude": 5.9,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799073574
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799161144
         },
         {
-            "id": "hmns_convergence_pack_194_935",
-            "forecast_time": "2027-01-05 07:12:49",
+            "id": "hmns_convergence_pack_194_144",
+            "forecast_time": "2027-01-06 07:32:19",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1886,12 +1886,12 @@
             "magnitude": 5.68,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799133169
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799220739
         },
         {
-            "id": "hmns_convergence_pack_140_935",
-            "forecast_time": "2027-01-06 07:12:46",
+            "id": "hmns_convergence_pack_140_144",
+            "forecast_time": "2027-01-07 07:32:16",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1902,12 +1902,12 @@
             "magnitude": 6.64,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799219566
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799307136
         },
         {
-            "id": "hmns_convergence_pack_83_935",
-            "forecast_time": "2027-01-06 12:21:42",
+            "id": "hmns_convergence_pack_83_144",
+            "forecast_time": "2027-01-07 12:41:12",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -1918,12 +1918,12 @@
             "magnitude": 8.09,
             "max_tsunami": "2.0m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799238102
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799325672
         },
         {
-            "id": "hmns_convergence_pack_97_935",
-            "forecast_time": "2027-01-07 03:41:16",
+            "id": "hmns_convergence_pack_97_144",
+            "forecast_time": "2027-01-08 04:00:46",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -1934,12 +1934,12 @@
             "magnitude": 8.01,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799293276
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799380846
         },
         {
-            "id": "hmns_convergence_pack_160_935",
-            "forecast_time": "2027-01-10 12:10:22",
+            "id": "hmns_convergence_pack_160_144",
+            "forecast_time": "2027-01-11 12:29:52",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1950,12 +1950,12 @@
             "magnitude": 6.46,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799583022
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799670592
         },
         {
-            "id": "hmns_convergence_pack_63_935",
-            "forecast_time": "2027-01-13 21:48:00",
+            "id": "hmns_convergence_pack_63_144",
+            "forecast_time": "2027-01-14 22:07:30",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -1966,12 +1966,12 @@
             "magnitude": 6.38,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1799876880
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1799964450
         },
         {
-            "id": "hmns_convergence_pack_218_935",
-            "forecast_time": "2027-01-17 07:33:09",
+            "id": "hmns_convergence_pack_218_144",
+            "forecast_time": "2027-01-18 07:52:39",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1982,12 +1982,12 @@
             "magnitude": 5.93,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800171189
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800258759
         },
         {
-            "id": "hmns_convergence_pack_78_935",
-            "forecast_time": "2027-01-18 03:05:54",
+            "id": "hmns_convergence_pack_78_144",
+            "forecast_time": "2027-01-19 03:25:24",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -1998,12 +1998,12 @@
             "magnitude": 7.58,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800241554
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800329124
         },
         {
-            "id": "hmns_convergence_pack_210_935",
-            "forecast_time": "2027-01-18 13:58:21",
+            "id": "hmns_convergence_pack_210_144",
+            "forecast_time": "2027-01-19 14:17:51",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2014,12 +2014,12 @@
             "magnitude": 5.71,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800280701
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800368271
         },
         {
-            "id": "hmns_convergence_pack_184_935",
-            "forecast_time": "2027-01-18 17:04:25",
+            "id": "hmns_convergence_pack_184_144",
+            "forecast_time": "2027-01-19 17:23:55",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2030,12 +2030,12 @@
             "magnitude": 7.11,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800291865
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800379435
         },
         {
-            "id": "hmns_convergence_pack_134_935",
-            "forecast_time": "2027-01-20 02:07:49",
+            "id": "hmns_convergence_pack_134_144",
+            "forecast_time": "2027-01-21 02:27:19",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2046,12 +2046,12 @@
             "magnitude": 6.82,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800410869
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800498439
         },
         {
-            "id": "hmns_convergence_pack_71_935",
-            "forecast_time": "2027-01-22 05:13:29",
+            "id": "hmns_convergence_pack_71_144",
+            "forecast_time": "2027-01-23 05:32:59",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2062,12 +2062,12 @@
             "magnitude": 7.19,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800594809
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800682379
         },
         {
-            "id": "hmns_convergence_pack_89_935",
-            "forecast_time": "2027-01-23 20:25:49",
+            "id": "hmns_convergence_pack_89_144",
+            "forecast_time": "2027-01-24 20:45:19",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2078,12 +2078,12 @@
             "magnitude": 6.51,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800735949
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800823519
         },
         {
-            "id": "hmns_convergence_pack_156_935",
-            "forecast_time": "2027-01-24 18:46:02",
+            "id": "hmns_convergence_pack_156_144",
+            "forecast_time": "2027-01-25 19:05:32",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2094,12 +2094,12 @@
             "magnitude": 6.66,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1800816362
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1800903932
         },
         {
-            "id": "hmns_convergence_pack_176_935",
-            "forecast_time": "2027-01-27 02:39:43",
+            "id": "hmns_convergence_pack_176_144",
+            "forecast_time": "2027-01-28 02:59:13",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2110,12 +2110,12 @@
             "magnitude": 6.45,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801017583
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801105153
         },
         {
-            "id": "hmns_convergence_pack_123_935",
-            "forecast_time": "2027-01-28 04:48:56",
+            "id": "hmns_convergence_pack_123_144",
+            "forecast_time": "2027-01-29 05:08:26",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2126,12 +2126,12 @@
             "magnitude": 5.81,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801111736
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801199306
         },
         {
-            "id": "hmns_convergence_pack_234_935",
-            "forecast_time": "2027-01-30 00:26:49",
+            "id": "hmns_convergence_pack_234_144",
+            "forecast_time": "2027-01-31 00:46:19",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -2142,12 +2142,12 @@
             "magnitude": 5.96,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801268809
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801356379
         },
         {
-            "id": "hmns_convergence_pack_226_935",
-            "forecast_time": "2027-01-31 20:43:58",
+            "id": "hmns_convergence_pack_226_144",
+            "forecast_time": "2027-02-01 21:03:28",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2158,12 +2158,12 @@
             "magnitude": 5.75,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801428238
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801515808
         },
         {
-            "id": "hmns_convergence_pack_200_935",
-            "forecast_time": "2027-02-02 20:53:53",
+            "id": "hmns_convergence_pack_200_144",
+            "forecast_time": "2027-02-03 21:13:23",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2174,12 +2174,12 @@
             "magnitude": 7.1,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801601633
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801689203
         },
         {
-            "id": "hmns_convergence_pack_113_935",
-            "forecast_time": "2027-02-02 21:12:09",
+            "id": "hmns_convergence_pack_113_144",
+            "forecast_time": "2027-02-03 21:31:39",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2190,12 +2190,12 @@
             "magnitude": 8.02,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801602729
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1801690299
         },
         {
-            "id": "hmns_convergence_pack_99_935",
-            "forecast_time": "2027-02-06 13:52:38",
+            "id": "hmns_convergence_pack_99_144",
+            "forecast_time": "2027-02-07 14:12:08",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2206,12 +2206,12 @@
             "magnitude": 8.05,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1801921958
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802009528
         },
         {
-            "id": "hmns_convergence_pack_150_935",
-            "forecast_time": "2027-02-10 00:37:03",
+            "id": "hmns_convergence_pack_150_144",
+            "forecast_time": "2027-02-11 00:56:33",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2222,12 +2222,12 @@
             "magnitude": 6.79,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802219823
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802307393
         },
         {
-            "id": "hmns_convergence_pack_250_935",
-            "forecast_time": "2027-02-11 17:20:35",
+            "id": "hmns_convergence_pack_250_144",
+            "forecast_time": "2027-02-12 17:40:05",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -2238,12 +2238,12 @@
             "magnitude": 5.99,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802366435
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802454005
         },
         {
-            "id": "hmns_convergence_pack_172_935",
-            "forecast_time": "2027-02-12 06:19:22",
+            "id": "hmns_convergence_pack_172_144",
+            "forecast_time": "2027-02-13 06:38:52",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2254,12 +2254,12 @@
             "magnitude": 6.68,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802413162
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802500732
         },
         {
-            "id": "hmns_convergence_pack_192_935",
-            "forecast_time": "2027-02-12 17:09:08",
+            "id": "hmns_convergence_pack_192_144",
+            "forecast_time": "2027-02-13 17:28:38",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2270,12 +2270,12 @@
             "magnitude": 6.43,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802452148
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802539718
         },
         {
-            "id": "hmns_convergence_pack_242_935",
-            "forecast_time": "2027-02-14 03:29:41",
+            "id": "hmns_convergence_pack_242_144",
+            "forecast_time": "2027-02-15 03:49:11",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2286,12 +2286,12 @@
             "magnitude": 5.78,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802575781
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802663351
         },
         {
-            "id": "hmns_convergence_pack_216_935",
-            "forecast_time": "2027-02-18 00:43:27",
+            "id": "hmns_convergence_pack_216_144",
+            "forecast_time": "2027-02-19 01:02:57",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2302,12 +2302,12 @@
             "magnitude": 7.09,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1802911407
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1802998977
         },
         {
-            "id": "hmns_convergence_pack_139_935",
-            "forecast_time": "2027-02-21 00:59:44",
+            "id": "hmns_convergence_pack_139_144",
+            "forecast_time": "2027-02-22 01:19:14",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2318,12 +2318,12 @@
             "magnitude": 5.78,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803171584
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803259154
         },
         {
-            "id": "hmns_convergence_pack_94_935",
-            "forecast_time": "2027-02-22 12:14:58",
+            "id": "hmns_convergence_pack_94_144",
+            "forecast_time": "2027-02-23 12:34:28",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2334,12 +2334,12 @@
             "magnitude": 7.57,
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803298498
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803386068
         },
         {
-            "id": "hmns_convergence_pack_105_935",
-            "forecast_time": "2027-02-24 22:12:43",
+            "id": "hmns_convergence_pack_105_144",
+            "forecast_time": "2027-02-25 22:32:13",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2350,12 +2350,12 @@
             "magnitude": 6.52,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803507163
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803594733
         },
         {
-            "id": "hmns_convergence_pack_79_935",
-            "forecast_time": "2027-02-25 12:38:58",
+            "id": "hmns_convergence_pack_79_144",
+            "forecast_time": "2027-02-26 12:58:28",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2366,12 +2366,12 @@
             "magnitude": 6.41,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803559138
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803646708
         },
         {
-            "id": "hmns_convergence_pack_208_935",
-            "forecast_time": "2027-03-01 07:38:39",
+            "id": "hmns_convergence_pack_208_144",
+            "forecast_time": "2027-03-02 07:58:09",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2382,12 +2382,12 @@
             "magnitude": 6.42,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803886719
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803974289
         },
         {
-            "id": "hmns_convergence_pack_129_935",
-            "forecast_time": "2027-03-01 14:43:00",
+            "id": "hmns_convergence_pack_129_144",
+            "forecast_time": "2027-03-02 15:02:30",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2398,12 +2398,12 @@
             "magnitude": 8.02,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1803912180
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1803999750
         },
         {
-            "id": "hmns_convergence_pack_188_935",
-            "forecast_time": "2027-03-02 17:52:46",
+            "id": "hmns_convergence_pack_188_144",
+            "forecast_time": "2027-03-03 18:12:16",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2414,12 +2414,12 @@
             "magnitude": 6.69,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1804009966
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1804097536
         },
         {
-            "id": "hmns_convergence_pack_87_935",
-            "forecast_time": "2027-03-02 22:44:27",
+            "id": "hmns_convergence_pack_87_144",
+            "forecast_time": "2027-03-03 23:03:57",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2430,12 +2430,12 @@
             "magnitude": 7.22,
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1804027467
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1804115037
         },
         {
-            "id": "hmns_convergence_pack_166_935",
-            "forecast_time": "2027-03-02 23:06:21",
+            "id": "hmns_convergence_pack_166_144",
+            "forecast_time": "2027-03-03 23:25:51",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2446,12 +2446,12 @@
             "magnitude": 6.77,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1804028781
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1804116351
         },
         {
-            "id": "hmns_convergence_pack_232_935",
-            "forecast_time": "2027-03-05 04:33:06",
+            "id": "hmns_convergence_pack_232_144",
+            "forecast_time": "2027-03-06 04:52:36",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2462,12 +2462,12 @@
             "magnitude": 7.08,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1804221186
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1804308756
         },
         {
-            "id": "hmns_convergence_pack_115_935",
-            "forecast_time": "2027-03-09 15:23:31",
+            "id": "hmns_convergence_pack_115_144",
+            "forecast_time": "2027-03-10 15:43:01",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2478,12 +2478,12 @@
             "magnitude": 8.02,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1804605811
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1804693381
         },
         {
-            "id": "hmns_convergence_pack_155_935",
-            "forecast_time": "2027-03-16 21:10:29",
+            "id": "hmns_convergence_pack_155_144",
+            "forecast_time": "2027-03-17 21:29:59",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2494,12 +2494,12 @@
             "magnitude": 5.74,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1805231429
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1805318999
         },
         {
-            "id": "hmns_convergence_pack_224_935",
-            "forecast_time": "2027-03-17 22:08:15",
+            "id": "hmns_convergence_pack_224_144",
+            "forecast_time": "2027-03-18 22:27:45",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2510,12 +2510,12 @@
             "magnitude": 6.42,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1805321295
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1805408865
         },
         {
-            "id": "hmns_convergence_pack_248_935",
-            "forecast_time": "2027-03-20 08:22:51",
+            "id": "hmns_convergence_pack_248_144",
+            "forecast_time": "2027-03-21 08:42:21",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2526,12 +2526,12 @@
             "magnitude": 7.08,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1805530971
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1805618541
         },
         {
-            "id": "hmns_convergence_pack_204_935",
-            "forecast_time": "2027-03-21 05:26:16",
+            "id": "hmns_convergence_pack_204_144",
+            "forecast_time": "2027-03-22 05:45:46",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2542,12 +2542,12 @@
             "magnitude": 6.71,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1805606776
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1805694346
         },
         {
-            "id": "hmns_convergence_pack_182_935",
-            "forecast_time": "2027-03-23 21:35:44",
+            "id": "hmns_convergence_pack_182_144",
+            "forecast_time": "2027-03-24 21:55:14",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2558,12 +2558,12 @@
             "magnitude": 6.74,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1805837744
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1805925314
         },
         {
-            "id": "hmns_convergence_pack_145_935",
-            "forecast_time": "2027-03-28 08:13:47",
+            "id": "hmns_convergence_pack_145_144",
+            "forecast_time": "2027-03-29 08:33:17",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2574,12 +2574,12 @@
             "magnitude": 8.02,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1806221627
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1806309197
         },
         {
-            "id": "hmns_convergence_pack_121_935",
-            "forecast_time": "2027-03-28 23:59:35",
+            "id": "hmns_convergence_pack_121_144",
+            "forecast_time": "2027-03-30 00:19:05",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2590,12 +2590,12 @@
             "magnitude": 6.52,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1806278375
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1806365945
         },
         {
-            "id": "hmns_convergence_pack_110_935",
-            "forecast_time": "2027-03-29 21:24:04",
+            "id": "hmns_convergence_pack_110_144",
+            "forecast_time": "2027-03-30 21:43:34",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2606,12 +2606,12 @@
             "magnitude": 7.55,
             "max_tsunami": "1.4m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1806355444
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1806443014
         },
         {
-            "id": "hmns_convergence_pack_240_935",
-            "forecast_time": "2027-04-03 12:37:58",
+            "id": "hmns_convergence_pack_240_144",
+            "forecast_time": "2027-04-04 12:57:28",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2622,12 +2622,12 @@
             "magnitude": 6.41,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1806755878
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1806843448
         },
         {
-            "id": "hmns_convergence_pack_220_935",
-            "forecast_time": "2027-04-08 16:59:51",
+            "id": "hmns_convergence_pack_220_144",
+            "forecast_time": "2027-04-09 17:19:21",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2638,12 +2638,12 @@
             "magnitude": 6.71,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807203591
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807291161
         },
         {
-            "id": "hmns_convergence_pack_95_935",
-            "forecast_time": "2027-04-09 03:29:54",
+            "id": "hmns_convergence_pack_95_144",
+            "forecast_time": "2027-04-10 03:49:24",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2654,12 +2654,12 @@
             "magnitude": 6.44,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807241394
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807328964
         },
         {
-            "id": "hmns_convergence_pack_131_935",
-            "forecast_time": "2027-04-09 16:54:21",
+            "id": "hmns_convergence_pack_131_144",
+            "forecast_time": "2027-04-10 17:13:51",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2670,12 +2670,12 @@
             "magnitude": 7.99,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807289661
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807377231
         },
         {
-            "id": "hmns_convergence_pack_171_935",
-            "forecast_time": "2027-04-09 17:21:09",
+            "id": "hmns_convergence_pack_171_144",
+            "forecast_time": "2027-04-10 17:40:39",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2686,12 +2686,12 @@
             "magnitude": 5.71,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807291269
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807378839
         },
         {
-            "id": "hmns_convergence_pack_103_935",
-            "forecast_time": "2027-04-11 16:15:22",
+            "id": "hmns_convergence_pack_103_144",
+            "forecast_time": "2027-04-12 16:34:52",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2702,12 +2702,12 @@
             "magnitude": 7.25,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807460122
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807547692
         },
         {
-            "id": "hmns_convergence_pack_198_935",
-            "forecast_time": "2027-04-13 20:05:12",
+            "id": "hmns_convergence_pack_198_144",
+            "forecast_time": "2027-04-14 20:24:42",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2718,12 +2718,12 @@
             "magnitude": 6.71,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1807646712
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1807734282
         },
         {
-            "id": "hmns_convergence_pack_161_935",
-            "forecast_time": "2027-04-24 01:44:30",
+            "id": "hmns_convergence_pack_161_144",
+            "forecast_time": "2027-04-25 02:04:00",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2734,12 +2734,12 @@
             "magnitude": 8.01,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1808531070
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1808618640
         },
         {
-            "id": "hmns_convergence_pack_236_935",
-            "forecast_time": "2027-04-27 04:33:31",
+            "id": "hmns_convergence_pack_236_144",
+            "forecast_time": "2027-04-28 04:53:01",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2750,12 +2750,12 @@
             "magnitude": 6.72,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1808800411
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1808887981
         },
         {
-            "id": "hmns_convergence_pack_137_935",
-            "forecast_time": "2027-04-30 01:46:24",
+            "id": "hmns_convergence_pack_137_144",
+            "forecast_time": "2027-05-01 02:05:54",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2766,12 +2766,12 @@
             "magnitude": 6.52,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1809049584
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1809137154
         },
         {
-            "id": "hmns_convergence_pack_187_935",
-            "forecast_time": "2027-05-03 13:31:45",
+            "id": "hmns_convergence_pack_187_144",
+            "forecast_time": "2027-05-04 13:51:15",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2782,12 +2782,12 @@
             "magnitude": 5.68,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1809351105
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1809438675
         },
         {
-            "id": "hmns_convergence_pack_126_935",
-            "forecast_time": "2027-05-04 06:33:13",
+            "id": "hmns_convergence_pack_126_144",
+            "forecast_time": "2027-05-05 06:52:43",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2798,12 +2798,12 @@
             "magnitude": 7.53,
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1809412393
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1809499963
         },
         {
-            "id": "hmns_convergence_pack_214_935",
-            "forecast_time": "2027-05-04 18:34:45",
+            "id": "hmns_convergence_pack_214_144",
+            "forecast_time": "2027-05-05 18:54:15",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2814,12 +2814,12 @@
             "magnitude": 6.68,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1809455685
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1809543255
         },
         {
-            "id": "hmns_convergence_pack_147_935",
-            "forecast_time": "2027-05-10 18:25:07",
+            "id": "hmns_convergence_pack_147_144",
+            "forecast_time": "2027-05-11 18:44:37",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2830,12 +2830,12 @@
             "magnitude": 7.96,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1809973507
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1810061077
         },
         {
-            "id": "hmns_convergence_pack_252_935",
-            "forecast_time": "2027-05-15 16:07:18",
+            "id": "hmns_convergence_pack_252_144",
+            "forecast_time": "2027-05-16 16:26:48",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2846,12 +2846,12 @@
             "magnitude": 6.72,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1810397238
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1810484808
         },
         {
-            "id": "hmns_convergence_pack_177_935",
-            "forecast_time": "2027-05-20 19:15:08",
+            "id": "hmns_convergence_pack_177_144",
+            "forecast_time": "2027-05-21 19:34:38",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2862,12 +2862,12 @@
             "magnitude": 8.0,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1810840508
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1810928078
         },
         {
-            "id": "hmns_convergence_pack_119_935",
-            "forecast_time": "2027-05-21 09:46:14",
+            "id": "hmns_convergence_pack_119_144",
+            "forecast_time": "2027-05-22 10:05:44",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2878,12 +2878,12 @@
             "magnitude": 7.28,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1810892774
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1810980344
         },
         {
-            "id": "hmns_convergence_pack_111_935",
-            "forecast_time": "2027-05-21 18:20:48",
+            "id": "hmns_convergence_pack_111_144",
+            "forecast_time": "2027-05-22 18:40:18",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2894,12 +2894,12 @@
             "magnitude": 6.47,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1810923648
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1811011218
         },
         {
-            "id": "hmns_convergence_pack_230_935",
-            "forecast_time": "2027-05-25 17:04:23",
+            "id": "hmns_convergence_pack_230_144",
+            "forecast_time": "2027-05-26 17:23:53",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2910,12 +2910,12 @@
             "magnitude": 6.65,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1811264663
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1811352233
         },
         {
-            "id": "hmns_convergence_pack_203_935",
-            "forecast_time": "2027-05-27 09:42:16",
+            "id": "hmns_convergence_pack_203_144",
+            "forecast_time": "2027-05-28 10:01:46",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2926,12 +2926,12 @@
             "magnitude": 5.65,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1811410936
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1811498506
         },
         {
-            "id": "hmns_convergence_pack_153_935",
-            "forecast_time": "2027-06-01 03:33:09",
+            "id": "hmns_convergence_pack_153_144",
+            "forecast_time": "2027-06-02 03:52:39",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2942,12 +2942,12 @@
             "magnitude": 6.52,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1811820789
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1811908359
         },
         {
-            "id": "hmns_convergence_pack_142_935",
-            "forecast_time": "2027-06-08 15:42:25",
+            "id": "hmns_convergence_pack_142_144",
+            "forecast_time": "2027-06-09 16:01:55",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2958,12 +2958,12 @@
             "magnitude": 7.5,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1812469345
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1812556915
         },
         {
-            "id": "hmns_convergence_pack_163_935",
-            "forecast_time": "2027-06-10 19:55:50",
+            "id": "hmns_convergence_pack_163_144",
+            "forecast_time": "2027-06-11 20:15:20",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2974,12 +2974,12 @@
             "magnitude": 7.93,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1812657350
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1812744920
         },
         {
-            "id": "hmns_convergence_pack_246_935",
-            "forecast_time": "2027-06-15 15:34:08",
+            "id": "hmns_convergence_pack_246_144",
+            "forecast_time": "2027-06-16 15:53:38",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2990,12 +2990,12 @@
             "magnitude": 6.62,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1813073648
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1813161218
         },
         {
-            "id": "hmns_convergence_pack_193_935",
-            "forecast_time": "2027-06-16 12:45:42",
+            "id": "hmns_convergence_pack_193_144",
+            "forecast_time": "2027-06-17 13:05:12",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3006,12 +3006,12 @@
             "magnitude": 7.99,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1813149942
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1813237512
         },
         {
-            "id": "hmns_convergence_pack_219_935",
-            "forecast_time": "2027-06-20 05:52:41",
+            "id": "hmns_convergence_pack_219_144",
+            "forecast_time": "2027-06-21 06:12:11",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3022,12 +3022,12 @@
             "magnitude": 5.63,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1813470761
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1813558331
         },
         {
-            "id": "hmns_convergence_pack_189_935",
-            "forecast_time": "2027-06-27 00:03:04",
+            "id": "hmns_convergence_pack_189_144",
+            "forecast_time": "2027-06-28 00:22:34",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3038,12 +3038,12 @@
             "magnitude": 5.0,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1814054584
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1814142154
         },
         {
-            "id": "hmns_convergence_pack_135_935",
-            "forecast_time": "2027-06-30 03:17:03",
+            "id": "hmns_convergence_pack_135_144",
+            "forecast_time": "2027-07-01 03:36:33",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3054,12 +3054,12 @@
             "magnitude": 7.32,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1814325423
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1814412993
         },
         {
-            "id": "hmns_convergence_pack_169_935",
-            "forecast_time": "2027-07-03 05:19:49",
+            "id": "hmns_convergence_pack_169_144",
+            "forecast_time": "2027-07-04 05:39:19",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3070,12 +3070,12 @@
             "magnitude": 6.51,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1814591989
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1814679559
         },
         {
-            "id": "hmns_convergence_pack_127_935",
-            "forecast_time": "2027-07-03 09:11:39",
+            "id": "hmns_convergence_pack_127_144",
+            "forecast_time": "2027-07-04 09:31:09",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3086,12 +3086,12 @@
             "magnitude": 6.5,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1814605899
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1814693469
         },
         {
-            "id": "hmns_convergence_pack_179_935",
-            "forecast_time": "2027-07-11 21:26:28",
+            "id": "hmns_convergence_pack_179_144",
+            "forecast_time": "2027-07-12 21:45:58",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3102,12 +3102,12 @@
             "magnitude": 7.9,
             "max_tsunami": "1.8m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1815341188
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1815428758
         },
         {
-            "id": "hmns_convergence_pack_209_935",
-            "forecast_time": "2027-07-13 06:16:11",
+            "id": "hmns_convergence_pack_209_144",
+            "forecast_time": "2027-07-14 06:35:41",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3118,12 +3118,12 @@
             "magnitude": 7.98,
             "max_tsunami": "1.9m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1815459371
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1815546941
         },
         {
-            "id": "hmns_convergence_pack_158_935",
-            "forecast_time": "2027-07-14 00:51:42",
+            "id": "hmns_convergence_pack_158_144",
+            "forecast_time": "2027-07-15 01:11:12",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3134,12 +3134,12 @@
             "magnitude": 7.48,
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1815526302
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1815613872
         },
         {
-            "id": "hmns_convergence_pack_235_935",
-            "forecast_time": "2027-07-14 02:03:01",
+            "id": "hmns_convergence_pack_235_144",
+            "forecast_time": "2027-07-15 02:22:31",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3150,12 +3150,12 @@
             "magnitude": 5.6,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1815530581
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1815618151
         },
         {
-            "id": "hmns_convergence_pack_205_935",
-            "forecast_time": "2027-07-25 04:13:34",
+            "id": "hmns_convergence_pack_205_144",
+            "forecast_time": "2027-07-26 04:33:04",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3166,12 +3166,12 @@
             "magnitude": 5.02,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1816488814
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1816576384
         },
         {
-            "id": "hmns_convergence_pack_185_935",
-            "forecast_time": "2027-08-04 07:06:26",
+            "id": "hmns_convergence_pack_185_144",
+            "forecast_time": "2027-08-05 07:25:56",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3182,12 +3182,12 @@
             "magnitude": 6.5,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1817363186
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1817450756
         },
         {
-            "id": "hmns_convergence_pack_251_935",
-            "forecast_time": "2027-08-06 22:13:15",
+            "id": "hmns_convergence_pack_251_144",
+            "forecast_time": "2027-08-07 22:32:45",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3198,12 +3198,12 @@
             "magnitude": 5.58,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1817590395
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1817677965
         },
         {
-            "id": "hmns_convergence_pack_151_935",
-            "forecast_time": "2027-08-08 20:47:48",
+            "id": "hmns_convergence_pack_151_144",
+            "forecast_time": "2027-08-09 21:07:18",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3214,12 +3214,12 @@
             "magnitude": 7.35,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1817758068
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1817845638
         },
         {
-            "id": "hmns_convergence_pack_225_935",
-            "forecast_time": "2027-08-08 23:46:34",
+            "id": "hmns_convergence_pack_225_144",
+            "forecast_time": "2027-08-10 00:06:04",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3230,12 +3230,12 @@
             "magnitude": 7.96,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1817768794
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1817856364
         },
         {
-            "id": "hmns_convergence_pack_195_935",
-            "forecast_time": "2027-08-11 22:57:01",
+            "id": "hmns_convergence_pack_195_144",
+            "forecast_time": "2027-08-12 23:16:31",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3246,12 +3246,12 @@
             "magnitude": 7.87,
             "max_tsunami": "1.5m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1818025021
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1818112591
         },
         {
-            "id": "hmns_convergence_pack_143_935",
-            "forecast_time": "2027-08-15 00:02:26",
+            "id": "hmns_convergence_pack_143_144",
+            "forecast_time": "2027-08-16 00:21:56",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3262,12 +3262,12 @@
             "magnitude": 6.53,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1818288146
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1818375716
         },
         {
-            "id": "hmns_convergence_pack_174_935",
-            "forecast_time": "2027-08-18 10:01:02",
+            "id": "hmns_convergence_pack_174_144",
+            "forecast_time": "2027-08-19 10:20:32",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3278,12 +3278,12 @@
             "magnitude": 7.45,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1818583262
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1818670832
         },
         {
-            "id": "hmns_convergence_pack_221_935",
-            "forecast_time": "2027-08-22 08:23:59",
+            "id": "hmns_convergence_pack_221_144",
+            "forecast_time": "2027-08-23 08:43:29",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3294,12 +3294,12 @@
             "magnitude": 5.03,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1818923039
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1819010609
         },
         {
-            "id": "hmns_convergence_pack_241_935",
-            "forecast_time": "2027-09-04 17:16:52",
+            "id": "hmns_convergence_pack_241_144",
+            "forecast_time": "2027-09-05 17:36:22",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3310,12 +3310,12 @@
             "magnitude": 7.94,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1820078212
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1820165782
         },
         {
-            "id": "hmns_convergence_pack_201_935",
-            "forecast_time": "2027-09-05 08:52:57",
+            "id": "hmns_convergence_pack_201_144",
+            "forecast_time": "2027-09-06 09:12:27",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3326,12 +3326,12 @@
             "magnitude": 6.49,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1820134377
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1820221947
         },
         {
-            "id": "hmns_convergence_pack_211_935",
-            "forecast_time": "2027-09-12 00:27:29",
+            "id": "hmns_convergence_pack_211_144",
+            "forecast_time": "2027-09-13 00:46:59",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3342,12 +3342,12 @@
             "magnitude": 7.84,
             "max_tsunami": "1.6m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1820708849
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1820796419
         },
         {
-            "id": "hmns_convergence_pack_167_935",
-            "forecast_time": "2027-09-17 14:18:30",
+            "id": "hmns_convergence_pack_167_144",
+            "forecast_time": "2027-09-18 14:38:00",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3358,12 +3358,12 @@
             "magnitude": 7.38,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1821190710
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1821278280
         },
         {
-            "id": "hmns_convergence_pack_237_935",
-            "forecast_time": "2027-09-19 12:34:18",
+            "id": "hmns_convergence_pack_237_144",
+            "forecast_time": "2027-09-20 12:53:48",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3374,12 +3374,12 @@
             "magnitude": 5.05,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1821357258
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1821444828
         },
         {
-            "id": "hmns_convergence_pack_190_935",
-            "forecast_time": "2027-09-22 19:10:27",
+            "id": "hmns_convergence_pack_190_144",
+            "forecast_time": "2027-09-23 19:29:57",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3390,12 +3390,12 @@
             "magnitude": 7.42,
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1821640227
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1821727797
         },
         {
-            "id": "hmns_convergence_pack_159_935",
-            "forecast_time": "2027-09-26 14:53:09",
+            "id": "hmns_convergence_pack_159_144",
+            "forecast_time": "2027-09-27 15:12:39",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3406,12 +3406,12 @@
             "magnitude": 6.56,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1821970389
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1822057959
         },
         {
-            "id": "hmns_convergence_pack_217_935",
-            "forecast_time": "2027-10-07 10:39:23",
+            "id": "hmns_convergence_pack_217_144",
+            "forecast_time": "2027-10-08 10:58:53",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3422,12 +3422,12 @@
             "magnitude": 6.47,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1822905563
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1822993133
         },
         {
-            "id": "hmns_convergence_pack_227_935",
-            "forecast_time": "2027-10-13 01:57:52",
+            "id": "hmns_convergence_pack_227_144",
+            "forecast_time": "2027-10-14 02:17:22",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3438,12 +3438,12 @@
             "magnitude": 7.81,
             "max_tsunami": "1.7m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1823392672
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1823480242
         },
         {
-            "id": "hmns_convergence_pack_253_935",
-            "forecast_time": "2027-10-17 16:44:31",
+            "id": "hmns_convergence_pack_253_144",
+            "forecast_time": "2027-10-18 17:04:01",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3454,12 +3454,12 @@
             "magnitude": 5.07,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1823791471
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1823879041
         },
         {
-            "id": "hmns_convergence_pack_183_935",
-            "forecast_time": "2027-10-27 07:49:07",
+            "id": "hmns_convergence_pack_183_144",
+            "forecast_time": "2027-10-28 08:08:37",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3470,12 +3470,12 @@
             "magnitude": 7.41,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1824623347
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1824710917
         },
         {
-            "id": "hmns_convergence_pack_206_935",
-            "forecast_time": "2027-10-28 04:19:57",
+            "id": "hmns_convergence_pack_206_144",
+            "forecast_time": "2027-10-29 04:39:27",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3486,12 +3486,12 @@
             "magnitude": 7.39,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1824697197
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1824784767
         },
         {
-            "id": "hmns_convergence_pack_175_935",
-            "forecast_time": "2027-11-08 05:43:49",
+            "id": "hmns_convergence_pack_175_144",
+            "forecast_time": "2027-11-09 06:03:19",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3502,12 +3502,12 @@
             "magnitude": 6.59,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1825652629
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1825740199
         },
         {
-            "id": "hmns_convergence_pack_233_935",
-            "forecast_time": "2027-11-08 12:25:44",
+            "id": "hmns_convergence_pack_233_144",
+            "forecast_time": "2027-11-09 12:45:14",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3518,12 +3518,12 @@
             "magnitude": 6.45,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1825676744
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1825764314
         },
         {
-            "id": "hmns_convergence_pack_243_935",
-            "forecast_time": "2027-11-13 03:28:09",
+            "id": "hmns_convergence_pack_243_144",
+            "forecast_time": "2027-11-14 03:47:39",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3534,12 +3534,12 @@
             "magnitude": 7.79,
             "max_tsunami": "1.5m",
             "risk_level": "💥 CRITICAL BREAK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1826076489
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1826164059
         },
         {
-            "id": "hmns_convergence_pack_222_935",
-            "forecast_time": "2027-12-02 13:29:33",
+            "id": "hmns_convergence_pack_222_144",
+            "forecast_time": "2027-12-03 13:49:03",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3550,12 +3550,12 @@
             "magnitude": 7.36,
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1827754173
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1827841743
         },
         {
-            "id": "hmns_convergence_pack_199_935",
-            "forecast_time": "2027-12-06 01:19:39",
+            "id": "hmns_convergence_pack_199_144",
+            "forecast_time": "2027-12-07 01:39:09",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3566,12 +3566,12 @@
             "magnitude": 7.44,
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1828055979
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1828143549
         },
         {
-            "id": "hmns_convergence_pack_249_935",
-            "forecast_time": "2027-12-10 14:11:58",
+            "id": "hmns_convergence_pack_249_144",
+            "forecast_time": "2027-12-11 14:31:28",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3582,12 +3582,12 @@
             "magnitude": 6.43,
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1828447918
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1828535488
         },
         {
-            "id": "hmns_convergence_pack_191_935",
-            "forecast_time": "2027-12-20 20:34:23",
+            "id": "hmns_convergence_pack_191_144",
+            "forecast_time": "2027-12-21 20:53:53",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3598,12 +3598,12 @@
             "magnitude": 6.62,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1829334863
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1829422433
         },
         {
-            "id": "hmns_convergence_pack_238_935",
-            "forecast_time": "2028-01-06 22:39:14",
+            "id": "hmns_convergence_pack_238_144",
+            "forecast_time": "2028-01-07 22:58:44",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3614,12 +3614,12 @@
             "magnitude": 7.33,
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1830811154
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1830898724
         },
         {
-            "id": "hmns_convergence_pack_215_935",
-            "forecast_time": "2028-01-14 18:50:05",
+            "id": "hmns_convergence_pack_215_144",
+            "forecast_time": "2028-01-15 19:09:35",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3630,12 +3630,12 @@
             "magnitude": 7.47,
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1831488605
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1831576175
         },
         {
-            "id": "hmns_convergence_pack_207_935",
-            "forecast_time": "2028-02-01 11:24:53",
+            "id": "hmns_convergence_pack_207_144",
+            "forecast_time": "2028-02-02 11:44:23",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3646,12 +3646,12 @@
             "magnitude": 6.65,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1833017093
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1833104663
         },
         {
-            "id": "hmns_convergence_pack_254_935",
-            "forecast_time": "2028-02-11 07:49:02",
+            "id": "hmns_convergence_pack_254_144",
+            "forecast_time": "2028-02-12 08:08:32",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3662,12 +3662,12 @@
             "magnitude": 7.3,
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1833868142
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1833955712
         },
         {
-            "id": "hmns_convergence_pack_231_935",
-            "forecast_time": "2028-02-23 12:20:27",
+            "id": "hmns_convergence_pack_231_144",
+            "forecast_time": "2028-02-24 12:39:57",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3678,12 +3678,12 @@
             "magnitude": 7.49,
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1834921227
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1835008797
         },
         {
-            "id": "hmns_convergence_pack_223_935",
-            "forecast_time": "2028-03-15 02:15:17",
+            "id": "hmns_convergence_pack_223_144",
+            "forecast_time": "2028-03-16 02:34:47",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3694,12 +3694,12 @@
             "magnitude": 6.68,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1836699317
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1836786887
         },
         {
-            "id": "hmns_convergence_pack_247_935",
-            "forecast_time": "2028-04-03 05:50:42",
+            "id": "hmns_convergence_pack_247_144",
+            "forecast_time": "2028-04-04 06:10:12",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3710,12 +3710,12 @@
             "magnitude": 7.52,
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1838353842
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1838441412
         },
         {
-            "id": "hmns_convergence_pack_239_935",
-            "forecast_time": "2028-04-26 17:05:35",
+            "id": "hmns_convergence_pack_239_144",
+            "forecast_time": "2028-04-27 17:25:05",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3726,12 +3726,12 @@
             "magnitude": 6.71,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1840381535
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1840469105
         },
         {
-            "id": "hmns_convergence_pack_255_935",
-            "forecast_time": "2028-06-08 07:55:47",
+            "id": "hmns_convergence_pack_255_144",
+            "forecast_time": "2028-06-09 08:15:17",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3742,8 +3742,8 @@
             "magnitude": 6.73,
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
-            "message": "Mantle-Shear Compensated [v1.285]. Error Delta: 100.0%",
-            "raw_epoch": 1844063747
+            "message": "Mantle-Shear Compensated [v1.289]. Error Delta: 100.0%",
+            "raw_epoch": 1844151317
         }
     ]
 }
