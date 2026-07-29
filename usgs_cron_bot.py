@@ -101,25 +101,24 @@ def generate_failback_infinite_matrix():
             current_data["forecasts"].append(mock_item)
             existing_ids.append(event_id)
     else:
-        # 💡 [보완 핵심]: 일본 격자를 난카이 해구(Coast)와 규슈 구마모토 활성단층(Inland)으로 이원화 매트릭스 전개
         tectonic_constants = [
-            ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 7.35, "Coast", 1.15),
-            ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.85, "Coast", 1.85),
-            ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.95, "Inland", 0.92),
-            ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 8.15, "Coast", 2.15),
-            ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.75, "Inland", 0.65),
-            ("JAPAN REGION", "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)", 32.7801, 130.7324, 7.10, "Inland", 0.74),
-            ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.25, "Inland", 3.12),
-            ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.75, "Coast", 1.45),
-            ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 7.45, "Coast", 2.75),
-            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 7.55, "Coast", 1.05),
-            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 6.35, "Coast", 2.22),
-            ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 6.15, "Inland", 0.88),
-            ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.95, "Inland", 1.65),
-            ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.55, "Coast", 1.28),
-            ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.45, "Inland", 1.95),
-            ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 7.45, "Coast", 2.45),
-            ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 6.65, "Inland", 2.95)
+            ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
+            ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.25, "Coast", 1.85),
+            ("ITALY REGION", "Apennine Active Fault System (12km West of L'Aquila, Europe)", 42.3512, 13.4012, 5.45, "Inland", 0.92),
+            ("CHILE", "Atacama Trench Subduction Fault Grid (18km West of Iquique)", -20.2145, -70.1452, 7.35, "Coast", 2.15),
+            ("CALIFORNIA, USA", "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)", 35.9124, -120.4321, 5.25, "Inland", 0.65),
+            ("JAPAN REGION", "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)", 32.7801, 130.7324, 6.45, "Inland", 0.74),
+            ("KENYA", "Great Rift Valley Tectonic Boundary (24km South of Nairobi)", -1.2863, 36.8172, 5.15, "Inland", 3.12),
+            ("MEXICO REGION", "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)", 15.8742, -96.3214, 6.15, "Coast", 1.45),
+            ("FIJI REGION", "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)", -20.1245, 178.5412, 6.85, "Coast", 2.75),
+            ("JAPAN REGION", "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)", 34.3512, 138.2514, 6.95, "Coast", 1.05),
+            ("PAPUA NEW GUINEA", "New Britain Tectonic Arc Segment (15km North of Kimbe Area)", -5.5412, 150.1425, 5.95, "Coast", 2.22),
+            ("TURKEY REGION", "East Anatolian Active Fault Grid (14km South of Elazig)", 38.6742, 39.2214, 5.65, "Inland", 0.88),
+            ("IRAN REGION", "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)", 28.9214, 51.5412, 5.55, "Inland", 1.65),
+            ("TAIWAN REGION", "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)", 23.9742, 121.6145, 6.15, "Coast", 1.28),
+            ("GREECE", "Hellenic Subduction Arc Fault Segment (35km South of Crete)", 35.1245, 25.1452, 5.15, "Inland", 1.95),
+            ("PERU REGION", "Nazca Plate Boundary Megathrust Fault (19km West of Lima)", -12.0432, -77.1452, 6.85, "Coast", 2.45),
+            ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 5.85, "Inland", 2.95)
         ]
         
         raw_list = []
@@ -127,22 +126,21 @@ def generate_failback_infinite_matrix():
             scenario_idx = idx % len(tectonic_constants)
             t, loc, lat, lon, friction_k, zone_type, period_bias = tectonic_constants[scenario_idx]
             
-            time_step = int(((idx + 1) * 78000 * period_bias) + (math.sin(idx * 3.14) * 26000) + 1420)
+            time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
             future_epoch = execution_time_seed + time_step
-            if execution_time_seed - future_epoch > 43200: continue
+            if future_epoch <= execution_time_seed: continue
             
             time_delta_days = (future_epoch - execution_time_seed) / 86400.0
             convergence_factor = 1.0 - math.exp(-time_delta_days / 15.0)
             
-            # 💡 [보완 핵심]: 구마모토 내륙 단층 고유의 가속 배율(+0.15)을 반영하고, 필리핀 크리프를 최종 수렴 동기화
             creep_attenuation = -0.45 if t == "PHILIPPINES" else 0.0
             stress_acceleration = 0.15 if "KUMAMOTO" in loc.upper() else 0.0
             
             tidal_gravity_wave = math.sin(idx * 2.35) * 0.32 * convergence_factor
             observed_mag = round(friction_k + tidal_gravity_wave + creep_attenuation + stress_acceleration + (upgrade_bias * 0.001), 2)
             
-            if observed_mag < 5.00: continue
-            if observed_mag > 8.5: observed_mag = 8.15
+            if observed_mag < 4.00: continue
+            if observed_mag > 8.8: observed_mag = 8.15
             
             forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
             
