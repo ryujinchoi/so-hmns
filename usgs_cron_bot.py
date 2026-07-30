@@ -9,18 +9,11 @@ import so_formula_matrix
 
 DATA_FILE = "data.json"
 CONFIG_FILE = "bot_config.json"
-# 실시간 실측 지진 데이터를 긁어오는 전 세계 USGS 정식 API 통로
+USGS_API_URL = "https://earthquake.usgov"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    if os.path.exists(CONFIG_FILE):
-        try:
-            with open(CONFIG_FILE, "r") as f:
-                return json.load(f)
-        except:
-            pass
-    # 기본 자가 학습 바이어스 딕셔너리 빌드
-    return {
+    default_state = {
         "run_count": 1, 
         "upgrade_level": 1.0,
         "feedback_bias": {
@@ -29,6 +22,17 @@ def load_upgrade_state():
             "GLOBAL": {"mantle_abs": -0.15, "phase_lag": 1420, "post_trigger": 0.0}
         }
     }
+    if os.path.exists(CONFIG_FILE):
+        try:
+            with open(CONFIG_FILE, "r") as f:
+                state = json.load(f)
+                # 💡 [방어벽 코드]: 파일은 있으나 feedback_bias 키가 유실된 구형 캐시일 경우 강동 자동 결합 복구
+                if "feedback_bias" not in state:
+                    state["feedback_bias"] = default_state["feedback_bias"]
+                return state
+        except:
+            pass
+    return default_state
 
 def save_upgrade_state(state):
     with open(CONFIG_FILE, "w") as f:
@@ -54,7 +58,6 @@ def generate_failback_infinite_matrix():
     run_count = state["run_count"]
     upgrade_bias = math.log10(run_count + 9) * 0.05
     
-    # 📡 1. 실시간 실제 발생 지진(USGS Live 관측망) 데이터 파싱 낚아채기
     live_features = []
     try:
         req = urllib.request.Request(USGS_API_URL, headers={"User-Agent": "SO-HMNS-Continuous-Autonomous-Bot"})
@@ -69,21 +72,18 @@ def generate_failback_infinite_matrix():
 
     execution_time_seed = int(time.time())
 
-    # 🤖 2. [자가 오차 피드백 인공지능 루프 가동] 
-    # 실제 발생한 지진 데이터가 존재할 경우, 예측 매트릭스와 실시간 대조 학습 단행!
     if live_features:
         for event in live_features:
             props = event.get("properties", {})
             observed_mag = props.get("mag")
             if observed_mag is None or observed_mag < 4.5: continue
             
-            # 지진 발생 지역 역산 파싱
             territory = reverse_geocode_territory(props.get("place", ""))
+            if "feedback_bias" not in state:
+                state["feedback_bias"] = {}
             if territory not in state["feedback_bias"]:
                 state["feedback_bias"][territory] = {"mantle_abs": -0.15, "phase_lag": 1420, "post_trigger": 0.0}
             
-            # 실측 규모와 이론값 사이에 오차가 발견되면 상수를 실시간 자동 미세 조율 업데이트
-            # 진도가 과소평가되어 놓쳤다면 트리거 가속 상수를 올리고, 미발생 오경보가 떴다면 맨틀 흡수 감쇄 상수를 강화!
             if observed_mag >= 5.5:
                 state["feedback_bias"][territory]["post_trigger"] = min(state["feedback_bias"][territory]["post_trigger"] + 0.05, 0.60)
                 state["feedback_bias"][territory]["mantle_abs"] = max(state["feedback_bias"][territory]["mantle_abs"] - 0.02, -0.80)
@@ -91,7 +91,6 @@ def generate_failback_infinite_matrix():
                 state["feedback_bias"][territory]["post_trigger"] = max(state["feedback_bias"][territory]["post_trigger"] - 0.02, 0.0)
                 state["feedback_bias"][territory]["mantle_abs"] = min(state["feedback_bias"][territory]["mantle_abs"] + 0.03, -0.10)
 
-    # 3. 256개 전체 가변 미래 예측 격자 매트릭스 전개
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.25, "Coast", 1.85),
@@ -116,7 +115,6 @@ def generate_failback_infinite_matrix():
         scenario_idx = idx % len(tectonic_constants)
         t, loc, lat, lon, friction_k, zone_type, period_bias = tectonic_constants[scenario_idx]
         
-        # 해당 지역의 자가 학습된 미세조정상수 바이어스 자동 호출 불러오기
         bias_set = state["feedback_bias"].get(t, state["feedback_bias"]["GLOBAL"])
         
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + bias_set["phase_lag"])
@@ -126,11 +124,9 @@ def generate_failback_infinite_matrix():
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
         convergence_factor = 1.0 - math.exp(-time_delta_days / 15.0)
         
-        # 💡 [보완 핵심]: AI 봇이 자가 튜닝해 낸 실시간 기계학습 상숫값들을 이론 수식 구조에 동적 결합!
         creep_attenuation = -0.45 if t == "PHILIPPINES" else 0.0
         stress_acceleration = 0.15 if "KUMAMOTO" in loc.upper() else 0.0
         
-        # 봇이 스스로 튜닝한 대류 흡수 및 연쇄 파괴 트리거 가중치 연산 주입
         auto_mantle_abs = bias_set["mantle_abs"]
         auto_post_trigger = bias_set["post_trigger"] if idx % 4 == 0 else 0.0
         
