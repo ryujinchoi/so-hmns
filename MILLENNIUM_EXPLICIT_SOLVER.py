@@ -1,4 +1,5 @@
-#!/usr/bin/env encoding=utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 SO-HMNS v4.2: Millennium Open Problems Explicit Deterministic Solver
 Lead Architect: Choe Ryu-jin
