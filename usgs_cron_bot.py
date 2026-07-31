@@ -5,38 +5,77 @@ import urllib.request
 import ssl
 import math
 import test_conjectures
-import so_formula_matrix
 
 DATA_FILE = "data.json"
 CONFIG_FILE = "bot_config.json"
-USGS_API_URL = "https://earthquake.usgov"
+FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    default_state = {
-        "run_count": 1, 
-        "upgrade_level": 1.0,
-        "feedback_bias": {
-            "PHILIPPINES": {"mantle_abs": -0.62, "phase_lag": 1420, "post_trigger": 0.0},
-            "JAPAN REGION": {"mantle_abs": -0.15, "phase_lag": 1420, "post_trigger": 0.34},
-            "GLOBAL": {"mantle_abs": -0.15, "phase_lag": 1420, "post_trigger": 0.0}
-        }
-    }
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
-                state = json.load(f)
-                # 💡 [방어벽 코드]: 파일은 있으나 feedback_bias 키가 유실된 구형 캐시일 경우 강동 자동 결합 복구
-                if "feedback_bias" not in state:
-                    state["feedback_bias"] = default_state["feedback_bias"]
-                return state
+                return json.load(f)
         except:
             pass
-    return default_state
+    return {"run_count": 1, "upgrade_level": 4.2, "anomaly_logs": []}
 
 def save_upgrade_state(state):
     with open(CONFIG_FILE, "w") as f:
         json.dump(state, f, indent=4)
+
+def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
+    state = load_upgrade_state()
+    current_level = state.get("upgrade_level", 4.2)
+    new_level = round(current_level + 0.01, 3)
+    state["upgrade_level"] = new_level
+    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {anomaly_type} at {territory} (M {observed_mag}) -> Evolving Theory to v{new_level}")
+    save_upgrade_state(state)
+    
+    if anomaly_type == "MISSING_EVENT_ANOMALY":
+        tensor_term = f" + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.5) * 1.25)"
+        dissipation_term = " - 0.15"
+    else:
+        tensor_term = " + 0.0"
+        dissipation_term = f" - (min(float(depth_val) / 45.0, 4.12) * 1.12)"
+
+    new_formula_code = f"""import time
+import math
+
+class SOHMNS_IdealFilter:
+    @staticmethod
+    def filter_seismic_signal(item):
+        if "magnitude" in item:
+            item["magnitude"] = round(item["magnitude"], 2)
+        return item
+
+def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val):
+    base_factor = 14.12
+    depth_compensation = min(float(depth_val) / 58.5, 3.92)
+    bathymetry_factor = 0.0
+    t_upper = target_territory.upper()
+    
+    if "NEW ZEALAND" in t_upper: bathymetry_factor = 0.52
+    elif "JAPAN" in t_upper: bathymetry_factor = 0.22
+    elif "MEXICO" in t_upper or "PERU" in t_upper or "CHILE" in t_upper: bathymetry_factor = 0.42
+    elif "ICELAND" in t_upper or "ATLANTIC" in t_upper: bathymetry_factor = 0.62
+    elif "PHILIPPINES" in t_upper or "INDONESIA" in t_upper: bathymetry_factor = 0.32
+    
+    dynamic_tensor = {tensor_term}
+    viscous_dissipation = {dissipation_term}
+    
+    dynamic_attenuation_factor = base_factor + depth_compensation + bathymetry_factor + dynamic_tensor + viscous_dissipation
+    
+    forecast_time = time.strftime('%Y-%m-%d %H:%M:%S', time.gmtime(epoch_time))
+    return forecast_time, dynamic_attenuation_factor
+"""
+    with open(FORMULA_FILE, "w", encoding="utf-8") as f:
+        f.write(new_formula_code)
+    
+    import sys
+    import importlib
+    if "so_formula_matrix" in sys.modules:
+        importlib.reload(sys.modules["so_formula_matrix"])
 
 def reverse_geocode_territory(place_raw):
     if not place_raw: return "GLOBAL SEISMIC GRID"
@@ -53,6 +92,7 @@ def reverse_geocode_territory(place_raw):
     return "GLOBAL SEISMIC GRID"
 
 def generate_failback_infinite_matrix():
+    import so_formula_matrix
     current_data = {"coreUrl": "https://paypal.me", "forecasts": []}
     state = load_upgrade_state()
     run_count = state["run_count"]
@@ -79,17 +119,13 @@ def generate_failback_infinite_matrix():
             if observed_mag is None or observed_mag < 4.5: continue
             
             territory = reverse_geocode_territory(props.get("place", ""))
-            if "feedback_bias" not in state:
-                state["feedback_bias"] = {}
-            if territory not in state["feedback_bias"]:
-                state["feedback_bias"][territory] = {"mantle_abs": -0.15, "phase_lag": 1420, "post_trigger": 0.0}
             
-            if observed_mag >= 5.5:
-                state["feedback_bias"][territory]["post_trigger"] = min(state["feedback_bias"][territory]["post_trigger"] + 0.05, 0.60)
-                state["feedback_bias"][territory]["mantle_abs"] = max(state["feedback_bias"][territory]["mantle_abs"] - 0.02, -0.80)
-            elif observed_mag < 5.0:
-                state["feedback_bias"][territory]["post_trigger"] = max(state["feedback_bias"][territory]["post_trigger"] - 0.02, 0.0)
-                state["feedback_bias"][territory]["mantle_abs"] = min(state["feedback_bias"][territory]["mantle_abs"] + 0.03, -0.10)
+            if observed_mag >= 5.5 and run_count % 10 == 0:
+                autonomous_theory_evolution("MISSING_EVENT_ANOMALY", territory, observed_mag)
+                break
+            elif observed_mag < 4.5 and run_count % 15 == 0:
+                autonomous_theory_evolution("FALSE_ALARM_ANOMALY", territory, observed_mag)
+                break
 
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
@@ -110,14 +146,18 @@ def generate_failback_infinite_matrix():
         ("CHINA REGION", "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)", 31.0245, 103.4125, 5.85, "Inland", 2.95)
     ]
     
+    importlib = __import__("importlib")
+    import sys
+    if "so_formula_matrix" in sys.modules:
+        importlib.reload(sys.modules["so_formula_matrix"])
+    import so_formula_matrix
+
     raw_list = []
     for idx in range(256):
         scenario_idx = idx % len(tectonic_constants)
         t, loc, lat, lon, friction_k, zone_type, period_bias = tectonic_constants[scenario_idx]
         
-        bias_set = state["feedback_bias"].get(t, state["feedback_bias"]["GLOBAL"])
-        
-        time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + bias_set["phase_lag"])
+        time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         if future_epoch <= execution_time_seed: continue
         
@@ -127,11 +167,8 @@ def generate_failback_infinite_matrix():
         creep_attenuation = -0.45 if t == "PHILIPPINES" else 0.0
         stress_acceleration = 0.15 if "KUMAMOTO" in loc.upper() else 0.0
         
-        auto_mantle_abs = bias_set["mantle_abs"]
-        auto_post_trigger = bias_set["post_trigger"] if idx % 4 == 0 else 0.0
-        
         tidal_gravity_wave = math.sin(idx * 2.35) * 0.32 * convergence_factor
-        observed_mag = round(friction_k + tidal_gravity_wave + creep_attenuation + stress_acceleration + auto_mantle_abs + auto_post_trigger + (upgrade_bias * 0.001), 2)
+        observed_mag = round(friction_k + tidal_gravity_wave + creep_attenuation + stress_acceleration + (upgrade_bias * 0.001), 2)
         
         if observed_mag < 4.00: continue
         if observed_mag > 8.8: observed_mag = 8.15
@@ -152,10 +189,9 @@ def generate_failback_infinite_matrix():
             "id": f"hmns_convergence_pack_{idx}_{run_count % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
             "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8) % 115.0, 1),
             "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-            "message": f"Autonomous Self-Tuning Active [v{round(4.2 + upgrade_bias, 3)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
+            "message": f"SO-HMNS Theory Auto-Evolved [v{state.get('upgrade_level', 4.2)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
             "raw_epoch": future_epoch
         }
-        mock_item = test_conjectures.refine_prediction_engine(mock_item)
         current_data["forecasts"].append(mock_item)
 
     current_data["forecasts"] = sorted(current_data["forecasts"], key=lambda x: x["raw_epoch"])
@@ -164,9 +200,6 @@ def generate_failback_infinite_matrix():
         json.dump(current_data, f, ensure_ascii=False, indent=4)
     state["run_count"] += 1
     save_upgrade_state(state)
-
-def fetch_and_train_usgs_live():
-    generate_failback_infinite_matrix()
 
 if __name__ == "__main__":
     while True:
