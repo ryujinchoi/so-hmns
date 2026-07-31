@@ -56,8 +56,8 @@ class QuantumGravityClosureMonitor:
         
         system_residue = (self.node13 * self.node19) - self.target_weight
         if system_residue == 0:
-            print("[STATUS] Global Geodynamic Resonance Error Rate: Exactly 0 (Zero Residue).")
-            print("[STATUS] Systemic entropy fully neutralized. Kernel = ∅ (True) | Hard-Locked.")
+            print("[STATUS] Global Geodynamic Resonance Error Rate: Zero Residue")
+            print("[STATUS] Systemic entropy fully neutralized. Kernel = ∅ (True) | Hard-Locked")
             print("=" * 80)
             return True
         return False
