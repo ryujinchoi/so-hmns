@@ -38,7 +38,6 @@ class SOHMNSFinalLockdown:
         print(" RUNTIME AUDIT: SO-HMNS v4.2 COMPREHENSIVE BIT-PARITY VALIDATION ACTIVE ")
         print("=" * 80)
         for layer_idx, layer_name in self.LAYER_MAP.items():
-            # Inter-file parity vector calculation matched to internal clock
             layer_frac = Fraction(layer_idx, 1)
             test_vector = (self.node137 * layer_frac) % self.node19
             print(f"[Layer {layer_idx}] Auditing: {layer_name}")
