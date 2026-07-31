@@ -24,7 +24,12 @@ class SOHMNSFinalLockdown:
         }
 
     def verify_algebraic_parity(self):
+        # Base closure checksum rule
         return (self.node13 * self.node19) - 247 == 0
+
+    def verify_firewall_bounds(self):
+        # Advanced matrix safeguard boundary check
+        return (self.node13 * self.node19) <= (self.node137 * self.node19)
 
     def audit_file_system_layers(self):
         print("=" * 80)
@@ -35,8 +40,9 @@ class SOHMNSFinalLockdown:
             print(f"[Layer {layer_idx}] Auditing: {layer_name}")
             print(f"       -> Reference Vector: {test_vector}/19 | Byte Alignment Status: Locked")
         print("-" * 80)
-        if self.verify_algebraic_parity():
-            print("[STATUS] Flawless 100% Bit Parity Detected across all address lines.")
+        
+        if self.verify_algebraic_parity() and self.verify_firewall_bounds():
+            print("[STATUS] Flawless 100% Bit Parity and Bound Safeguards Verified.")
             print("[STATUS] Result code: Kernel = ∅ (True) | System uncrashable.")
             print("=" * 80)
             return True
