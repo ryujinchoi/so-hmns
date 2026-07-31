@@ -1,0 +1,22 @@
+name: SO-HMNS Core Formal Verification CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Lean 4 Compiler
+        run: |
+          wget https://githubusercontent.com
+          chmod +x elan-init.sh
+          ./elan-init.sh -y --default-toolchain leanprover/lean4:stable
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Execute SO-HMNS Invariant Matrix Check
+        run: |
+          lean MasterMillennium.lean
+          lean MasterUniversalClosure.lean
