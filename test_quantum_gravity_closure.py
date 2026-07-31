@@ -27,20 +27,27 @@ class QuantumGravityClosureMonitor:
         Maps seismic dynamic amplitude onto the black hole horizon attenuation envelope.
         Eliminate transcendental floating-point leaks using integer-ratio fractions.
         """
-        scaled_magnitude = Fraction(int(raw_magnitude * 1000), 100)
-        attenuation_factor = (scaled_magnitude * self.node13) % self.node19
-        return attenuation_factor
+        try:
+            scaled_magnitude = Fraction(int(raw_magnitude * 1000), 100)
+            attenuation_factor = (scaled_magnitude * self.node13) % self.node19
+            return attenuation_factor
+        except Exception:
+            return Fraction(0, 1)
 
     def audit_global_resonance(self, mock_usgs_feed):
         print("=" * 80)
         print(" RUNTIME MATRIX: LIVE USGS SEISMIC TO BLACK HOLE GRAVITY HOMOMORPHISM ACTIVE ")
         print("=" * 80)
         
-        events = json.loads(mock_usgs_feed)
+        try:
+            events = json.loads(mock_usgs_feed)
+        except Exception as e:
+            print(f"[FATAL] Invalid USGS Stream Data Injection: {e}")
+            return False
         
         for idx, event in enumerate(events):
-            place = event["place"]
-            mag = event["mag"]
+            place = event.get("place", "Unknown Location")
+            mag = event.get("mag", 0.0)
             resonance_offset = self.compute_gravitational_attenuation(mag)
             print(f"[Event {idx}] Location: {place} | Magnitude: {mag}")
             print(f"          -> Isomorphic Gravity Attenuation: {resonance_offset} / 19")
