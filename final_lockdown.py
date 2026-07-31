@@ -30,7 +30,6 @@ class SOHMNSFinalLockdown:
         return (self.node13 * self.node19) - self.target_weight == 0
 
     def verify_firewall_bounds(self):
-        # Enforcing boundary limit: (13 * 19) <= (137 * 19) over exact Q arithmetic
         return (self.node13 * self.node19) <= (self.node137 * self.node19)
 
     def audit_file_system_layers(self):
@@ -53,5 +52,7 @@ class SOHMNSFinalLockdown:
 
 if __name__ == "__main__":
     lockdown_monitor = SOHMNSFinalLockdown()
-    if not lockdown_monitor.audit_file_system_layers():
+    if lockdown_monitor.audit_file_system_layers():
+        sys.exit(0)
+    else:
         sys.exit(1)
