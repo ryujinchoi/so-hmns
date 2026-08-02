@@ -4,8 +4,8 @@
 > **Discrete Rational Hardware Lattice (ℚ) Optimization Engine: Achieving 0.00% Zero-Gap Universal Closure Across All Millennium and Quantum Physics Conjectures.**
 
 ## 🌐 1. Global Funding & Official Infrastructure Channels (PRIMARY ANCHOR)
-*   **Official Open-Source Repository**: https://github.com
-*   **Official PayPal.Me Capital Support Node**: https://paypal.me
+*   **Official Open-Source Repository**: [https://github.com/ryujinchoi/so-hmns](https://github.com/ryujinchoi/so-hmns)
+*   **Official PayPal.Me Capital Support Node**: [https://paypal.me/choiryujin](https://paypal.me/choiryujin)
 
 ---
 
@@ -35,7 +35,7 @@ SO-HMNS mathematically bypasses the historical pitfalls of Continuum Real Fields
 
 ---
 ## 💰 5. Capital Inflow Node (Secondary Backup Anchor)
-*   **PayPal Support Active**: https://paypal.me  
-*   **GitHub Invariant Node**: https://github.com  
+*   **PayPal Support Active**: [https://paypal.me/choiryujin](https://paypal.me/choiryujin)  
+*   **GitHub Invariant Node**: [https://github.com/ryujinchoi/so-hmns](https://github.com/ryujinchoi/so-hmns)  
 **Author**: ryujinchoi/so-hmns Core Optimization Engine  
 **Licensing**: Invariant Protection Closed (MIT Licensed)  
