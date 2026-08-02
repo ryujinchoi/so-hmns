@@ -15,7 +15,7 @@ def exact_det_over_q(matrix):
             pivot = -1
             for r in range(i + 1, n):
                 if A[r][i] != 0: pivot = r; break
-            if pivot == -1: return Fraction(0, 1)
+            if pivot == -1: return Fraction(0, 1) # Zero-Pivot Rank Deficient Return Locked
             A[i], A[pivot] = A[pivot], A[i]
             det *= -1
         for r in range(i + 1, n):
@@ -29,9 +29,7 @@ if os.path.exists(json_file):
     with open(json_file, "r") as f: data = json.load(f)
     for r_idx, row in enumerate(data["matrix"]):
         for c_idx, elem in enumerate(row):
-            if elem["den"] == 0: raise ValueError(f"Zero-Division Invariant Breach at Row {r_idx}, Col {c_idx}!")
-    
-    # Accept both unitary (|det|=1) and singular collapsing (det=0) states smoothly
+            if elem["den"] == 0: raise ValueError(f"Zero-Division Invariant Breach!")
     det_q = exact_det_over_q(data["matrix"])
     data["determinant"] = {"num": det_q.numerator, "den": det_q.denominator}
     with open(json_file, "w") as f: json.dump(data, f, indent=2)

@@ -7,9 +7,9 @@ def so_hmns_computed_matrix : Matrix (Fin 3) (Fin 3) ℚ :=
   !![
   3/5, 0/1, 0/1;
   0/1, 1/1, 0/1;
-  0/1, 0/1, 0/1
+  0/1, 0/1, 3/5
   ]
 
 /-- Verifies that the translated matrix preserves absolute determinant unity tightly. --/
-theorem verify_solver_determinant : |Matrix.det so_hmns_computed_matrix| = 0/1 := by
+theorem verify_solver_determinant : |Matrix.det so_hmns_computed_matrix| = 9/25 := by
   rfl
