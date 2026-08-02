@@ -23,7 +23,6 @@ def exact_det_over_q(matrix):
             factor = A[r][i] / A[i][i]
             for c in range(i, n):
                 A[r][c] -= factor * A[i][c]
-                # Integer Overflow Guard: Forces instant GCD reduction at each algebraic layer
                 g = math.gcd(A[r][c].numerator, A[r][c].denominator)
                 A[r][c] = Fraction(A[r][c].numerator // g, A[r][c].denominator // g)
         det *= A[i][i]
@@ -44,6 +43,12 @@ print("[SO-HMNS Engine] Multi-dimensional Determinant & Zero-Division guards suc
 '
 echo "[SO-HMNS] Step 2: Triggering Lattice Transpiler..."
 python lattice_transpiler.py
+
+# I/O Sync Barrier Guard Implementation (Prevents race conditions in Termux storage)
+echo "[SO-HMNS] Syncing filesystem buffers for GeneratedInvariants.lean..."
+sync || true
+sleep 0.5
+
 echo "[SO-HMNS] Step 3: Triggering Integration Core Verifier..."
 python verifier.py
 echo "[SO-HMNS] Global Pipeline Validation Successfully Closed with 0.00% Error."
