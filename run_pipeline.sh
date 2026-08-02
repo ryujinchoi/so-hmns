@@ -6,8 +6,10 @@ import json
 import os
 import math
 import sys
+import gc
 from fractions import Fraction
 
+# Secure infinite precision and memory leak defense
 sys.set_int_max_str_digits(0)
 
 def exact_det_over_q(matrix):
@@ -31,6 +33,9 @@ def exact_det_over_q(matrix):
         det *= A[i][i]
         g_det = math.gcd(det.numerator, det.denominator)
         det = Fraction(det.numerator // g_det, det.denominator // g_det)
+    
+    # Force reclaim big-integer fraction fragments immediately from hardware cache
+    gc.collect()
     return det
 
 json_file = "matrix_output.json"
