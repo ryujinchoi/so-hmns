@@ -1,29 +1,30 @@
 {
   "dimension": 2,
+  "verification_type": "Fermion_Pauli_Exclusion",
   "matrix": [
     [
       {
-        "num": 5,
-        "den": 4
+        "num": -1,
+        "den": 3
       },
       {
-        "num": 0,
-        "den": 1
+        "num": 1,
+        "den": 10
       }
     ],
     [
       {
-        "num": 0,
-        "den": 1
+        "num": -1,
+        "den": 2
       },
       {
-        "num": 5,
-        "den": 4
+        "num": 3,
+        "den": 20
       }
     ]
   ],
   "determinant": {
-    "num": 25,
-    "den": 16
+    "num": 0,
+    "den": 1
   }
 }
