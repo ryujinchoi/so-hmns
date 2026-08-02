@@ -56,4 +56,6 @@ sync || true
 sleep 0.5
 echo "[SO-HMNS] Step 3: Triggering Integration Core Verifier..."
 python verifier.py
+echo "[SO-HMNS] Step 4: Generating Final Academic Report..."
+python report_generator.py
 echo "[SO-HMNS] Global Pipeline Validation Successfully Closed with 0.00% Error."
