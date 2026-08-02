@@ -4,6 +4,7 @@ echo "[SO-HMNS] Patching and Updating Transpiler Guard & Determinant Solver..."
 python -c '
 import json
 import os
+import math
 from fractions import Fraction
 
 def exact_det_over_q(matrix):
@@ -15,13 +16,19 @@ def exact_det_over_q(matrix):
             pivot = -1
             for r in range(i + 1, n):
                 if A[r][i] != 0: pivot = r; break
-            if pivot == -1: return Fraction(0, 1) # Zero-Pivot Rank Deficient Return Locked
+            if pivot == -1: return Fraction(0, 1)
             A[i], A[pivot] = A[pivot], A[i]
             det *= -1
         for r in range(i + 1, n):
             factor = A[r][i] / A[i][i]
-            for c in range(i, n): A[r][c] -= factor * A[i][c]
+            for c in range(i, n):
+                A[r][c] -= factor * A[i][c]
+                # Integer Overflow Guard: Forces instant GCD reduction at each algebraic layer
+                g = math.gcd(A[r][c].numerator, A[r][c].denominator)
+                A[r][c] = Fraction(A[r][c].numerator // g, A[r][c].denominator // g)
         det *= A[i][i]
+        g_det = math.gcd(det.numerator, det.denominator)
+        det = Fraction(det.numerator // g_det, det.denominator // g_det)
     return det
 
 json_file = "matrix_output.json"
