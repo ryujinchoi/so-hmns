@@ -1,7 +1,6 @@
 import json
 import os
 import math
-from fractions import Fraction
 
 class LatticeTranspiler:
     def __init__(self, json_path: str):
@@ -33,6 +32,11 @@ class LatticeTranspiler:
     def generate_lean_code(self, data: dict) -> str:
         dim = data["dimension"]
         matrix_rows = data["matrix"]
+        
+        # Dimension Shape Validator Guard (Prevents Lean 4 macro compiler crashes)
+        if len(matrix_rows) != dim or any(len(row) != dim for row in matrix_rows):
+            raise ValueError(f"[CRITICAL BOUNDARY ERROR] Matrix dimensions mismatch! Expected {dim}x{dim}.")
+
         lean_lines = [
             "import Mathlib.Data.Rat.Basic",
             "import Mathlib.LinearAlgebra.Matrix.Basic\n",
@@ -62,7 +66,7 @@ class LatticeTranspiler:
         lean_code = self.generate_lean_code(data)
         with open(output_path, 'w') as f:
             f.write(lean_code)
-        print(f"[SO-HMNS Transpiler] Ultimate Success: Compiled {self.json_path} -> {output_path} with Syntax Guards.")
+        print(f"[SO-HMNS Transpiler] Ultimate Success: Compiled {self.json_path} -> {output_path} with Dimension Shape Validator.")
 
 if __name__ == "__main__":
     transpiler = LatticeTranspiler("matrix_output.json")
