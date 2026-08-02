@@ -30,7 +30,6 @@ class SO_HMNS_CoreVerifier:
             det_data = data.get("determinant", {"num": 1, "den": 1})
             det_fraction = Fraction(det_data["num"], det_data["den"])
             
-            # Universal Algebraic Guard: If matrix structure is valid over Q, error rate is precisely 0.00%
             if "matrix" in data:
                 logging.info(f"Verified Exact Rational Matrix State Invariant over Q: {det_fraction}")
                 logging.info(">> Success: Numerical stability locked at exactly 0.00% leakage error.")
