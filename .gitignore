@@ -1,5 +1,5 @@
-# SO-HMNS Runtime Environment Ignore Filter
-# Strictly isolates dynamic runtime caches to prevent commit log pollution
+# SO-HMNS Runtime & Compiler Environment Ignore Filter
+# Strictly isolates dynamic runtime and lean 4 build caches
 
 *.log
 *.tmp
@@ -7,3 +7,7 @@ matrix_output.json
 .DS_Store
 __pycache__/
 *.pyc
+
+# Lean 4 Compiler Artifacts Isolation
+.lake/
+build/
