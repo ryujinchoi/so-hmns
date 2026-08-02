@@ -3,7 +3,6 @@ import os
 import math
 import sys
 
-# Ultimate Big-Integer Guard: Bypasses string conversion limitations for infinite precision Q field
 sys.set_int_max_str_digits(0)
 
 class LatticeTranspiler:
@@ -27,10 +26,10 @@ class LatticeTranspiler:
                 ],
                 "determinant": {"num": 1, "den": 1}
             }
-            with open(self.json_path, 'w') as f:
+            with open(self.json_path, 'w', encoding='utf-8') as f:
                 json.dump(mock_data, f, indent=2)
             return mock_data
-        with open(self.json_path, 'r') as f:
+        with open(self.json_path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
     def generate_lean_code(self, data: dict) -> str:
@@ -67,9 +66,9 @@ class LatticeTranspiler:
     def transpile(self, output_path: str):
         data = self.load_matrix_data()
         lean_code = self.generate_lean_code(data)
-        with open(output_path, 'w') as f:
+        with open(output_path, 'w', encoding='utf-8') as f:
             f.write(lean_code)
-        print(f"[SO-HMNS Transpiler] Ultimate Success: Compiled {self.json_path} -> {output_path} with Dimension Shape Validator.")
+        print(f"[SO-HMNS Transpiler] Ultimate Success: Compiled {self.json_path} -> {output_path} with UTF-8 Guard.")
 
 if __name__ == "__main__":
     transpiler = LatticeTranspiler("matrix_output.json")

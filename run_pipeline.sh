@@ -8,7 +8,6 @@ import math
 import sys
 from fractions import Fraction
 
-# Secure infinite precision parse chain
 sys.set_int_max_str_digits(0)
 
 def exact_det_over_q(matrix):
@@ -36,13 +35,13 @@ def exact_det_over_q(matrix):
 
 json_file = "matrix_output.json"
 if os.path.exists(json_file):
-    with open(json_file, "r") as f: data = json.load(f)
+    with open(json_file, "r", encoding="utf-8") as f: data = json.load(f)
     for r_idx, row in enumerate(data["matrix"]):
         for c_idx, elem in enumerate(row):
             if elem["den"] == 0: raise ValueError(f"Zero-Division Invariant Breach!")
     det_q = exact_det_over_q(data["matrix"])
     data["determinant"] = {"num": det_q.numerator, "den": det_q.denominator}
-    with open(json_file, "w") as f: json.dump(data, f, indent=2)
+    with open(json_file, "w", encoding="utf-8") as f: json.dump(data, f, indent=2)
 print("[SO-HMNS Engine] Multi-dimensional Determinant & Zero-Division guards successfully passed.")
 '
 echo "[SO-HMNS] Step 2: Triggering Lattice Transpiler..."
