@@ -1,25 +1,47 @@
 {
-  "dimension": 2,
-  "verification_type": "Fermion_Pauli_Exclusion",
+  "dimension": 3,
+  "verification_type": "Quantum_Fermionic_Fluid",
   "matrix": [
     [
       {
-        "num": -1,
-        "den": 3
+        "num": 0,
+        "den": 1
       },
       {
-        "num": 1,
-        "den": 10
+        "num": 0,
+        "den": 1
+      },
+      {
+        "num": 0,
+        "den": 1
       }
     ],
     [
       {
-        "num": -1,
-        "den": 2
+        "num": 0,
+        "den": 1
       },
       {
-        "num": 3,
-        "den": 20
+        "num": 0,
+        "den": 1
+      },
+      {
+        "num": 0,
+        "den": 1
+      }
+    ],
+    [
+      {
+        "num": 0,
+        "den": 1
+      },
+      {
+        "num": 0,
+        "den": 1
+      },
+      {
+        "num": 0,
+        "den": 1
       }
     ]
   ],
