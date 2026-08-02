@@ -1,26 +1,8 @@
 {
-  "dimension": 3,
-  "verification_type": "Riemann_Zeta_Fluid_Convergence",
+  "dimension": 2,
+  "verification_type": "Quantum_Measurement_Idempotency",
   "matrix": [
     [
-      {
-        "num": 3,
-        "den": 5
-      },
-      {
-        "num": 0,
-        "den": 1
-      },
-      {
-        "num": 4,
-        "den": 5
-      }
-    ],
-    [
-      {
-        "num": 0,
-        "den": 1
-      },
       {
         "num": 1,
         "den": 1
@@ -32,21 +14,17 @@
     ],
     [
       {
-        "num": -4,
-        "den": 5
-      },
-      {
         "num": 0,
         "den": 1
       },
       {
-        "num": 3,
-        "den": 5
+        "num": 0,
+        "den": 1
       }
     ]
   ],
   "determinant": {
-    "num": 1,
+    "num": 0,
     "den": 1
   }
 }
