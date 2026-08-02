@@ -1,6 +1,10 @@
 import json
 import os
 import math
+import sys
+
+# Ultimate Big-Integer Guard: Bypasses string conversion limitations for infinite precision Q field
+sys.set_int_max_str_digits(0)
 
 class LatticeTranspiler:
     def __init__(self, json_path: str):
@@ -33,7 +37,6 @@ class LatticeTranspiler:
         dim = data["dimension"]
         matrix_rows = data["matrix"]
         
-        # Dimension Shape Validator Guard (Prevents Lean 4 macro compiler crashes)
         if len(matrix_rows) != dim or any(len(row) != dim for row in matrix_rows):
             raise ValueError(f"[CRITICAL BOUNDARY ERROR] Matrix dimensions mismatch! Expected {dim}x{dim}.")
 

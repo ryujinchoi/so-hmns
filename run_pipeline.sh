@@ -5,7 +5,11 @@ python -c '
 import json
 import os
 import math
+import sys
 from fractions import Fraction
+
+# Secure infinite precision parse chain
+sys.set_int_max_str_digits(0)
 
 def exact_det_over_q(matrix):
     n = len(matrix)
@@ -43,12 +47,9 @@ print("[SO-HMNS Engine] Multi-dimensional Determinant & Zero-Division guards suc
 '
 echo "[SO-HMNS] Step 2: Triggering Lattice Transpiler..."
 python lattice_transpiler.py
-
-# I/O Sync Barrier Guard Implementation (Prevents race conditions in Termux storage)
 echo "[SO-HMNS] Syncing filesystem buffers for GeneratedInvariants.lean..."
 sync || true
 sleep 0.5
-
 echo "[SO-HMNS] Step 3: Triggering Integration Core Verifier..."
 python verifier.py
 echo "[SO-HMNS] Global Pipeline Validation Successfully Closed with 0.00% Error."
