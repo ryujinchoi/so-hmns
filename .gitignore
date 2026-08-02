@@ -1,10 +1,9 @@
+# SO-HMNS Runtime Environment Ignore Filter
+# Strictly isolates dynamic runtime caches to prevent commit log pollution
+
+*.log
+*.tmp
+matrix_output.json
+.DS_Store
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.DS_Store
-.lean/
-.lake/
-lake-manifest.json
-.venv/
-venv/
