@@ -9,7 +9,6 @@ import sys
 import gc
 from fractions import Fraction
 
-# Secure infinite precision and memory leak defense
 sys.set_int_max_str_digits(0)
 
 def exact_det_over_q(matrix):
@@ -33,8 +32,6 @@ def exact_det_over_q(matrix):
         det *= A[i][i]
         g_det = math.gcd(det.numerator, det.denominator)
         det = Fraction(det.numerator // g_det, det.denominator // g_det)
-    
-    # Force reclaim big-integer fraction fragments immediately from hardware cache
     gc.collect()
     return det
 
@@ -48,6 +45,7 @@ if os.path.exists(json_file):
     data["determinant"] = {"num": det_q.numerator, "den": det_q.denominator}
     with open(json_file, "w", encoding="utf-8") as f: json.dump(data, f, indent=2)
 print("[SO-HMNS Engine] Multi-dimensional Determinant & Zero-Division guards successfully passed.")
+sys.stdout.flush()
 '
 echo "[SO-HMNS] Step 2: Triggering Lattice Transpiler..."
 python lattice_transpiler.py
@@ -59,3 +57,4 @@ python verifier.py
 echo "[SO-HMNS] Step 4: Generating Final Academic Report..."
 python report_generator.py
 echo "[SO-HMNS] Global Pipeline Validation Successfully Closed with 0.00% Error."
+sys.stdout.flush() || true
