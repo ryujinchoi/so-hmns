@@ -1,5 +1,5 @@
 # SO-HMNS Runtime & Compiler Environment Ignore Filter
-# Strictly isolates dynamic runtime and lean 4 build caches
+# Isolate dynamic runtime, testing, and language compiler build caches smoothly
 
 *.log
 *.tmp
@@ -11,3 +11,15 @@ __pycache__/
 # Lean 4 Compiler Artifacts Isolation
 .lake/
 build/
+
+# Testing & Dependency Lock Isolation
+.pytest_cache/
+.poetry/
+poetry.lock
+pip-log.txt
+
+# Local Environment & Token Security Masks
+.env
+.env.*
+*.local
+*.secret

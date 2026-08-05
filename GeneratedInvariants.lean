@@ -5,11 +5,11 @@ import Mathlib.LinearAlgebra.Matrix.Basic
 
 def so_hmns_computed_matrix : Matrix (Fin 3) (Fin 3) ℚ :=
   !![
-  3/10, 0/1, 0/1;
+  1/2, 0/1, 0/1;
   0/1, 2/3, 0/1;
-  0/1, 0/1, 9/20
+  0/1, 0/1, 3/4
   ]
 
 /-- Verifies that the translated matrix preserves absolute determinant unity tightly. --/
-theorem verify_solver_determinant : |Matrix.det so_hmns_computed_matrix| = 9/100 := by
+theorem verify_solver_determinant : |Matrix.det so_hmns_computed_matrix| = 1/4 := by
   rfl

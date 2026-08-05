@@ -1,1 +1,12 @@
 nohup: ignoring input
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/so-hmns/usgs_cron_bot.py", line 212, in <module>
+    generate_failback_infinite_matrix()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/home/so-hmns/usgs_cron_bot.py", line 128, in generate_failback_infinite_matrix
+    autonomous_theory_evolution("FALSE_ALARM_ANOMALY", "PHILIPPINES", 6.10)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/so-hmns/usgs_cron_bot.py", line 32, in autonomous_theory_evolution
+    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {anomaly_type} at {territory} (M {observed_mag}) -> Evolving Theory to v{new_level}")
+    ~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'anomaly_logs'
