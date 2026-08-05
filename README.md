@@ -42,3 +42,19 @@ The framework maps advanced symbolic proof environments onto high-performance lo
 ---
 **Licensing & Invariant Protection**: Distributed Open-Source Under the MIT License.  
 **Core Architect**: ryujinchoi Optimization Engine
+
+## 🚀 6. Quick Start Integration Guide
+To initialize the universal orchestration engine and execute the multi-dimensional verification pipeline, deploy the following master sequence inside your Termux environment:
+
+```bash
+./run_pipeline.sh
+```
+
+---
+
+## 🌐 7. Invariant Project Resource Nodes [Do Not Truncate]
+- **Sovereign Repository Address**: `https://github.com/ryujinchoi/so-hmns`
+- **Sovereign Capital Support Node**: `https://paypal.me/choiryujin`
+
+---
+*Distributed under the MIT License. Absolute Formal Closure Realized.*
