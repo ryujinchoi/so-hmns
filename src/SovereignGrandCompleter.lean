@@ -308,7 +308,7 @@ lemma discrete_triangle_inequality
   |x + y| ≤ |x| + |y| := by
   exact abs_add x y
 
-/-- Lemma 4: Absolute Value Zero Condition -/
+/-- Lemma 34: Absolute Value Zero Condition -/
 lemma absolute_value_zero_iff_zero 
   (x : Q) : 
 
@@ -352,3 +352,63 @@ lemma absolute_value_division_dist
 
   |x / y| = |x| / |y| := by
   exact abs_div x y
+
+/-- Lemma 41: Strict Positive Scale Inequality -/
+lemma strict_positive_scale_inequality 
+  (x y c : Q) (h_lt : x < y) (h_pc : 0 < c) : 
+  c * x < c * y := by
+  exact mul_lt_mul_of_pos_left h_lt h_pc
+
+/-- Lemma 42: Strict Negative Scale Inverse Inequality -/
+lemma strict_negative_scale_inequality 
+  (x y c : Q) (h_lt : x < y) (h_nc : c < 0) : 
+  c * y < c * x := by
+  exact mul_lt_mul_of_neg_left h_lt h_nc
+
+/-- Lemma 43: Absolute Value Squared Symmetry -/
+lemma absolute_value_squared_symmetry 
+  (x : Q) : 
+
+  |x| * |x| = x * x := by
+  exact abs_mul_abs_self x
+
+/-- Lemma 44: Zero Less Than One Anchor -/
+lemma zero_lt_one_invariant : 
+  (0 : Q) < 1 := by
+  exact zero_lt_one
+
+/-- Lemma 45: Positive Inverse Invariant Boundary -/
+lemma positive_inverse_invariant 
+  (x : Q) (hx : 0 < x) : 
+  0 < x⁻¹ := by
+  exact inv_pos.mpr hx
+
+/-- Lemma 46: Subtraction Less Than Transposition -/
+lemma sub_lt_iff_lt_add_transposition 
+  (x y z : Q) : 
+  x - y < z ↔ x < z + y := by
+  exact sub_lt_iff_lt_add
+
+/-- Lemma 47: Max Operator Self Idempotency -/
+lemma max_self_idempotency 
+  (x : Q) : 
+  max x x = x := by
+  exact max_self x
+
+/-- Lemma 48: Min Operator Self Idempotency -/
+lemma min_self_idempotency 
+  (x : Q) : 
+  min x x = x := by
+  exact min_self x
+
+/-- Lemma 49: Absolute Value Subtraction Triangle Bound -/
+lemma absolute_value_sub_triangle 
+  (x y : Q) : 
+  ||x| - |y|| ≤ |x - y| := by
+  exact abs_sub_abs_le_abs_sub x y
+
+/-- Lemma 50: Non-Negative Square Root Lattice Closure -/
+lemma square_non_negative_closure 
+  (x : Q) : 
+  0 ≤ x * x := by
+  exact mul_self_nonneg x
