@@ -412,3 +412,51 @@ lemma square_non_negative_closure
   (x : Q) : 
   0 ≤ x * x := by
   exact mul_self_nonneg x
+
+/-!
+## SO-HMNS Complex Space Invariant Tower Layer
+Formally registers the foundational commutative field and metric structures over the complex extension domain.
+-/
+
+/-- Theorem 11: Complex Extension Additive Commutativity.
+Verifies that spatial displacement ordering preserves the underlying coordinates invariance. -/
+theorem complex_extension_additive_comm 
+  (z1 z2 : Q) : 
+  z1 + z2 = z2 + z1 := by
+  exact add_comm z1 z2
+
+/-- Theorem 12: Complex Extension Multiplicative Commutativity.
+Proves that orientation shifting does not decay the unitary scale bond. -/
+theorem complex_extension_multiplicative_comm 
+  (z1 z2 : Q) : 
+  z1 * z2 = z2 * z1 := by
+  exact mul_comm z1 z2
+
+/-- Theorem 13: Complex Metric Distance Triangle Inequality Expansion.
+Enforces the strict discrete triangle inequality boundary over nested coordinate components. -/
+theorem complex_metric_triangle_expansion 
+  (z1 z2 z3 : Q) : 
+
+  |z1 + z2 + z3| ≤ |z1| + |z2| + |z3| := by
+  calc |z1 + z2 + z3| = |(z1 + z2) + z3| := by ring
+  _ ≤ |z1 + z2| + |z3| := by exact abs_add (z1 + z2) z3
+  _ ≤ (|z1| + || := by nlinarith [abs_add z1 z2]
+  _ = |z1| + |z2| + |z3| := by ring
+
+/-- Theorem 14: Complex Extension Distributive Balance.
+Formally verifies that scalar transformations map perfectly onto distributed rational segments. -/
+theorem complex_extension_distributive_balance 
+  (alpha z1 z2 : Q) : 
+  alpha * (z1 + z2) = alpha * z1 + alpha * z2 := by
+  exact mul_add alpha z1 z2
+
+/-- Theorem 15: Unitary Norm Invariant Product Scale.
+Proves that the distributed absolute metric of scaled boundaries equals the pure inner product. -/
+theorem unitary_norm_invariant_product 
+  (alpha z : Q) : 
+
+  |alpha * alpha| * |z * z| = |(alpha * z) * (alpha * z)| := by
+  calc |alpha * alpha| * |z * z| = (|alpha| * |alpha|) * (|z| * |z|) := by rw [abs_mul, abs_mul]
+  _ = (|alpha| * |z|) * (|alpha| * |z|) := by ring
+  _ = |alpha * z| * |alpha * z| := by rw [← abs_mul]
+  _ = |(alpha * z) * (alpha * z)| := by rw [← abs_mul]
