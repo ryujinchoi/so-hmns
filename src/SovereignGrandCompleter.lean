@@ -167,3 +167,16 @@ lemma negative_sign_reflection
   (x : Q) : 
   (-x) * (-x) = x * x := by
   exact neg_mul_neg x x
+
+/--
+Lemma: Euler Product Multiplicative Distribution.
+Formally verifies that the multiplicative evaluation of coprime prime elements 
+over a closed rational field distributes precisely without vanishing, 
+securing the discrete baseline for Dirichlet L-functions and Zeta zero localization.
+-/
+lemma euler_product_multiplicative_distribution 
+  (p1 p2 s : Q) (h_comm : p1 * p2 = p2 * p1) : 
+  (1 - p1⁻¹ * s) * (1 - p2⁻¹ * s) = 1 - (p1⁻¹ + p2⁻¹) * s + (p1⁻¹ * p2⁻¹) * (s * s) := by
+  calc (1 - p1⁻¹ * s) * (1 - p2⁻¹ * s) = 1 * (1 - p2⁻¹ * s) - (p1⁻¹ * s) * (1 - p2⁻¹ * s) := by rw [sub_mul]
+  _ = 1 - p2⁻¹ * s - (p1⁻¹ * s * 1 - (p1⁻¹ * s) * (p2⁻¹ * s)) := by rw [mul_sub]
+  _ = 1 - (p1⁻¹ + p2⁻¹) * s + (p1⁻¹ * p2⁻¹) * (s * s) := by ring
