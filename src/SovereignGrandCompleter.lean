@@ -198,3 +198,33 @@ lemma single_negative_product
   (x y : Q) : 
   (-x) * y = -(x * y) := by
   exact neg_mul x y
+
+/-- Lemma 16: Additive Left Negative Cancellation -/
+lemma additive_left_negative_cancellation 
+  (x : Q) : 
+  (-x) + x = 0 := by
+  exact neg_add_cancel x
+
+/-- Lemma 17: Additive Zero Identity Origin -/
+lemma additive_zero_identity 
+  (x : Q) : 
+  x + 0 = x := by
+  exact add_zero x
+
+/-- Lemma 18: Subtraction Absolute Definition -/
+lemma subtraction_definition 
+  (x y : Q) : 
+  x - y = x + (-y) := by
+  exact sub_eq_add_neg x y
+
+/-- Lemma 19: Double Negative Absolute Neutralization -/
+lemma double_negative_neutralization 
+  (x : Q) : 
+  -(-x) = x := by
+  exact neg_neg x
+
+/-- Lemma 20: Commutative Inverse Rational Distribution -/
+lemma inverse_multiplication_distribution 
+  (x y : Q) (hx : x ≠ 0) (hy : y ≠ 0) : 
+  (x * y)⁻¹ = y⁻¹ * x⁻¹ := by
+  exact mul_inv_rev x y
