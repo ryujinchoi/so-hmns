@@ -228,3 +228,63 @@ lemma inverse_multiplication_distribution
   (x y : Q) (hx : x ≠ 0) (hy : y ≠ 0) : 
   (x * y)⁻¹ = y⁻¹ * x⁻¹ := by
   exact mul_inv_rev x y
+
+/-- Lemma 21: Subtraction Zero Identity -/
+lemma subtraction_zero_identity 
+  (x : Q) : 
+  x - 0 = x := by
+  exact sub_zero x
+
+/-- Lemma 22: Negative Right Distributive Expansion -/
+lemma negative_right_distributive 
+  (x y z : Q) : 
+  (x - y) * z = x * z - y * z := by
+  exact sub_mul x y z
+
+/-- Lemma 23: Single Negative Right Product -/
+lemma single_negative_right_product 
+  (x y : Q) : 
+  x * (-y) = -(x * y) := by
+  exact mul_neg x y
+
+/-- Lemma 24: Negative Left Distributive Expansion -/
+lemma negative_left_distributive 
+  (x y z : Q) : 
+  x * (y - z) = x * y - x * z := by
+  exact mul_sub x y z
+
+/-- Lemma 25: Inverse Left Multiplication Cancellation -/
+lemma inverse_left_cancellation 
+  (x y : Q) (hx : x ≠ 0) : 
+  x⁻¹ * (x * y) = y := by
+  exact inv_mul_cancel_left x y
+
+/-- Lemma 26: Negative One Multiplication Sign -/
+lemma negative_one_multiplication 
+  (x : Q) : 
+  -1 * x = -x := by
+  exact neg_one_mul x
+
+/-- Lemma 27: Division Equivalent Fractional Def -/
+lemma division_rational_definition 
+  (x y : Q) : 
+  x / y = x * y⁻¹ := by
+  exact div_eq_mul_inv x y
+
+/-- Lemma 28: Zero Divided Is Invariant Zero -/
+lemma zero_division_invariant 
+  (x : Q) : 
+  0 / x = 0 := by
+  exact zero_div x
+
+/-- Lemma 29: Self Division Unity Anchor -/
+lemma self_division_unity 
+  (x : Q) (hx : x ≠ 0) : 
+  x / x = 1 := by
+  exact div_self hx
+
+/-- Lemma 30: One Divided Is Inverse Identity -/
+lemma one_division_inverse 
+  (x : Q) : 
+  1 / x = x⁻¹ := by
+  exact one_div x
