@@ -36,4 +36,7 @@ python3 -O test_element_topology.py
 echo "[STEP 7] Auditing Algebraic Theorem Topology Matrix..."
 python3 -O test_conjectures.py
 
+echo "[STEP 8] Verifying Global Dimensionless Invariant Matrix Mapping..."
+python3 -O test_dimensionless_invariants.py
+
 echo "[SUCCESS] SO-HMNS Master Pipeline Execution Completed With 0.00% Error Rate."
