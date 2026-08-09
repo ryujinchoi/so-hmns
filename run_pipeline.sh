@@ -39,4 +39,7 @@ python3 -O test_conjectures.py
 echo "[STEP 8] Verifying Global Dimensionless Invariant Matrix Mapping..."
 python3 -O test_dimensionless_invariants.py
 
+echo "[STEP 9] Verifying Global Algebraic Unification Link Matrix..."
+python3 -O test_alpha_137_conjecture.py
+
 echo "[SUCCESS] SO-HMNS Master Pipeline Execution Completed With 0.00% Error Rate."
