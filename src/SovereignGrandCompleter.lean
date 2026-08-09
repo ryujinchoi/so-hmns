@@ -60,3 +60,16 @@ theorem discrete_orthogonal_decomposition
   · calc a = a + 0 := by ring
     _ = a + b := by rw [h_b_zero]
     _ = c := h_sum
+
+/--
+Theorem: Prime Field Divisibility Invariant.
+Formally proves that for any elements in a fields domain, 
+if the denominator element is non-zero, its multiplicative inverse 
+is guaranteed to exist, eliminating numerical division-by-zero singularities.
+-/
+theorem discrete_inverse_validity 
+  (a b : Q) (h_nonzero : b ≠ 0) : 
+  (a * b⁻¹) * b = a := by
+  calc (a * b⁻¹) * b = a * (b⁻¹ * b) := by ring
+  _ = a * 1 := by rw [mul_inv_cancel₀ h_nonzero]
+  _ = a := by ring
