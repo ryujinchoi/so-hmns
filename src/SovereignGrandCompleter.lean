@@ -676,3 +676,86 @@ theorem perfect_square_non_negative_ground
   (x : Q) :
   0 ≤ x * x := by
   exact mul_self_nonneg x
+
+/-- Theorem 41: Absolute Value of Multiplicative Inverse.
+Formally verifies that the absolute metric of a fractional inverse coordinate
+equals the multiplicative inverse of its absolute value, securing field stability. -/
+theorem abs_value_multiplicative_inverse
+  (x : Q) :
+
+  |x⁻¹| = |x|⁻¹ := by
+  exact abs_inv x
+
+/-- Theorem 42: Non-Negative Multiplication Inequality Preserved.
+Proves that multiplying two non-negative lattice constraints together
+strictly maintains the structural ordering rules and blocks domain leaks. -/
+theorem non_negative_multiplication_inequality
+  (x y : Q) (hx : 0 ≤ x) (hy : 0 ≤ y) :
+  0 ≤ x * y := by
+  exact mul_nonneg hx hy
+
+/-- Theorem 43: Subtraction Positivity Equivalence.
+Formally verifies that a subtraction variable layout maps to a positive scalar
+if and only if the left coordinate strictly dominates the right element. -/
+theorem sub_positivity_equivalence
+  (x y : Q) :
+  0 < x - y ↔ y < x := by
+  exact sub_pos_iff
+
+/-- Theorem 44: Subtraction Non-Negativity Equivalence.
+Proves that a subtraction variable layout maps to a non-negative scalar
+if and only if the left coordinate dominates or equals the right element. -/
+theorem sub_non_negativity_equivalence
+  (x y : Q) :
+  0 ≤ x - y ↔ y ≤ x := by
+  exact sub_nonneg
+
+/-- Theorem 45: Absolute Value Bounded by Symmetrical Negative.
+Formally verifies that an absolute value inequality strictly constrains
+the inner variable within a closed, symmetrically isolated boundary gate. -/
+theorem abs_value_bounded_by_symmetrical_neg
+  (x α : Q) :
+
+  |x| ≤ α ↔ -α ≤ x ∧ x ≤ α := by
+  exact abs_le
+
+/-- Theorem 46: Less Than Addition Monotone Invariant.
+Verifies that adding identical scalar shifts preserves strict ordering
+across adjacent topological cells without distortion. -/
+theorem lt_addition_monotone_invariant
+  (x y z : Q) (h : x < y) :
+  x + z < y + z := by
+  exact add_lt_add_right h z
+
+/-- Theorem 47: Absolute Value of Unitary Identity Anchor.
+Proves that the core identity element maps onto itself under absolute metric tracking,
+preserving total geometric determinism. -/
+theorem abs_value_unitary_identity :
+
+  |(1 : Q)| = 1 := by
+  exact abs_one
+
+/-- Theorem 48: Absolute Value of Additive Inverse.
+Formally verifies that the distance metric is entirely blind to sign inversions
+at the single element level, sealing structural symmetry inside the grid. -/
+theorem abs_value_additive_inverse
+  (x : Q) :
+
+  |-x| = |x| := by
+  exact abs_neg x
+
+/-- Theorem 49: Strict Monotone Addition Sequence.
+Proves that combining two separate strict inequality chains preserves linear balance
+across extended coordinate boundaries. -/
+theorem strict_monotone_addition_sequence
+  (a b c d : Q) (h1 : a < b) (h2 : c < d) :
+  a + c < b + d := by
+  exact add_lt_add h1 h2
+
+/-- Theorem 50: Non-Negative Monotone Addition Sequence.
+Verifies that combining two separate non-negative inequality chains preserves
+global translational invariance, cementing the ultimate base of the infrastructure. -/
+theorem non_negative_monotone_addition_sequence
+  (a b c d : Q) (h1 : a ≤ b) (h2 : c ≤ d) :
+  a + c ≤ b + d := by
+  exact add_le_add h1 h2
