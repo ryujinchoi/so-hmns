@@ -18,4 +18,7 @@ fi
 echo "[STEP 4] Executing Post-Quantum Deterministic Lattice Cryptography Core..."
 python3 so_lattice_crypto_core.py
 
+echo "[STEP 5] Executing Fully Homomorphic Encryption Algebraic Core..."
+python3 so_homomorphic_layer.py
+
 echo "[SUCCESS] SO-HMNS Master Pipeline Execution Completed With 0.00% Error Rate."
