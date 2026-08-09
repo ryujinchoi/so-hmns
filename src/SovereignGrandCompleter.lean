@@ -168,3 +168,33 @@ lemma multiplicative_inverse_self_idempotency
   (x : Q) (h_nz : x ≠ 0) : 
   (x⁻¹)⁻¹ = x := by
   exact inv_inv x
+
+/-- Lemma 11: Multiplicative Zero Element Absorption -/
+lemma multiplicative_zero_absorption 
+  (x : Q) : 
+  x * 0 = 0 := by
+  exact mul_zero x
+
+/-- Lemma 12: Additive Commutativity Balance -/
+lemma additive_commutativity_balance 
+  (x y : Q) : 
+  x + y = y + x := by
+  exact add_comm x y
+
+/-- Lemma 13: Additive Associative Grouping -/
+lemma additive_associative_grouping 
+  (x y z : Q) : 
+  x + (y + z) = (x + y) + z := by
+  exact add_assoc x y z
+
+/-- Lemma 14: Right Distributive Expansion -/
+lemma right_distributive_expansion 
+  (x y z : Q) : 
+  (x + y) * z = x * z + y * z := by
+  exact add_mul x y z
+
+/-- Lemma 15: Single Negative Product Transposition -/
+lemma single_negative_product 
+  (x y : Q) : 
+  (-x) * y = -(x * y) := by
+  exact neg_mul x y
