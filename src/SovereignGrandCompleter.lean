@@ -1,14 +1,14 @@
 import Mathlib.Data.Rat.Basic
 import Mathlib.Algebra.Ring.Basic
+import Mathlib.Algebra.Order.Field.Basic
 
 /-!
-# SO-HMNS Core Mathematical Invariant Engine - The Ultimate Grand Completion
-This module contains the fully verified algebraic theorems and lemmas over the rational field Q.
-Every proof body is meticulously completed using pure axiomatic tactics, ensuring zero logical leaks
-across the entire computational, cosmological, and post-quantum cryptographic layers.
+# SO-HMNS Core Mathematical Invariant Engine - Universal Grand Completion
+This module contains the fully verified algebraic theorems, lemmas, and order invariants over the rational field Q.
+Every proof body is meticulously completed using pure axiomatic tactics, ensuring zero logical leaks.
 -/
 
-variable (Q : Type) [Field Q]
+variable (Q : Type) [LinearOrderedField Q]
 
 /-- Theorem 1: Idempotent Projection Completion -/
 theorem sovereign_idempotent_projection 
@@ -288,3 +288,67 @@ lemma one_division_inverse
   (x : Q) : 
   1 / x = x⁻¹ := by
   exact one_div x
+
+/-- Lemma 31: Single Negative Left Product Reverse -/
+lemma single_negative_left_product_reverse 
+  (x y : Q) : 
+  x * (-y) = (-x) * y := by
+  exact mul_neg_eq_neg_mul x y
+
+/-- Lemma 32: Absolute Value Non-Negative Target -/
+lemma absolute_value_non_negative 
+  (x : Q) : 
+  0 ≤ |x| := by
+  exact abs_nonneg x
+
+/-- Lemma 33: Triangle Inequality Boundary Guard -/
+lemma discrete_triangle_inequality 
+  (x y : Q) : 
+
+  |x + y| ≤ |x| + |y| := by
+  exact abs_add x y
+
+/-- Lemma 4: Absolute Value Zero Condition -/
+lemma absolute_value_zero_iff_zero 
+  (x : Q) : 
+
+  |x| = 0 ↔ x = 0 := by
+  exact abs_eq_zero
+
+/-- Lemma 35: Multiplicative Absolute Value Distribution -/
+lemma absolute_value_multiplication_dist 
+  (x y : Q) : 
+
+  |x * y| = |x| * |y| := by
+  exact abs_mul x y
+
+/-- Lemma 36: Positive Scale Inequality Preservation -/
+lemma positive_scale_inequality 
+  (x y c : Q) (h_le : x ≤ y) (h_pc : 0 ≤ c) : 
+  c * x ≤ c * y := by
+  exact mul_le_mul_of_nonneg_left h_le h_pc
+
+/-- Lemma 37: Subtraction Alternative Self Negative -/
+lemma subtraction_negative_distribution 
+  (x y : Q) : 
+  -(x - y) = y - x := by
+  exact neg_sub x y
+
+/-- Lemma 38: Negative One Squared Unity Anchor -/
+lemma negative_one_squared_unity : 
+  (-1 : Q) * (-1 : Q) = 1 := by
+  ring
+
+/-- Lemma 39: Absolute Value Negative Invariance -/
+lemma absolute_value_negative_invariant 
+  (x : Q) : 
+
+  |-x| = |x| := by
+  exact abs_neg x
+
+/-- Lemma 40: Divisive Absolute Value Distribution -/
+lemma absolute_value_division_dist 
+  (x y : Q) : 
+
+  |x / y| = |x| / |y| := by
+  exact abs_div x y
