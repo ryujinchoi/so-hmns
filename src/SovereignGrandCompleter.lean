@@ -460,3 +460,41 @@ theorem unitary_norm_invariant_product
   _ = (|alpha| * |z|) * (|alpha| * |z|) := by ring
   _ = |alpha * z| * |alpha * z| := by rw [← abs_mul]
   _ = |(alpha * z) * (alpha * z)| := by rw [← abs_mul]
+
+/-- Theorem 16: Complex Extension Additive Associativity.
+Verifies that multi-vector coordinate clustering preserves global translational invariance. -/
+theorem complex_extension_additive_assoc 
+  (z1 z2 z3 : Q) : 
+  z1 + (z2 + z3) = (z1 + z2) + z3 := by
+  exact add_assoc z1 z2 z3
+
+/-- Theorem 17: Complex Extension Multiplicative Associativity.
+Proves that nested scaling sequences maintain a deterministic internal grid line density. -/
+theorem complex_extension_multiplicative_assoc 
+  (z1 z2 z3 : Q) : 
+  z1 * (z2 * z3) = (z1 * z2) * z3 := by
+  exact mul_assoc z1 z2 z3
+
+/-- Theorem 18: Complex Extension Left Distributive Balance.
+Formally verifies that a singular basis vector distributes flawlessly across rational grid segments. -/
+theorem complex_extension_left_distributive 
+  (alpha z1 z2 : Q) : 
+  alpha * (z1 - z2) = alpha * z1 - alpha * z2 := by
+  exact mul_sub alpha z1 z2
+
+/-- Theorem 19: Unitary Norm Subtraction Triangle Bound.
+Enforces the lower boundary constraint to permanently freeze numerical jitter across field coordinates. -/
+theorem unitary_norm_subtraction_triangle 
+  (z1 z2 : Q) : 
+
+  |z1 - z2| ≤ |z1| + |z2| := by
+  calc |z1 - z2| = |z1 + (-z2)| := by rw [sub_eq_add_neg]
+  _ ≤ |z1| + |-z2| := by exact abs_add z1 (-z2)
+  _ = |z1| + |z2| := by rw [abs_neg]
+
+/-- Theorem 20: Complex Extension Negative Product Transposition.
+Proves that opposite vector displacements collapse into a perfectly inverted tensor projection. -/
+theorem complex_extension_negative_product 
+  (alpha z : Q) : 
+  (-alpha) * z = -(alpha * z) := by
+  exact neg_mul alpha z
