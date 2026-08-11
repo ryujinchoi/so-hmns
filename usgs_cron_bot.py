@@ -12,20 +12,25 @@ FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
+    default_state = {"run_count": 1, "upgrade_level": 5.0, "anomaly_logs": []}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
-                return json.load(f)
+                state = json.load(f)
+                # 💡 [방어벽 코드]: 파일은 있으나 내부 키 구조가 유실된 구형 캐시일 경우 자동 결합 복구
+                if "anomaly_logs" not in state:
+                    state["anomaly_logs"] = []
+                if "upgrade_level" not in state:
+                    state["upgrade_level"] = 5.0
+                return state
         except:
             pass
-    return {"run_count": 1, "upgrade_level": 5.0, "anomaly_logs": []}
+    return default_state
 
 def save_upgrade_state(state):
     with open(CONFIG_FILE, "w") as f:
         json.dump(state, f, indent=4)
 
-# 💡 [SO-HMNS 사후 수정 폐기 -> 사전 이론 선제 확충 시스템]
-# 재난 발생 전에 가상 응력 시뮬레이션을 돌려 미지 단층 변수를 함수 자체에 미리 영구 이식함.
 def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state = load_upgrade_state()
     current_level = state.get("upgrade_level", 5.0)
@@ -34,7 +39,6 @@ def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Pre-emptive Expansion at {territory} -> Core v{new_level}")
     save_upgrade_state(state)
     
-    # 텐서 함수 내부에 미지 격자 파괴를 상시 추적 방어하는 '비선형 대수 무결성 항'을 아예 선제 주입 컴파일
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.5) * 1.25) + (math.sin(float(observed_mag) * 1.57) * 0.15)"
     dissipation_term = " - (min(float(depth_val) / 32.5, 5.12) * 1.45) - 0.08"
 
@@ -48,7 +52,6 @@ class SOHMNS_IdealFilter:
             item["magnitude"] = round(item["magnitude"], 2)
         return item
 
-# SO-HMNS 선제적 이론 확장형 글로벌 마스터 방정식 (v{new_level})
 def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_val):
     base_factor = 14.12
     depth_compensation = min(float(depth_val) / 58.5, 3.92)
@@ -61,7 +64,6 @@ def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_
     elif "ICELAND" in t_upper or "ATLANTIC" in t_upper: bathymetry_factor = 0.62
     elif "PHILIPPINES" in t_upper or "INDONESIA" in t_upper: bathymetry_factor = 0.32
     
-    # 💡 [사전 선제 주입 부위]: 돌발 강진을 사전에 100% 포획 방어하는 3중 다차원 텐서 항 고정 탑재
     dynamic_tensor = {tensor_term}
     viscous_dissipation = {dissipation_term}
     
@@ -94,7 +96,6 @@ def reverse_geocode_territory(place_raw):
 
 def generate_failback_infinite_matrix():
     import so_formula_matrix
-    # 💡 [페이팔 절대 보존 주소]: 사용자님의 정식 주소 명세를 데이터 노드 구조 최상단에 완전무결하게 박제!
     current_data = {"coreUrl": "https://paypal.me", "forecasts": []}
     state = load_upgrade_state()
     run_count = state["run_count"]
@@ -114,11 +115,9 @@ def generate_failback_infinite_matrix():
 
     execution_time_seed = int(time.time())
 
-    # 📡 구글 및 실시간 데이터를 통한 우주-지각 가상 시뮬레이션 컴파일 상시 가동
     if run_count == 1 or run_count % 5 == 0:
         autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
-    # 6대주 16대 주요 단층 제원에 남미 콜롬비아 안데스 대단층망 격자까지 선제 영구 기입 완수!
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.25, "Coast", 1.85),
@@ -154,7 +153,6 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [과거 카드 즉시 소멸 잠금공식]: 현재 서버 구동 시각 기준, 과거 시간축에 도달한 격자는 즉시 생성 대상에서 완전 영구 배제!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
