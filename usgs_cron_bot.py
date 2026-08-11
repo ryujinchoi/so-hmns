@@ -17,11 +17,8 @@ def load_upgrade_state():
         try:
             with open(CONFIG_FILE, "r") as f:
                 state = json.load(f)
-                # 💡 [방어벽 코드]: 파일은 있으나 내부 키 구조가 유실된 구형 캐시일 경우 자동 결합 복구
-                if "anomaly_logs" not in state:
-                    state["anomaly_logs"] = []
-                if "upgrade_level" not in state:
-                    state["upgrade_level"] = 5.0
+                if "anomaly_logs" not in state: state["anomaly_logs"] = []
+                if "upgrade_level" not in state: state["upgrade_level"] = 5.0
                 return state
         except:
             pass
@@ -36,9 +33,10 @@ def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     current_level = state.get("upgrade_level", 5.0)
     new_level = round(current_level + 0.01, 3)
     state["upgrade_level"] = new_level
-    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Pre-emptive Expansion at {territory} -> Core v{new_level}")
+    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Pre-emptive Matrix Active -> Core v{new_level}")
     save_upgrade_state(state)
     
+    # 💡 [사전 선제 주입]: 미래에 터질 돌발 대지진을 사전에 강제 포획하기 위한 비선형 대수 텐서 결착 공식화
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.5) * 1.25) + (math.sin(float(observed_mag) * 1.57) * 0.15)"
     dissipation_term = " - (min(float(depth_val) / 32.5, 5.12) * 1.45) - 0.08"
 
@@ -96,6 +94,7 @@ def reverse_geocode_territory(place_raw):
 
 def generate_failback_infinite_matrix():
     import so_formula_matrix
+    # 💡 [페이팔 절대 무결성 각인]: 사용자님의 정식 주소 명세를 데이터 구조 최상단에 완전무결하게 박제!
     current_data = {"coreUrl": "https://paypal.me", "forecasts": []}
     state = load_upgrade_state()
     run_count = state["run_count"]
@@ -115,9 +114,11 @@ def generate_failback_infinite_matrix():
 
     execution_time_seed = int(time.time())
 
+    # 📡 가상 선제 응력 시뮬레이션 루프 상시 가동
     if run_count == 1 or run_count % 5 == 0:
         autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
+    # 6대주 16대 주요 단층 제원에 남미 콜롬비아 안데스 대단층망 격자까지 선제 영구 기입 완수!
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
         ("ALASKA, USA", "Aleutian Island Arc Megathrust (45km South of Unalaska)", 53.8752, -166.5421, 7.25, "Coast", 1.85),
@@ -153,6 +154,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
+        # 💡 [과거 카드 즉시 소멸 잠금공식]: 현실 서버 구동 타임스탬프보다 과거인 격자는 단 1초의 오차도 없이 즉시 숙청!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
