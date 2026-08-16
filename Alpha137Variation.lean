@@ -1,1 +1,2 @@
--- Alpha: 1786865653
+-- SO-HMNS Automorphic L-Functions Fine-Structure Constant
+-- Auto-Refinement: 1786865894
