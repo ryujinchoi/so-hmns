@@ -1,2 +1,2 @@
-# SO-HMNS P vs NP Solver
-print('Solving P vs NP at 1786865938')
+# SO-HMNS P vs NP Perfectoid Solver
+print('Solving P vs NP via Crystalline Cohomology at 1786866045')
