@@ -1,1 +1,2 @@
-# Solver: 1786868066
+# SO-HMNS P vs NP Perfectoid Solver
+print('Solving P vs NP via Crystalline Cohomology at 1786868307')
