@@ -1,2 +1,1 @@
-# SO-HMNS Non-abelian Hecke Algebra Crypto Core
-# Invariant Guard Active: 1786861564
+# Crypto: 1786861775
