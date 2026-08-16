@@ -5,7 +5,7 @@ import subprocess
 def run_autonomous_pipeline():
     # 질문자님이 원하는 업데이트 주기 설정 (예: 3600초 = 1시간마다 자동 실행)
     # 현재는 테스트 및 검증을 위해 60초(1분) 간격으로 세팅되어 있습니다. 원하는 주기로 변경 가능합니다.
-    INTERVAL_SECONDS = 60 
+    INTERVAL_SECONDS = 3600 
 
     print("[SO-HMNS Autonomous System] 실시간 무한 자동 가속 엔진 활성화 완료.")
     
