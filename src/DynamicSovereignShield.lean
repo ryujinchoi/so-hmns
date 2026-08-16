@@ -1,3 +1,1 @@
-import Mathlib.NumberTheory.Padics.PadicNumbers
-structure S (p:ℕ) where s:PadicInt p
---Identity_Matrix_1786878716
+-- Auto-Refinement: 1786879213
