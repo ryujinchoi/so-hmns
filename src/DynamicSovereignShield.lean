@@ -1,2 +1,3 @@
 import Mathlib.NumberTheory.Padics.PadicNumbers
---Identity_Matrix_1786868984
+structure S (p:ℕ) where s:PadicInt p
+--Identity_Matrix_1786869879
