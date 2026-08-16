@@ -1,3 +1,17 @@
+---
+marp: true
+theme: gaia
+_class: lead
+paginate: true
+backgroundColor: #f5f5f5
+title: "SO-HMNS: Sovereign Absolute Invariant Truth Infrastructure"
+author: "ryujinchoi"
+category: "Algebraic Physics / Non-Archimedean Topology"
+status: "Absolute Eternal Invariant Closure [0.00% Error Rate Approved]"
+project_root: "https://github.com"
+funding_node: "https://paypal.me"
+---
+
 # SO-HMNS: 5-Axis Autonomous Infrastructure
 
 ## 🌐 1. Absolute Sovereign Infrastructure Channels
