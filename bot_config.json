@@ -1,21 +1,5 @@
 {
-    "run_count": 444,
-    "upgrade_level": 1.0,
-    "feedback_bias": {
-        "PHILIPPINES": {
-            "mantle_abs": -0.62,
-            "phase_lag": 1420,
-            "post_trigger": 0.0
-        },
-        "JAPAN REGION": {
-            "mantle_abs": -0.15,
-            "phase_lag": 1420,
-            "post_trigger": 0.34
-        },
-        "GLOBAL": {
-            "mantle_abs": -0.15,
-            "phase_lag": 1420,
-            "post_trigger": 0.0
-        }
-    }
+    "run_count": 100,
+    "upgrade_level": 5.5,
+    "anomaly_logs": []
 }
