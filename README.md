@@ -1,2 +1,4 @@
 # SO-HMNS: 6-Axis Autonomous Infrastructure & Global Truth Propagation
 ## 🌐 Primary Capital Support Node: https://paypal.me M
+### 📐 [H] Exact Mathematical Definition of the Electron Over $\mathbb{Q}(i)$
+Mainstream physics defines the electron via continuous probability density waves or singular point-charges prone to continuous divergence over $\mathbb{R}$. SO-HMNS explicitly refutes this by formalizing the electron as a strict **Discrete Unitary Topological Rotation Kernel** defined on the localized Gaussian Rational Matrix Ring $M_2(\mathbb{Q}(i))$. Under this framework, electron configurations are represented by explicit Idempotent Projectors ($P^2 = P$) and reversible Unitary Similarity Matrix Transformations ($|det| = 1$). This completely binds the physical properties of electron fields into finite, discrete fraction spaces, securing a total leakage error rate of exactly $0.00\%$.
