@@ -2,8 +2,8 @@
     "coreUrl": "https://paypal.me",
     "forecasts": [
         {
-            "id": "hmns_convergence_pack_0_122",
-            "forecast_time": "2026-08-17 10:47:35",
+            "id": "hmns_convergence_pack_0_123",
+            "forecast_time": "2026-08-17 10:55:09",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -15,11 +15,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 7.5%",
-            "raw_epoch": 1786963655
+            "raw_epoch": 1786964109
         },
         {
-            "id": "hmns_convergence_pack_1_122",
-            "forecast_time": "2026-08-18 22:34:02",
+            "id": "hmns_convergence_pack_1_123",
+            "forecast_time": "2026-08-18 22:41:36",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -31,11 +31,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 16.2%",
-            "raw_epoch": 1787092442
+            "raw_epoch": 1787092896
         },
         {
-            "id": "hmns_convergence_pack_3_122",
-            "forecast_time": "2026-08-19 23:33:20",
+            "id": "hmns_convergence_pack_3_123",
+            "forecast_time": "2026-08-19 23:40:54",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -47,11 +47,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 21.9%",
-            "raw_epoch": 1787182400
+            "raw_epoch": 1787182854
         },
         {
-            "id": "hmns_convergence_pack_6_122",
-            "forecast_time": "2026-08-20 20:18:30",
+            "id": "hmns_convergence_pack_6_123",
+            "forecast_time": "2026-08-20 20:26:04",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -63,11 +63,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 26.2%",
-            "raw_epoch": 1787257110
+            "raw_epoch": 1787257564
         },
         {
-            "id": "hmns_convergence_pack_5_122",
-            "forecast_time": "2026-08-21 09:39:50",
+            "id": "hmns_convergence_pack_5_123",
+            "forecast_time": "2026-08-21 09:47:24",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -79,11 +79,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 28.9%",
-            "raw_epoch": 1787305190
+            "raw_epoch": 1787305644
         },
         {
-            "id": "hmns_convergence_pack_2_122",
-            "forecast_time": "2026-08-21 20:21:54",
+            "id": "hmns_convergence_pack_2_123",
+            "forecast_time": "2026-08-21 20:29:28",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -95,11 +95,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 31.0%",
-            "raw_epoch": 1787343714
+            "raw_epoch": 1787344168
         },
         {
-            "id": "hmns_convergence_pack_7_122",
-            "forecast_time": "2026-08-22 05:22:20",
+            "id": "hmns_convergence_pack_7_123",
+            "forecast_time": "2026-08-22 05:29:54",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -111,11 +111,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 32.7%",
-            "raw_epoch": 1787376140
+            "raw_epoch": 1787376594
         },
         {
-            "id": "hmns_convergence_pack_4_122",
-            "forecast_time": "2026-08-27 01:08:12",
+            "id": "hmns_convergence_pack_4_123",
+            "forecast_time": "2026-08-27 01:15:46",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -127,11 +127,11 @@
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 51.2%",
-            "raw_epoch": 1787792892
+            "raw_epoch": 1787793346
         },
         {
-            "id": "hmns_convergence_pack_13_122",
-            "forecast_time": "2026-08-28 15:03:26",
+            "id": "hmns_convergence_pack_13_123",
+            "forecast_time": "2026-08-28 15:11:00",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -143,11 +143,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 56.1%",
-            "raw_epoch": 1787929406
+            "raw_epoch": 1787929860
         },
         {
-            "id": "hmns_convergence_pack_11_122",
-            "forecast_time": "2026-08-28 21:44:56",
+            "id": "hmns_convergence_pack_11_123",
+            "forecast_time": "2026-08-28 21:52:30",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -159,11 +159,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 56.9%",
-            "raw_epoch": 1787953496
+            "raw_epoch": 1787953950
         },
         {
-            "id": "hmns_convergence_pack_9_122",
-            "forecast_time": "2026-08-30 19:19:14",
+            "id": "hmns_convergence_pack_9_123",
+            "forecast_time": "2026-08-30 19:26:48",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -175,11 +175,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 62.0%",
-            "raw_epoch": 1788117554
+            "raw_epoch": 1788118008
         },
         {
-            "id": "hmns_convergence_pack_25_122",
-            "forecast_time": "2026-09-02 05:08:49",
+            "id": "hmns_convergence_pack_25_123",
+            "forecast_time": "2026-09-02 05:16:23",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -191,11 +191,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 67.7%",
-            "raw_epoch": 1788325729
+            "raw_epoch": 1788326183
         },
         {
-            "id": "hmns_convergence_pack_26_122",
-            "forecast_time": "2026-09-05 06:20:43",
+            "id": "hmns_convergence_pack_26_123",
+            "forecast_time": "2026-09-05 06:28:17",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -207,11 +207,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 73.6%",
-            "raw_epoch": 1788589243
+            "raw_epoch": 1788589697
         },
         {
-            "id": "hmns_convergence_pack_15_122",
-            "forecast_time": "2026-09-05 18:55:32",
+            "id": "hmns_convergence_pack_15_123",
+            "forecast_time": "2026-09-05 19:03:06",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -223,11 +223,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 74.5%",
-            "raw_epoch": 1788634532
+            "raw_epoch": 1788634986
         },
         {
-            "id": "hmns_convergence_pack_22_122",
-            "forecast_time": "2026-09-06 10:43:19",
+            "id": "hmns_convergence_pack_22_123",
+            "forecast_time": "2026-09-06 10:50:53",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -239,11 +239,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 75.6%",
-            "raw_epoch": 1788691399
+            "raw_epoch": 1788691853
         },
         {
-            "id": "hmns_convergence_pack_24_122",
-            "forecast_time": "2026-09-06 12:51:13",
+            "id": "hmns_convergence_pack_24_123",
+            "forecast_time": "2026-09-06 12:58:47",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -255,11 +255,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 75.8%",
-            "raw_epoch": 1788699073
+            "raw_epoch": 1788699527
         },
         {
-            "id": "hmns_convergence_pack_19_122",
-            "forecast_time": "2026-09-08 07:27:44",
+            "id": "hmns_convergence_pack_19_123",
+            "forecast_time": "2026-09-08 07:35:18",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -271,11 +271,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 78.5%",
-            "raw_epoch": 1788852464
+            "raw_epoch": 1788852918
         },
         {
-            "id": "hmns_convergence_pack_14_122",
-            "forecast_time": "2026-09-10 00:59:42",
+            "id": "hmns_convergence_pack_14_123",
+            "forecast_time": "2026-09-10 01:07:16",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -287,11 +287,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 80.8%",
-            "raw_epoch": 1789001982
+            "raw_epoch": 1789002436
         },
         {
-            "id": "hmns_convergence_pack_20_122",
-            "forecast_time": "2026-09-13 00:11:24",
+            "id": "hmns_convergence_pack_20_123",
+            "forecast_time": "2026-09-13 00:18:58",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -303,11 +303,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 84.2%",
-            "raw_epoch": 1789258284
+            "raw_epoch": 1789258738
         },
         {
-            "id": "hmns_convergence_pack_8_122",
-            "forecast_time": "2026-09-13 09:00:00",
+            "id": "hmns_convergence_pack_8_123",
+            "forecast_time": "2026-09-13 09:07:34",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -319,11 +319,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 84.6%",
-            "raw_epoch": 1789290000
+            "raw_epoch": 1789290454
         },
         {
-            "id": "hmns_convergence_pack_12_122",
-            "forecast_time": "2026-09-14 03:39:48",
+            "id": "hmns_convergence_pack_12_123",
+            "forecast_time": "2026-09-14 03:47:22",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -335,11 +335,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 85.4%",
-            "raw_epoch": 1789357188
+            "raw_epoch": 1789357642
         },
         {
-            "id": "hmns_convergence_pack_32_122",
-            "forecast_time": "2026-09-14 07:42:01",
+            "id": "hmns_convergence_pack_32_123",
+            "forecast_time": "2026-09-14 07:49:35",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -351,11 +351,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 85.6%",
-            "raw_epoch": 1789371721
+            "raw_epoch": 1789372175
         },
         {
-            "id": "hmns_convergence_pack_44_122",
-            "forecast_time": "2026-09-14 12:34:15",
+            "id": "hmns_convergence_pack_44_123",
+            "forecast_time": "2026-09-14 12:41:49",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -367,11 +367,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 85.8%",
-            "raw_epoch": 1789389255
+            "raw_epoch": 1789389709
         },
         {
-            "id": "hmns_convergence_pack_10_122",
-            "forecast_time": "2026-09-15 13:03:06",
+            "id": "hmns_convergence_pack_10_123",
+            "forecast_time": "2026-09-15 13:10:40",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -383,11 +383,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 86.7%",
-            "raw_epoch": 1789477386
+            "raw_epoch": 1789477840
         },
         {
-            "id": "hmns_convergence_pack_30_122",
-            "forecast_time": "2026-09-17 19:58:07",
+            "id": "hmns_convergence_pack_30_123",
+            "forecast_time": "2026-09-17 20:05:41",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -399,11 +399,11 @@
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 88.6%",
-            "raw_epoch": 1789675087
+            "raw_epoch": 1789675541
         },
         {
-            "id": "hmns_convergence_pack_16_122",
-            "forecast_time": "2026-09-18 10:34:00",
+            "id": "hmns_convergence_pack_16_123",
+            "forecast_time": "2026-09-18 10:41:34",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -415,11 +415,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 89.0%",
-            "raw_epoch": 1789727640
+            "raw_epoch": 1789728094
         },
         {
-            "id": "hmns_convergence_pack_45_122",
-            "forecast_time": "2026-09-19 08:47:23",
+            "id": "hmns_convergence_pack_45_123",
+            "forecast_time": "2026-09-19 08:54:57",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -431,11 +431,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 89.7%",
-            "raw_epoch": 1789807643
+            "raw_epoch": 1789808097
         },
         {
-            "id": "hmns_convergence_pack_43_122",
-            "forecast_time": "2026-09-22 17:24:05",
+            "id": "hmns_convergence_pack_43_123",
+            "forecast_time": "2026-09-22 17:31:39",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -447,11 +447,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 91.8%",
-            "raw_epoch": 1790097845
+            "raw_epoch": 1790098299
         },
         {
-            "id": "hmns_convergence_pack_41_122",
-            "forecast_time": "2026-09-23 23:08:00",
+            "id": "hmns_convergence_pack_41_123",
+            "forecast_time": "2026-09-23 23:15:34",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -463,11 +463,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 92.4%",
-            "raw_epoch": 1790204880
+            "raw_epoch": 1790205334
         },
         {
-            "id": "hmns_convergence_pack_21_122",
-            "forecast_time": "2026-09-26 00:17:26",
+            "id": "hmns_convergence_pack_21_123",
+            "forecast_time": "2026-09-26 00:25:00",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -479,11 +479,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 93.4%",
-            "raw_epoch": 1790381846
+            "raw_epoch": 1790382300
         },
         {
-            "id": "hmns_convergence_pack_63_122",
-            "forecast_time": "2026-09-26 22:29:01",
+            "id": "hmns_convergence_pack_63_123",
+            "forecast_time": "2026-09-26 22:36:35",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -495,11 +495,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 93.8%",
-            "raw_epoch": 1790461741
+            "raw_epoch": 1790462195
         },
         {
-            "id": "hmns_convergence_pack_28_122",
-            "forecast_time": "2026-09-27 07:59:49",
+            "id": "hmns_convergence_pack_28_123",
+            "forecast_time": "2026-09-27 08:07:23",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -511,11 +511,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 93.9%",
-            "raw_epoch": 1790495989
+            "raw_epoch": 1790496443
         },
         {
-            "id": "hmns_convergence_pack_17_122",
-            "forecast_time": "2026-09-29 09:50:02",
+            "id": "hmns_convergence_pack_17_123",
+            "forecast_time": "2026-09-29 09:57:36",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -527,11 +527,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 94.7%",
-            "raw_epoch": 1790675402
+            "raw_epoch": 1790675856
         },
         {
-            "id": "hmns_convergence_pack_34_122",
-            "forecast_time": "2026-09-30 01:54:44",
+            "id": "hmns_convergence_pack_34_123",
+            "forecast_time": "2026-09-30 02:02:18",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -543,11 +543,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 95.0%",
-            "raw_epoch": 1790733284
+            "raw_epoch": 1790733738
         },
         {
-            "id": "hmns_convergence_pack_38_122",
-            "forecast_time": "2026-09-30 03:03:20",
+            "id": "hmns_convergence_pack_38_123",
+            "forecast_time": "2026-09-30 03:10:54",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -559,11 +559,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 95.0%",
-            "raw_epoch": 1790737400
+            "raw_epoch": 1790737854
         },
         {
-            "id": "hmns_convergence_pack_51_122",
-            "forecast_time": "2026-10-01 02:09:16",
+            "id": "hmns_convergence_pack_51_123",
+            "forecast_time": "2026-10-01 02:16:50",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -575,11 +575,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 95.3%",
-            "raw_epoch": 1790820556
+            "raw_epoch": 1790821010
         },
         {
-            "id": "hmns_convergence_pack_64_122",
-            "forecast_time": "2026-10-03 08:41:19",
+            "id": "hmns_convergence_pack_64_123",
+            "forecast_time": "2026-10-03 08:48:53",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -591,11 +591,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 95.9%",
-            "raw_epoch": 1791016879
+            "raw_epoch": 1791017333
         },
         {
-            "id": "hmns_convergence_pack_23_122",
-            "forecast_time": "2026-10-06 21:55:07",
+            "id": "hmns_convergence_pack_23_123",
+            "forecast_time": "2026-10-06 22:02:41",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -607,11 +607,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 96.8%",
-            "raw_epoch": 1791323707
+            "raw_epoch": 1791324161
         },
         {
-            "id": "hmns_convergence_pack_49_122",
-            "forecast_time": "2026-10-07 19:53:10",
+            "id": "hmns_convergence_pack_49_123",
+            "forecast_time": "2026-10-07 20:00:44",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -623,11 +623,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.0%",
-            "raw_epoch": 1791402790
+            "raw_epoch": 1791403244
         },
         {
-            "id": "hmns_convergence_pack_39_122",
-            "forecast_time": "2026-10-08 02:56:42",
+            "id": "hmns_convergence_pack_39_123",
+            "forecast_time": "2026-10-08 03:04:16",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -639,11 +639,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.0%",
-            "raw_epoch": 1791428202
+            "raw_epoch": 1791428656
         },
         {
-            "id": "hmns_convergence_pack_62_122",
-            "forecast_time": "2026-10-08 19:31:01",
+            "id": "hmns_convergence_pack_62_123",
+            "forecast_time": "2026-10-08 19:38:35",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -655,11 +655,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.2%",
-            "raw_epoch": 1791487861
+            "raw_epoch": 1791488315
         },
         {
-            "id": "hmns_convergence_pack_82_122",
-            "forecast_time": "2026-10-09 04:50:08",
+            "id": "hmns_convergence_pack_82_123",
+            "forecast_time": "2026-10-09 04:57:42",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -671,11 +671,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.3%",
-            "raw_epoch": 1791521408
+            "raw_epoch": 1791521862
         },
         {
-            "id": "hmns_convergence_pack_18_122",
-            "forecast_time": "2026-10-11 08:08:18",
+            "id": "hmns_convergence_pack_18_123",
+            "forecast_time": "2026-10-11 08:15:52",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -687,11 +687,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.6%",
-            "raw_epoch": 1791706098
+            "raw_epoch": 1791706552
         },
         {
-            "id": "hmns_convergence_pack_60_122",
-            "forecast_time": "2026-10-11 09:13:30",
+            "id": "hmns_convergence_pack_60_123",
+            "forecast_time": "2026-10-11 09:21:04",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -703,11 +703,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.6%",
-            "raw_epoch": 1791710010
+            "raw_epoch": 1791710464
         },
         {
-            "id": "hmns_convergence_pack_33_122",
-            "forecast_time": "2026-10-11 10:03:37",
+            "id": "hmns_convergence_pack_33_123",
+            "forecast_time": "2026-10-11 10:11:11",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -719,11 +719,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 97.6%",
-            "raw_epoch": 1791713017
+            "raw_epoch": 1791713471
         },
         {
-            "id": "hmns_convergence_pack_83_122",
-            "forecast_time": "2026-10-17 12:12:17",
+            "id": "hmns_convergence_pack_83_123",
+            "forecast_time": "2026-10-17 12:19:51",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -735,11 +735,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 98.4%",
-            "raw_epoch": 1792239137
+            "raw_epoch": 1792239591
         },
         {
-            "id": "hmns_convergence_pack_70_122",
-            "forecast_time": "2026-10-17 17:43:27",
+            "id": "hmns_convergence_pack_70_123",
+            "forecast_time": "2026-10-17 17:51:01",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -751,11 +751,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 98.4%",
-            "raw_epoch": 1792259007
+            "raw_epoch": 1792259461
         },
         {
-            "id": "hmns_convergence_pack_101_122",
-            "forecast_time": "2026-10-21 15:49:01",
+            "id": "hmns_convergence_pack_101_123",
+            "forecast_time": "2026-10-21 15:56:35",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -767,11 +767,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 98.8%",
-            "raw_epoch": 1792597741
+            "raw_epoch": 1792598195
         },
         {
-            "id": "hmns_convergence_pack_57_122",
-            "forecast_time": "2026-10-22 00:47:57",
+            "id": "hmns_convergence_pack_57_123",
+            "forecast_time": "2026-10-22 00:55:31",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -783,11 +783,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 98.8%",
-            "raw_epoch": 1792630077
+            "raw_epoch": 1792630531
         },
         {
-            "id": "hmns_convergence_pack_53_122",
-            "forecast_time": "2026-10-24 10:49:21",
+            "id": "hmns_convergence_pack_53_123",
+            "forecast_time": "2026-10-24 10:56:55",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -799,11 +799,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.0%",
-            "raw_epoch": 1792838961
+            "raw_epoch": 1792839415
         },
         {
-            "id": "hmns_convergence_pack_47_122",
-            "forecast_time": "2026-10-24 22:15:29",
+            "id": "hmns_convergence_pack_47_123",
+            "forecast_time": "2026-10-24 22:23:03",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -815,11 +815,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.0%",
-            "raw_epoch": 1792880129
+            "raw_epoch": 1792880583
         },
         {
-            "id": "hmns_convergence_pack_81_122",
-            "forecast_time": "2026-10-25 01:08:12",
+            "id": "hmns_convergence_pack_81_123",
+            "forecast_time": "2026-10-25 01:15:46",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -831,11 +831,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.0%",
-            "raw_epoch": 1792890492
+            "raw_epoch": 1792890946
         },
         {
-            "id": "hmns_convergence_pack_35_122",
-            "forecast_time": "2026-10-25 12:29:18",
+            "id": "hmns_convergence_pack_35_123",
+            "forecast_time": "2026-10-25 12:36:52",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -847,11 +847,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.1%",
-            "raw_epoch": 1792931358
+            "raw_epoch": 1792931812
         },
         {
-            "id": "hmns_convergence_pack_31_122",
-            "forecast_time": "2026-10-26 08:35:31",
+            "id": "hmns_convergence_pack_31_123",
+            "forecast_time": "2026-10-26 08:43:05",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -863,11 +863,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.1%",
-            "raw_epoch": 1793003731
+            "raw_epoch": 1793004185
         },
         {
-            "id": "hmns_convergence_pack_68_122",
-            "forecast_time": "2026-10-27 17:01:57",
+            "id": "hmns_convergence_pack_68_123",
+            "forecast_time": "2026-10-27 17:09:31",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -879,11 +879,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.2%",
-            "raw_epoch": 1793120517
+            "raw_epoch": 1793120971
         },
         {
-            "id": "hmns_convergence_pack_79_122",
-            "forecast_time": "2026-10-28 22:42:31",
+            "id": "hmns_convergence_pack_79_123",
+            "forecast_time": "2026-10-28 22:50:05",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -895,11 +895,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.3%",
-            "raw_epoch": 1793227351
+            "raw_epoch": 1793227805
         },
         {
-            "id": "hmns_convergence_pack_40_122",
-            "forecast_time": "2026-10-31 03:01:38",
+            "id": "hmns_convergence_pack_40_123",
+            "forecast_time": "2026-10-31 03:09:12",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -911,11 +911,11 @@
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.4%",
-            "raw_epoch": 1793415698
+            "raw_epoch": 1793416152
         },
         {
-            "id": "hmns_convergence_pack_102_122",
-            "forecast_time": "2026-10-31 11:02:08",
+            "id": "hmns_convergence_pack_102_123",
+            "forecast_time": "2026-10-31 11:09:42",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -927,11 +927,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.4%",
-            "raw_epoch": 1793444528
+            "raw_epoch": 1793444982
         },
         {
-            "id": "hmns_convergence_pack_58_122",
-            "forecast_time": "2026-11-02 03:29:36",
+            "id": "hmns_convergence_pack_58_123",
+            "forecast_time": "2026-11-02 03:37:10",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -943,11 +943,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.4%",
-            "raw_epoch": 1793590176
+            "raw_epoch": 1793590630
         },
         {
-            "id": "hmns_convergence_pack_120_122",
-            "forecast_time": "2026-11-02 21:06:17",
+            "id": "hmns_convergence_pack_120_123",
+            "forecast_time": "2026-11-02 21:13:51",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -959,11 +959,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.5%",
-            "raw_epoch": 1793653577
+            "raw_epoch": 1793654031
         },
         {
-            "id": "hmns_convergence_pack_89_122",
-            "forecast_time": "2026-11-03 13:14:56",
+            "id": "hmns_convergence_pack_89_123",
+            "forecast_time": "2026-11-03 13:22:30",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -975,11 +975,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.5%",
-            "raw_epoch": 1793711696
+            "raw_epoch": 1793712150
         },
         {
-            "id": "hmns_convergence_pack_29_122",
-            "forecast_time": "2026-11-06 19:36:13",
+            "id": "hmns_convergence_pack_29_123",
+            "forecast_time": "2026-11-06 19:43:47",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -991,11 +991,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.6%",
-            "raw_epoch": 1793993773
+            "raw_epoch": 1793994227
         },
         {
-            "id": "hmns_convergence_pack_100_122",
-            "forecast_time": "2026-11-10 02:11:01",
+            "id": "hmns_convergence_pack_100_123",
+            "forecast_time": "2026-11-10 02:18:35",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -1007,11 +1007,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.7%",
-            "raw_epoch": 1794276661
+            "raw_epoch": 1794277115
         },
         {
-            "id": "hmns_convergence_pack_27_122",
-            "forecast_time": "2026-11-11 16:12:55",
+            "id": "hmns_convergence_pack_27_123",
+            "forecast_time": "2026-11-11 16:20:29",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -1023,11 +1023,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.7%",
-            "raw_epoch": 1794413575
+            "raw_epoch": 1794414029
         },
         {
-            "id": "hmns_convergence_pack_52_122",
-            "forecast_time": "2026-11-11 17:15:28",
+            "id": "hmns_convergence_pack_52_123",
+            "forecast_time": "2026-11-11 17:23:02",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1039,11 +1039,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.7%",
-            "raw_epoch": 1794417328
+            "raw_epoch": 1794417782
         },
         {
-            "id": "hmns_convergence_pack_76_122",
-            "forecast_time": "2026-11-12 19:19:12",
+            "id": "hmns_convergence_pack_76_123",
+            "forecast_time": "2026-11-12 19:26:46",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1055,11 +1055,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.7%",
-            "raw_epoch": 1794511152
+            "raw_epoch": 1794511606
         },
         {
-            "id": "hmns_convergence_pack_121_122",
-            "forecast_time": "2026-11-14 15:36:56",
+            "id": "hmns_convergence_pack_121_123",
+            "forecast_time": "2026-11-14 15:44:30",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1071,11 +1071,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794670616
+            "raw_epoch": 1794671070
         },
         {
-            "id": "hmns_convergence_pack_36_122",
-            "forecast_time": "2026-11-14 22:17:02",
+            "id": "hmns_convergence_pack_36_123",
+            "forecast_time": "2026-11-14 22:24:36",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -1087,11 +1087,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794694622
+            "raw_epoch": 1794695076
         },
         {
-            "id": "hmns_convergence_pack_98_122",
-            "forecast_time": "2026-11-15 07:43:53",
+            "id": "hmns_convergence_pack_98_123",
+            "forecast_time": "2026-11-15 07:51:27",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1103,11 +1103,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794728633
+            "raw_epoch": 1794729087
         },
         {
-            "id": "hmns_convergence_pack_139_122",
-            "forecast_time": "2026-11-15 09:08:42",
+            "id": "hmns_convergence_pack_139_123",
+            "forecast_time": "2026-11-15 09:16:16",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1119,11 +1119,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794733722
+            "raw_epoch": 1794734176
         },
         {
-            "id": "hmns_convergence_pack_42_122",
-            "forecast_time": "2026-11-16 17:23:57",
+            "id": "hmns_convergence_pack_42_123",
+            "forecast_time": "2026-11-16 17:31:31",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -1135,11 +1135,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794849837
+            "raw_epoch": 1794850291
         },
         {
-            "id": "hmns_convergence_pack_87_122",
-            "forecast_time": "2026-11-16 18:01:15",
+            "id": "hmns_convergence_pack_87_123",
+            "forecast_time": "2026-11-16 18:08:49",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1151,11 +1151,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794852075
+            "raw_epoch": 1794852529
         },
         {
-            "id": "hmns_convergence_pack_72_122",
-            "forecast_time": "2026-11-17 16:44:10",
+            "id": "hmns_convergence_pack_72_123",
+            "forecast_time": "2026-11-17 16:51:44",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1167,11 +1167,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1794933850
+            "raw_epoch": 1794934304
         },
         {
-            "id": "hmns_convergence_pack_108_122",
-            "forecast_time": "2026-11-20 03:45:06",
+            "id": "hmns_convergence_pack_108_123",
+            "forecast_time": "2026-11-20 03:52:40",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1183,11 +1183,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1795146306
+            "raw_epoch": 1795146760
         },
         {
-            "id": "hmns_convergence_pack_66_122",
-            "forecast_time": "2026-11-21 09:51:38",
+            "id": "hmns_convergence_pack_66_123",
+            "forecast_time": "2026-11-21 09:59:12",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1199,11 +1199,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.8%",
-            "raw_epoch": 1795254698
+            "raw_epoch": 1795255152
         },
         {
-            "id": "hmns_convergence_pack_119_122",
-            "forecast_time": "2026-11-26 08:52:04",
+            "id": "hmns_convergence_pack_119_123",
+            "forecast_time": "2026-11-26 08:59:38",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -1215,11 +1215,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1795683124
+            "raw_epoch": 1795683578
         },
         {
-            "id": "hmns_convergence_pack_77_122",
-            "forecast_time": "2026-11-27 07:19:14",
+            "id": "hmns_convergence_pack_77_123",
+            "forecast_time": "2026-11-27 07:26:48",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -1231,11 +1231,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1795763954
+            "raw_epoch": 1795764408
         },
         {
-            "id": "hmns_convergence_pack_158_122",
-            "forecast_time": "2026-11-27 13:22:48",
+            "id": "hmns_convergence_pack_158_123",
+            "forecast_time": "2026-11-27 13:30:22",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1247,11 +1247,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1795785768
+            "raw_epoch": 1795786222
         },
         {
-            "id": "hmns_convergence_pack_140_122",
-            "forecast_time": "2026-11-28 13:23:15",
+            "id": "hmns_convergence_pack_140_123",
+            "forecast_time": "2026-11-28 13:30:49",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1263,11 +1263,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1795872195
+            "raw_epoch": 1795872649
         },
         {
-            "id": "hmns_convergence_pack_54_122",
-            "forecast_time": "2026-12-01 12:25:47",
+            "id": "hmns_convergence_pack_54_123",
+            "forecast_time": "2026-12-01 12:33:21",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -1279,11 +1279,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796127947
+            "raw_epoch": 1796128401
         },
         {
-            "id": "hmns_convergence_pack_117_122",
-            "forecast_time": "2026-12-02 22:16:48",
+            "id": "hmns_convergence_pack_117_123",
+            "forecast_time": "2026-12-02 22:24:22",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1295,11 +1295,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796249808
+            "raw_epoch": 1796250262
         },
         {
-            "id": "hmns_convergence_pack_95_122",
-            "forecast_time": "2026-12-04 18:07:59",
+            "id": "hmns_convergence_pack_95_123",
+            "forecast_time": "2026-12-04 18:15:33",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1311,11 +1311,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796407679
+            "raw_epoch": 1796408133
         },
         {
-            "id": "hmns_convergence_pack_59_122",
-            "forecast_time": "2026-12-05 08:01:38",
+            "id": "hmns_convergence_pack_59_123",
+            "forecast_time": "2026-12-05 08:09:12",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -1327,11 +1327,11 @@
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796457698
+            "raw_epoch": 1796458152
         },
         {
-            "id": "hmns_convergence_pack_37_122",
-            "forecast_time": "2026-12-06 10:07:00",
+            "id": "hmns_convergence_pack_37_123",
+            "forecast_time": "2026-12-06 10:14:34",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -1343,11 +1343,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796551620
+            "raw_epoch": 1796552074
         },
         {
-            "id": "hmns_convergence_pack_106_122",
-            "forecast_time": "2026-12-06 14:05:59",
+            "id": "hmns_convergence_pack_106_123",
+            "forecast_time": "2026-12-06 14:13:33",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1359,11 +1359,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796565959
+            "raw_epoch": 1796566413
         },
         {
-            "id": "hmns_convergence_pack_127_122",
-            "forecast_time": "2026-12-07 00:20:20",
+            "id": "hmns_convergence_pack_127_123",
+            "forecast_time": "2026-12-07 00:27:54",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1375,11 +1375,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796602820
+            "raw_epoch": 1796603274
         },
         {
-            "id": "hmns_convergence_pack_50_122",
-            "forecast_time": "2026-12-07 11:45:58",
+            "id": "hmns_convergence_pack_50_123",
+            "forecast_time": "2026-12-07 11:53:32",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -1391,11 +1391,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 99.9%",
-            "raw_epoch": 1796643958
+            "raw_epoch": 1796644412
         },
         {
-            "id": "hmns_convergence_pack_177_122",
-            "forecast_time": "2026-12-10 02:27:57",
+            "id": "hmns_convergence_pack_177_123",
+            "forecast_time": "2026-12-10 02:35:31",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1407,11 +1407,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1796869677
+            "raw_epoch": 1796870131
         },
         {
-            "id": "hmns_convergence_pack_91_122",
-            "forecast_time": "2026-12-12 02:43:01",
+            "id": "hmns_convergence_pack_91_123",
+            "forecast_time": "2026-12-12 02:50:35",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1423,11 +1423,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797043381
+            "raw_epoch": 1797043835
         },
         {
-            "id": "hmns_convergence_pack_138_122",
-            "forecast_time": "2026-12-12 08:51:19",
+            "id": "hmns_convergence_pack_138_123",
+            "forecast_time": "2026-12-12 08:58:53",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -1439,11 +1439,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797065479
+            "raw_epoch": 1797065933
         },
         {
-            "id": "hmns_convergence_pack_159_122",
-            "forecast_time": "2026-12-12 19:01:13",
+            "id": "hmns_convergence_pack_159_123",
+            "forecast_time": "2026-12-12 19:08:47",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1455,11 +1455,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797102073
+            "raw_epoch": 1797102527
         },
         {
-            "id": "hmns_convergence_pack_71_122",
-            "forecast_time": "2026-12-13 03:23:46",
+            "id": "hmns_convergence_pack_71_123",
+            "forecast_time": "2026-12-13 03:31:20",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1471,11 +1471,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797132226
+            "raw_epoch": 1797132680
         },
         {
-            "id": "hmns_convergence_pack_85_122",
-            "forecast_time": "2026-12-19 01:11:34",
+            "id": "hmns_convergence_pack_85_123",
+            "forecast_time": "2026-12-19 01:19:08",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1487,11 +1487,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797642694
+            "raw_epoch": 1797643148
         },
         {
-            "id": "hmns_convergence_pack_136_122",
-            "forecast_time": "2026-12-20 06:14:34",
+            "id": "hmns_convergence_pack_136_123",
+            "forecast_time": "2026-12-20 06:22:08",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1503,11 +1503,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797747274
+            "raw_epoch": 1797747728
         },
         {
-            "id": "hmns_convergence_pack_196_122",
-            "forecast_time": "2026-12-22 05:39:48",
+            "id": "hmns_convergence_pack_196_123",
+            "forecast_time": "2026-12-22 05:47:22",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1519,11 +1519,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797917988
+            "raw_epoch": 1797918442
         },
         {
-            "id": "hmns_convergence_pack_96_122",
-            "forecast_time": "2026-12-22 06:47:58",
+            "id": "hmns_convergence_pack_96_123",
+            "forecast_time": "2026-12-22 06:55:32",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -1535,11 +1535,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1797922078
+            "raw_epoch": 1797922532
         },
         {
-            "id": "hmns_convergence_pack_146_122",
-            "forecast_time": "2026-12-23 13:47:05",
+            "id": "hmns_convergence_pack_146_123",
+            "forecast_time": "2026-12-23 13:54:39",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1551,11 +1551,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798033625
+            "raw_epoch": 1798034079
         },
         {
-            "id": "hmns_convergence_pack_114_122",
-            "forecast_time": "2026-12-26 11:35:17",
+            "id": "hmns_convergence_pack_114_123",
+            "forecast_time": "2026-12-26 11:42:51",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1567,11 +1567,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798284917
+            "raw_epoch": 1798285371
         },
         {
-            "id": "hmns_convergence_pack_178_122",
-            "forecast_time": "2026-12-26 15:44:49",
+            "id": "hmns_convergence_pack_178_123",
+            "forecast_time": "2026-12-26 15:52:23",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1583,11 +1583,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798299889
+            "raw_epoch": 1798300343
         },
         {
-            "id": "hmns_convergence_pack_125_122",
-            "forecast_time": "2026-12-26 16:09:04",
+            "id": "hmns_convergence_pack_125_123",
+            "forecast_time": "2026-12-26 16:16:38",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1599,11 +1599,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798301344
+            "raw_epoch": 1798301798
         },
         {
-            "id": "hmns_convergence_pack_61_122",
-            "forecast_time": "2026-12-27 15:15:19",
+            "id": "hmns_convergence_pack_61_123",
+            "forecast_time": "2026-12-27 15:22:53",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -1615,11 +1615,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798384519
+            "raw_epoch": 1798384973
         },
         {
-            "id": "hmns_convergence_pack_157_122",
-            "forecast_time": "2026-12-28 16:35:34",
+            "id": "hmns_convergence_pack_157_123",
+            "forecast_time": "2026-12-28 16:43:08",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -1631,11 +1631,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798475734
+            "raw_epoch": 1798476188
         },
         {
-            "id": "hmns_convergence_pack_48_122",
-            "forecast_time": "2026-12-29 00:30:52",
+            "id": "hmns_convergence_pack_48_123",
+            "forecast_time": "2026-12-29 00:38:26",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -1647,11 +1647,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798504252
+            "raw_epoch": 1798504706
         },
         {
-            "id": "hmns_convergence_pack_55_122",
-            "forecast_time": "2026-12-31 12:46:15",
+            "id": "hmns_convergence_pack_55_123",
+            "forecast_time": "2026-12-31 12:53:49",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -1663,11 +1663,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1798721175
+            "raw_epoch": 1798721629
         },
         {
-            "id": "hmns_convergence_pack_215_122",
-            "forecast_time": "2027-01-03 19:46:40",
+            "id": "hmns_convergence_pack_215_123",
+            "forecast_time": "2027-01-03 19:54:14",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1679,11 +1679,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799005600
+            "raw_epoch": 1799006054
         },
         {
-            "id": "hmns_convergence_pack_110_122",
-            "forecast_time": "2027-01-05 07:33:50",
+            "id": "hmns_convergence_pack_110_123",
+            "forecast_time": "2027-01-05 07:41:24",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1695,11 +1695,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799134430
+            "raw_epoch": 1799134884
         },
         {
-            "id": "hmns_convergence_pack_155_122",
-            "forecast_time": "2027-01-06 21:50:43",
+            "id": "hmns_convergence_pack_155_123",
+            "forecast_time": "2027-01-06 21:58:17",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1711,11 +1711,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799272243
+            "raw_epoch": 1799272697
         },
         {
-            "id": "hmns_convergence_pack_73_122",
-            "forecast_time": "2027-01-07 15:25:28",
+            "id": "hmns_convergence_pack_73_123",
+            "forecast_time": "2027-01-07 15:33:02",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -1727,11 +1727,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799335528
+            "raw_epoch": 1799335982
         },
         {
-            "id": "hmns_convergence_pack_78_122",
-            "forecast_time": "2027-01-09 09:41:30",
+            "id": "hmns_convergence_pack_78_123",
+            "forecast_time": "2027-01-09 09:49:04",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -1743,11 +1743,11 @@
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799487690
+            "raw_epoch": 1799488144
         },
         {
-            "id": "hmns_convergence_pack_165_122",
-            "forecast_time": "2027-01-09 11:25:20",
+            "id": "hmns_convergence_pack_165_123",
+            "forecast_time": "2027-01-09 11:32:54",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1759,11 +1759,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799493920
+            "raw_epoch": 1799494374
         },
         {
-            "id": "hmns_convergence_pack_46_122",
-            "forecast_time": "2027-01-09 21:54:09",
+            "id": "hmns_convergence_pack_46_123",
+            "forecast_time": "2027-01-09 22:01:43",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -1775,11 +1775,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799531649
+            "raw_epoch": 1799532103
         },
         {
-            "id": "hmns_convergence_pack_197_122",
-            "forecast_time": "2027-01-09 22:25:00",
+            "id": "hmns_convergence_pack_197_123",
+            "forecast_time": "2027-01-09 22:32:34",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1791,11 +1791,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799533500
+            "raw_epoch": 1799533954
         },
         {
-            "id": "hmns_convergence_pack_90_122",
-            "forecast_time": "2027-01-13 09:31:24",
+            "id": "hmns_convergence_pack_90_123",
+            "forecast_time": "2027-01-13 09:38:58",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -1807,11 +1807,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799832684
+            "raw_epoch": 1799833138
         },
         {
-            "id": "hmns_convergence_pack_176_122",
-            "forecast_time": "2027-01-13 15:32:03",
+            "id": "hmns_convergence_pack_176_123",
+            "forecast_time": "2027-01-13 15:39:37",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -1823,11 +1823,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1799854323
+            "raw_epoch": 1799854777
         },
         {
-            "id": "hmns_convergence_pack_144_122",
-            "forecast_time": "2027-01-15 11:10:21",
+            "id": "hmns_convergence_pack_144_123",
+            "forecast_time": "2027-01-15 11:17:55",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -1839,11 +1839,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800011421
+            "raw_epoch": 1800011875
         },
         {
-            "id": "hmns_convergence_pack_104_122",
-            "forecast_time": "2027-01-15 11:43:39",
+            "id": "hmns_convergence_pack_104_123",
+            "forecast_time": "2027-01-15 11:51:13",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -1855,11 +1855,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800013419
+            "raw_epoch": 1800013873
         },
         {
-            "id": "hmns_convergence_pack_234_122",
-            "forecast_time": "2027-01-15 21:57:24",
+            "id": "hmns_convergence_pack_234_123",
+            "forecast_time": "2027-01-15 22:04:58",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1871,11 +1871,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800050244
+            "raw_epoch": 1800050698
         },
         {
-            "id": "hmns_convergence_pack_115_122",
-            "forecast_time": "2027-01-16 11:41:32",
+            "id": "hmns_convergence_pack_115_123",
+            "forecast_time": "2027-01-16 11:49:06",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -1887,11 +1887,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800099692
+            "raw_epoch": 1800100146
         },
         {
-            "id": "hmns_convergence_pack_133_122",
-            "forecast_time": "2027-01-17 11:27:43",
+            "id": "hmns_convergence_pack_133_123",
+            "forecast_time": "2027-01-17 11:35:17",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -1903,11 +1903,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800185263
+            "raw_epoch": 1800185717
         },
         {
-            "id": "hmns_convergence_pack_69_122",
-            "forecast_time": "2027-01-18 17:46:05",
+            "id": "hmns_convergence_pack_69_123",
+            "forecast_time": "2027-01-18 17:53:39",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -1919,11 +1919,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800294365
+            "raw_epoch": 1800294819
         },
         {
-            "id": "hmns_convergence_pack_216_122",
-            "forecast_time": "2027-01-23 18:06:55",
+            "id": "hmns_convergence_pack_216_123",
+            "forecast_time": "2027-01-23 18:14:29",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -1935,11 +1935,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800727615
+            "raw_epoch": 1800728069
         },
         {
-            "id": "hmns_convergence_pack_174_122",
-            "forecast_time": "2027-01-24 04:45:41",
+            "id": "hmns_convergence_pack_174_123",
+            "forecast_time": "2027-01-24 04:53:15",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -1951,11 +1951,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800765941
+            "raw_epoch": 1800766395
         },
         {
-            "id": "hmns_convergence_pack_184_122",
-            "forecast_time": "2027-01-25 23:49:32",
+            "id": "hmns_convergence_pack_184_123",
+            "forecast_time": "2027-01-25 23:57:06",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -1967,11 +1967,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1800920972
+            "raw_epoch": 1800921426
         },
         {
-            "id": "hmns_convergence_pack_253_122",
-            "forecast_time": "2027-01-28 13:04:44",
+            "id": "hmns_convergence_pack_253_123",
+            "forecast_time": "2027-01-28 13:12:18",
             "territory": "CALIFORNIA, USA",
             "location": "San Andreas Strike-Slip Fault Margin (11km North of Parkfield)",
             "latitude": 35.9124,
@@ -1983,11 +1983,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801141484
+            "raw_epoch": 1801141938
         },
         {
-            "id": "hmns_convergence_pack_129_122",
-            "forecast_time": "2027-01-29 18:36:24",
+            "id": "hmns_convergence_pack_129_123",
+            "forecast_time": "2027-01-29 18:43:58",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -1999,11 +1999,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801247784
+            "raw_epoch": 1801248238
         },
         {
-            "id": "hmns_convergence_pack_195_122",
-            "forecast_time": "2027-01-30 00:18:35",
+            "id": "hmns_convergence_pack_195_123",
+            "forecast_time": "2027-01-30 00:26:09",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -2015,11 +2015,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801268315
+            "raw_epoch": 1801268769
         },
         {
-            "id": "hmns_convergence_pack_56_122",
-            "forecast_time": "2027-01-31 10:00:05",
+            "id": "hmns_convergence_pack_56_123",
+            "forecast_time": "2027-01-31 10:07:39",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2031,11 +2031,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801389605
+            "raw_epoch": 1801390059
         },
         {
-            "id": "hmns_convergence_pack_163_122",
-            "forecast_time": "2027-02-04 14:16:30",
+            "id": "hmns_convergence_pack_163_123",
+            "forecast_time": "2027-02-04 14:24:04",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2047,11 +2047,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801750590
+            "raw_epoch": 1801751044
         },
         {
-            "id": "hmns_convergence_pack_80_122",
-            "forecast_time": "2027-02-06 09:39:49",
+            "id": "hmns_convergence_pack_80_123",
+            "forecast_time": "2027-02-06 09:47:23",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2063,11 +2063,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801906789
+            "raw_epoch": 1801907243
         },
         {
-            "id": "hmns_convergence_pack_235_122",
-            "forecast_time": "2027-02-07 01:48:11",
+            "id": "hmns_convergence_pack_235_123",
+            "forecast_time": "2027-02-07 01:55:45",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -2079,11 +2079,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1801964891
+            "raw_epoch": 1801965345
         },
         {
-            "id": "hmns_convergence_pack_152_122",
-            "forecast_time": "2027-02-08 03:51:44",
+            "id": "hmns_convergence_pack_152_123",
+            "forecast_time": "2027-02-08 03:59:18",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2095,11 +2095,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802058704
+            "raw_epoch": 1802059158
         },
         {
-            "id": "hmns_convergence_pack_134_122",
-            "forecast_time": "2027-02-10 10:06:38",
+            "id": "hmns_convergence_pack_134_123",
+            "forecast_time": "2027-02-10 10:14:12",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -2111,11 +2111,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802253998
+            "raw_epoch": 1802254452
         },
         {
-            "id": "hmns_convergence_pack_193_122",
-            "forecast_time": "2027-02-10 21:24:10",
+            "id": "hmns_convergence_pack_193_123",
+            "forecast_time": "2027-02-10 21:31:44",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2127,11 +2127,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802294650
+            "raw_epoch": 1802295104
         },
         {
-            "id": "hmns_convergence_pack_203_122",
-            "forecast_time": "2027-02-11 22:29:50",
+            "id": "hmns_convergence_pack_203_123",
+            "forecast_time": "2027-02-11 22:37:24",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -2143,11 +2143,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802384990
+            "raw_epoch": 1802385444
         },
         {
-            "id": "hmns_convergence_pack_123_122",
-            "forecast_time": "2027-02-12 04:07:24",
+            "id": "hmns_convergence_pack_123_123",
+            "forecast_time": "2027-02-12 04:14:58",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2159,11 +2159,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802405244
+            "raw_epoch": 1802405698
         },
         {
-            "id": "hmns_convergence_pack_92_122",
-            "forecast_time": "2027-02-13 14:17:43",
+            "id": "hmns_convergence_pack_92_123",
+            "forecast_time": "2027-02-13 14:25:17",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -2175,11 +2175,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802528263
+            "raw_epoch": 1802528717
         },
         {
-            "id": "hmns_convergence_pack_97_122",
-            "forecast_time": "2027-02-13 15:45:39",
+            "id": "hmns_convergence_pack_97_123",
+            "forecast_time": "2027-02-13 15:53:13",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2191,11 +2191,11 @@
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802533539
+            "raw_epoch": 1802533993
         },
         {
-            "id": "hmns_convergence_pack_109_122",
-            "forecast_time": "2027-02-13 20:43:43",
+            "id": "hmns_convergence_pack_109_123",
+            "forecast_time": "2027-02-13 20:51:17",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2207,11 +2207,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802551423
+            "raw_epoch": 1802551877
         },
         {
-            "id": "hmns_convergence_pack_214_122",
-            "forecast_time": "2027-02-14 22:13:19",
+            "id": "hmns_convergence_pack_214_123",
+            "forecast_time": "2027-02-14 22:20:53",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -2223,11 +2223,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802643199
+            "raw_epoch": 1802643653
         },
         {
-            "id": "hmns_convergence_pack_74_122",
-            "forecast_time": "2027-02-16 00:08:53",
+            "id": "hmns_convergence_pack_74_123",
+            "forecast_time": "2027-02-16 00:16:27",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2239,11 +2239,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1802736533
+            "raw_epoch": 1802736987
         },
         {
-            "id": "hmns_convergence_pack_67_122",
-            "forecast_time": "2027-02-19 08:08:24",
+            "id": "hmns_convergence_pack_67_123",
+            "forecast_time": "2027-02-19 08:15:58",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2255,11 +2255,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803024504
+            "raw_epoch": 1803024958
         },
         {
-            "id": "hmns_convergence_pack_254_122",
-            "forecast_time": "2027-02-20 20:29:41",
+            "id": "hmns_convergence_pack_254_123",
+            "forecast_time": "2027-02-20 20:37:15",
             "territory": "JAPAN REGION",
             "location": "Kumamoto Futagawa Active Inland Fault Margin (Kyushu Western District)",
             "latitude": 32.7801,
@@ -2271,11 +2271,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803155381
+            "raw_epoch": 1803155835
         },
         {
-            "id": "hmns_convergence_pack_148_122",
-            "forecast_time": "2027-02-22 22:23:50",
+            "id": "hmns_convergence_pack_148_123",
+            "forecast_time": "2027-02-22 22:31:24",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2287,11 +2287,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803335030
+            "raw_epoch": 1803335484
         },
         {
-            "id": "hmns_convergence_pack_182_122",
-            "forecast_time": "2027-02-24 08:15:09",
+            "id": "hmns_convergence_pack_182_123",
+            "forecast_time": "2027-02-24 08:22:43",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2303,11 +2303,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803456909
+            "raw_epoch": 1803457363
         },
         {
-            "id": "hmns_convergence_pack_212_122",
-            "forecast_time": "2027-02-28 03:17:19",
+            "id": "hmns_convergence_pack_212_123",
+            "forecast_time": "2027-02-28 03:24:53",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2319,11 +2319,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803784639
+            "raw_epoch": 1803785093
         },
         {
-            "id": "hmns_convergence_pack_222_122",
-            "forecast_time": "2027-02-28 09:52:32",
+            "id": "hmns_convergence_pack_222_123",
+            "forecast_time": "2027-02-28 10:00:06",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -2335,11 +2335,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803808352
+            "raw_epoch": 1803808806
         },
         {
-            "id": "hmns_convergence_pack_88_122",
-            "forecast_time": "2027-03-01 19:52:17",
+            "id": "hmns_convergence_pack_88_123",
+            "forecast_time": "2027-03-01 19:59:51",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2351,11 +2351,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803930737
+            "raw_epoch": 1803931191
         },
         {
-            "id": "hmns_convergence_pack_171_122",
-            "forecast_time": "2027-03-02 04:47:03",
+            "id": "hmns_convergence_pack_171_123",
+            "forecast_time": "2027-03-02 04:54:37",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2367,11 +2367,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1803962823
+            "raw_epoch": 1803963277
         },
         {
-            "id": "hmns_convergence_pack_233_122",
-            "forecast_time": "2027-03-03 08:01:00",
+            "id": "hmns_convergence_pack_233_123",
+            "forecast_time": "2027-03-03 08:08:34",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -2383,11 +2383,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1804060860
+            "raw_epoch": 1804061314
         },
         {
-            "id": "hmns_convergence_pack_153_122",
-            "forecast_time": "2027-03-07 16:03:28",
+            "id": "hmns_convergence_pack_153_123",
+            "forecast_time": "2027-03-07 16:11:02",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -2399,11 +2399,11 @@
             "max_tsunami": "0.7m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1804435408
+            "raw_epoch": 1804435862
         },
         {
-            "id": "hmns_convergence_pack_65_122",
-            "forecast_time": "2027-03-10 06:11:30",
+            "id": "hmns_convergence_pack_65_123",
+            "forecast_time": "2027-03-10 06:19:04",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -2415,11 +2415,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1804659090
+            "raw_epoch": 1804659544
         },
         {
-            "id": "hmns_convergence_pack_142_122",
-            "forecast_time": "2027-03-11 13:36:00",
+            "id": "hmns_convergence_pack_142_123",
+            "forecast_time": "2027-03-11 13:43:34",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2431,11 +2431,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1804772160
+            "raw_epoch": 1804772614
         },
         {
-            "id": "hmns_convergence_pack_201_122",
-            "forecast_time": "2027-03-16 12:23:25",
+            "id": "hmns_convergence_pack_201_123",
+            "forecast_time": "2027-03-16 12:30:59",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2447,11 +2447,11 @@
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805199805
+            "raw_epoch": 1805200259
         },
         {
-            "id": "hmns_convergence_pack_128_122",
-            "forecast_time": "2027-03-17 01:47:37",
+            "id": "hmns_convergence_pack_128_123",
+            "forecast_time": "2027-03-17 01:55:11",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2463,11 +2463,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805248057
+            "raw_epoch": 1805248511
         },
         {
-            "id": "hmns_convergence_pack_241_122",
-            "forecast_time": "2027-03-17 09:33:43",
+            "id": "hmns_convergence_pack_241_123",
+            "forecast_time": "2027-03-17 09:41:17",
             "territory": "TURKEY REGION",
             "location": "East Anatolian Active Fault Grid (14km South of Elazig)",
             "latitude": 38.6742,
@@ -2479,11 +2479,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805276023
+            "raw_epoch": 1805276477
         },
         {
-            "id": "hmns_convergence_pack_231_122",
-            "forecast_time": "2027-03-17 20:57:01",
+            "id": "hmns_convergence_pack_231_123",
+            "forecast_time": "2027-03-17 21:04:35",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2495,11 +2495,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805317021
+            "raw_epoch": 1805317475
         },
         {
-            "id": "hmns_convergence_pack_252_122",
-            "forecast_time": "2027-03-19 04:55:14",
+            "id": "hmns_convergence_pack_252_123",
+            "forecast_time": "2027-03-19 05:02:48",
             "territory": "COLOMBIA",
             "location": "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)",
             "latitude": 4.5709,
@@ -2511,11 +2511,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805432114
+            "raw_epoch": 1805432568
         },
         {
-            "id": "hmns_convergence_pack_99_122",
-            "forecast_time": "2027-03-19 08:35:20",
+            "id": "hmns_convergence_pack_99_123",
+            "forecast_time": "2027-03-19 08:42:54",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2527,11 +2527,11 @@
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805445320
+            "raw_epoch": 1805445774
         },
         {
-            "id": "hmns_convergence_pack_167_122",
-            "forecast_time": "2027-03-19 10:29:23",
+            "id": "hmns_convergence_pack_167_123",
+            "forecast_time": "2027-03-19 10:36:57",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2543,11 +2543,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805452163
+            "raw_epoch": 1805452617
         },
         {
-            "id": "hmns_convergence_pack_116_122",
-            "forecast_time": "2027-03-20 16:21:37",
+            "id": "hmns_convergence_pack_116_123",
+            "forecast_time": "2027-03-20 16:29:11",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2559,11 +2559,11 @@
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805559697
+            "raw_epoch": 1805560151
         },
         {
-            "id": "hmns_convergence_pack_111_122",
-            "forecast_time": "2027-03-22 18:21:23",
+            "id": "hmns_convergence_pack_111_123",
+            "forecast_time": "2027-03-22 18:28:57",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -2575,11 +2575,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805739683
+            "raw_epoch": 1805740137
         },
         {
-            "id": "hmns_convergence_pack_190_122",
-            "forecast_time": "2027-03-23 20:08:39",
+            "id": "hmns_convergence_pack_190_123",
+            "forecast_time": "2027-03-23 20:16:13",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2591,11 +2591,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1805832519
+            "raw_epoch": 1805832973
         },
         {
-            "id": "hmns_convergence_pack_75_122",
-            "forecast_time": "2027-03-28 13:03:09",
+            "id": "hmns_convergence_pack_75_123",
+            "forecast_time": "2027-03-28 13:10:43",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2607,11 +2607,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1806238989
+            "raw_epoch": 1806239443
         },
         {
-            "id": "hmns_convergence_pack_172_122",
-            "forecast_time": "2027-04-01 13:25:43",
+            "id": "hmns_convergence_pack_172_123",
+            "forecast_time": "2027-04-01 13:33:17",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -2623,11 +2623,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1806585943
+            "raw_epoch": 1806586397
         },
         {
-            "id": "hmns_convergence_pack_93_122",
-            "forecast_time": "2027-04-03 15:42:18",
+            "id": "hmns_convergence_pack_93_123",
+            "forecast_time": "2027-04-03 15:49:52",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2639,11 +2639,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1806766938
+            "raw_epoch": 1806767392
         },
         {
-            "id": "hmns_convergence_pack_250_122",
-            "forecast_time": "2027-04-04 01:49:36",
+            "id": "hmns_convergence_pack_250_123",
+            "forecast_time": "2027-04-04 01:57:10",
             "territory": "ITALY REGION",
             "location": "Apennine Active Fault System (12km West of L'Aquila, Europe)",
             "latitude": 42.3512,
@@ -2655,11 +2655,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1806803376
+            "raw_epoch": 1806803830
         },
         {
-            "id": "hmns_convergence_pack_220_122",
-            "forecast_time": "2027-04-05 05:20:31",
+            "id": "hmns_convergence_pack_220_123",
+            "forecast_time": "2027-04-05 05:28:05",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2671,11 +2671,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1806902431
+            "raw_epoch": 1806902885
         },
         {
-            "id": "hmns_convergence_pack_161_122",
-            "forecast_time": "2027-04-08 07:02:51",
+            "id": "hmns_convergence_pack_161_123",
+            "forecast_time": "2027-04-08 07:10:25",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2687,11 +2687,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807167771
+            "raw_epoch": 1807168225
         },
         {
-            "id": "hmns_convergence_pack_86_122",
-            "forecast_time": "2027-04-12 11:58:46",
+            "id": "hmns_convergence_pack_86_123",
+            "forecast_time": "2027-04-12 12:06:20",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -2703,11 +2703,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807531126
+            "raw_epoch": 1807531580
         },
         {
-            "id": "hmns_convergence_pack_186_122",
-            "forecast_time": "2027-04-12 13:14:18",
+            "id": "hmns_convergence_pack_186_123",
+            "forecast_time": "2027-04-12 13:21:52",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2719,11 +2719,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807535658
+            "raw_epoch": 1807536112
         },
         {
-            "id": "hmns_convergence_pack_107_122",
-            "forecast_time": "2027-04-13 02:56:26",
+            "id": "hmns_convergence_pack_107_123",
+            "forecast_time": "2027-04-13 03:04:00",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2735,11 +2735,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807584986
+            "raw_epoch": 1807585440
         },
         {
-            "id": "hmns_convergence_pack_209_122",
-            "forecast_time": "2027-04-14 22:05:52",
+            "id": "hmns_convergence_pack_209_123",
+            "forecast_time": "2027-04-14 22:13:26",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2751,11 +2751,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807740352
+            "raw_epoch": 1807740806
         },
         {
-            "id": "hmns_convergence_pack_147_122",
-            "forecast_time": "2027-04-17 14:03:19",
+            "id": "hmns_convergence_pack_147_123",
+            "forecast_time": "2027-04-17 14:10:53",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2767,11 +2767,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1807970599
+            "raw_epoch": 1807971053
         },
         {
-            "id": "hmns_convergence_pack_135_122",
-            "forecast_time": "2027-04-24 23:29:23",
+            "id": "hmns_convergence_pack_135_123",
+            "forecast_time": "2027-04-24 23:36:57",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -2783,11 +2783,11 @@
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1808609363
+            "raw_epoch": 1808609817
         },
         {
-            "id": "hmns_convergence_pack_239_122",
-            "forecast_time": "2027-04-25 10:29:44",
+            "id": "hmns_convergence_pack_239_123",
+            "forecast_time": "2027-04-25 10:37:18",
             "territory": "JAPAN REGION",
             "location": "Nankai Trough Megathrust Fault (25km South of Shizuoka Coast)",
             "latitude": 34.3512,
@@ -2799,11 +2799,11 @@
             "max_tsunami": "0.9m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1808648984
+            "raw_epoch": 1808649438
         },
         {
-            "id": "hmns_convergence_pack_191_122",
-            "forecast_time": "2027-04-26 20:24:56",
+            "id": "hmns_convergence_pack_191_123",
+            "forecast_time": "2027-04-26 20:32:30",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -2815,11 +2815,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1808771096
+            "raw_epoch": 1808771550
         },
         {
-            "id": "hmns_convergence_pack_130_122",
-            "forecast_time": "2027-04-28 16:09:57",
+            "id": "hmns_convergence_pack_130_123",
+            "forecast_time": "2027-04-28 16:17:31",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -2831,11 +2831,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1808928597
+            "raw_epoch": 1808929051
         },
         {
-            "id": "hmns_convergence_pack_118_122",
-            "forecast_time": "2027-04-29 01:55:57",
+            "id": "hmns_convergence_pack_118_123",
+            "forecast_time": "2027-04-29 02:03:31",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -2847,11 +2847,11 @@
             "max_tsunami": "1.3m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1808963757
+            "raw_epoch": 1808964211
         },
         {
-            "id": "hmns_convergence_pack_180_122",
-            "forecast_time": "2027-05-05 15:28:47",
+            "id": "hmns_convergence_pack_180_123",
+            "forecast_time": "2027-05-05 15:36:21",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -2863,11 +2863,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1809530927
+            "raw_epoch": 1809531381
         },
         {
-            "id": "hmns_convergence_pack_228_122",
-            "forecast_time": "2027-05-06 12:26:09",
+            "id": "hmns_convergence_pack_228_123",
+            "forecast_time": "2027-05-06 12:33:43",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -2879,11 +2879,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1809606369
+            "raw_epoch": 1809606823
         },
         {
-            "id": "hmns_convergence_pack_205_122",
-            "forecast_time": "2027-05-07 02:21:51",
+            "id": "hmns_convergence_pack_205_123",
+            "forecast_time": "2027-05-07 02:29:25",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -2895,11 +2895,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1809656511
+            "raw_epoch": 1809656965
         },
         {
-            "id": "hmns_convergence_pack_84_122",
-            "forecast_time": "2027-05-08 10:48:27",
+            "id": "hmns_convergence_pack_84_123",
+            "forecast_time": "2027-05-08 10:56:01",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -2911,11 +2911,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1809773307
+            "raw_epoch": 1809773761
         },
         {
-            "id": "hmns_convergence_pack_166_122",
-            "forecast_time": "2027-05-18 18:04:14",
+            "id": "hmns_convergence_pack_166_123",
+            "forecast_time": "2027-05-18 18:11:48",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -2927,11 +2927,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1810663454
+            "raw_epoch": 1810663908
         },
         {
-            "id": "hmns_convergence_pack_112_122",
-            "forecast_time": "2027-05-20 02:00:58",
+            "id": "hmns_convergence_pack_112_123",
+            "forecast_time": "2027-05-20 02:08:32",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -2943,11 +2943,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1810778458
+            "raw_epoch": 1810778912
         },
         {
-            "id": "hmns_convergence_pack_210_122",
-            "forecast_time": "2027-05-21 16:45:19",
+            "id": "hmns_convergence_pack_210_123",
+            "forecast_time": "2027-05-21 16:52:53",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -2959,11 +2959,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1810917919
+            "raw_epoch": 1810918373
         },
         {
-            "id": "hmns_convergence_pack_94_122",
-            "forecast_time": "2027-05-23 11:52:03",
+            "id": "hmns_convergence_pack_94_123",
+            "forecast_time": "2027-05-23 11:59:37",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -2975,11 +2975,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811073123
+            "raw_epoch": 1811073577
         },
         {
-            "id": "hmns_convergence_pack_126_122",
-            "forecast_time": "2027-05-25 03:58:53",
+            "id": "hmns_convergence_pack_126_123",
+            "forecast_time": "2027-05-25 04:06:27",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -2991,11 +2991,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811217533
+            "raw_epoch": 1811217987
         },
         {
-            "id": "hmns_convergence_pack_247_122",
-            "forecast_time": "2027-05-28 15:24:02",
+            "id": "hmns_convergence_pack_247_123",
+            "forecast_time": "2027-05-28 15:31:36",
             "territory": "PHILIPPINES",
             "location": "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)",
             "latitude": 7.0732,
@@ -3007,11 +3007,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811517842
+            "raw_epoch": 1811518296
         },
         {
-            "id": "hmns_convergence_pack_154_122",
-            "forecast_time": "2027-05-29 23:02:05",
+            "id": "hmns_convergence_pack_154_123",
+            "forecast_time": "2027-05-29 23:09:39",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3023,11 +3023,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811631725
+            "raw_epoch": 1811632179
         },
         {
-            "id": "hmns_convergence_pack_224_122",
-            "forecast_time": "2027-05-31 04:05:20",
+            "id": "hmns_convergence_pack_224_123",
+            "forecast_time": "2027-05-31 04:12:54",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -3039,11 +3039,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811736320
+            "raw_epoch": 1811736774
         },
         {
-            "id": "hmns_convergence_pack_199_122",
-            "forecast_time": "2027-06-02 09:57:49",
+            "id": "hmns_convergence_pack_199_123",
+            "forecast_time": "2027-06-02 10:05:23",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -3055,11 +3055,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1811930269
+            "raw_epoch": 1811930723
         },
         {
-            "id": "hmns_convergence_pack_105_122",
-            "forecast_time": "2027-06-03 20:40:22",
+            "id": "hmns_convergence_pack_105_123",
+            "forecast_time": "2027-06-03 20:47:56",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3071,11 +3071,11 @@
             "max_tsunami": "0.7m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1812055222
+            "raw_epoch": 1812055676
         },
         {
-            "id": "hmns_convergence_pack_149_122",
-            "forecast_time": "2027-06-04 21:16:58",
+            "id": "hmns_convergence_pack_149_123",
+            "forecast_time": "2027-06-04 21:24:32",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3087,11 +3087,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1812143818
+            "raw_epoch": 1812144272
         },
         {
-            "id": "hmns_convergence_pack_137_122",
-            "forecast_time": "2027-06-09 01:55:02",
+            "id": "hmns_convergence_pack_137_123",
+            "forecast_time": "2027-06-09 02:02:36",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3103,11 +3103,11 @@
             "max_tsunami": "1.5m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1812506102
+            "raw_epoch": 1812506556
         },
         {
-            "id": "hmns_convergence_pack_229_122",
-            "forecast_time": "2027-06-16 00:45:49",
+            "id": "hmns_convergence_pack_229_123",
+            "forecast_time": "2027-06-16 00:53:23",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -3119,11 +3119,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1813106749
+            "raw_epoch": 1813107203
         },
         {
-            "id": "hmns_convergence_pack_185_122",
-            "forecast_time": "2027-06-19 07:22:28",
+            "id": "hmns_convergence_pack_185_123",
+            "forecast_time": "2027-06-19 07:30:02",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3135,11 +3135,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1813389748
+            "raw_epoch": 1813390202
         },
         {
-            "id": "hmns_convergence_pack_243_122",
-            "forecast_time": "2027-06-24 18:13:41",
+            "id": "hmns_convergence_pack_243_123",
+            "forecast_time": "2027-06-24 18:21:15",
             "territory": "TAIWAN REGION",
             "location": "Ryukyu Trench Subduction Margin (22km East of Hualien Coast)",
             "latitude": 23.9742,
@@ -3151,11 +3151,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1813860821
+            "raw_epoch": 1813861275
         },
         {
-            "id": "hmns_convergence_pack_218_122",
-            "forecast_time": "2027-06-29 17:22:07",
+            "id": "hmns_convergence_pack_218_123",
+            "forecast_time": "2027-06-29 17:29:41",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -3167,11 +3167,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1814289727
+            "raw_epoch": 1814290181
         },
         {
-            "id": "hmns_convergence_pack_173_122",
-            "forecast_time": "2027-07-04 07:12:41",
+            "id": "hmns_convergence_pack_173_123",
+            "forecast_time": "2027-07-04 07:20:15",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3183,11 +3183,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1814685161
+            "raw_epoch": 1814685615
         },
         {
-            "id": "hmns_convergence_pack_131_122",
-            "forecast_time": "2027-07-05 18:38:04",
+            "id": "hmns_convergence_pack_131_123",
+            "forecast_time": "2027-07-05 18:45:38",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3199,11 +3199,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1814812684
+            "raw_epoch": 1814813138
         },
         {
-            "id": "hmns_convergence_pack_145_122",
-            "forecast_time": "2027-07-06 12:06:28",
+            "id": "hmns_convergence_pack_145_123",
+            "forecast_time": "2027-07-06 12:14:02",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3215,11 +3215,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1814875588
+            "raw_epoch": 1814876042
         },
         {
-            "id": "hmns_convergence_pack_103_122",
-            "forecast_time": "2027-07-06 20:09:53",
+            "id": "hmns_convergence_pack_103_123",
+            "forecast_time": "2027-07-06 20:17:27",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3231,11 +3231,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1814904593
+            "raw_epoch": 1814905047
         },
         {
-            "id": "hmns_convergence_pack_248_122",
-            "forecast_time": "2027-07-10 20:05:34",
+            "id": "hmns_convergence_pack_248_123",
+            "forecast_time": "2027-07-10 20:13:08",
             "territory": "INDONESIA",
             "location": "Sunda Trench Megathrust Fault (Subduction Interface Zone)",
             "latitude": -8.2412,
@@ -3247,11 +3247,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1815249934
+            "raw_epoch": 1815250388
         },
         {
-            "id": "hmns_convergence_pack_168_122",
-            "forecast_time": "2027-07-11 18:02:35",
+            "id": "hmns_convergence_pack_168_123",
+            "forecast_time": "2027-07-11 18:10:09",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3263,11 +3263,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1815328955
+            "raw_epoch": 1815329409
         },
         {
-            "id": "hmns_convergence_pack_113_122",
-            "forecast_time": "2027-07-18 15:59:03",
+            "id": "hmns_convergence_pack_113_123",
+            "forecast_time": "2027-07-18 16:06:37",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3279,11 +3279,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1815926343
+            "raw_epoch": 1815926797
         },
         {
-            "id": "hmns_convergence_pack_156_122",
-            "forecast_time": "2027-07-19 18:12:27",
+            "id": "hmns_convergence_pack_156_123",
+            "forecast_time": "2027-07-19 18:20:01",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3295,11 +3295,11 @@
             "max_tsunami": "1.2m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1816020747
+            "raw_epoch": 1816021201
         },
         {
-            "id": "hmns_convergence_pack_204_122",
-            "forecast_time": "2027-07-20 10:21:21",
+            "id": "hmns_convergence_pack_204_123",
+            "forecast_time": "2027-07-20 10:28:55",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3311,11 +3311,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1816078881
+            "raw_epoch": 1816079335
         },
         {
-            "id": "hmns_convergence_pack_124_122",
-            "forecast_time": "2027-07-25 23:26:57",
+            "id": "hmns_convergence_pack_124_123",
+            "forecast_time": "2027-07-25 23:34:31",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3327,11 +3327,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1816558017
+            "raw_epoch": 1816558471
         },
         {
-            "id": "hmns_convergence_pack_237_122",
-            "forecast_time": "2027-07-27 12:52:09",
+            "id": "hmns_convergence_pack_237_123",
+            "forecast_time": "2027-07-27 12:59:43",
             "territory": "MEXICO REGION",
             "location": "Cocos Plate Active Subduction Interface (22km Oceanward of Oaxaca)",
             "latitude": 15.8742,
@@ -3343,11 +3343,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1816692729
+            "raw_epoch": 1816693183
         },
         {
-            "id": "hmns_convergence_pack_192_122",
-            "forecast_time": "2027-08-08 05:43:02",
+            "id": "hmns_convergence_pack_192_123",
+            "forecast_time": "2027-08-08 05:50:36",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3359,11 +3359,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1817703782
+            "raw_epoch": 1817704236
         },
         {
-            "id": "hmns_convergence_pack_164_122",
-            "forecast_time": "2027-08-17 12:05:52",
+            "id": "hmns_convergence_pack_164_123",
+            "forecast_time": "2027-08-17 12:13:26",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3375,11 +3375,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1818504352
+            "raw_epoch": 1818504806
         },
         {
-            "id": "hmns_convergence_pack_187_122",
-            "forecast_time": "2027-08-18 00:12:06",
+            "id": "hmns_convergence_pack_187_123",
+            "forecast_time": "2027-08-18 00:19:40",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3391,11 +3391,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1818547926
+            "raw_epoch": 1818548380
         },
         {
-            "id": "hmns_convergence_pack_223_122",
-            "forecast_time": "2027-08-21 00:41:03",
+            "id": "hmns_convergence_pack_223_123",
+            "forecast_time": "2027-08-21 00:48:37",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3407,11 +3407,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1818808863
+            "raw_epoch": 1818809317
         },
         {
-            "id": "hmns_convergence_pack_150_122",
-            "forecast_time": "2027-08-21 03:53:23",
+            "id": "hmns_convergence_pack_150_123",
+            "forecast_time": "2027-08-21 04:00:57",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3423,11 +3423,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1818820403
+            "raw_epoch": 1818820857
         },
         {
-            "id": "hmns_convergence_pack_175_122",
-            "forecast_time": "2027-08-29 19:14:19",
+            "id": "hmns_convergence_pack_175_123",
+            "forecast_time": "2027-08-29 19:21:53",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3439,11 +3439,11 @@
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1819566859
+            "raw_epoch": 1819567313
         },
         {
-            "id": "hmns_convergence_pack_122_122",
-            "forecast_time": "2027-09-03 23:43:01",
+            "id": "hmns_convergence_pack_122_123",
+            "forecast_time": "2027-09-03 23:50:35",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3455,11 +3455,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1820014981
+            "raw_epoch": 1820015435
         },
         {
-            "id": "hmns_convergence_pack_132_122",
-            "forecast_time": "2027-09-12 13:44:18",
+            "id": "hmns_convergence_pack_132_123",
+            "forecast_time": "2027-09-12 13:51:52",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3471,11 +3471,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1820756658
+            "raw_epoch": 1820757112
         },
         {
-            "id": "hmns_convergence_pack_211_122",
-            "forecast_time": "2027-09-12 14:55:28",
+            "id": "hmns_convergence_pack_211_123",
+            "forecast_time": "2027-09-12 15:03:02",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3487,11 +3487,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1820760928
+            "raw_epoch": 1820761382
         },
         {
-            "id": "hmns_convergence_pack_143_122",
-            "forecast_time": "2027-09-16 09:12:01",
+            "id": "hmns_convergence_pack_143_123",
+            "forecast_time": "2027-09-16 09:19:35",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3503,11 +3503,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1821085921
+            "raw_epoch": 1821086375
         },
         {
-            "id": "hmns_convergence_pack_242_122",
-            "forecast_time": "2027-09-21 02:39:05",
+            "id": "hmns_convergence_pack_242_123",
+            "forecast_time": "2027-09-21 02:46:39",
             "territory": "IRAN REGION",
             "location": "Zagros Active Fold-and-Thrust Belt (30km East of Bushehr)",
             "latitude": 28.9214,
@@ -3519,11 +3519,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1821494345
+            "raw_epoch": 1821494799
         },
         {
-            "id": "hmns_convergence_pack_206_122",
-            "forecast_time": "2027-09-23 19:55:44",
+            "id": "hmns_convergence_pack_206_123",
+            "forecast_time": "2027-09-23 20:03:18",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3535,11 +3535,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1821729344
+            "raw_epoch": 1821729798
         },
         {
-            "id": "hmns_convergence_pack_183_122",
-            "forecast_time": "2027-09-28 21:16:03",
+            "id": "hmns_convergence_pack_183_123",
+            "forecast_time": "2027-09-28 21:23:37",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3551,11 +3551,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1822166163
+            "raw_epoch": 1822166617
         },
         {
-            "id": "hmns_convergence_pack_169_122",
-            "forecast_time": "2027-10-06 21:33:25",
+            "id": "hmns_convergence_pack_169_123",
+            "forecast_time": "2027-10-06 21:40:59",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3567,11 +3567,11 @@
             "max_tsunami": "0.8m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1822858405
+            "raw_epoch": 1822858859
         },
         {
-            "id": "hmns_convergence_pack_194_122",
-            "forecast_time": "2027-10-09 10:29:25",
+            "id": "hmns_convergence_pack_194_123",
+            "forecast_time": "2027-10-09 10:36:59",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3583,11 +3583,11 @@
             "max_tsunami": "1.0m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1823077765
+            "raw_epoch": 1823078219
         },
         {
-            "id": "hmns_convergence_pack_230_122",
-            "forecast_time": "2027-10-17 12:24:34",
+            "id": "hmns_convergence_pack_230_123",
+            "forecast_time": "2027-10-17 12:32:08",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3599,11 +3599,11 @@
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1823775874
+            "raw_epoch": 1823776328
         },
         {
-            "id": "hmns_convergence_pack_225_122",
-            "forecast_time": "2027-10-31 03:06:39",
+            "id": "hmns_convergence_pack_225_123",
+            "forecast_time": "2027-10-31 03:14:13",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3615,11 +3615,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1824951999
+            "raw_epoch": 1824952453
         },
         {
-            "id": "hmns_convergence_pack_141_122",
-            "forecast_time": "2027-11-02 10:07:57",
+            "id": "hmns_convergence_pack_141_123",
+            "forecast_time": "2027-11-02 10:15:31",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3631,11 +3631,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1825150077
+            "raw_epoch": 1825150531
         },
         {
-            "id": "hmns_convergence_pack_162_122",
-            "forecast_time": "2027-11-07 10:55:30",
+            "id": "hmns_convergence_pack_162_123",
+            "forecast_time": "2027-11-07 11:03:04",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3647,11 +3647,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1825584930
+            "raw_epoch": 1825585384
         },
         {
-            "id": "hmns_convergence_pack_151_122",
-            "forecast_time": "2027-11-07 18:54:37",
+            "id": "hmns_convergence_pack_151_123",
+            "forecast_time": "2027-11-07 19:02:11",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3663,11 +3663,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1825613677
+            "raw_epoch": 1825614131
         },
         {
-            "id": "hmns_convergence_pack_202_122",
-            "forecast_time": "2027-11-09 20:13:21",
+            "id": "hmns_convergence_pack_202_123",
+            "forecast_time": "2027-11-09 20:20:55",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3679,11 +3679,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1825791201
+            "raw_epoch": 1825791655
         },
         {
-            "id": "hmns_convergence_pack_213_122",
-            "forecast_time": "2027-11-19 12:33:04",
+            "id": "hmns_convergence_pack_213_123",
+            "forecast_time": "2027-11-19 12:40:38",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3695,11 +3695,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1826627584
+            "raw_epoch": 1826628038
         },
         {
-            "id": "hmns_convergence_pack_249_122",
-            "forecast_time": "2027-11-21 22:37:36",
+            "id": "hmns_convergence_pack_249_123",
+            "forecast_time": "2027-11-21 22:45:10",
             "territory": "ALASKA, USA",
             "location": "Aleutian Island Arc Megathrust (45km South of Unalaska)",
             "latitude": 53.8752,
@@ -3711,11 +3711,11 @@
             "max_tsunami": "1.1m",
             "risk_level": "⚠️ TSUNAMI WARNING",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1826836656
+            "raw_epoch": 1826837110
         },
         {
-            "id": "hmns_convergence_pack_188_122",
-            "forecast_time": "2027-11-22 05:46:17",
+            "id": "hmns_convergence_pack_188_123",
+            "forecast_time": "2027-11-22 05:53:51",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3727,11 +3727,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1826862377
+            "raw_epoch": 1826862831
         },
         {
-            "id": "hmns_convergence_pack_244_122",
-            "forecast_time": "2027-12-06 21:49:31",
+            "id": "hmns_convergence_pack_244_123",
+            "forecast_time": "2027-12-06 21:57:05",
             "territory": "GREECE",
             "location": "Hellenic Subduction Arc Fault Segment (35km South of Crete)",
             "latitude": 35.1245,
@@ -3743,11 +3743,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1828129771
+            "raw_epoch": 1828130225
         },
         {
-            "id": "hmns_convergence_pack_221_122",
-            "forecast_time": "2027-12-22 06:25:04",
+            "id": "hmns_convergence_pack_221_123",
+            "forecast_time": "2027-12-22 06:32:38",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3759,11 +3759,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1829456704
+            "raw_epoch": 1829457158
         },
         {
-            "id": "hmns_convergence_pack_181_122",
-            "forecast_time": "2027-12-29 21:43:13",
+            "id": "hmns_convergence_pack_181_123",
+            "forecast_time": "2027-12-29 21:50:47",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3775,11 +3775,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1830116593
+            "raw_epoch": 1830117047
         },
         {
-            "id": "hmns_convergence_pack_232_122",
-            "forecast_time": "2027-12-30 02:46:59",
+            "id": "hmns_convergence_pack_232_123",
+            "forecast_time": "2027-12-30 02:54:33",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3791,11 +3791,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1830134819
+            "raw_epoch": 1830135273
         },
         {
-            "id": "hmns_convergence_pack_160_122",
-            "forecast_time": "2027-12-31 12:37:57",
+            "id": "hmns_convergence_pack_160_123",
+            "forecast_time": "2027-12-31 12:45:31",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3807,11 +3807,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1830256677
+            "raw_epoch": 1830257131
         },
         {
-            "id": "hmns_convergence_pack_170_122",
-            "forecast_time": "2028-01-02 15:36:57",
+            "id": "hmns_convergence_pack_170_123",
+            "forecast_time": "2028-01-02 15:44:31",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3823,11 +3823,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1830440217
+            "raw_epoch": 1830440671
         },
         {
-            "id": "hmns_convergence_pack_207_122",
-            "forecast_time": "2028-01-08 00:28:15",
+            "id": "hmns_convergence_pack_207_123",
+            "forecast_time": "2028-01-08 00:35:49",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3839,11 +3839,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1830904095
+            "raw_epoch": 1830904549
         },
         {
-            "id": "hmns_convergence_pack_240_122",
-            "forecast_time": "2028-02-02 04:21:28",
+            "id": "hmns_convergence_pack_240_123",
+            "forecast_time": "2028-02-02 04:29:02",
             "territory": "PAPUA NEW GUINEA",
             "location": "New Britain Tectonic Arc Segment (15km North of Kimbe Area)",
             "latitude": -5.5412,
@@ -3855,11 +3855,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1833078088
+            "raw_epoch": 1833078542
         },
         {
-            "id": "hmns_convergence_pack_251_122",
-            "forecast_time": "2028-02-09 05:51:10",
+            "id": "hmns_convergence_pack_251_123",
+            "forecast_time": "2028-02-09 05:58:44",
             "territory": "CHILE",
             "location": "Atacama Trench Subduction Fault Grid (18km West of Iquique)",
             "latitude": -20.2145,
@@ -3871,11 +3871,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1833688270
+            "raw_epoch": 1833688724
         },
         {
-            "id": "hmns_convergence_pack_200_122",
-            "forecast_time": "2028-02-19 22:24:34",
+            "id": "hmns_convergence_pack_200_123",
+            "forecast_time": "2028-02-19 22:32:08",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3887,11 +3887,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1834611874
+            "raw_epoch": 1834612328
         },
         {
-            "id": "hmns_convergence_pack_226_122",
-            "forecast_time": "2028-02-23 07:39:45",
+            "id": "hmns_convergence_pack_226_123",
+            "forecast_time": "2028-02-23 07:47:19",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3903,11 +3903,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1834904385
+            "raw_epoch": 1834904839
         },
         {
-            "id": "hmns_convergence_pack_189_122",
-            "forecast_time": "2028-02-27 21:49:43",
+            "id": "hmns_convergence_pack_189_123",
+            "forecast_time": "2028-02-27 21:57:17",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3919,11 +3919,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1835300983
+            "raw_epoch": 1835301437
         },
         {
-            "id": "hmns_convergence_pack_179_122",
-            "forecast_time": "2028-02-29 00:05:35",
+            "id": "hmns_convergence_pack_179_123",
+            "forecast_time": "2028-02-29 00:13:09",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3935,11 +3935,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1835395535
+            "raw_epoch": 1835395989
         },
         {
-            "id": "hmns_convergence_pack_245_122",
-            "forecast_time": "2028-04-10 03:22:27",
+            "id": "hmns_convergence_pack_245_123",
+            "forecast_time": "2028-04-10 03:30:01",
             "territory": "PERU REGION",
             "location": "Nazca Plate Boundary Megathrust Fault (19km West of Lima)",
             "latitude": -12.0432,
@@ -3951,11 +3951,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1838949747
+            "raw_epoch": 1838950201
         },
         {
-            "id": "hmns_convergence_pack_219_122",
-            "forecast_time": "2028-04-12 10:13:52",
+            "id": "hmns_convergence_pack_219_123",
+            "forecast_time": "2028-04-12 10:21:26",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -3967,11 +3967,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1839147232
+            "raw_epoch": 1839147686
         },
         {
-            "id": "hmns_convergence_pack_208_122",
-            "forecast_time": "2028-04-23 17:30:08",
+            "id": "hmns_convergence_pack_208_123",
+            "forecast_time": "2028-04-23 17:37:42",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -3983,11 +3983,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1840123808
+            "raw_epoch": 1840124262
         },
         {
-            "id": "hmns_convergence_pack_198_122",
-            "forecast_time": "2028-04-28 01:33:23",
+            "id": "hmns_convergence_pack_198_123",
+            "forecast_time": "2028-04-28 01:40:57",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -3999,11 +3999,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1840498403
+            "raw_epoch": 1840498857
         },
         {
-            "id": "hmns_convergence_pack_238_122",
-            "forecast_time": "2028-06-03 09:54:14",
+            "id": "hmns_convergence_pack_238_123",
+            "forecast_time": "2028-06-03 10:01:48",
             "territory": "FIJI REGION",
             "location": "Deep Focal Tonga-Kermadec Fault Trench (410km South of Suva)",
             "latitude": -20.1245,
@@ -4015,11 +4015,11 @@
             "max_tsunami": "0.0m",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1843638854
+            "raw_epoch": 1843639308
         },
         {
-            "id": "hmns_convergence_pack_227_122",
-            "forecast_time": "2028-06-19 00:44:14",
+            "id": "hmns_convergence_pack_227_123",
+            "forecast_time": "2028-06-19 00:51:48",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -4031,11 +4031,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1844988254
+            "raw_epoch": 1844988708
         },
         {
-            "id": "hmns_convergence_pack_217_122",
-            "forecast_time": "2028-06-26 14:02:40",
+            "id": "hmns_convergence_pack_217_123",
+            "forecast_time": "2028-06-26 14:10:14",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -4047,11 +4047,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1845640960
+            "raw_epoch": 1845641414
         },
         {
-            "id": "hmns_convergence_pack_246_122",
-            "forecast_time": "2028-08-13 19:23:56",
+            "id": "hmns_convergence_pack_246_123",
+            "forecast_time": "2028-08-13 19:31:30",
             "territory": "CHINA REGION",
             "location": "Longmenshan Active Fault Grid (18km West of Wenchuan, Sichuan)",
             "latitude": 31.0245,
@@ -4063,11 +4063,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1849807436
+            "raw_epoch": 1849807890
         },
         {
-            "id": "hmns_convergence_pack_236_122",
-            "forecast_time": "2028-08-24 14:29:25",
+            "id": "hmns_convergence_pack_236_123",
+            "forecast_time": "2028-08-24 14:36:59",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -4079,11 +4079,11 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1850740165
+            "raw_epoch": 1850740619
         },
         {
-            "id": "hmns_convergence_pack_255_122",
-            "forecast_time": "2028-10-23 03:59:05",
+            "id": "hmns_convergence_pack_255_123",
+            "forecast_time": "2028-10-23 04:06:39",
             "territory": "KENYA",
             "location": "Great Rift Valley Tectonic Boundary (24km South of Nairobi)",
             "latitude": -1.2863,
@@ -4095,7 +4095,7 @@
             "max_tsunami": "N/A (Inland Fault)",
             "risk_level": "PREDICTED RISK",
             "message": "Pre-emptive Matrix Active [v5.5]. Error Delta: 100.0%",
-            "raw_epoch": 1855886345
+            "raw_epoch": 1855886799
         }
     ]
 }
