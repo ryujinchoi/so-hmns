@@ -1,0 +1,41 @@
+name: SO-HMNS Universal Cloud Daemon
+
+on:
+  schedule:
+    # 깃허브 Actions 표준에 맞춘 주기적 자동 트리거 스케줄링
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # 필요할 때 웹사이트에서 수동으로 누를 수 있는 버튼 활성화
+
+jobs:
+  cloud_audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Node
+        uses: actions/checkout@v4
+
+      - name: Set up Lean 4 Prover Environment
+        uses: leanprover/lean4-action@v1
+
+      - name: Set up Python Tensor Core
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Compute Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy
+
+      - name: Execute Full Master Proof Pipeline
+        run: |
+          lean --run proofs/Cross_Disciplinary_Projector.lean
+          lean --run proofs/RationalPadicCompleteness.lean
+          python3 MILLENNIUM_EXPLICIT_SOLVER.py
+
+      - name: Commit and Push to Capital Node Autonomously
+        run: |
+          git config --global user.name "Sovereign-Autodeploy-Bot"
+          git config --global user.email "bot@hmns.infrastructure"
+          git add .
+          git commit -m "chore: cloud daemon executed automated proof convergence" || echo "No changes to commit"
+          git push origin main
