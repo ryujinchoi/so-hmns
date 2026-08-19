@@ -12,13 +12,13 @@ FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    default_state = {"run_count": 1, "upgrade_level": 5.5, "anomaly_logs": []}
+    default_state = {"run_count": 1, "upgrade_level": 5.6, "anomaly_logs": []}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
                 state = json.load(f)
                 if "anomaly_logs" not in state: state["anomaly_logs"] = []
-                if "upgrade_level" not in state: state["upgrade_level"] = 5.5
+                if "upgrade_level" not in state: state["upgrade_level"] = 5.6
                 return state
         except:
             pass
@@ -30,13 +30,12 @@ def save_upgrade_state(state):
 
 def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state = load_upgrade_state()
-    current_level = state.get("upgrade_level", 5.5)
+    current_level = state.get("upgrade_level", 5.6)
     new_level = round(current_level + 0.01, 3)
     state["upgrade_level"] = new_level
     state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Core Formula Auto-Compiled -> v{new_level}")
     save_upgrade_state(state)
     
-    # 다차원 비선형 텐서 가속도 및 소산 항 수식 자체를 동적으로 확장 개조
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.2) * 1.15) + (math.sin(float(observed_mag) * 1.57) * 0.18)"
     dissipation_term = " - (min(float(depth_val) / 24.5, 6.15) * 1.75) - 0.15"
 
@@ -113,13 +112,13 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
+    # 💡 [버그 파쇄 정화의 핵심]: 봇이 깨어날 때마다 기기의 시스템 현재 타임스탬프를 100% 매 순간 신선하게 리로드 세팅!
     execution_time_seed = int(time.time())
 
     # 📡 가상 선제 응력 시뮬레이션 루프 상시 가동
     if run_count == 1 or run_count % 5 == 0:
         autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
-    # 6대주 16대 주요 단층 제원에 남미 콜롬비아 및 인도네시아 대단층망 격자까지 선제 영구 기입 완수!
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
         ("INDONESIA", "Sunda Trench Megathrust Fault (Subduction Interface Zone)", -8.2412, 110.5412, 6.85, "Coast", 1.32),
@@ -156,7 +155,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [과거 카드 즉시 소멸 잠금공식]: 현재 서버 구동 시각 기준, 과거 시간축에 도달한 격자는 즉시 생성 대상에서 완전 영구 배제!
+        # 💡 [과거 카드 즉시 소멸 잠금공식]: 실시간 리로드된 현재 타임스탬프보다 과거인 격자는 즉시 연산 대상에서 완전 영구 배제!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
@@ -187,7 +186,7 @@ def generate_failback_infinite_matrix():
             "id": f"hmns_convergence_pack_{idx}_{run_count % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
             "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8) % 115.0, 1),
             "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-            "message": f"Pre-emptive Matrix Active [v{state.get('upgrade_level', 5.5)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
+            "message": f"Pre-emptive Theory Active [v{state.get('upgrade_level', 5.6)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
             "raw_epoch": future_epoch
         }
         current_data["forecasts"].append(mock_item)
