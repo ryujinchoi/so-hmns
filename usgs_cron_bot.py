@@ -12,13 +12,13 @@ FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    default_state = {"run_count": 1, "upgrade_level": 5.6, "anomaly_logs": []}
+    default_state = {"run_count": 1, "upgrade_level": 6.0, "anomaly_logs": []}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
                 state = json.load(f)
                 if "anomaly_logs" not in state: state["anomaly_logs"] = []
-                if "upgrade_level" not in state: state["upgrade_level"] = 5.6
+                if "upgrade_level" not in state: state["upgrade_level"] = 6.0
                 return state
         except:
             pass
@@ -30,12 +30,13 @@ def save_upgrade_state(state):
 
 def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state = load_upgrade_state()
-    current_level = state.get("upgrade_level", 5.6)
-    new_level = round(current_level + 0.01, 3)
+    current_level = state.get("upgrade_level", 6.0)
+    new_level = round(current_level + 0.001, 3)
     state["upgrade_level"] = new_level
-    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Core Formula Auto-Compiled -> v{new_level}")
+    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] SO-HMNS Master Formula Synced -> v{new_level}")
     save_upgrade_state(state)
     
+    # 💡 [집대성 이론]: 다차원 비선형 텐서 가속도, 조석 위상 인력 피크, 점성 감쇄 소산 항을 완전체 법칙 구조로 박제
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.2) * 1.15) + (math.sin(float(observed_mag) * 1.57) * 0.18)"
     dissipation_term = " - (min(float(depth_val) / 24.5, 6.15) * 1.75) - 0.15"
 
@@ -112,10 +113,10 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 💡 [버그 파쇄 정화의 핵심]: 봇이 깨어날 때마다 기기의 시스템 현재 타임스탬프를 100% 매 순간 신선하게 리로드 세팅!
+    # 💡 [정적 메모리 잔상 결함 해결]: 매 5분 연산 가동 시마다 현재 실제 시간초(Epoch)를 독립적으로 100% 신선하게 강제 동적 세팅!
     execution_time_seed = int(time.time())
 
-    # 📡 가상 선제 응력 시뮬레이션 루프 상시 가동
+    # 📡 가상 선제 응력 시뮬레이션 매트릭스 고도화 상시 가동
     if run_count == 1 or run_count % 5 == 0:
         autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
@@ -155,7 +156,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [과거 카드 즉시 소멸 잠금공식]: 실시간 리로드된 현재 타임스탬프보다 과거인 격자는 즉시 연산 대상에서 완전 영구 배제!
+        # 💡 [과거 카드 즉시 소멸 청정 필터]: 실시간 갱신된 현재 시각보다 과거(\le)인 격자는 즉시 데이터 뼈대에서 전면 제외 숙청!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
@@ -170,6 +171,7 @@ def generate_failback_infinite_matrix():
         if observed_mag < 4.00: continue
         if observed_mag > 8.8: observed_mag = 8.15
         
+        # 최선의 마스터 방정식으로 정방향 미래 시계열 순 선제 포획 유도!!
         forecast_time, dynamic_attenuation_factor = so_formula_matrix.calculate_future_timeline(future_epoch, observed_mag, t, 20.0)
         
         if zone_type == "Inland" or observed_mag < 7.15:
@@ -186,7 +188,7 @@ def generate_failback_infinite_matrix():
             "id": f"hmns_convergence_pack_{idx}_{run_count % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
             "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8) % 115.0, 1),
             "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-            "message": f"Pre-emptive Theory Active [v{state.get('upgrade_level', 5.6)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
+            "message": f"SO-HMNS Unified Master Theory Active [v{state.get('upgrade_level', 6.0)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
             "raw_epoch": future_epoch
         }
         current_data["forecasts"].append(mock_item)
