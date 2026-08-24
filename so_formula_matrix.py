@@ -15,13 +15,13 @@ def calculate_future_timeline(epoch_time, observed_mag, target_territory, depth_
     t_upper = target_territory.upper()
     
     if "NEW ZEALAND" in t_upper: bathymetry_factor = 0.52
-    elif "JAPAN" in t_upper: bathymetry_factor = 0.25
+    elif "JAPAN" in t_upper: bathymetry_factor = 0.28
     elif "MEXICO" in t_upper or "PERU" in t_upper or "CHILE" in t_upper: bathymetry_factor = 0.42
     elif "ICELAND" in t_upper or "ATLANTIC" in t_upper: bathymetry_factor = 0.62
     elif "PHILIPPINES" in t_upper or "INDONESIA" in t_upper: bathymetry_factor = 0.32
     
-    dynamic_tensor =  + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.4) * 1.20)
-    viscous_dissipation =  - (min(float(depth_val) / 22.4, 6.35) * 1.85) - 0.08
+    dynamic_tensor =  + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.6) * 1.22)
+    viscous_dissipation =  - (min(float(depth_val) / 21.2, 6.55) * 1.92) - 0.05
     
     dynamic_attenuation_factor = base_factor + depth_compensation + bathymetry_factor + dynamic_tensor + viscous_dissipation
     
