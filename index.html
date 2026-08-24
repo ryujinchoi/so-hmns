@@ -11,24 +11,26 @@
     <meta property="og:description" content="Astro-Tectonic Harmonic Convergence and Viscous Dissipation Micro-Structure Framework.">
     <meta property="og:url" content="https://github.io">
     <style>
-        body { background-color: #0f172a; color: #ffffff; font-family: sans-serif; margin: 0; padding: 20px; }
-        .monitor-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
-        .paypal-btn { display: block; background-color: #0070ba; color: #ffffff !important; padding: 12px 20px; border-radius: 5px; font-weight: bold; text-align: center; margin-bottom: 20px; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); cursor: pointer; border: none; font-size: 14px; }
-        .paypal-btn:hover { background-color: #005ea6; }
-        .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; }
-        .earthquake-card { background-color: #1e293b; border-left: 5px solid transparent; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #ffffff; }
-        .time-stamp { color: #94a3b8; font-size: 12px; display: flex; align-items: center; gap: 5px; }
-        .country-title { font-size: 20px; font-weight: bold; color: #38bdf8; margin: 0 0 8px 0; display: flex; align-items: center; gap: 8px; }
-        .location-text { font-size: 15px; color: #e2e8f0; margin-bottom: 12px; font-weight: 500; line-height: 1.4; }
-        .grid-coords { font-size: 12px; color: #64748b; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
-        .metrics-zone { background-color: #0f172a; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-        .metric-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
-        .metric-label { color: #fbbf24; }
-        .metric-value { color: #38bdf8; }
-        .kernel-msg { font-size: 11px; color: #64748b; font-style: italic; }
-        .load-more-btn { background-color: #0369a1; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; display: block; }
+        body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; }
+        .monitor-title { font-size: 16px; font-weight: 800; margin-bottom: 20px; color: #f8fafc; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #1e293b; padding-bottom: 10px; }
+        .paypal-btn { display: block; background: linear-gradient(90deg, #0070ba, #005ea6); color: #ffffff !important; padding: 14px 20px; border-radius: 6px; font-weight: bold; text-align: center; margin-bottom: 25px; width: 100%; box-shadow: 0 4px 12px rgba(0,112,186,0.3); cursor: pointer; border: none; font-size: 14px; transition: all 0.2s ease; }
+        .paypal-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,112,186,0.4); }
+        .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 480px; margin: 0 auto; }
+        .earthquake-card { background: linear-gradient(145deg, #1e293b, #111827); border-left: 5px solid transparent; border-radius: 12px; padding: 22px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .earthquake-card:hover { transform: scale(1.01); box-shadow: 0 12px 24px rgba(0,0,0,0.5); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .badge { padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #ffffff; letter-spacing: 0.5px; }
+        .time-stamp { color: #94a3b8; font-size: 11px; font-weight: 600; background-color: #0f172a; padding: 4px 8px; border-radius: 4px; border: 1px solid #334155; }
+        .country-title { font-size: 22px; font-weight: 800; color: #38bdf8; margin: 0 0 6px 0; letter-spacing: -0.5px; }
+        .location-text { font-size: 14px; color: #cbd5e1; margin-bottom: 14px; font-weight: 500; line-height: 1.4; }
+        .grid-coords { font-size: 12px; color: #64748b; margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; font-family: monospace; }
+        .metrics-zone { background-color: #090d16; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #1e293b; }
+        .metric-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; }
+        .metric-label { color: #f59e0b; }
+        .metric-value { color: #38bdf8; font-family: monospace; font-size: 14px; }
+        .kernel-msg { font-size: 11px; color: #475569; font-style: italic; margin-top: 14px; display: block; font-family: monospace; }
+        .load-more-btn { background-color: #0284c7; color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; display: block; font-size: 13px; transition: background 0.2s; }
+        .load-more-btn:hover { background-color: #0369a1; }
     </style>
 </head>
 <body>
@@ -50,7 +52,7 @@
                 allForecasts = data.forecasts || [];
                 renderGrid();
             } catch (e) {
-                document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;">데이터 코어 동기화 실패</div>';
+                document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;text-align:center;">데이터 코어 동기화 실패</div>';
             }
         }
 
@@ -66,15 +68,15 @@
                 
                 let themeColor = '#10b981'; 
                 if (item.risk_level.includes('CRITICAL')) themeColor = '#ff0055'; 
-                else if (item.risk_level.includes('WARNING')) themeColor = '#d32f2f'; 
+                else if (item.risk_level.includes('WARNING')) themeColor = '#f59e0b'; 
 
                 card.style.borderLeftColor = themeColor;
 
                 const isTsunamiHidden = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '0.0m' || item.max_tsunami === '';
                 const tsunamiRowHtml = isTsunamiHidden ? '' : `
                     <div class="metric-row">
-                        <span style="color:#fbbf24;">🌊 Bounded Tsunami:</span>
-                        <span style="color:#38bdf8;">${item.max_tsunami}</span>
+                        <span style="color:#64748b;">🌊 Bounded Tsunami:</span>
+                        <span style="color:#38bdf8;font-family:monospace;font-size:14px;">${item.max_tsunami}</span>
                     </div>
                 `;
 
@@ -89,7 +91,7 @@
                     <div class="metrics-zone">
                         <div class="metric-row">
                             <span class="metric-label">⚡ Calibrated Moment:</span>
-                            <span class="metric-value" style="color:#f59e0b;">M ${item.magnitude.toFixed(2)}</span>
+                            <span class="metric-value">M ${item.magnitude.toFixed(2)}</span>
                         </div>
                         ${tsunamiRowHtml}
                     </div>
