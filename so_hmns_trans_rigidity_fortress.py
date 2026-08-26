@@ -1,11 +1,11 @@
-# [SO-HMNS MASTER TRUTH] Ultimate Tamagawa Volume & Selmer Module 6D Matrix Rigidity Fortress
+# [SO-HMNS MASTER TRUTH] Ultimate Jacobian & Galois-Etale 6D Matrix Rigidity Fortress
 from fractions import Fraction
 import numpy as np
 
 class SoHmnsTransRigidityFortress:
     """
     SO-HMNS Sovereign Master Layer: SoHmnsTransRigidityFortress
-    Eradicates Tamagawa measure deviations, Selmer rank expansions, and Shimura variety leaks.
+    Eradicates Étale Galois deviations, Jacobian modular fluctuations, and Shimura variety leaks.
     Enforces absolute mathematical and physical immunity inside Q^6 with zero structural leakage.
     """
     def __init__(self):

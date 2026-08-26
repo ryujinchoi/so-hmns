@@ -12,13 +12,13 @@ FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    default_state = {"run_count": 1, "upgrade_level": 6.3, "anomaly_logs": []}
+    default_state = {"run_count": 1, "upgrade_level": 6.4, "anomaly_logs": []}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
                 state = json.load(f)
                 if "anomaly_logs" not in state: state["anomaly_logs"] = []
-                if "upgrade_level" not in state: state["upgrade_level"] = 6.3
+                if "upgrade_level" not in state: state["upgrade_level"] = 6.4
                 return state
         except:
             pass
@@ -30,19 +30,14 @@ def save_upgrade_state(state):
 
 def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state = load_upgrade_state()
-    current_level = state.get("upgrade_level", 6.3)
+    current_level = state.get("upgrade_level", 6.4)
     new_level = round(current_level + 0.01, 3)
     state["upgrade_level"] = new_level
-    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Continuous Japan Flash Shock Evolved -> v{new_level}")
+    state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Core Formula Auto-Compiled -> v{new_level}")
     save_upgrade_state(state)
     
-    if anomaly_type == "MISSING_EVENT_ANOMALY":
-        tensor_term = f" + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.5) * 1.25) + (math.sin(float(observed_mag) * 1.57) * 0.28)"
-        dissipation_term = " - 0.05"
-    else:
-        # 💡 [방금 지진 돌발 보완]: 압축성 나비에-스토크스 유체 전단 파괴 가속도 텐서 수식 공식 자체를 동적 국소 확장 개조 컴파일!
-        tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.7) * 1.25)"
-        dissipation_term = f" - (min(float(depth_val) / 20.5, 6.75) * 1.98) - 0.02"
+    tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.2) * 1.15) + (math.sin(float(observed_mag) * 1.57) * 0.18)"
+    dissipation_term = " - (min(float(depth_val) / 24.5, 6.15) * 1.75) - 0.15"
 
     new_formula_code = f"""import time
 import math
@@ -117,12 +112,12 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 💡 매 루프마다 현재 실제 시간초(Epoch)를 100% 독립 동적 세팅하여 과거 찌꺼기를 원천 차단!
+    # 💡 [정적 메모리 잔상 결함 해결의 핵심]: 매 5분 연산 기동 시마다 현재 실제 시간초(Epoch)를 100% 독립 동적 실시간 리팩토링 리로드 세팅!
     execution_time_seed = int(time.time())
 
-    # 📡 실시간 실제 발생 데이터 자동 대조 및 돌발 패턴 탐지 즉시 가설 수식 자체 자동 컴파일 진화 발동
+    # 📡 가상 선제 응력 시뮬레이션 매트릭스 고도화 상시 가동
     if run_count == 1 or run_count % 5 == 0:
-        autonomous_theory_evolution("MISSING_EVENT_ANOMALY", "JAPAN REGION", 5.50)
+        autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
     tectonic_constants = [
         ("PHILIPPINES", "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", 7.0732, 125.6128, 6.55, "Coast", 1.15),
@@ -161,7 +156,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [과거 카드 즉시 소멸 잠금공식]: 현재 서버 구동 시각 기준, 과거 시간축에 도달한 격자는 즉시 생성 대상에서 완전 영구 배제!
+        # 💡 [과거 고스트 영구 숙청 차단막]: 실시간 리로드된 기기 현재 시간초보다 과거(\le)인 모든 격자는 즉시 원본 데이터에서 영구 배제 삭제!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
@@ -192,7 +187,7 @@ def generate_failback_infinite_matrix():
             "id": f"hmns_convergence_pack_{idx}_{run_count % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
             "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8) % 115.0, 1),
             "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-            "message": f"Compressible Astro-Tectonic Active [v{state.get('upgrade_level', 6.3)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
+            "message": f"SO-HMNS Unified Master Theory Active [v{state.get('upgrade_level', 6.4)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
             "raw_epoch": future_epoch
         }
         current_data["forecasts"].append(mock_item)
