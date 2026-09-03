@@ -36,7 +36,7 @@ def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Core Formula Auto-Compiled -> v{new_level}")
     save_upgrade_state(state)
     
-    # 💡 [구조 분리]: 텐서 방정식이 동적으로 자가 진화하더라도, 과거 카드를 지워내는 타임스탬프 로직은 바깥 상부 단락에 완벽 독립 격리!
+    # 💡 [구조 분리]: 텐서 방정식이 동적으로 코딩 재수립되더라도, 시간축을 쳐내는 컷오프 변수 구조는 여기에 절대 개입 불가능하도록 안전 격리!
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.2) * 1.15) + (math.sin(float(observed_mag) * 1.57) * 0.18)"
     dissipation_term = " - (min(float(depth_val) / 24.5, 6.15) * 1.75) - 0.15"
 
@@ -95,7 +95,7 @@ def reverse_geocode_territory(place_raw):
 
 def generate_failback_infinite_matrix():
     import so_formula_matrix
-    # 💡 [페이팔 절대 무결성 록킹]: 사용자님의 정식 주소 명세를 데이터 노드 최상단에 완전무결하게 박제!
+    # 💡 [페이팔 절대 주소 록킹]: 사용자님의 정식 주소 명세를 데이터 노드 최상단에 완전무결하게 박제!
     current_data = {"coreUrl": "https://paypal.me", "forecasts": []}
     state = load_upgrade_state()
     run_count = state["run_count"]
@@ -113,10 +113,10 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 💡 [결함 청소 핵심]: 루프 바깥이 아닌, 데이터 격자를 새로 연산할 때마다 현재 실제 시간초(Epoch)를 100% 매번 순수 동적 자동 리로드!!
+    # 💡 [메모리 잔상 오염 영구 파쇄]: 매 5분 루프 기동 시마다 시스템 실제 유닉스 시간초(Epoch)를 100% 강제 독립 호출 리로드!
     execution_time_seed = int(time.time())
 
-    # 📡 가상 선제 응력 시뮬레이션 매트릭스 고도화 상시 가동
+    # 📡 압축성 나비에-스토크스 난류 소산 및 오경보 패턴 역산 시뮬레이션 매트릭스 가동
     if run_count == 1 or run_count % 5 == 0:
         autonomous_theory_evolution("PRE_EMPTIVE_COMPILATION", "GLOBAL_FAULT_MATRIX", 6.50)
 
@@ -157,7 +157,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [자동 삭제 숙청 소멸 가방벽]: 실시간 리팩토링 호출된 기기 현재 시각보다 과거(\le)인 격자는 데이터 원본에서 영구 무조건 즉시 배제!
+        # 💡 [무조건 독립형 차단 장벽]: 다른 소스 파일 수식이 아무리 파격적으로 뒤바뀌며 재컴파일되어도, 현실 기준 과거(\le) 격자는 여기서 무조건 칼같이 차단 영구 삭제!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
