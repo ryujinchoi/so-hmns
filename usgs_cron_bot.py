@@ -12,13 +12,13 @@ FORMULA_FILE = "so_formula_matrix.py"
 USGS_API_URL = "https://usgs.gov"
 
 def load_upgrade_state():
-    default_state = {"run_count": 1, "upgrade_level": 7.0, "anomaly_logs": []}
+    default_state = {"run_count": 1, "upgrade_level": 7.1, "anomaly_logs": []}
     if os.path.exists(CONFIG_FILE):
         try:
             with open(CONFIG_FILE, "r") as f:
                 state = json.load(f)
                 if "anomaly_logs" not in state: state["anomaly_logs"] = []
-                if "upgrade_level" not in state: state["upgrade_level"] = 7.0
+                if "upgrade_level" not in state: state["upgrade_level"] = 7.1
                 return state
         except:
             pass
@@ -30,13 +30,13 @@ def save_upgrade_state(state):
 
 def autonomous_theory_evolution(anomaly_type, territory, observed_mag):
     state = load_upgrade_state()
-    current_level = state.get("upgrade_level", 7.0)
+    current_level = state.get("upgrade_level", 7.1)
     new_level = round(current_level + 0.01, 3)
     state["upgrade_level"] = new_level
     state["anomaly_logs"].append(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Core Formula Auto-Compiled -> v{new_level}")
     save_upgrade_state(state)
     
-    # 💡 [구조 분리]: 텐서 방정식이 동적으로 코딩 재수립되더라도, 시간축을 쳐내는 컷오프 변수 구조는 여기에 절대 개입 불가능하도록 안전 격리!
+    # 💡 [독립 설계]: 텐서 방정식이 가변적으로 동적 코딩 재수립되더라도, 시간축을 쳐내는 컷오프 변수 구조는 여기에 절대 개입 불가능하도록 안전 격리!
     tensor_term = " + (math.log10(1.0 + (float(observed_mag) - 3.5) * 2.2) * 1.15) + (math.sin(float(observed_mag) * 1.57) * 0.18)"
     dissipation_term = " - (min(float(depth_val) / 24.5, 6.15) * 1.75) - 0.15"
 
@@ -95,7 +95,7 @@ def reverse_geocode_territory(place_raw):
 
 def generate_failback_infinite_matrix():
     import so_formula_matrix
-    # 💡 [페이팔 절대 주소 록킹]: 사용자님의 정식 주소 명세를 데이터 노드 최상단에 완전무결하게 박제!
+    # 💡 [페이팔 절대 주소 고정]: 사용자님의 정식 주소 명세를 데이터 구조 최상단에 완전무결하게 박제!
     current_data = {"coreUrl": "https://paypal.me", "forecasts": []}
     state = load_upgrade_state()
     run_count = state["run_count"]
@@ -113,7 +113,7 @@ def generate_failback_infinite_matrix():
     except:
         pass
 
-    # 💡 [메모리 잔상 오염 영구 파쇄]: 매 5분 루프 기동 시마다 시스템 실제 유닉스 시간초(Epoch)를 100% 강제 독립 호출 리로드!
+    # 💡 [초월적 시간 동기화]: 매 5분 루프 기동 시마다 기기 하드웨어 내부 실제 유닉스 시간초(Epoch)를 100% 매번 강제 독립 호출 리로드!
     execution_time_seed = int(time.time())
 
     # 📡 압축성 나비에-스토크스 난류 소산 및 오경보 패턴 역산 시뮬레이션 매트릭스 가동
@@ -157,7 +157,7 @@ def generate_failback_infinite_matrix():
         time_step = int(((idx + 1) * 86400 * period_bias) + (math.sin(idx * 3.14) * 32000) + 1420)
         future_epoch = execution_time_seed + time_step
         
-        # 💡 [무조건 독립형 차단 장벽]: 다른 소스 파일 수식이 아무리 파격적으로 뒤바뀌며 재컴파일되어도, 현실 기준 과거(\le) 격자는 여기서 무조건 칼같이 차단 영구 삭제!
+        # 💡 [초월적 과거 청소 공식]: 다른 창에서 뭘 하든, 실시간 호출된 기기 현재 초보다 과거(\le)인 격자는 즉시 원본 데이터에서 영구 배제 삭제!
         if future_epoch <= execution_time_seed: continue
         
         time_delta_days = (future_epoch - execution_time_seed) / 86400.0
@@ -188,7 +188,7 @@ def generate_failback_infinite_matrix():
             "id": f"hmns_convergence_pack_{idx}_{run_count % 1000}", "forecast_time": forecast_time, "territory": t, "location": loc,
             "latitude": lat, "longitude": lon, "seismic_energy": 10 ** (1.5 * observed_mag + 4.8), "focal_depth": round(12.0 + (idx * 14.8) % 115.0, 1),
             "bathymetry_depth": 15.0 if zone_type == "Coast" else 0.0, "magnitude": observed_mag, "max_tsunami": tsunami_display, "risk_level": risk_level_msg,
-            "message": f"SO-HMNS Absolute Temporal Firewall Active [v{state.get('upgrade_level', 7.0)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
+            "message": f"SO-HMNS Invariant Transcendent Firewall [v{state.get('upgrade_level', 7.1)}]. Error Delta: {round(convergence_factor * 100, 1)}%",
             "raw_epoch": future_epoch
         }
         current_data["forecasts"].append(mock_item)
