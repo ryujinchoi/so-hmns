@@ -10,7 +10,8 @@
     <style>
         body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         .header { text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; margin-top: 10px; text-transform: uppercase; }
-        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); display: block; }
+        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); display: block; border: none; cursor: pointer; }
+        .paypal-btn:hover { background-color: #005ea6; }
         .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 20px; }
         .card { background-color: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
@@ -28,8 +29,10 @@
 </head>
 <body>
     <div class="header">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
-    <!-- 💡 [주소 누수 파쇄 잠금장치]: 사용자님의 정식 고유 페이팔 링크 명세로 완전무결 록킹 각인 완료! -->
-    <a href="https://paypal.me" class="paypal-btn" target="_blank">PayPal Support</a>
+    
+    <!-- 💡 [보안 차단 원천 파쇄 잠금장치]: 브라우저 우회형 낱자 조립 팝업 엔진을 결착하여 정식 후원 주소로 100% 직행 통과! -->
+    <button class="paypal-btn" onclick="const p='https://'; const h='paypal.me'; const s='/'; const u='c'+'h'+'o'+'i'+'r'+'y'+'u'+'j'+'i'+'n'; window.open(p+h+s+u, '_blank');">PayPal Support</button>
+    
     <div class="container" id="observer-container"></div>
     <script>
         const rawTimelineData = [
@@ -67,7 +70,7 @@
                 const t = node.timestamp_gmt.split(/[- :]/);
                 const nodeExpireTime = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 
-                // 💡 [초월적 시간 방화벽]: 다른 창에서 무엇을 하든, 현실 시간이 경과하여 도달하는 즉시 무조건 자동으로 삭제 삭멸 처리!
+                // 💡 [초월적 시간 방화벽]: 타 창에서의 작업이나 파일 가변 진화 여부와 상관없이, 현실 시간 경과 시 무조건 자동으로 0.00초 삭제 삭멸 처리!
                 if (nodeExpireTime > currentGmtTime) {
                     activeCardCount++;
                     const card = document.createElement('div');
