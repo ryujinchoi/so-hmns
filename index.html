@@ -25,7 +25,7 @@
         .moment-value { color: #f59e0b; font-size: 1.3rem; font-weight: bold; }
         .kernel-analysis { color: #475569; font-size: 0.75rem; line-height: 1.3; }
         .no-data { text-align: center; color: #64748b; padding: 40px 20px; border: 1px dashed #1e293b; border-radius: 12px; width: 100%; box-sizing: border-box; }
-        .load-more-btn { background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1rem; width: 100%; text-align: center; margin-top: 10px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1); transition: all 0.2s; }
+        .load-more-btn { background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1rem; width: 100%; text-align: center; margin-top: 10px; cursor: pointer; display: block; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1); transition: all 0.2s; }
         .load-more-btn:hover { background-color: #38bdf8; color: #0b0f19; }
     </style>
 </head>
@@ -39,7 +39,6 @@
     <button class="load-more-btn" id="load-more-trigger" onclick="handleLoadMore()">Load Next 4 Real-time Predictions ▼</button>
 
     <script>
-        // [새 이론 기저 하에 동적 재컴파일 수렴되는 256개 글로벌 미래 예측 확장 데이터셋 구조]
         const rawTimelineData = [
             { region: "TAIWAN REGION", location: "Hualien Offshore Subduction Fault Zone (Okinawa Trough Segment)", gps: "GPS Lat/Lng: 24.0315° N, 121.6548° E", timestamp_gmt: "2026-09-10 14:22:45", moment: "M 6.12", delta: "11.2%" },
             { region: "CHILE COAST", location: "Valparaiso Megathrust Interface (Nazca-South American Plate Boundary)", gps: "GPS Lat/Lng: 33.0478° S, 71.6124° W", timestamp_gmt: "2026-09-11 05:47:12", moment: "M 6.75", delta: "8.4%" },
@@ -51,7 +50,6 @@
             { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" }
         ];
 
-        // 💡 글로벌 상태 오염을 영구 방지하는 타임 마진 리미트 고정 선언
         if (!window.maxVisibleLimit) {
             window.maxVisibleLimit = 4;
         }
@@ -69,7 +67,6 @@
                 const t = node.timestamp_gmt.split(/[- :]/);
                 const nodeExpireTime = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 
-                // 💡 [초월적 시간 방화벽]: 타 창에서의 조작이나 수식 변경과 무관하게 현실 시간이 초과되면 즉시 원천 폭파 삭제!
                 if (nodeExpireTime > currentGmtTime) {
                     activeCards.push(node);
                 }
@@ -86,33 +83,30 @@
                         <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
                         <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
                     </div>
-                    <h2 class="region-title" style="color: #10b981;">🌏 ${node.region}</h2>
+                    <h2 class="region-title">🌏 ${node.region}</h2>
                     <div class="location-details">${node.location}</div>
                     <div class="gps-info">📍 ${node.gps}</div>
                     <div class="moment-box">
                         <span class="moment-label">⚡ Calibrated Moment:</span>
                         <span class="moment-value">${node.moment}</span>
                     </div>
-                    <div class="kernel-msg">
+                    <div class="kernel-analysis">
                         💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.02]. Error Delta: ${node.delta}
                     </div>
                 `;
                 container.appendChild(card);
             });
 
-            // 3. 💡 [정밀 수정 부등호 버그 파쇄선]: 백엔드 총 잔여 유효 데이터 세트가 현재 가산선 이상(>=)으로 배후에 남아있다면 버튼 노출 영구 강제 유지!
-            if (activeCards.length > window.maxVisibleLimit) {
-                loadMoreBtn.style.display = 'block';
-            } else {
-                loadMoreBtn.style.display = 'none';
-            }
+            // 💡 [버튼 소멸 결함 완전 차단막]: 배열 조건문 제약을 완전히 배제하고, 버튼의 display 가시성을 언제나 강제로 고정 상주 유도!
+            loadMoreBtn.style.display = 'block';
 
             if (activeCards.length === 0) {
                 container.innerHTML = '<div class="no-data">🌌 모든 과거 만료 노드가 새 이론 기저 하에 완전 청산되었습니다.</div>';
+                loadMoreBtn.style.display = 'none'; // 데이터가 정말 하나도 없을 때만 숨김
             }
         }
 
-        // 💡 [정밀 수정된 누적형 핸들러]: 클릭 시 한계선만 4개씩 영구 가산하고 즉시 뷰포트 강제 갱신
+        // 💡 [정밀 수정된 무한 누적형 핸들러]: 클릭 시 한계선을 4개씩 영구 가산하고 즉시 뷰포트 강제 갱신
         function handleLoadMore() {
             window.maxVisibleLimit += 4;
             renderVerifiedTimeline();
