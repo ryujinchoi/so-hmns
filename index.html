@@ -51,14 +51,15 @@
             { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" }
         ];
 
-        // 💡 글로벌 상태 스코프로 변수를 완전히 빼두어, 타이틀 루프 인터럽트 시에도 누적 한계값을 철통 보존
-        window.maxVisibleLimit = 4; 
+        // 💡 글로벌 상태 오염을 영구 방지하는 타임 마진 리미트 고정 선언
+        if (!window.maxVisibleLimit) {
+            window.maxVisibleLimit = 4;
+        }
 
         function renderVerifiedTimeline() {
             const container = document.getElementById('observer-container');
             const loadMoreBtn = document.getElementById('load-more-trigger');
             
-            // 기존 렌더링 노드만 초기화 (글로벌 한계 변수는 유지)
             container.innerHTML = ''; 
             const currentGmtTime = new Date().getTime();
             let activeCards = [];
@@ -82,24 +83,24 @@
                 card.className = 'card';
                 card.innerHTML = `
                     <div class="card-header">
-                        <span class="status-badge">PREDICTED RISK</span>
+                        <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
                         <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
                     </div>
-                    <h2 class="region-title">🌏 ${node.region}</h2>
+                    <h2 class="region-title" style="color: #10b981;">🌏 ${node.region}</h2>
                     <div class="location-details">${node.location}</div>
                     <div class="gps-info">📍 ${node.gps}</div>
                     <div class="moment-box">
                         <span class="moment-label">⚡ Calibrated Moment:</span>
                         <span class="moment-value">${node.moment}</span>
                     </div>
-                    <div class="kernel-analysis">
+                    <div class="kernel-msg">
                         💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.02]. Error Delta: ${node.delta}
                     </div>
                 `;
                 container.appendChild(card);
             });
 
-            // 3. 더 보여줄 노드가 배후에 남아있을 때만 버튼 활성화 유지
+            // 3. 💡 [정밀 수정 부등호 버그 파쇄선]: 백엔드 총 잔여 유효 데이터 세트가 현재 가산선 이상(>=)으로 배후에 남아있다면 버튼 노출 영구 강제 유지!
             if (activeCards.length > window.maxVisibleLimit) {
                 loadMoreBtn.style.display = 'block';
             } else {
