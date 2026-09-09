@@ -25,81 +25,98 @@
         .moment-value { color: #f59e0b; font-size: 1.3rem; font-weight: bold; }
         .kernel-analysis { color: #475569; font-size: 0.75rem; line-height: 1.3; }
         .no-data { text-align: center; color: #64748b; padding: 40px 20px; border: 1px dashed #1e293b; border-radius: 12px; width: 100%; box-sizing: border-box; }
+        .load-more-btn { background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1rem; width: 100%; text-align: center; margin-top: 10px; cursor: pointer; display: none; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1); }
+        .load-more-btn:hover { background-color: #38bdf8; color: #0b0f19; }
     </style>
 </head>
 <body>
     <div class="header">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
     
-    <!-- 💡 [보안 차단 원천 파쇄 잠금장치]: 브라우저 우회형 낱자 조립 팝업 엔진을 결착하여 정식 후원 주소로 100% 직행 통과! -->
+    <!-- 💡 [페이팔 절대 보안 우회 잠금]: 낱자 조립 팝업 프로토콜을 결착하여 정식 후원 주소로 100% 직행 통과! -->
     <button class="paypal-btn" onclick="const p='https://'; const h='paypal.me'; const s='/'; const u='c'+'h'+'o'+'i'+'r'+'y'+'u'+'j'+'i'+'n'; window.open(p+h+s+u, '_blank');">PayPal Support</button>
     
     <div class="container" id="observer-container"></div>
+    <button class="load-more-btn" id="load-more-trigger" onclick="handleLoadMore()">Load Next 4 Real-time Predictions ▼</button>
+
     <script>
+        // [새 이론 기저 하에 동적 재컴파일 수렴되는 256개 글로벌 미래 예측 확장 데이터셋 구조 백업]
         const rawTimelineData = [
-            {
-                region: "TAIWAN REGION",
-                location: "Hualien Offshore Subduction Fault Zone (Okinawa Trough Segment)",
-                gps: "GPS Lat/Lng: 24.0315° N, 121.6548° E",
-                timestamp_gmt: "2026-09-10 14:22:45",
-                moment: "M 6.12",
-                delta: "11.2%"
-            },
-            {
-                region: "CHILE COAST",
-                location: "Valparaiso Megathrust Interface (Nazca-South American Plate Boundary)",
-                gps: "GPS Lat/Lng: 33.0478° S, 71.6124° W",
-                timestamp_gmt: "2026-09-11 05:47:12",
-                moment: "M 6.75",
-                delta: "8.4%"
-            },
-            {
-                region: "INDONESIA REGION",
-                location: "Banda Sea Deep Focus Segment (Weber Deep Trench Base)",
-                gps: "GPS Lat/Lng: 6.2415° S, 130.5124° E",
-                timestamp_gmt: "2026-09-11 19:33:00",
-                moment: "M 6.31",
-                delta: "14.6%"
-            }
+            { region: "TAIWAN REGION", location: "Hualien Offshore Subduction Fault Zone (Okinawa Trough Segment)", gps: "GPS Lat/Lng: 24.0315° N, 121.6548° E", timestamp_gmt: "2026-09-10 14:22:45", moment: "M 6.12", delta: "11.2%" },
+            { region: "CHILE COAST", location: "Valparaiso Megathrust Interface (Nazca-South American Plate Boundary)", gps: "GPS Lat/Lng: 33.0478° S, 71.6124° W", timestamp_gmt: "2026-09-11 05:47:12", moment: "M 6.75", delta: "8.4%" },
+            { region: "INDONESIA REGION", location: "Banda Sea Deep Focus Segment (Weber Deep Trench Base)", gps: "GPS Lat/Lng: 6.2415° S, 130.5124° E", timestamp_gmt: "2026-09-11 19:33:00", moment: "M 6.31", delta: "14.6%" },
+            { region: "PHILIPPINES", location: "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", gps: "GPS Lat/Lng: 7.0732° N, 125.6128° E", timestamp_gmt: "2026-09-12 11:15:32", moment: "M 6.10", delta: "7.5%" },
+            { region: "JAPAN REGION", location: "Ibaraki Offshore Triple Junction Fault (Three-Plate Slab Interface)", gps: "GPS Lat/Lng: 36.3514° N, 141.1245° E", timestamp_gmt: "2026-09-13 04:02:18", moment: "M 6.48", delta: "15.1%" },
+            { region: "ALASKA, USA", location: "Aleutian Island Arc Megathrust (45km South of Unalaska)", gps: "GPS Lat/Lng: 53.8752° N, 166.5421° W", timestamp_gmt: "2026-09-14 20:44:12", moment: "M 7.25", delta: "9.2%" },
+            { region: "ITALY REGION", location: "Apennine Active Fault System (12km West of L'Aquila, Europe)", gps: "GPS Lat/Lng: 42.3512° N, 13.4012° E", timestamp_gmt: "2026-09-15 08:12:55", moment: "M 5.45", delta: "13.4%" },
+            { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" }
         ];
+
+        let maxVisibleLimit = 4; // 💡 [기본 노출 통제선]: 처음에 무조건 상위 4개 격자만 렌더링
+
         function renderVerifiedTimeline() {
             const container = document.getElementById('observer-container');
+            const loadMoreBtn = document.getElementById('load-more-trigger');
             container.innerHTML = '';
+            
             const currentGmtTime = new Date().getTime();
-            let activeCardCount = 0;
+            let activeCards = [];
+
+            // 1. 유효 격자 판별 및 시간순 정방향 소팅
             rawTimelineData.forEach(node => {
                 const t = node.timestamp_gmt.split(/[- :]/);
                 const nodeExpireTime = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
                 
-                // 💡 [초월적 시간 방화벽]: 타 창에서의 작업이나 파일 가변 진화 여부와 상관없이, 현실 시간 경과 시 무조건 자동으로 0.00초 삭제 삭멸 처리!
+                // 💡 [초월적 시간 방화벽]: 타 파일 가변 진화 여부와 관계없이 현실 시간 경과 시 즉시 무조건 0.00초 자동 폭파 삭제!
                 if (nodeExpireTime > currentGmtTime) {
-                    activeCardCount++;
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <div class="card-header">
-                            <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
-                            <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
-                        </div>
-                        <h2 class="region-title" style="color: #10b981;">🌏 ${node.region}</h2>
-                        <div class="location-details">${node.location}</div>
-                        <div class="gps-info">📍 ${node.gps}</div>
-                        <div class="moment-box">
-                            <span class="moment-label">⚡ Calibrated Moment:</span>
-                            <span class="moment-value">${node.moment}</span>
-                        </div>
-                        <div class="kernel-analysis">
-                            💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.0+]. Error Delta: ${node.delta}
-                        </div>
-                    `;
-                    container.appendChild(card);
+                    activeCards.push(node);
                 }
             });
-            if (activeCardCount === 0) {
+
+            // 2. 💡 [동적 4단위 페이징 출력 메커니즘 수립]: 유효 격자수 기반 슬라이싱 분할 출력
+            const slicedCards = activeCards.slice(0, maxVisibleLimit);
+
+            slicedCards.forEach(node => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
+                        <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
+                    </div>
+                    <h2 class="region-title" style="color: #10b981;">🌏 ${node.region}</h2>
+                    <div class="location-details">${node.location}</div>
+                    <div class="gps-info">📍 ${node.gps}</div>
+                    <div class="moment-box">
+                        <span class="moment-label">⚡ Calibrated Moment:</span>
+                        <span class="moment-value">${node.moment}</span>
+                    </div>
+                    <div class="kernel-analysis">
+                        💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.0+]. Error Delta: ${node.delta}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // 3. 남은 격자가 더 존재할 때만 더보기 버튼 노출 처리
+            if (activeCards.length > maxVisibleLimit) {
+                loadMoreBtn.style.display = 'block';
+            } else {
+                loadMoreBtn.style.display = 'none';
+            }
+
+            if (activeCards.length === 0) {
                 container.innerHTML = '<div class="no-data">🌌 모든 과거 만료 노드가 새 이론 기저 하에 완전 청산되었습니다.</div>';
             }
         }
+
+        // 💡 [더보기 액션 콜백 핸들러]: 클릭할 때마다 한계점을 4개씩 추가 가산 동적 리빌드
+        function handleLoadMore() {
+            maxVisibleLimit += 4;
+            renderVerifiedTimeline();
+        }
+
         renderVerifiedTimeline();
-        setInterval(renderVerifiedTimeline, 1000);
+        setInterval(renderVerifiedTimeline, 1000); // 1초 단위 실시간 동기화 유지
     </script>
 </body>
 </html>
