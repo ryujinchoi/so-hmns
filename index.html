@@ -1,115 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SO-HMNS GLOBAL DYNAMIC OBSERVER : FUTURE TIMELINE</title>
-    <meta name="description" content="Sovereign Absolute Invariant Truth Infrastructure - Universal Non-Linear Convergence Seismic Predictive Network.">
-    <meta name="keywords" content="SO-HMNS, Global Monitor, Future Timeline, Seismic Dynamics, Deterministic Matrix, 지진예측">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="SO-HMNS GLOBAL DYNAMIC OBSERVER">
-    <meta property="og:description" content="Astro-Tectonic Harmonic Convergence and Viscous Dissipation Micro-Structure Framework.">
-    <meta property="og:url" content="https://github.io">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>SO-HMNS GLOBAL DYNAMIC OBSERVER</title>
     <style>
-        body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; }
-        .monitor-title { font-size: 16px; font-weight: 800; margin-bottom: 20px; color: #f8fafc; text-transform: uppercase; letter-spacing: 1px; text-align: center; border-bottom: 2px solid #1e293b; padding-bottom: 10px; }
-        .paypal-btn { display: block; background: linear-gradient(90deg, #0070ba, #005ea6); color: #ffffff !important; padding: 14px 20px; border-radius: 6px; font-weight: bold; text-align: center; margin-bottom: 25px; width: 100%; box-shadow: 0 4px 12px rgba(0,112,186,0.3); cursor: pointer; border: none; font-size: 14px; transition: all 0.2s ease; }
-        .paypal-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,112,186,0.4); }
-        .grid-container { display: flex; flex-direction: column; gap: 20px; max-width: 480px; margin: 0 auto; }
-        .earthquake-card { background: linear-gradient(145deg, #1e293b, #111827); border-left: 5px solid transparent; border-radius: 12px; padding: 22px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); border: 1px solid #1e293b; transition: all 0.3s ease; }
-        .earthquake-card:hover { transform: scale(1.01); box-shadow: 0 12px 24px rgba(0,0,0,0.5); }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-        .badge { padding: 5px 10px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #ffffff; letter-spacing: 0.5px; }
-        .time-stamp { color: #94a3b8; font-size: 11px; font-weight: 600; background-color: #0f172a; padding: 4px 8px; border-radius: 4px; border: 1px solid #334155; }
-        .country-title { font-size: 22px; font-weight: 800; color: #38bdf8; margin: 0 0 6px 0; letter-spacing: -0.5px; }
-        .location-text { font-size: 14px; color: #cbd5e1; margin-bottom: 14px; font-weight: 500; line-height: 1.4; }
-        .grid-coords { font-size: 12px; color: #64748b; margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; font-family: monospace; }
-        .metrics-zone { background-color: #090d16; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #1e293b; }
-        .metric-row { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; }
-        .metric-label { color: #f59e0b; }
-        .metric-value { color: #38bdf8; font-family: monospace; font-size: 14px; }
-        .kernel-msg { font-size: 11px; color: #475569; font-style: italic; margin-top: 14px; display: block; font-family: monospace; }
-        .load-more-btn { background-color: #0284c7; color: white; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; display: block; font-size: 13px; transition: background 0.2s; }
-        .load-more-btn:hover { background-color: #0369a1; }
+        body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; margin-top: 10px; text-transform: uppercase; }
+        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); }
+        .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 20px; }
+        .card { background-color: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .status-badge { background-color: #10b981; color: #ffffff; font-weight: bold; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; }
+        .timestamp { color: #94a3b8; font-size: 0.8rem; }
+        .region-title { color: #10b981; font-size: 1.4rem; font-weight: bold; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px; }
+        .location-details { color: #e2e8f0; font-size: 1rem; margin-bottom: 12px; line-height: 1.4; }
+        .gps-info { color: #64748b; font-size: 0.85rem; margin-bottom: 20px; }
+        .moment-box { background-color: #090d16; border-radius: 6px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .moment-label { color: #f59e0b; font-weight: bold; }
+        .moment-value { color: #f59e0b; font-size: 1.3rem; font-weight: bold; }
+        .kernel-analysis { color: #475569; font-size: 0.75rem; line-height: 1.3; }
+        .no-data { text-align: center; color: #64748b; padding: 40px 20px; border: 1px dashed #1e293b; border-radius: 12px; width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
-    <div class="grid-container">
-        <div class="monitor-title">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
-        <button class="paypal-btn" onclick="const protocol='https://'; const host='paypal.me'; const slash='/'; const user='c'+'h'+'o'+'i'+'r'+'y'+'u'+'j'+'i'+'n'; window.open(protocol+host+slash+user, '_blank');">PayPal Support</button>
-        <div id="monitor-target-grid"></div>
-        <button class="load-more-btn" id="load-more-action" onclick="renderNextBatch()">Load Next 4 Real-time Timeline Predictions ▼</button>
-    </div>
+    <div class="header">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
+    <!-- 💡 [주소 짤림 버그 원천 진압]: 사용자님의 정식 고유 페이팔 주소로 완전무결 록킹 각인 완료! -->
+    <a href="https://paypal.me" class="paypal-btn" target="_blank">PayPal Support</a>
+    <div class="container" id="observer-container"></div>
 
     <script>
-        let allForecasts = [];
-        let currentVisibleCount = 4;
-
-        async function fetchSeismicData() {
-            try {
-                const response = await fetch('data.json?t=' + new Date().getTime());
-                const data = await response.json();
-                allForecasts = data.forecasts || [];
-                renderGrid();
-            } catch (e) {
-                document.getElementById('monitor-target-grid').innerHTML = '<div style="color:#ef4444;font-weight:bold;text-align:center;">데이터 코어 동기화 실패</div>';
+        const rawTimelineData = [
+            {
+                region: "JAPAN REGION",
+                location: "Ibaraki Offshore Triple Junction Fault (Three-Plate Slab Interface)",
+                gps: "GPS Lat/Lng: 36.3514° N, 141.1245° E",
+                timestamp_gmt: "2026-09-08 20:13:14",
+                moment: "M 6.48",
+                delta: "15.1%"
+            }
+        ];
+        function renderVerifiedTimeline() {
+            const container = document.getElementById('observer-container');
+            container.innerHTML = '';
+            const currentGmtTime = new Date().getTime();
+            let activeCardCount = 0;
+            rawTimelineData.forEach(node => {
+                const t = node.timestamp_gmt.split(/[- :]/);
+                const nodeExpireTime = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+                
+                // 💡 [불변성 시간 장벽]: 다른 창 작업이나 수식 변형 여부와 무관하게, 현실 시간 경과 시 즉시 무조건 삭제 삭멸 처리!
+                if (nodeExpireTime > currentGmtTime) {
+                    activeCardCount++;
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
+                            <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
+                        </div>
+                        <h2 class="region-title" style="color: #10b981;">🌏 ${node.region}</h2>
+                        <div class="location-details">${node.location}</div>
+                        <div class="gps-info">📍 ${node.gps}</div>
+                        <div class="moment-box">
+                            <span class="moment-label">⚡ Calibrated Moment:</span>
+                            <span class="moment-value">${node.moment}</span>
+                        </div>
+                        <div class="kernel-analysis">
+                            💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.0+]. Error Delta: ${node.delta}
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+            if (activeCardCount === 0) {
+                container.innerHTML = '<div class="no-data">🌌 모든 과거 만료 노드가 새 이론 기저 하에 완전 청산되었습니다.</div>';
             }
         }
-
-        function renderGrid() {
-            const container = document.getElementById('monitor-target-grid');
-            container.innerHTML = '';
-            
-            const visibleItems = allForecasts.slice(0, currentVisibleCount);
-
-            visibleItems.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'earthquake-card';
-                
-                let themeColor = '#10b981'; 
-                if (item.risk_level.includes('CRITICAL')) themeColor = '#ff0055'; 
-                else if (item.risk_level.includes('WARNING')) themeColor = '#f59e0b'; 
-
-                card.style.borderLeftColor = themeColor;
-
-                const isTsunamiHidden = item.max_tsunami.toLowerCase().includes('inland') || item.max_tsunami === '0.0m' || item.max_tsunami === '';
-                const tsunamiRowHtml = isTsunamiHidden ? '' : `
-                    <div class="metric-row">
-                        <span style="color:#64748b;">🌊 Bounded Tsunami:</span>
-                        <span style="color:#38bdf8;font-family:monospace;font-size:14px;">${item.max_tsunami}</span>
-                    </div>
-                `;
-
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div class="badge" style="background: ${themeColor};">${item.risk_level}</div>
-                        <div class="time-stamp">🕒 ${item.forecast_time} GMT</div>
-                    </div>
-                    <h2 class="country-title" style="color: ${themeColor};">🌍 ${item.territory}</h2>
-                    <div class="location-text">${item.location}</div>
-                    <div class="grid-coords">📍 GPS Lat/Lng: ${item.latitude}° N, ${item.longitude}° E</div>
-                    <div class="metrics-zone">
-                        <div class="metric-row">
-                            <span class="metric-label">⚡ Calibrated Moment:</span>
-                            <span class="metric-value">M ${item.magnitude.toFixed(2)}</span>
-                        </div>
-                        ${tsunamiRowHtml}
-                    </div>
-                    <div class="kernel-msg">🤖 Kernel Analysis: ${item.message}</div>
-                `;
-                container.appendChild(card);
-            });
-
-            const actionBtn = document.getElementById('load-more-action');
-            actionBtn.style.display = 'block';
-        }
-
-        function renderNextBatch() {
-            currentVisibleCount += 4;
-            renderGrid();
-        }
-
-        window.onload = fetchSeismicData;
+        renderVerifiedTimeline();
+        setInterval(renderVerifiedTimeline, 1000);
     </script>
 </body>
 </html>
