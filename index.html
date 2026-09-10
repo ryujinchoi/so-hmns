@@ -4,108 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>SO-HMNS GLOBAL DYNAMIC OBSERVER</title>
+    <title>SO-HMNS GLOBAL REAL-TIME ENFORCED OBSERVER</title>
     <style>
         body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .header { text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; margin-top: 10px; text-transform: uppercase; }
-        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); display: block; }
+        .header { text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; }
+        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; display: block; }
         .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 20px; }
-        .card { background-color: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .card { background-color: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .status-badge { background-color: #10b981; color: #047857; font-weight: bold; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; }
+        .status-badge { background-color: #ef4444; color: #ffffff; font-weight: bold; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; }
         .timestamp { color: #94a3b8; font-size: 0.8rem; }
-        .region-title { color: #10b981; font-size: 1.4rem; font-weight: bold; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px; }
-        .location-details { color: #e2e8f0; font-size: 1rem; margin-bottom: 12px; line-height: 1.4; }
-        .gps-info { color: #64748b; font-size: 0.85rem; margin-bottom: 20px; }
-        .moment-box { background-color: #090d16; border-radius: 6px; padding: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .moment-label { color: #f59e0b; font-weight: bold; }
+        .region-title { color: #f87171; font-size: 1.4rem; font-weight: bold; margin: 0 0 10px 0; }
+        .moment-box { background-color: #090d16; border-radius: 6px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
         .moment-value { color: #f59e0b; font-size: 1.3rem; font-weight: bold; }
-        .kernel-analysis { color: #475569; font-size: 0.75rem; line-height: 1.3; }
-        .load-more-btn { background-color: #38bdf8; color: #0369a1; font-weight: bold; font-size: 1rem; padding: 15px 20px; border-radius: 8px; border: none; width: 100%; max-width: 450px; cursor: pointer; text-align: center; margin-top: 20px; transition: background-color 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
-        .load-more-btn:hover { background-color: #7dd3fc; }
-        .no-data { text-align: center; color: #64748b; padding: 40px 20px; border: 1px dashed #1e293b; border-radius: 12px; width: 100%; box-sizing: border-box; }
+        .api-status { font-size: 0.8rem; color: #10b981; margin-bottom: 20px; font-family: monospace; }
+        .no-data { text-align: center; color: #64748b; padding: 40px; }
     </style>
 </head>
 <body>
-    <div class="header">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
+    <div class="header">🛰️ SO-HMNS GLOBAL REAL-TIME OBSERVER</div>
     <a href="https://paypal.me" class="paypal-btn" target="_blank">PayPal Support</a>
-    
+    <div class="api-status" id="system-status">● SYSTEM INTEGRITY: FETCHING LIVE USGS DATA CHAIN...</div>
     <div class="container" id="observer-container"></div>
-    
-    <button class="load-more-btn" id="load-more" onclick="triggerLoadMore()">Load Next 4 Real-time Predictions ▼</button>
-
     <script>
-        const rawTimelineData = [
-            { region: "ITALY REGION", location: "Apennine Active Fault System (12km West of L'Aquila, Europe)", gps: "GPS Lat/Lng: 42.3512° N, 13.4012° E", timestamp_gmt: "2026-09-15 08:12:55", moment: "M 5.45", delta: "13.4%" },
-            { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" },
-            { region: "TAIWAN REGION", location: "Ryukyu Trench Subduction Interface (Offshore Hualien)", gps: "GPS Lat/Lng: 23.9722° N, 121.6145° E", timestamp_gmt: "2026-09-18 22:14:05", moment: "M 6.18", delta: "10.5%" },
-            { region: "JAPAN REGION", location: "Nankai Trough Megathrust Segment (Offshore Shikoku)", gps: "GPS Lat/Lng: 32.4112° N, 134.1548° E", timestamp_gmt: "2026-09-20 03:45:12", moment: "M 6.92", delta: "9.1%" },
-            { region: "USA WEST", location: "San Andreas Fault Segment (Parkfield Boundary Layer)", gps: "GPS Lat/Lng: 35.8945° N, -120.4321° W", timestamp_gmt: "2026-09-22 11:30:00", moment: "M 5.88", delta: "12.3%" },
-            { region: "NEW ZEALAND", location: "Alpine Fault Invariant Interface (South Island)", gps: "GPS Lat/Lng: 43.5124° S, 170.1245° E", timestamp_gmt: "2026-09-25 14:05:55", moment: "M 6.41", delta: "11.1%" }
-        ];
-
-        let visibleCount = 2;
-
-        function renderVerifiedTimeline() {
+        const USGS_API_URL = "https://usgs.gov";
+        async function fetchRealTimeEarthquakes() {
             const container = document.getElementById('observer-container');
-            container.innerHTML = '';
-            const currentGmtTime = new Date().getTime();
-            let renderedCount = 0;
-
-            const validNodes = rawTimelineData.filter(node => {
-                const t = node.timestamp_gmt.split(/[- :]/);
-                const nodeExpireTime = Date.UTC(t, t-1, t, t, t, t);
-                return nodeExpireTime > currentGmtTime;
-            });
-
-            const sliceNodes = validNodes.slice(0, visibleCount);
-
-            sliceNodes.forEach(node => {
-                renderedCount++;
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="card-header">
-                        <span class="status-badge">PREDICTED RISK</span>
-                        <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
-                    </div>
-                    <h2 class="region-title">🌏 ${node.region}</h2>
-                    <div class="location-details">${node.location}</div>
-                    <div class="gps-info">📍 ${node.gps}</div>
-                    <div class="moment-box">
-                        <span class="moment-label">⚡ Calibrated Moment:</span>
-                        <span class="moment-value">${node.moment}</span>
-                    </div>
-                    <div class="kernel-analysis">
-                        💻 Kernel Analysis: SO-HMNS Invariant Transcendent Firewall [v11.02]. Error Delta: ${node.delta}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-
-            const btn = document.getElementById('load-more');
-            if (visibleCount >= validNodes.length) {
-                btn.style.display = 'none';
-            } else {
-                btn.style.display = 'flex';
-                btn.innerText = `Load Next ${Math.min(4, validNodes.length - visibleCount)} Real-time Predictions ▼`;
-            }
-
-            if (validNodes.length === 0) {
-                container.innerHTML = '<div class="no-data">🌌 모든 과거 만료 노드가 새 이론 기저 하에 완전 청산되었습니다.</div>';
-                btn.style.display = 'none';
+            const statusNode = document.getElementById('system-status');
+            try {
+                const response = await fetch(USGS_API_URL);
+                if (!response.ok) throw new Error("API Connection Failed");
+                const data = await response.json();
+                container.innerHTML = '';
+                statusNode.innerHTML = `● SYSTEM INTEGRITY: ACTIVE (LAST SYNC: ${new Date().toLocaleTimeString()})`;
+                const features = data.features.slice(0, 5);
+                if (features.length === 0) {
+                    container.innerHTML = '<div class="no-data">🌌 현재 지구 전역 매니폴드 상에 고위험 지각 충격파가 관측되지 않았습니다.</div>';
+                    return;
+                }
+                features.forEach(eq => {
+                    const props = eq.properties;
+                    const date = new Date(props.time);
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="status-badge">LIVE SEISMIC EVENT</span>
+                            <span class="timestamp">🕒 ${date.toUTCString()}</span>
+                        </div>
+                        <h2 class="region-title">🌏 ${props.place || "Unknown Location"}</h2>
+                        <div class="moment-box">
+                            <span class="moment-value">M ${props.mag.toFixed(2)}</span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                statusNode.innerHTML = `▲ SYSTEM ARTIFACT: API TIMEOUT`;
+                container.innerHTML = '<div class="no-data">❌ 실시간 피드를 렌더링할 수 없습니다.</div>';
             }
         }
-
-        function triggerLoadMore() {
-            visibleCount += 4;
-            renderVerifiedTimeline();
-        }
-
-        renderVerifiedTimeline();
-        setInterval(renderVerifiedTimeline, 1000);
+        fetchRealTimeEarthquakes();
+        setInterval(fetchRealTimeEarthquakes, 30000);
     </script>
 </body>
 </html>
