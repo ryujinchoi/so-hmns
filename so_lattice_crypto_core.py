@@ -1,1 +1,0 @@
-# Crypto Guard Active: 1786889854
