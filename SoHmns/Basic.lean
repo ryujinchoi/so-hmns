@@ -9,45 +9,40 @@ open BigOperators
 
 namespace SoHmns
 
--- [기존 완착 정리 1 ~ 6 모노톤 상속 보존]
+-- [정리 1: 자연수 분배 법칙 및 Successor 결착]
 theorem nat_distrib_successor_proof (n : Nat) : 2 * (n + 1) = 2 * n + 2 := by
   rw [Nat.mul_add]
   rfl
 
+-- [정리 2: 완전 제곱식 하반연속 대수 격벽]
 theorem real_square_confinement_proof (x y : ℝ) : 2 * x * y ≤ x^2 + y^2 := by
   have h_sq : 0 ≤ (x - y)^2 := sq_nonneg (x - y)
   have h_expand : (x - y)^2 = x^2 - 2 * x * y + y^2 := sub_sq x y
   rw [h_expand] at h_sq
   linarith
 
+-- [정리 3: 실수의 곱셈 교환 대칭성]
 theorem real_mul_commute_proof (a b : ℝ) : a * b = b * a := by
   exact mul_comm a b
 
+-- [정리 4: 실수의 선형 덧셈 결합 법칙]
 theorem real_add_assoc_proof (a b c : ℝ) : (a + b) + c = a + (b + c) := by
   exact add_assoc a b c
 
-theorem real_abs_triangle_inequality_proof (a b : ℝ) : |a + b| Tier ≤ |a| + |b| := by
+-- [정리 5: 실수의 절댓값 삼각부등식]
+theorem real_abs_triangle_inequality_proof (a b : ℝ) : |a + b| ≤ |a| + |b| := by
   exact abs_add a b
 
+-- [정리 6: 유클리드 최대공약수 불변 정리]
 theorem nat_gcd_euclidean_proof (a b : Nat) : Nat.gcd a b = Nat.gcd b (a % b) := by
   exact Nat.gcd_rec a b
 
-/--
-  ## 정리 7: 수학적 귀납법 기반의 등비수열 합 공식 불변성 (Geometric Series Induction Proof)
-  초항이 1이고 공비가 2인 유한 등비수열의 n번째 항까지의 합은 `2^(n + 1) - 1` 과 대수적으로
-  완벽히 동일(Isomorphic)함을 수학적 귀납법 공리계 하에서 커널 단 유도 증명한다.
--/
+-- [정리 7: 수학적 귀납법 기반 등비수열 합 공식]
 theorem nat_geometric_sum_proof (n : Nat) : ∑ i ∈ Finset.range (n + 1), 2^i = 2^(n + 1) - 1 := by
-  -- 1. 자연수 n에 대한 수학적 귀납법(induction) 작용소를 가동합니다.
   induction n with
-  | zero =>
-    -- Base Case: n = 0 일 때의 항등성을 rfl 사상으로 결착합니다.
-    rfl
+  | zero => rfl
   | succ k ih =>
-    -- Inductive Step: n = k 일 때 성립한다고 가정(ih)하고 n = k + 1 일 때를 유도합니다.
     rw [Finset.sum_range_succ, ih]
-    -- 대수적 이항 연산 및 지수 법칙 변형을 linarith 격벽으로 매끄럽게 처리하여
-    -- 단 1비트의 이산적 오차도 없이 전역 그린 라이트 완착을 체결합니다.
     omega
 
 end SoHmns
