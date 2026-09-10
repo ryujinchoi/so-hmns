@@ -40,9 +40,10 @@
                 features.forEach(eq => {
                     const props = eq.properties;
                     const date = new Date(props.time);
+                    const timeStr = date.toUTCString();
                     const card = document.createElement('div');
                     card.className = 'card';
-                    card.innerHTML = `<div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#94a3b8; margin-bottom:15px;"><span>LIVE SEISMIC EVENT</span><span>🕒 ${date.toLocaleTimeString()}</span></div><h2 class="region-title">🌏 ${props.place || "Unknown"}</h2><div style="background-color:#090d16; border-radius:6px; padding:12px; display:flex; justify-content:space-between; align-items:center;"><span class="moment-value">M ${props.mag.toFixed(2)}</span></div>`;
+                    card.innerHTML = `<div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#94a3b8; margin-bottom:15px;"><span>LIVE SEISMIC EVENT</span><span>🕒 ${timeStr}</span></div><h2 class="region-title">🌏 ${props.place || "Unknown"}</h2><div style="background-color:#090d16; border-radius:6px; padding:12px; display:flex; justify-content:space-between; align-items:center;"><span class="moment-value">M ${props.mag.toFixed(2)}</span></div>`;
                     container.appendChild(card);
                 });
             } catch (error) {
