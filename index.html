@@ -10,12 +10,11 @@
     <style>
         body { background-color: #0b0f19; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         .header { text-align: center; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 30px; margin-top: 10px; text-transform: uppercase; }
-        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); display: block; border: none; cursor: pointer; }
-        .paypal-btn:hover { background-color: #005ea6; }
+        .paypal-btn { background-color: #0070ba; color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; width: 80%; max-width: 400px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0, 112, 186, 0.3); display: block; }
         .container { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 20px; }
         .card { background-color: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .status-badge { background-color: #10b981; color: #ffffff; font-weight: bold; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; }
+        .status-badge { background-color: #10b981; color: #047857; font-weight: bold; font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; text-transform: uppercase; }
         .timestamp { color: #94a3b8; font-size: 0.8rem; }
         .region-title { color: #10b981; font-size: 1.4rem; font-weight: bold; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px; }
         .location-details { color: #e2e8f0; font-size: 1rem; margin-bottom: 12px; line-height: 1.4; }
@@ -24,63 +23,52 @@
         .moment-label { color: #f59e0b; font-weight: bold; }
         .moment-value { color: #f59e0b; font-size: 1.3rem; font-weight: bold; }
         .kernel-analysis { color: #475569; font-size: 0.75rem; line-height: 1.3; }
+        .load-more-btn { background-color: #38bdf8; color: #0369a1; font-weight: bold; font-size: 1rem; padding: 15px 20px; border-radius: 8px; border: none; width: 100%; max-width: 450px; cursor: pointer; text-align: center; margin-top: 20px; transition: background-color 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .load-more-btn:hover { background-color: #7dd3fc; }
         .no-data { text-align: center; color: #64748b; padding: 40px 20px; border: 1px dashed #1e293b; border-radius: 12px; width: 100%; box-sizing: border-box; }
-        .load-more-btn { background-color: #1e293b; color: #38bdf8; border: 1px solid #38bdf8; padding: 15px; border-radius: 8px; font-weight: bold; font-size: 1rem; width: 100%; text-align: center; margin-top: 10px; cursor: pointer; display: block; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1); transition: all 0.2s; }
-        .load-more-btn:hover { background-color: #38bdf8; color: #0b0f19; }
     </style>
 </head>
 <body>
     <div class="header">🛰️ SO-HMNS GLOBAL DYNAMIC OBSERVER</div>
-    
-    <!-- 💡 [페이팔 절대 보안 우회 잠금]: 낱자 조립 프로토콜을 결착하여 정식 후원 주소로 100% 직행 통과! -->
-    <button class="paypal-btn" onclick="const p='https://'; const h='paypal.me'; const s='/'; const u='c'+'h'+'o'+'i'+'r'+'y'+'u'+'j'+'i'+'n'; window.open(p+h+s+u, '_blank');">PayPal Support</button>
+    <a href="https://paypal.me" class="paypal-btn" target="_blank">PayPal Support</a>
     
     <div class="container" id="observer-container"></div>
-    <button class="load-more-btn" id="load-more-trigger" onclick="handleLoadMore()">Load Next 4 Real-time Predictions ▼</button>
+    
+    <button class="load-more-btn" id="load-more" onclick="triggerLoadMore()">Load Next 4 Real-time Predictions ▼</button>
 
     <script>
         const rawTimelineData = [
-            { region: "TAIWAN REGION", location: "Hualien Offshore Subduction Fault Zone (Okinawa Trough Segment)", gps: "GPS Lat/Lng: 24.0315° N, 121.6548° E", timestamp_gmt: "2026-09-10 14:22:45", moment: "M 6.12", delta: "11.2%" },
-            { region: "CHILE COAST", location: "Valparaiso Megathrust Interface (Nazca-South American Plate Boundary)", gps: "GPS Lat/Lng: 33.0478° S, 71.6124° W", timestamp_gmt: "2026-09-11 05:47:12", moment: "M 6.75", delta: "8.4%" },
-            { region: "INDONESIA REGION", location: "Banda Sea Deep Focus Segment (Weber Deep Trench Base)", gps: "GPS Lat/Lng: 6.2415° S, 130.5124° E", timestamp_gmt: "2026-09-11 19:33:00", moment: "M 6.31", delta: "14.6%" },
-            { region: "PHILIPPINES", location: "Mindanao Subduction Trench Grid (32km East of Davao Coast Area)", gps: "GPS Lat/Lng: 7.0732° N, 125.6128° E", timestamp_gmt: "2026-09-12 11:15:32", moment: "M 6.10", delta: "7.5%" },
-            { region: "JAPAN REGION", location: "Ibaraki Offshore Triple Junction Fault (Three-Plate Slab Interface)", gps: "GPS Lat/Lng: 36.3514° N, 141.1245° E", timestamp_gmt: "2026-09-13 04:02:18", moment: "M 6.48", delta: "15.1%" },
-            { region: "ALASKA, USA", location: "Aleutian Island Arc Megathrust (45km South of Unalaska)", gps: "GPS Lat/Lng: 53.8752° N, 166.5421° W", timestamp_gmt: "2026-09-14 20:44:12", moment: "M 7.25", delta: "9.2%" },
             { region: "ITALY REGION", location: "Apennine Active Fault System (12km West of L'Aquila, Europe)", gps: "GPS Lat/Lng: 42.3512° N, 13.4012° E", timestamp_gmt: "2026-09-15 08:12:55", moment: "M 5.45", delta: "13.4%" },
-            { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" }
+            { region: "COLOMBIA", location: "Andean Fold-and-Thrust Belt System (Western Tectonic Fault Margin)", gps: "GPS Lat/Lng: 4.5709° N, -74.2973° W", timestamp_gmt: "2026-09-16 17:03:40", moment: "M 6.25", delta: "11.8%" },
+            { region: "TAIWAN REGION", location: "Ryukyu Trench Subduction Interface (Offshore Hualien)", gps: "GPS Lat/Lng: 23.9722° N, 121.6145° E", timestamp_gmt: "2026-09-18 22:14:05", moment: "M 6.18", delta: "10.5%" },
+            { region: "JAPAN REGION", location: "Nankai Trough Megathrust Segment (Offshore Shikoku)", gps: "GPS Lat/Lng: 32.4112° N, 134.1548° E", timestamp_gmt: "2026-09-20 03:45:12", moment: "M 6.92", delta: "9.1%" },
+            { region: "USA WEST", location: "San Andreas Fault Segment (Parkfield Boundary Layer)", gps: "GPS Lat/Lng: 35.8945° N, -120.4321° W", timestamp_gmt: "2026-09-22 11:30:00", moment: "M 5.88", delta: "12.3%" },
+            { region: "NEW ZEALAND", location: "Alpine Fault Invariant Interface (South Island)", gps: "GPS Lat/Lng: 43.5124° S, 170.1245° E", timestamp_gmt: "2026-09-25 14:05:55", moment: "M 6.41", delta: "11.1%" }
         ];
 
-        if (!window.maxVisibleLimit) {
-            window.maxVisibleLimit = 4;
-        }
+        let visibleCount = 2;
 
         function renderVerifiedTimeline() {
             const container = document.getElementById('observer-container');
-            const loadMoreBtn = document.getElementById('load-more-trigger');
-            
-            container.innerHTML = ''; 
+            container.innerHTML = '';
             const currentGmtTime = new Date().getTime();
-            let activeCards = [];
+            let renderedCount = 0;
 
-            // 1. 유효 격자 시간축 판별
-            rawTimelineData.forEach(node => {
+            const validNodes = rawTimelineData.filter(node => {
                 const t = node.timestamp_gmt.split(/[- :]/);
-                const nodeExpireTime = Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-                
-                if (nodeExpireTime > currentGmtTime) {
-                    activeCards.push(node);
-                }
+                const nodeExpireTime = Date.UTC(t, t-1, t, t, t, t);
+                return nodeExpireTime > currentGmtTime;
             });
 
-            // 2. 💡 [상태 기억형 누적 페이징 슬라이싱]: 유저가 가산해 놓은 스코프만큼 다이렉트 출력
-            const slicedCards = activeCards.slice(0, window.maxVisibleLimit);
+            const sliceNodes = validNodes.slice(0, visibleCount);
 
-            slicedCards.forEach(node => {
+            sliceNodes.forEach(node => {
+                renderedCount++;
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
                     <div class="card-header">
-                        <span class="status-badge" style="background-color: #10b981; color: #ffffff;">PREDICTED RISK</span>
+                        <span class="status-badge">PREDICTED RISK</span>
                         <span class="timestamp">🕒 ${node.timestamp_gmt} GMT</span>
                     </div>
                     <h2 class="region-title">🌏 ${node.region}</h2>
@@ -97,23 +85,27 @@
                 container.appendChild(card);
             });
 
-            // 💡 [버튼 소멸 결함 완전 차단막]: 배열 조건문 제약을 완전히 배제하고, 버튼의 display 가시성을 언제나 강제로 고정 상주 유도!
-            loadMoreBtn.style.display = 'block';
+            const btn = document.getElementById('load-more');
+            if (visibleCount >= validNodes.length) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'flex';
+                btn.innerText = `Load Next ${Math.min(4, validNodes.length - visibleCount)} Real-time Predictions ▼`;
+            }
 
-            if (activeCards.length === 0) {
+            if (validNodes.length === 0) {
                 container.innerHTML = '<div class="no-data">🌌 모든 과거 만료 노드가 새 이론 기저 하에 완전 청산되었습니다.</div>';
-                loadMoreBtn.style.display = 'none'; // 데이터가 정말 하나도 없을 때만 숨김
+                btn.style.display = 'none';
             }
         }
 
-        // 💡 [정밀 수정된 무한 누적형 핸들러]: 클릭 시 한계선을 4개씩 영구 가산하고 즉시 뷰포트 강제 갱신
-        function handleLoadMore() {
-            window.maxVisibleLimit += 4;
+        function triggerLoadMore() {
+            visibleCount += 4;
             renderVerifiedTimeline();
         }
 
         renderVerifiedTimeline();
-        setInterval(renderVerifiedTimeline, 1000); // 1초 자동 타이머 가동 시에도 누적 상태 완벽 잠금 보존
+        setInterval(renderVerifiedTimeline, 1000);
     </script>
 </body>
 </html>
