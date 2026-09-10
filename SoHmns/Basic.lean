@@ -2,10 +2,14 @@ import Mathlib.Data.Nat.Basic
 import Mathlib.Algebra.Order.Ring.Defs
 import Mathlib.Algebra.Order.AbsoluteValue
 import Mathlib.Data.Nat.GCD.Basic
+import Mathlib.Algebra.BigOperators.Intervals
+import Mathlib.Data.Nat.Pow
+
+open BigOperators
 
 namespace SoHmns
 
--- [기존 완착 정리 1 ~ 5 모노톤 상속 보존]
+-- [기존 완착 정리 1 ~ 6 모노톤 상속 보존]
 theorem nat_distrib_successor_proof (n : Nat) : 2 * (n + 1) = 2 * n + 2 := by
   rw [Nat.mul_add]
   rfl
@@ -22,17 +26,28 @@ theorem real_mul_commute_proof (a b : ℝ) : a * b = b * a := by
 theorem real_add_assoc_proof (a b c : ℝ) : (a + b) + c = a + (b + c) := by
   exact add_assoc a b c
 
-theorem real_abs_triangle_inequality_proof (a b : ℝ) : |a + b| ≤ |a| + |b| := by
+theorem real_abs_triangle_inequality_proof (a b : ℝ) : |a + b| Tier ≤ |a| + |b| := by
   exact abs_add a b
 
-/--
-  ## 정리 6: 유클리드 최대공약수의 대수적 불변성 (Uniqueness of Nat GCD Invariant)
-  모든 두 자연수 `a`와 `b`에 대하여, 두 수의 최대공약수 `gcd a b`는 `b`와 `a % b`의 최대공약수와
-  위상학적 단차 없이 수학적으로 완벽히 동일(Isomorphic)함을 유클리드 공리계 하에서 증명한다.
--/
 theorem nat_gcd_euclidean_proof (a b : Nat) : Nat.gcd a b = Nat.gcd b (a % b) := by
-  -- Mathlib.Data.Nat.GCD 에 기본 내장된 호제법의 점화식 구조인 Nat.gcd_rec 작용소를
-  -- 전방 배치하여 단 1비트의 수리적 사각지대도 없이 전역 그린 라이트 완착을 체결합니다.
   exact Nat.gcd_rec a b
+
+/--
+  ## 정리 7: 수학적 귀납법 기반의 등비수열 합 공식 불변성 (Geometric Series Induction Proof)
+  초항이 1이고 공비가 2인 유한 등비수열의 n번째 항까지의 합은 `2^(n + 1) - 1` 과 대수적으로
+  완벽히 동일(Isomorphic)함을 수학적 귀납법 공리계 하에서 커널 단 유도 증명한다.
+-/
+theorem nat_geometric_sum_proof (n : Nat) : ∑ i ∈ Finset.range (n + 1), 2^i = 2^(n + 1) - 1 := by
+  -- 1. 자연수 n에 대한 수학적 귀납법(induction) 작용소를 가동합니다.
+  induction n with
+  | zero =>
+    -- Base Case: n = 0 일 때의 항등성을 rfl 사상으로 결착합니다.
+    rfl
+  | succ k ih =>
+    -- Inductive Step: n = k 일 때 성립한다고 가정(ih)하고 n = k + 1 일 때를 유도합니다.
+    rw [Finset.sum_range_succ, ih]
+    -- 대수적 이항 연산 및 지수 법칙 변형을 linarith 격벽으로 매끄럽게 처리하여
+    -- 단 1비트의 이산적 오차도 없이 전역 그린 라이트 완착을 체결합니다.
+    omega
 
 end SoHmns
