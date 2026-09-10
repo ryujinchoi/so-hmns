@@ -7,3 +7,4 @@ require mathlib from git
 @[default_target]
 lean_lib «SoHmns» where
   srcDir := "."
+  roots := #[`SoHmns.Basic]
