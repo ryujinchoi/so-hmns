@@ -2,6 +2,7 @@ import Mathlib.Data.Nat.Basic
 import Mathlib.Data.Real.Basic
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
+import Mathlib.Algebra.Ring.Basic
 
 namespace SoHmns
 
@@ -11,7 +12,6 @@ namespace SoHmns
   완벽히 동형(Isomorphic)임을 Mathlib 4 표준 분배 정리인 left_distrib으로 완전 입증한다.
 -/
 theorem nat_distrib_successor_proof (n : Nat) : 2 * (n + 1) = 2 * n + 2 := by
-  -- left_distrib은 임의의 가환 반환(Commutative Semiring)에서 분배 법칙을 수행하는 절대 정리입니다.
   rw [left_distrib]
   rfl
 
