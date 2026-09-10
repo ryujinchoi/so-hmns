@@ -11,6 +11,7 @@ theorem nat_distrib_successor_proof (n : Nat) : 2 * (n + 1) = 2 * n + 2 := by
 theorem real_square_confinement_proof (x y : Real) : 2 * x * y ≤ x^2 + y^2 := by
   have h_sq : 0 ≤ (x - y)^2 := sq_nonneg (x - y)
   have h_expand : (x - y)^2 = x^2 - 2 * x * y + y^2 := by ring
+  rw [h_expand] at h_sq
   linarith
 
 theorem real_mul_commute_proof (a b : Real) : a * b = b * a := by
