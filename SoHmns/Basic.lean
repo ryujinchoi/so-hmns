@@ -14,4 +14,7 @@ structure DarkUniverseConfinement where d_density : Real → Real; c_bound : Rea
 structure EconomicsEquilibrium where e_demand : Real → Real; m_vol : Real; h_e : ∀ t, e_demand t ≤ m_vol
 structure ProteinFoldingConfinement where f_energy : Real → Real; t_bound : Real; h_f : ∀ t, f_energy t ≤ t_bound
 structure AbcConjectureClosure where r_ev : Real → Real; e_bound : Real; h_abc : ∀ t, r_ev t ≤ e_bound
+structure SatoTateMeasureConfinement where t_density : Real → Real; c_limit : Real; h_c_pos : c_limit > 0; h_tr : ∀ t, t_density t ≤ c_limit
+structure FloerHomologySymplecticConfinement where a_gradient : Real → Real; a_limit : Real; h_a_pos : a_limit > 0; h_gr : ∀ t, a_gradient t ≤ a_limit
+structure KakeyaMaximalOperatorConfinement where h_bound : Real → Real; b_limit : Real; h_b_pos : b_limit > 0; h_op : ∀ t, h_bound t ≤ b_limit
 end SoHmns
