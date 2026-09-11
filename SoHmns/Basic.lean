@@ -5,7 +5,6 @@ import Mathlib.Tactic.Ring
 import Mathlib.Algebra.GroupPower.Basic
 import Mathlib.Data.Nat.GCD.Basic
 import Mathlib.Algebra.BigOperators.Intervals
-import Mathlib.Data.Nat.Pow
 
 open BigOperators
 
