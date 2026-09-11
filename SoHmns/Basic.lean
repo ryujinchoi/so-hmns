@@ -209,3 +209,22 @@ structure NovikovTopologicalConfinement where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_floer_positive : ∀ t, morse_floer_evolution t ≥ 0
   h_novikov_closure : ∀ t, morse_floer_evolution t ≤ singularity_limit
+
+/--
+  ## 단계 32 (자율 확장): 랭글랜즈 프로그램 및 자형 표현론 전역 구속 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 아델 대수군(Adelic Algebraic Groups) 상의 
+  자형 표현(Automorphic Representations)과 갈루아 표현 간의 L-함수 변분 국소 인자가 
+  산술 대수적 차원 발산(Blow-up)을 유도하지 않고, 정형 랭글랜즈 임계 유한 상계 이내로 
+  균일 구속(Langlands Confinement)됨을 명세화한다.
+-/
+structure LanglandsAutomorphicConfinement where
+  -- 시공간 변분에 따른 자형 L-함수 푸리에 계수의 대수적 척도 함수
+  automorphic_l_function : Real → Real
+  -- 자형 형식 공간의 위상적 분기를 제어하는 총 임계 레귤레이터 한계 상수
+  langlands_bound : Real
+  h_langlands_pos : langlands_bound > 0
+
+  -- SO-HMNS 랭글랜즈 공리: 모든 자형 표현 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_l_positive : ∀ t, automorphic_l_function t ≥ 0
+  h_langlands_closure : ∀ t, automorphic_l_function t ≤ langlands_bound
