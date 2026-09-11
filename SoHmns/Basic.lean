@@ -260,3 +260,5 @@ structure WeilConjecturesZetaClosure where Frobenius_eigenvalue_evolution : Real
 structure SerreConjectureModularClosure where galois_rep_residual : Real → Real; modular_weight_limit : Real; h_weight_pos : modular_weight_limit > 0; h_rep_nonneg : ∀ t, galois_rep_residual t ≥ 0; h_serre_closure : ∀ t, galois_rep_residual t ≤ modular_weight_limit
 
 structure Stage76 where v:Real; h:v≥0; b:v≤1
+
+structure Stage76 where v:Real; h:v≥0; b:v≤1
