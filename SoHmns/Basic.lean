@@ -125,3 +125,21 @@ structure BirchSwinnertonDyerClosure where
   system_limit : Real
   h_coefficient_positive : ∀ t, fourier_bound t ≥ 0
   h_modular_closure : ∀ t, fourier_bound t ≤ system_limit
+
+/--
+  ## 단계 17 (신규 확장): 칼라비-야우 다양체 상의 거울 대칭성 위상 폐쇄 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 6차원 복소 캘러 다양체의 거울 쌍(Mirror Pair) 간의
+  위상학적 플럭스 텐서와 주형 순환 변분이 무한 발산(Blow-up)을 일으키지 않고
+  초끈 기하학적 임계 유한 상계 이내로 균일 수속 합치(Mirror Symmetry Closure)됨을 명세화한다.
+-/
+structure MirrorSymmetryTopologicalClosure where
+  -- 칼라비-야우 매니폴드 상의 위상학적 사이클 플럭스 변분 함수
+  flux_tensor : Real → Real
+  -- 초차원 끈 공간이 지닌 기하학적 수렴 임계 상수
+  string_limit : Real
+  h_string_pos : string_limit > 0
+
+  -- SO-HMNS 초끈 기하 공리: 모든 거울 대칭 변분 매핑 수치는 상시 비음수이며,
+  -- 끈 이론적 위상 상한선 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_flux_positive : ∀ t, flux_tensor t ≥ 0
+  h_string_closure : ∀ t, flux_tensor t ≤ string_limit
