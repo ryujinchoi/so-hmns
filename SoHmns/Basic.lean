@@ -256,3 +256,5 @@ structure GrothendieckStandardConjectures where motive_algebraic_cycle : Real �
 structure LittlewoodConjectureConfinement where diophantine_approximation_norm : Real → Real; littlewood_inf_limit : Real; h_inf_pos : littlewood_inf_limit > 0; h_norm_nonneg : ∀ t, diophantine_approximation_norm t ≥ 0; h_littlewood_closure : ∀ t, diophantine_approximation_norm t ≤ littlewood_inf_limit
 
 structure WeilConjecturesZetaClosure where Frobenius_eigenvalue_evolution : Real → Real; zeta_polynomial_limit : Real; h_zeta_pos : zeta_polynomial_limit > 0; h_frob_nonneg : ∀ t, Frobenius_eigenvalue_evolution t ≥ 0; h_weil_closure : ∀ t, Frobenius_eigenvalue_evolution t ≤ zeta_polynomial_limit
+
+structure SerreConjectureModularClosure where galois_rep_residual : Real → Real; modular_weight_limit : Real; h_weight_pos : modular_weight_limit > 0; h_rep_nonneg : ∀ t, galois_rep_residual t ≥ 0; h_serre_closure : ∀ t, galois_rep_residual t ≤ modular_weight_limit
