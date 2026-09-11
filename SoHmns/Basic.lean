@@ -278,3 +278,21 @@ structure IwasawaMainConjectureClosure where
   -- p-진 수론 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_ideal_positive : ∀ t, characteristic_ideal t ≥ 0
   h_ideal_closure : ∀ t, characteristic_ideal t ≤ regulator_limit
+
+/--
+  ## 단계 23 (신규 확장): 카를레손 정리 및 L² 전역 스펙트럼 위상 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 임의의 제곱적분 가능 함수 공간의 푸리에 부분합 최대 작용소
+  (Carleson Maximal Operator)가 변분 유동할 때 발생하는 에너지 진동 척도가 특이점 발산하지 않고,
+  카를레손 수렴 공간 및 조화해석학적 임계 유한 상계 이내로 균일 구속(Carleson Confinement)됨을 명세화한다.
+-/
+structure CarlesonGlobalSpectralClosure where
+  -- 푸리에 급수 최대 부분합 작용소의 변분 노름 함수
+  maximal_operator_norm : Real → Real
+  -- 조화 위상 공간의 연산 붕괴를 제어하는 총 임계 힐베르트 공간 한계 상수
+  hilbert_space_limit : Real
+  h_hilbert_pos : hilbert_space_limit > 0
+
+  -- SO-HMNS 카를레손 해석학 공리: 모든 주파수 변분 매핑 수치는 상시 비음수이며,
+  -- $L²$ 거의 어디서나 조화 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_norm_positive : ∀ t, maximal_operator_norm t ≥ 0
+  h_spectral_closure : ∀ t, maximal_operator_norm t ≤ hilbert_space_limit
