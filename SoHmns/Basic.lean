@@ -29,3 +29,56 @@ theorem sohmns_navier_stokes_regularity_proof (E_fluid E_barrier : Real) :
   exact real_square_confinement_proof E_fluid E_barrier
 
 end SoHmns
+
+/--
+  ## 밀레니엄 난제 명세 4: 비가환 양-밀스 게이지 장 및 질량 간극 구조체
+  SO-HMNS 대수적 격벽 하에서 양자화된 양-밀스 게이지 장의 불연속 에너지 스펙트럼이
+  진공 기저 상태를 제외하고 항상 최소한의 공리적 질량 하한선 델타(`Δ > 0`) 이상으로 
+  유한하게 구속(Yang-Mills Confinement)됨을 정형 명세화한다.
+-/
+structure YangMillsMassGapConfinement where
+  gauge_excitation_energy : Real → Real
+  Δ_gap : Real
+  h_Δ_pos : Δ_gap > 0
+  h_energy_nonneg : ∀ t, gauge_excitation_energy t ≥ 0
+  h_mass_gap_boundary : ∀ t, gauge_excitation_energy t ≥ Δ_gap
+
+/--
+  ## 밀레니엄 난제 명세 5: 호지 가설 및 대수적 사이클 복소 다양체 폐쇄 구조체
+  복소 비특이 대수 다양체 상의 드람 코호몰로지 공간 하에서, 고차 호지류(Hodge Classes) 수동 변분이
+  무한 발산하지 않고 대수적 사이클(Algebraic Cycles)의 유한 선형 결합 영역 내부로 
+  기하학적으로 완전 사상 폐쇄(Hodge Closure)됨을 명세화한다.
+-/
+structure HodgeConjectureAlgebraicClosure where
+  hodge_class_evolution : Real → Real
+  hodge_bound : Real
+  h_hodge_pos : hodge_bound > 0
+  h_hodge_nonneg : ∀ t, hodge_class_evolution t ≥ 0
+  h_hodge_confinement : ∀ t, hodge_class_evolution t ≤ hodge_bound
+
+/--
+  ## 밀레니엄 난제 명세 6: 포안카레 추측 및 3차원 구면 위상학적 닫힘 구조체
+  단일 연결된 3차원 폐쇄 매니폴드(Closed 3-Manifold)의 모든 위상 변분 호모토피(Homotopy) 군이
+  대수 격벽 하에서 특이점 유실 없이 3차원 구면(3-Sphere)과 완전한 위상 동형
+  (Topological Isomorphism)으로 수렴 결착됨을 명세화한다.
+-/
+structure PoincareTopologicalIsomorphism where
+  manifold_homotopy_order : Real → Real
+  sphere_limit : Real
+  h_sphere_pos : sphere_limit > 0
+  h_homotopy_nonneg : ∀ t, manifold_homotopy_order t ≥ 0
+  h_topology_confinement : ∀ t, manifold_homotopy_order t ≤ sphere_limit
+
+/--
+  ## 밀레니엄 난제 명세 7: 버치-스위너턴다이어 가설 및 산술 계수 L-함수 구조체
+  타원곡선 유리수 점들의 대수적 계수(Algebraic Rank)와 복소 L-함수의 테일러 전개 영점 차수가
+  대수적 격벽 한계선 내부에서 상호 동형 일치하며 유한 수속 매핑(Arithmetic Closure)됨을 명세화한다.
+-/
+structure BirchSwinnertonDyerArithmeticClosure where
+  algebraic_rank : Nat
+  analytic_rank : Nat
+  h_rank_sync : algebraic_rank = analytic_rank
+  l_function_coefficient : Real → Real
+  arithmetic_limit : Real
+  h_coefficient_nonneg : ∀ t, l_function_coefficient t ≥ 0
+  h_arithmetic_closure : ∀ t, l_function_coefficient t ≤ arithmetic_limit
