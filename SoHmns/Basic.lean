@@ -386,3 +386,21 @@ structure DonaldsonThomasTopologicalClosure where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_partition_positive : ∀ t, dt_partition_evolution t ≥ 0
   h_dt_closure : ∀ t, dt_partition_evolution t ≤ sheaf_dimension_limit
+
+/--
+  ## 단계 29 (신규 확장): 사이베르그-위텐 가설 및 초대칭 게이지 장 위상 기하 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 4차원 스무스 매니폴드 상의 스핀 구조와 수반되는
+  사이베르그-위텐(Seiberg-Witten) 가상 독점 모듈라이 공간 및 게이지 필드 단면 방정식이
+  수학적 위상 발산(Blow-up)을 유도하지 않고, 정형 SW 임계 유한 상계 이내로 균일 구속(SW Confinement)됨을 명세화한다.
+-/
+structure SeibergWittenTopologicalClosure where
+  -- 시공간 변분에 따른 사이베르그-위텐 게이지 필드의 가상 동형 매핑 함수
+  sw_monopole_evolution : Real → Real
+  -- 미분 위상 공간의 붕괴를 제어하는 총 임계 스핀 수렴 상한 상수
+  spin_dimension_limit : Real
+  h_spin_pos : spin_dimension_limit > 0
+
+  -- SO-HMNS 사이베르그-위텐 공리: 모든 게이지 단면 변분 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_monopole_positive : ∀ t, sw_monopole_evolution t ≥ 0
+  h_sw_closure : ∀ t, sw_monopole_evolution t ≤ spin_dimension_limit
