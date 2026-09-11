@@ -85,21 +85,10 @@ structure FiniteGroupAlgebraicClosure where
   h_order_positive : ∀ t, group_order t ≥ 0
   h_group_closure : ∀ t, group_order t ≤ monster_limit
 
-/--
-  ## 단계 14 (신규 확장): 타원곡선 대수 다양체 및 모듈러 형식 수론적 기하 폐쇄 구조체
-  SO-HMNS 완전제곱식 격벽 한계선 내부에서 임의의 복소 대수 다양체 상의 L-함수와
-  모듈러 형식(Modular Form) 간의 푸리에 변분 계수가 무한 발산(Blow-up)을 일으키지 않고
-  상위 첨점 형식(Cusp Form)의 유한 상계 이내로 균일 수속 매핑(Arithmetic Closure)됨을 명세화한다.
--/
 structure ArithmeticGeometricModularClosure where
-  -- 대수 기하적 타원곡선의 변분 푸리에 계수 척도 함수
   fourier_coefficient : Real → Real
-  -- 첨점 형식 공간이 지닌 가상 수론적 임계 한계 상수
   modular_limit : Real
   h_modular_pos : modular_limit > 0
-
-  -- SO-HMNS 산술 수론 공리: 모든 모듈러 변분 매핑 수치는 상시 비음수이며,
-  -- 수론적 기하 상한선 내부로 대수학적 완전 폐쇄를 이룬다.
   h_coefficient_positive : ∀ t, fourier_coefficient t ≥ 0
   h_modular_closure : ∀ t, fourier_coefficient t ≤ modular_limit
 
