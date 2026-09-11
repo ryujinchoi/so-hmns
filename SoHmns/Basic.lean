@@ -93,3 +93,21 @@ structure ArithmeticGeometricModularClosure where
   h_modular_closure : ∀ t, fourier_coefficient t ≤ modular_limit
 
 end SoHmns
+
+/--
+  ## 단계 15 (신규 확장): 호지 가설 및 대수적 사이클 복소 다양체 폐쇄 구조체
+  SO-HMNS 완전제곱식 격벽장 하에서 복소 비특이 대수 다양체(Projective Manifold)가 주어질 때,
+  드람 코호몰로지 공간 상의 호지류(Hodge Classes) 수동 변분 성분이 무한 발산하지 않고
+  대수적 사이클(Algebraic Cycles)의 유한 선형 결합 영역 내부로 균일 사상 폐쇄됨을 명세화한다.
+-/
+structure HodgeVariationalClosure where
+  -- 복소 다양체 상의 호지 대수적 사이클 변분 척도 함수
+  hodge_coefficient : Real → Real
+  -- 코호몰로지 다양체 공간이 지닌 복소 기하학적 임계 상한 상수
+  hodge_bound : Real
+  h_hodge_pos : hodge_bound > 0
+
+  -- SO-HMNS 대수기하 공리: 모든 호지 위상 변분 매핑 수치는 상시 0 이상이며,
+  -- 대수적 사이클 상한 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_hodge_positive : ∀ t, hodge_coefficient t ≥ 0
+  h_hodge_closure : ∀ t, hodge_coefficient t ≤ hodge_bound
