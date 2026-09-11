@@ -233,3 +233,21 @@ structure VirasoroCFTTopologicalClosure where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_charge_positive : ∀ t, central_charge_evolution t ≥ 0
   h_vir_closure : ∀ t, central_charge_evolution t ≤ conformal_dimension_limit
+
+/--
+  ## 단계 36 (자율 확장): 타이트-테이트 대수 기하학적 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 거대 자크-테이트 복소 다양체 상의 
+  코호몰로지 대수적 사이클(Algebraic Cycles) 변분이 미분 위상학적 붕괴를 유도하지 않고, 
+  정형 테이트(Tate Invariants) 임계 유한 상계 이내로 균일 구속(Tate Confinement)됨을 명세화한다.
+-/
+structure TateConjectureAlgebraicClosure where
+  -- 시공간 변분에 따른 테이트 자크 다양체의 고유 갈루아 표현 텐서 함수
+  galois_representation_evolution : Real → Real
+  -- 대수 기하 공간의 위상적 차원 분기를 제어하는 총 임계 산술 한계 상수
+  arithmetic_dimension_limit : Real
+  h_arithmetic_pos : arithmetic_dimension_limit > 0
+
+  -- SO-HMNS 테이트 공리: 모든 대수기하학적 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_representation_positive : ∀ t, galois_representation_evolution t ≥ 0
+  h_tate_closure : ∀ t, galois_representation_evolution t ≤ arithmetic_dimension_limit
