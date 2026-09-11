@@ -258,3 +258,5 @@ structure LittlewoodConjectureConfinement where diophantine_approximation_norm :
 structure WeilConjecturesZetaClosure where Frobenius_eigenvalue_evolution : Real → Real; zeta_polynomial_limit : Real; h_zeta_pos : zeta_polynomial_limit > 0; h_frob_nonneg : ∀ t, Frobenius_eigenvalue_evolution t ≥ 0; h_weil_closure : ∀ t, Frobenius_eigenvalue_evolution t ≤ zeta_polynomial_limit
 
 structure SerreConjectureModularClosure where galois_rep_residual : Real → Real; modular_weight_limit : Real; h_weight_pos : modular_weight_limit > 0; h_rep_nonneg : ∀ t, galois_rep_residual t ≥ 0; h_serre_closure : ∀ t, galois_rep_residual t ≤ modular_weight_limit
+
+structure Stage76 where v:Real; h:v≥0; b:v≤1
