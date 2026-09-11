@@ -250,3 +250,5 @@ structure MotivicCohomologyConfinement where
 structure QuantumHallTopologicalClosure where conductance_tensor : Real → Real; hall_conductivity_limit : Real; h_hall_pos : hall_conductivity_limit > 0; h_tensor_positive : ∀ t, conductance_tensor t ≥ 0; h_hall_closure : ∀ t, conductance_tensor t ≤ hall_conductivity_limit
 
 structure HawkingInformationConfinement where event_horizon_entropy : Real → Real; planck_information_limit : Real; h_planck_pos : planck_information_limit > 0; h_entropy_positive : ∀ t, event_horizon_entropy t ≥ 0; h_information_closure : ∀ t, event_horizon_entropy t ≤ planck_information_limit
+
+structure GrothendieckStandardConjectures where motive_algebraic_cycle : Real → Real; hodge_numerical_limit : Real; h_num_pos : hodge_numerical_limit > 0; h_cycle_nonneg : ∀ t, motive_algebraic_cycle t ≥ 0; h_cycle_closure : ∀ t, motive_algebraic_cycle t ≤ hodge_numerical_limit
