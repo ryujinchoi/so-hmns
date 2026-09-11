@@ -64,22 +64,36 @@ structure GlobalSpacetimeCurvatureClosure where
   h_curvature_positive : ∀ t, riemann_curvature t ≥ 0
   h_spacetime_closure : ∀ t, riemann_curvature t ≤ cosmological_bound
 
-/--
-  ## 단계 11 (신규 확장): 비가환 양-밀스 게이지 장 및 질량 간극 명세 구조체
-  SO-HMNS 완전제곱식 격벽장 하에서 강한 상호작용의 게이지 대칭성이 양자화될 때,
-  진공 상태를 제외한 임의의 들뜬 양자 상태의 불연속 에너지 스펙트럼이 
-  절대적인 질량 하한선 델타(`Δ > 0`) 이하로 소산 소멸하지 않고 구속됨을 명세화한다.
--/
 structure YangMillsMassGap where
-  -- 비가환 게이지 대칭 격자 에너지 스펙트럼 함수
   excitation_energy : Real → Real
-  -- 진공 상태 밖에서 존재해야 하는 정량적 질량 간극 최하 상한 상수
   Δ_gap : Real
   h_Δ_pos : Δ_gap > 0
-
-  -- SO-HMNS 게이지 보존 공리: 모든 들뜬 양자 고유 상태의 총 대수적 위상 에너지는
-  -- 진공 기저보다 상시 높으며 최소한의 에너지 장벽 `Δ_gap` 이상으로 영구 구속된다.
   h_energy_positive : ∀ t, excitation_energy t ≥ 0
   h_mass_gap_confinement : ∀ t, excitation_energy t ≥ Δ_gap
+
+structure DonaldsonTopologicalClosure where
+  donaldson_invariant : Real → Real
+  topological_bound : Real
+  h_topological_pos : topological_bound > 0
+  h_invariant_positive : ∀ t, donaldson_invariant t ≥ 0
+  h_topological_closure : ∀ t, donaldson_invariant t ≤ topological_bound
+
+/--
+  ## 단계 13 (신규 확장): 유한 단순군 분류 및 그리스 몬스터 하위 텐서 매핑 구조체
+  SO-HMNS 대수적 닫힘 조건 하에서 임의의 유한 단순군(Finite Simple Group)의 
+  차수(Order) 변분 함수가 우주 최대 유한 대수 구조인 피셔-그리스 몬스터 군(Monster Group)의 
+  고유 매니폴드 내부로 발산 없이 유한 수속 매핑(Algebraic Closure)됨을 명세화한다.
+-/
+structure FiniteGroupAlgebraicClosure where
+  -- 추상대수적 유한군의 기하학적 차수 척도 함수
+  group_order : Real → Real
+  -- 몬스터 군의 가상 대수적 한계 기저 상수
+  monster_limit : Real
+  h_monster_pos : monster_limit > 0
+
+  -- SO-HMNS 군론 보존 공리: 모든 군론적 차수 매팅 수치는 상시 0 이상이며,
+  -- 몬스터 군이 지닌 최대 상한선 내부로 대수학적 완전 닫힘을 이룬다.
+  h_order_positive : ∀ t, group_order t ≥ 0
+  h_group_closure : ∀ t, group_order t ≤ monster_limit
 
 end SoHmns
