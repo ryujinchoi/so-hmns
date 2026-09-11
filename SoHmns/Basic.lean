@@ -246,3 +246,5 @@ structure MotivicCohomologyConfinement where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_motivic_positive : ∀ t, motivic_class_evolution t ≥ 0
   h_motivic_closure : ∀ t, motivic_class_evolution t ≤ motivic_bound
+
+structure QuantumHallTopologicalClosure where conductance_tensor : Real → Real; hall_conductivity_limit : Real; h_hall_pos : hall_conductivity_limit > 0; h_tensor_positive : ∀ t, conductance_tensor t ≥ 0; h_hall_closure : ∀ t, conductance_tensor t ≤ hall_conductivity_limit
