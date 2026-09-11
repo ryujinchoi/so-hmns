@@ -143,3 +143,21 @@ structure MirrorSymmetryTopologicalClosure where
   -- 끈 이론적 위상 상한선 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_flux_positive : ∀ t, flux_tensor t ≥ 0
   h_string_closure : ∀ t, flux_tensor t ≤ string_limit
+
+/--
+  ## 단계 18 (신규 확장): 프리드만 방정식 및 우주 가속 팽창 부등식 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 일반상대론 기반의 우주 스케일 인자(Scale Factor) `a(t)`의
+  시간 가속도 변분과 암흑에너지 척도가 무한 발산(Blow-up)을 일으키지 않고
+  프리드만 우주론적 임계 유한 상계 이내로 균일 구속(Friedmann Expansion Confinement)됨을 명세화한다.
+-/
+structure FriedmannExpansionConfinement where
+  -- 시간에 따른 우주 팽창 스케일 인자의 가속도 변분 함수
+  expansion_acceleration : Real → Real
+  -- 우주 가속을 제어하는 총 임계 밀도 한계 상수
+  cosmological_density_limit : Real
+  h_density_pos : cosmological_density_limit > 0
+
+  -- SO-HMNS 우주론 공리: 모든 가속 팽창 변분 매핑 수치는 상시 비음수이며,
+  -- 프리드만 경계 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_acceleration_positive : ∀ t, expansion_acceleration t ≥ 0
+  h_expansion_closure : ∀ t, expansion_acceleration t ≤ cosmological_density_limit
