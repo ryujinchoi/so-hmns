@@ -215,3 +215,21 @@ structure GeometricLanglandsTopologicalClosure where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_sheaf_positive : ∀ t, hecke_sheaf_evolution t ≥ 0
   h_geometric_closure : ∀ t, hecke_sheaf_evolution t ≤ langlands_geometric_bound
+
+/--
+  ## 단계 35 (자율 확장): 비라소로 정형 등각장론 위상 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 2차원 등각장론(Conformal Field Theory) 매니폴드 상의
+  비라소로 대수(Virasoro Algebra) 중앙 전하(Central Charge) 및 에너지-모멘텀 텐서의 고차 변분이
+  물리적 위상 붕괴를 유도하지 않고, 정형 CFT 임계 유한 상계 이내로 균일 구속(Virasoro Confinement)됨을 명세화한다.
+-/
+structure VirasoroCFTTopologicalClosure where
+  -- 시공간 변분에 따른 비라소로 연산자 대수의 고유 중앙 전하 스펙트럼 함수
+  central_charge_evolution : Real → Real
+  -- 등각 위상 공간의 대수적 대칭 붕괴를 제어하는 총 임계 플랑크 차원 한계 상수
+  conformal_dimension_limit : Real
+  h_conformal_pos : conformal_dimension_limit > 0
+
+  -- SO-HMNS 비라소로 공리: 모든 등각장론적 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_charge_positive : ∀ t, central_charge_evolution t ≥ 0
+  h_vir_closure : ∀ t, central_charge_evolution t ≤ conformal_dimension_limit
