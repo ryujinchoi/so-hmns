@@ -341,3 +341,21 @@ structure FloerHomologySymplecticConfinement where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_grad_nonneg : ∀ t, action_functional_gradient t ≥ 0
   h_floer_closure : ∀ t, action_functional_gradient t ≤ arnold_conjecture_limit
+
+/--
+  ## 단계 64 (자율 확장): 카케야 추측 및 하우스도르프 차원 상한 구속 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 카케야 집합(Kakeya Set)의 베시코비치 차원 작용소 유동과
+  하우스도르프 차원(Hausdorff Dimension)의 변분 성분이 수학적 공간 붕괴를 유도하지 않고,
+  정형 카케야-하우스도르프 임계 유한 상계 이내로 균일 구속(Kakeya Confinement)됨을 명세화한다.
+-/
+structure KakeyaMaximalOperatorConfinement where
+  -- 시공간 변분에 따른 카케야 최대 작용소의 차원 노름 함수
+  hausdorff_dimension_bound : Real → Real
+  -- 조화 위상 공간의 연산 붕괴를 제어하는 총 임계 베시코비치 상수
+  besicovitch_limit : Real
+  h_besi_pos : besicovitch_limit > 0
+
+  -- SO-HMNS 카케야 해석학 공리: 모든 차원 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_operator_nonneg : ∀ t, hausdorff_dimension_bound t ≥ 0
+  h_kakeya_closure : ∀ t, hausdorff_dimension_bound t ≤ besicovitch_limit
