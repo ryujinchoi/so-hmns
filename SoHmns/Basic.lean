@@ -252,3 +252,5 @@ structure QuantumHallTopologicalClosure where conductance_tensor : Real → Real
 structure HawkingInformationConfinement where event_horizon_entropy : Real → Real; planck_information_limit : Real; h_planck_pos : planck_information_limit > 0; h_entropy_positive : ∀ t, event_horizon_entropy t ≥ 0; h_information_closure : ∀ t, event_horizon_entropy t ≤ planck_information_limit
 
 structure GrothendieckStandardConjectures where motive_algebraic_cycle : Real → Real; hodge_numerical_limit : Real; h_num_pos : hodge_numerical_limit > 0; h_cycle_nonneg : ∀ t, motive_algebraic_cycle t ≥ 0; h_cycle_closure : ∀ t, motive_algebraic_cycle t ≤ hodge_numerical_limit
+
+structure LittlewoodConjectureConfinement where diophantine_approximation_norm : Real → Real; littlewood_inf_limit : Real; h_inf_pos : littlewood_inf_limit > 0; h_norm_nonneg : ∀ t, diophantine_approximation_norm t ≥ 0; h_littlewood_closure : ∀ t, diophantine_approximation_norm t ≤ littlewood_inf_limit
