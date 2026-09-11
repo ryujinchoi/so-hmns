@@ -43,22 +43,29 @@ structure GlobalChaosControlClosure where
   h_lyapunov_positive : ∀ t, lyapunov_energy t ≥ 0
   h_global_stability : ∀ t, lyapunov_energy t ≤ lyapunov_energy 0 * (1 / (1 + control_gain * t))
 
-/--
-  ## 단계 8 (신규 확장): 하드웨어 정칙성 구속 및 메모리 누수 방지 명세 구조체
-  수리적 카오스 통제장 하에서 구동되는 실물 하드웨어의 자원 소비 및 페이지 메모리 엔트로피가
-  물리적 한계선을 초과하여 커널 패닉(Blow-up)을 일으키지 않고 영구히 유한 상계 이내로 
-  누수 없이 구속(Memory Confinement)됨을 전산학적으로 최종 명세화한다.
--/
 structure HardwareRegularityConfinement where
-  -- 런타임 클록 주기에 따른 가용 메모리 변분 함수
   memory_leak_rate : Real → Real
-  -- 프로세서 코어 최대 열화 한계 상수
   thermal_limit : Real
   h_thermal_pos : thermal_limit > 0
-
-  -- SO-HMNS 하드웨어 보존 공리: 임의의 런타임 주행 시간 `t` 상에서, 자원 누수율은 상시 0이며
-  -- 코어 열화 엔트로피 유동량은 하드웨어 임계 한계선 이내로 상시 바운딩된다.
   h_zero_leak : ∀ t, memory_leak_rate t = 0
   h_hardware_safety : ∀ t, memory_leak_rate t ≤ thermal_limit
+
+/--
+  ## 단계 9 (신규 확장): 양자 변분 격벽 및 파동 함수 균일 수렴 명세 구조체
+  SO-HMNS 제어망 속의 유동 매니폴드가 슈뢰딩거 에너지 퍼텐셜과 결합할 때,
+  복소 복사 에너지의 전역 고차 노름(L^p Norm)이 특이점 분기(Blow-up)를 유도하지 않고
+  상시 정상 파동 상태로 한계 구속(Quantum Confinement)됨을 정형 명세화한다.
+-/
+structure QuantumVariationalBarrier where
+  -- 시간에 따른 양자 상태 파동 함수의 확률 밀도 텐서
+  wave_density : Real → Real
+  -- 계의 총 양자 결맞음 한계 상수
+  coherence_limit : Real
+  h_coherence_pos : coherence_limit > 0
+
+  -- SO-HMNS 양자 결착 공리: 임의의 유동 주행 시간 `t` 상에서, 파동 확률 밀도는 상시 0 이상이며
+  -- 외부 물리 섭동 에너지에 의해 양자 결맞음 상한선을 파괴하지 않고 균일 수렴 구속된다.
+  h_density_positive : ∀ t, wave_density t ≥ 0
+  h_quantum_stability : ∀ t, wave_density t ≤ coherence_limit
 
 end SoHmns
