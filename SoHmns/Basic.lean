@@ -305,3 +305,21 @@ structure SeibergWittenTopologicalClosure where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_monopole_positive : ∀ t, sw_monopole_evolution t ≥ 0
   h_sw_closure : ∀ t, sw_monopole_evolution t ≤ spin_dimension_limit
+
+/--
+  ## 단계 62 (정사 및 확장): 사토-테이트 가설 및 compact 위상 구속 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 타원곡선의 Frobenius 트레이스 밀도 분포 함수와
+  해당 compact 리 군(Lie Group)의 Haar 측도 변분이 산술 수론적 발산(Blow-up)을 유도하지 않고,
+  정형 사토-테이트 임계 유한 상계 이내로 균일 구속(Sato-Tate Confinement)됨을 명세화한다.
+-/
+structure SatoTateMeasureConfinement where
+  -- 타원곡선 p-진 트레이스 오차 분포 밀도 함수
+  trace_distribution_density : Real → Real
+  -- 위상 공간의 연산 붕괴를 제어하는 총 임계 compact 군 상한 상수
+  compact_group_limit : Real
+  h_compact_pos : compact_group_limit > 0
+
+  -- SO-HMNS 사토-테이트 공리: 모든 주형 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_trace_nonneg : ∀ t, trace_distribution_density t ≥ 0
+  h_sato_tate_closure : ∀ t, trace_distribution_density t ≤ compact_group_limit
