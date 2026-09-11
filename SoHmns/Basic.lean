@@ -206,3 +206,21 @@ structure ChaosEntropyConfinementV19 where
   h_limit_pos : information_limit > 0
   h_entropy_positive : ∀ t, entropy_stream t ≥ 0
   h_shannon_closure : ∀ t, entropy_stream t ≤ information_limit
+
+/--
+  ## 단계 19 (신규 확장): 비선형 정보 엔트로피 및 샤논-리아푸노프 제어 부등식 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 고차 복잡계 시스템이 유동할 때 발생하는
+  정보 엔트로피(Information Entropy)의 시간당 발산 및 소산 부하가 무한대로 Blow-up하지 않고
+  샤논 상한 경계면과 리아푸노프 임계 유한 상계 이내로 균일 구속(Entropy Confinement)됨을 명세화한다.
+-/
+structure ShannonLyapunovEntropyConfinement where
+  -- 시간에 따른 정보 엔트로피의 변분 함수
+  entropy_evolution : Real → Real
+  -- 시스템 자원 수렴을 보장하는 총 임계 정보 밀도 한계 상수
+  shannon_density_limit : Real
+  h_shannon_pos : shannon_density_limit > 0
+
+  -- SO-HMNS 통계 정보 공리: 모든 엔트로피 변분 매핑 수치는 상시 비음수이며,
+  -- 샤논 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_entropy_positive : ∀ t, entropy_evolution t ≥ 0
+  h_entropy_closure : ∀ t, entropy_evolution t ≤ shannon_density_limit

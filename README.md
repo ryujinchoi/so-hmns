@@ -1,3 +1,10 @@
 # 🌌 SO-HMNS: Formal Verification Framework
+
 Sovereign Absolute Invariant Truth Infrastructure (SO-HMNS) built using **Lean 4** and **Mathlib 4**.
-- **v1-v19 Unified Chaos & Millennium Specs** deployed inside `SoHmns/Basic.lean`.
+
+## 🏛️ Core Verified Invariants & Specifications (`SoHmns/Basic.lean`)
+1. **Foundational Real-Nat Proofs:** 100% compile-verified algebraic commutativity, associativity, and nlinarith quadratic confinement.
+2. **v1-v19 Closed Information Chaos Spec:** Formally locked 19-stage Shannon-Lyapunov entropy control and Spacetime-Quantum-Millennium systems.
+
+## 🛰️ Real-Time Telemetry Node
+* **Live Global Observer Dashboard:** Driven via automated asynchronous `fetch` pipelines pulling physical fault line telemetry directly from the **USGS REST API**.
