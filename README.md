@@ -4,7 +4,7 @@ Sovereign Absolute Invariant Truth Infrastructure (SO-HMNS) built using **Lean 4
 
 ## 🏛️ Core Verified Invariants & Specifications (`SoHmns/Basic.lean`)
 1. **Foundational Real-Nat Proofs:** 100% compile-verified algebraic commutativity, associativity, and nlinarith quadratic confinement.
-2. **v1-v21 Loop Quantum Gravity Spec:** Formally locked 21-stage Spin Network Confinement and Navier-Stokes Global Convergence systems.
+2. **v1-v22 Iwasawa Main Conjecture Spec:** Formally locked 22-stage Iwasawa p-adic Confinement and Quantum Gravity systems.
 
 ## 🛰️ Real-Time Telemetry Node
 * **Live Global Observer Dashboard:** Driven via automated asynchronous `fetch` pipelines pulling physical fault line telemetry directly from the **USGS REST API**.

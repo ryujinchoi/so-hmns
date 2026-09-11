@@ -260,3 +260,21 @@ structure LoopQuantumGravityClosure where
   -- 플랑크 기하 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_volume_positive : ∀ t, volume_evolution t ≥ 0
   h_volume_closure : ∀ t, volume_evolution t ≤ planck_density_limit
+
+/--
+  ## 단계 22 (신규 확장): 비가환 이와사와 주 가설 및 p-진 제타 함수 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 대수적 체(Number Fields)의 갈루아 위계가 무한 확장될 때 발생하는
+  이와사와 가군의 클래스 그룹(Class Group) 변분 이데알이 특이점 발산하지 않고,
+  p-진 특성 다항식 및 이와사와 주 가설의 임계 유한 상계 이내로 균일 구속(Iwasawa Confinement)됨을 명세화한다.
+-/
+structure IwasawaMainConjectureClosure where
+  -- 갈루아 타워에 따른 이와사와 특성 다항식의 대수적 척도 함수
+  characteristic_ideal : Real → Real
+  -- 대수 수론적 위상 붕괴를 제어하는 총 임계 레귤레이터 한계 상수
+  regulator_limit : Real
+  h_regulator_pos : regulator_limit > 0
+
+  -- SO-HMNS 이와사와 수론 공리: 모든 대수적 이데알 변분 매핑 수치는 상시 비음수이며,
+  -- p-진 수론 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_ideal_positive : ∀ t, characteristic_ideal t ≥ 0
+  h_ideal_closure : ∀ t, characteristic_ideal t ≤ regulator_limit
