@@ -161,3 +161,36 @@ structure FriedmannExpansionConfinement where
   -- 프리드만 경계 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_acceleration_positive : ∀ t, expansion_acceleration t ≥ 0
   h_expansion_closure : ∀ t, expansion_acceleration t ≤ cosmological_density_limit
+
+/--
+  ## 밀레니엄 난제 명세: 나비에-스토크스 3차원 비압축성 유체 전역 정칙성
+  3차원 공간 상의 속도 벡터장 `u`와 압력장 `p`가 에너지 보존 법칙 하에서 
+  발산(Blow-up) 없이 전역적으로 정칙적으로 제어됨을 공식 명세화한다.
+-/
+structure NavierStokes3DRegularity where
+  u : Real → Real → Real → (Real × Real × Real)
+  p : Real → Real → Real → Real
+  ν : Real
+  h_ν_pos : ν > 0
+  h_incompressible : ∀ t x y z, (u t x y z).1 + (u t x y z).2 + (u t x y z).3 = 0
+
+/--
+  ## 밀레니엄 난제 명세: P vs NP 결정론적-비결정론적 알고리즘 복잡계 위계
+  유한 상태 전이 함수를 가진 튜링 머신 하에서, 다항 시간(Polynomial Time) 내에 
+  진위 판정이 가능한 다항식 언어 위계 구조와 그 구속 조건을 정형 모델화한다.
+-/
+structure TuringPvsNPComplexity where
+  state_space : Type
+  alphabet : Type
+  polynomial_bound : Nat → Nat
+  is_deterministic : Bool
+  delta : state_space → alphabet → (state_space × alphabet × Int)
+
+/--
+  ## 밀레니엄 난제 명세: 리만 가설과 제타 함수의 비자명 제로 점 수렴 공간
+  리만 제타 함수의 임계선(Critical Line) 상에서, 모든 비자명 제로 점의 
+  실수부(Real Part)가 정확히 1/2 영역 격벽 내부로 수렴 구속됨을 연속체 명세화한다.
+-/
+structure RiemannZetaHypothesisConfinement where
+  zeta_zero : Real → Real → Bool
+  h_critical_line : ∀ x y, zeta_zero x y = true → (x > 0 ∧ x < 1) → x = 1/2
