@@ -254,3 +254,5 @@ structure HawkingInformationConfinement where event_horizon_entropy : Real → R
 structure GrothendieckStandardConjectures where motive_algebraic_cycle : Real → Real; hodge_numerical_limit : Real; h_num_pos : hodge_numerical_limit > 0; h_cycle_nonneg : ∀ t, motive_algebraic_cycle t ≥ 0; h_cycle_closure : ∀ t, motive_algebraic_cycle t ≤ hodge_numerical_limit
 
 structure LittlewoodConjectureConfinement where diophantine_approximation_norm : Real → Real; littlewood_inf_limit : Real; h_inf_pos : littlewood_inf_limit > 0; h_norm_nonneg : ∀ t, diophantine_approximation_norm t ≥ 0; h_littlewood_closure : ∀ t, diophantine_approximation_norm t ≤ littlewood_inf_limit
+
+structure WeilConjecturesZetaClosure where Frobenius_eigenvalue_evolution : Real → Real; zeta_polynomial_limit : Real; h_zeta_pos : zeta_polynomial_limit > 0; h_frob_nonneg : ∀ t, Frobenius_eigenvalue_evolution t ≥ 0; h_weil_closure : ∀ t, Frobenius_eigenvalue_evolution t ≤ zeta_polynomial_limit
