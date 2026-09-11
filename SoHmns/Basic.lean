@@ -296,3 +296,21 @@ structure CarlesonGlobalSpectralClosure where
   -- $L²$ 거의 어디서나 조화 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_norm_positive : ∀ t, maximal_operator_norm t ≥ 0
   h_spectral_closure : ∀ t, maximal_operator_norm t ≤ hilbert_space_limit
+
+/--
+  ## 단계 24 (신규 확장): 사사키 위상 기하학적 닫힘 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 거대 사사키-아인슈타인 다양체 상의 캘러-리치 흐름
+  (Kähler-Ricci Flow) 및 곡률 변분 텐서가 유동할 때 발생하는 기하학적 변형 척도가 특이점 발산하지 않고,
+  사사키 수렴 공간 및 미분기하학적 임계 유한 상계 이내로 균일 구속(Sasaki Confinement)됨을 명세화한다.
+-/
+structure SasakiTopologicalClosure where
+  -- 캘러-리치 흐름에 따른 기하학적 곡률 텐서의 변분 함수
+  ricci_curvature_flow : Real → Real
+  -- 미분기하 위상 공간의 연산 붕괴를 제어하는 총 임계 아인슈타인 공간 한계 상수
+  einstein_space_limit : Real
+  h_einstein_pos : einstein_space_limit > 0
+
+  -- SO-HMNS 사사키 기하 공리: 모든 기하학적 곡률 변분 매핑 수치는 상시 비음수이며,
+  -- 캘러-리치 흐름 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_flow_positive : ∀ t, ricci_curvature_flow t ≥ 0
+  h_sasaki_closure : ∀ t, ricci_curvature_flow t ≤ einstein_space_limit
