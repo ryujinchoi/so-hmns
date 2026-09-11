@@ -36,22 +36,29 @@ structure GlobalConservationClosure where
   h_mass_conservation : ∀ t, velocity_divergence t = 0
   h_momentum_confinement : ∀ t, momentum_tensor t ≤ system_limit
 
-/--
-  ## 단계 7 (최종 마감): 전역 카오스 통제 및 위상학적 안착 명세 구조체
-  1~6단계의 대수적 격벽, 점성 소산 field, 와도 제어, 질량 보존 레이어를 통합 결착하여
-  계 전체의 요동성 리아푸노프 함수(Lyapunov Function)가 발산하지 않고 
-  영구히 유한 상계선 이내로 감쇄 안착(Stable Settlement)됨을 최종 명세화한다.
--/
 structure GlobalChaosControlClosure where
-  -- 전체 시스템의 총 리아푸노프 위상 에너지 함수
   lyapunov_energy : Real → Real
-  -- 카오스 발산을 억제하는 고유 감쇄 계수
   control_gain : Real
   h_gain_pos : control_gain > 0
-
-  -- SO-HMNS 최종 안착 공리: 계의 에너지 총량은 시간에 따라 지속적으로 감소하거나 
-  -- 영구적인 감쇄 한계선 이내로 안정 결착된다.
   h_lyapunov_positive : ∀ t, lyapunov_energy t ≥ 0
   h_global_stability : ∀ t, lyapunov_energy t ≤ lyapunov_energy 0 * (1 / (1 + control_gain * t))
+
+/--
+  ## 단계 8 (신규 확장): 하드웨어 정칙성 구속 및 메모리 누수 방지 명세 구조체
+  수리적 카오스 통제장 하에서 구동되는 실물 하드웨어의 자원 소비 및 페이지 메모리 엔트로피가
+  물리적 한계선을 초과하여 커널 패닉(Blow-up)을 일으키지 않고 영구히 유한 상계 이내로 
+  누수 없이 구속(Memory Confinement)됨을 전산학적으로 최종 명세화한다.
+-/
+structure HardwareRegularityConfinement where
+  -- 런타임 클록 주기에 따른 가용 메모리 변분 함수
+  memory_leak_rate : Real → Real
+  -- 프로세서 코어 최대 열화 한계 상수
+  thermal_limit : Real
+  h_thermal_pos : thermal_limit > 0
+
+  -- SO-HMNS 하드웨어 보존 공리: 임의의 런타임 주행 시간 `t` 상에서, 자원 누수율은 상시 0이며
+  -- 코어 열화 엔트로피 유동량은 하드웨어 임계 한계선 이내로 상시 바운딩된다.
+  h_zero_leak : ∀ t, memory_leak_rate t = 0
+  h_hardware_safety : ∀ t, memory_leak_rate t ≤ thermal_limit
 
 end SoHmns
