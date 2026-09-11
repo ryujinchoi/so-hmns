@@ -57,22 +57,29 @@ structure QuantumVariationalBarrier where
   h_density_positive : ∀ t, wave_density t ≥ 0
   h_quantum_stability : ∀ t, wave_density t ≤ coherence_limit
 
-/--
-  ## 단계 10 (최종 결착 계층): 시공간 매니폴드 및 리만 곡률 텐서 위상 폐쇄 명세 구조체
-  1~9단계의 모든 하반연속 부등식 제어와 양자 확률 밀도 Confinement 기저를 통합 사상하여,
-  전역 시공간 리만 곡률 매트릭스의 발산 엔트로피가 0에 수렴하고 
-  우주 구조 자체가 기하학적으로 완벽히 닫힘(Stable Manifold Closure)을 최종 명세화한다.
--/
 structure GlobalSpacetimeCurvatureClosure where
-  -- 시공간 아인슈타인-리만 텐서 변분 곡률 함수
   riemann_curvature : Real → Real
-  -- 계의 총 기하학적 우주 한계 상수
   cosmological_bound : Real
   h_cosmological_pos : cosmological_bound > 0
-
-  -- SO-HMNS 시공간 보존 공리: 우주의 곡률 변분 총량은 상시 비음수이며,
-  -- 대수 격벽 구조 하에서 우주 임계 상한선 내부로 완벽하게 균일 수렴 구속된다.
   h_curvature_positive : ∀ t, riemann_curvature t ≥ 0
   h_spacetime_closure : ∀ t, riemann_curvature t ≤ cosmological_bound
+
+/--
+  ## 단계 11 (신규 확장): 비가환 양-밀스 게이지 장 및 질량 간극 명세 구조체
+  SO-HMNS 완전제곱식 격벽장 하에서 강한 상호작용의 게이지 대칭성이 양자화될 때,
+  진공 상태를 제외한 임의의 들뜬 양자 상태의 불연속 에너지 스펙트럼이 
+  절대적인 질량 하한선 델타(`Δ > 0`) 이하로 소산 소멸하지 않고 구속됨을 명세화한다.
+-/
+structure YangMillsMassGap where
+  -- 비가환 게이지 대칭 격자 에너지 스펙트럼 함수
+  excitation_energy : Real → Real
+  -- 진공 상태 밖에서 존재해야 하는 정량적 질량 간극 최하 상한 상수
+  Δ_gap : Real
+  h_Δ_pos : Δ_gap > 0
+
+  -- SO-HMNS 게이지 보존 공리: 모든 들뜬 양자 고유 상태의 총 대수적 위상 에너지는
+  -- 진공 기저보다 상시 높으며 최소한의 에너지 장벽 `Δ_gap` 이상으로 영구 구속된다.
+  h_energy_positive : ∀ t, excitation_energy t ≥ 0
+  h_mass_gap_confinement : ∀ t, excitation_energy t ≥ Δ_gap
 
 end SoHmns
