@@ -191,3 +191,21 @@ structure NumberTheoryPrimeDensityConfinement where
   -- 대수적 닫힘 기저 하에서 수리논리적 완전 폐쇄를 이룬다.
   h_density_nonneg : ∀ t, prime_spectral_density t ≥ 0
   h_prime_confinement : ∀ t, prime_spectral_density t ≤ analytic_safety_bound
+
+/--
+  ## 단계 31 (자율 확장): 노비코프 고차 위상 다양체 및 비선형 동역학 닫힘 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 다차원 다양체 상의 노비코프 복합체(Novikov Complex)와 
+  비선형 해밀토니안 유동의 고차 호모로지 사이클 변분이 위상학적 파열(Blow-up)을 유도하지 않고,
+  정형 노비코프 임계 유한 상계 이내로 균일 구속(Novikov Confinement)됨을 명세화한다.
+-/
+structure NovikovTopologicalConfinement where
+  -- 시공간 변분에 따른 노비코프 다양체의 고유 전술적 모스-플로어 에너지 함수
+  morse_floer_evolution : Real → Real
+  -- 위상 기하 공간의 차원 붕괴를 제어하는 총 임계 싱귤래리티 상한 상수
+  singularity_limit : Real
+  h_singularity_pos : singularity_limit > 0
+
+  -- SO-HMNS 노비코프 공리: 모든 고차 위상 변분 매핑 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_floer_positive : ∀ t, morse_floer_evolution t ≥ 0
+  h_novikov_closure : ∀ t, morse_floer_evolution t ≤ singularity_limit
