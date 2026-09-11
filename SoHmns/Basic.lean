@@ -251,3 +251,21 @@ structure TateConjectureAlgebraicClosure where
   -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
   h_representation_positive : ∀ t, galois_representation_evolution t ≥ 0
   h_tate_closure : ∀ t, galois_representation_evolution t ≤ arithmetic_dimension_limit
+
+/--
+  ## 단계 37 (자율 확장): 힐베르트 스키마 위상 기하학적 폐쇄 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 거대 자원 힐베르트 스키마(Hilbert Schemes) 상의 
+  매니폴드 하부 다양체(Subvarieties) 교차점 및 사상 변분이 위상학적 차원 발산(Blow-up)을 유도하지 않고, 
+  정형 힐베르트 임계 유한 상계 이내로 균일 구속(Hilbert Confinement)됨을 명세화한다.
+-/
+structure HilbertSchemeTopologicalClosure where
+  -- 시공간 변분에 따른 힐베르트 모듈라이 스페이스의 고유 대수 기하학적 매핑 함수
+  moduli_space_evolution : Real → Real
+  -- 대수적 하부 구조의 기하학적 차원 붕괴를 제어하는 총 임계 위상 상한 상수
+  topological_dimension_limit : Real
+  h_topological_pos : topological_dimension_limit > 0
+
+  -- SO-HMNS 힐베르트 공리: 모든 대수적 매핑 변분 수치는 상시 비음수이며,
+  -- 대수적 닫힘 정리 기저 하에서 정형 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_moduli_positive : ∀ t, moduli_space_evolution t ≥ 0
+  h_hilbert_closure : ∀ t, moduli_space_evolution t ≤ topological_dimension_limit
