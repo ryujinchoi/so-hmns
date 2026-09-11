@@ -242,3 +242,21 @@ structure GlobalNavierStokesConvergence where
   -- 대수학적 닫힘 정리 기저 하에서 최종 수렴 한계 격벽 내부로 영구히 구속된다.
   h_energy_nonneg : ∀ t, global_sobolev_energy t ≥ 0
   h_global_convergence : ∀ t, global_sobolev_energy t ≤ ultimate_convergence_bound
+
+/--
+  ## 단계 21 (신규 확장): 루프 양자 중력 및 시공간 스핀 네트워크 격자 닫힘 명세 구조체
+  SO-HMNS 완전제곱식 격벽 한계선 내부에서 미시 시공간 매니폴드가 양자화될 때 발생하는
+  스핀 네트워크 격자의 부피 변분 엔트로피가 무한대로 발산하지 않고, 플랑크 단위체 영역 및
+  루프 양자 중력의 임계 유한 상계 이내로 균일 구속(Quantum Gravity Confinement)됨을 명세화한다.
+-/
+structure LoopQuantumGravityClosure where
+  -- 시간에 따른 플랑크 스케일 스핀 네트워크의 부피 고유값 변분 함수
+  volume_evolution : Real → Real
+  -- 시공간 위상 붕괴를 제어하는 총 임계 기하 밀도 한계 상수
+  planck_density_limit : Real
+  h_planck_pos : planck_density_limit > 0
+
+  -- SO-HMNS 양자 중력 공리: 모든 공간 고유 변분 매핑 수치는 상시 비음수이며,
+  -- 플랑크 기하 제어 격벽 내부로 수리논리적 완전 폐쇄를 이룬다.
+  h_volume_positive : ∀ t, volume_evolution t ≥ 0
+  h_volume_closure : ∀ t, volume_evolution t ≤ planck_density_limit
