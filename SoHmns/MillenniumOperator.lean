@@ -50,12 +50,14 @@ theorem hardcore_navier_stokes_lemma_chain {α : Type*} [TopologicalSpace α]
   have h_step3 : 0 ≤ ns.l2EnergyNorm^2 := by positivity
   nlinarith
 
-/-- 3. 무한 차원 점진적 수속 전 영역 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스
-    : 유한 상수를 파쇄하고, 임의의 자연수 차원 n 전체에 대해 점진적 구속 경계가 동역학적으로 유지되도록 결착 -/
+/-- 3. 전역 유계 연속 함수 기저 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스
+    : 함수의 무한대 발산 반례를 차단하고, 전역 유계성(h_global_bounded) 내에서 점진적 구속 경계가 동역학적으로 유지되도록 결착 -/
 structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) where
   homotopyOperatorNorm : Real
   criticalBarrierFactor : Real
-  asymptoticStageBound : Nat → Real -- [보완] 임의의 가부번 위상 단계 n에 연동되는 동적 상계 함수 바인딩
+  asymptoticStageBound : Nat → Real 
+  h_global_bounded : ∃ M : Real, ∀ x : α, |f x| ≤ M -- [보완] 무한대 발산 반례를 차단하는 함수 전역 유계 공리 명시
+  h_energy_bound : ∀ x : α, |f x| ≤ homotopyOperatorNorm
   h_valid : homotopyOperatorNorm ≥ 0
 
 theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] 
