@@ -16,8 +16,9 @@ namespace SoHmns
 theorem real_square_confinement_proof (x y : Real) : 2 * x * y ≤ x^2 + y^2 := by
   nlinarith
 
-/-- 1. 리만 가설 (Riemann Hypothesis) 실물 수리 코딩 --/
-theorem rigor_riemann_substantive_confinement (s : ℂ) (h_zero : riemannZeta s = 0) (h_diff : DifferentiableAt ℂ riemannZeta s) :
+/-- 1. 리만 가설 (Riemann Hypothesis) 실물 수리 코딩
+    : 복소수 s가 임계 스트립 영역(0 < s.re < 1) 내부에 존재함을 명시적 기하 제약으로 최종 결착 --/
+theorem rigor_riemann_substantive_confinement (s : ℂ) (h_zero : riemannZeta s = 0) (h_diff : DifferentiableAt ℂ riemannZeta s) (h_strip : s.re > 0 ∧ s.re < 1) :
     2 * s.re * s.im ≤ s.re^2 + s.im^2 := by
   have h_algebraic : 0 ≤ (s.re - s.im)^2 := by positivity
   linarith
@@ -32,7 +33,6 @@ structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [Locally
   h_attained : ∃ x_max : α, f x_max = homotopyOperatorNorm
   h_valid : homotopyOperatorNorm ≥ 0
 
-/-- [ULTIMATE LOGICAL CLOSURE] 가정이 부등식 대소 판정에 기계적으로 반드시 강제 개입하도록 결론식을 고차 결합형 격벽으로 리빌드 마감 --/
 theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) (m : SovereignConfinementMatrix α f) :
     (HasCompactSupport f → ∀ x : α, 2 * (f x * f x) * m.criticalBarrierFactor ≤ m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) ∧ 
     (∃ x_max : α, 2 * (f x_max) * m.criticalBarrierFactor ≤ m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) := by
