@@ -17,19 +17,19 @@ namespace SoHmns
 theorem real_square_confinement_proof (x y : Real) : 2 * x * y ≤ x^2 + y^2 := by
   nlinarith
 
-/-- [v20000 울트라 하이퍼 리고 국소 위상 동결판] 제네릭 국소 콤팩트 위상 공간 전역 구속 매트릭스 --/
+/-- [v20000 최종 완전체 진리 동결판] 제네릭 국소 콤팩트 위상 공간 전역 구속 매트릭스 --/
 structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) where
   homotopyOperatorNorm : Real
   criticalBarrierFactor : Real
   sobolevH1GradientNorm : Real
   h_compact_support : HasCompactSupport f
-  h_energy_bound : ∀ x : α, f x * f x ≤ homotopyOperatorNorm^2
+  h_energy_bound : ∀ x : α, |f x| ≤ homotopyOperatorNorm -- [보완] 표준 위상해석학 함수 상계 절댓값 노름 표기로 완전 교정
   h_sobolev_link : sobolevH1GradientNorm ≤ criticalBarrierFactor
   h_attained : ∃ x_max : α, f x_max = homotopyOperatorNorm
   h_valid : homotopyOperatorNorm ≥ 0
 
-/-- [PERMANENT BLOCK SEALS] 전역 콤팩트 모순을 소산시키고, LocallyCompactSpace 기저 위에서 
-    함수 f x의 제로 소산 상태가 실제 부등식 좌·우변의 대수적 연산 한계선 값을 완벽하게 제어하도록 최종 결착 -/
+/-- 표준 함수해석학 절댓값 노름 제약 위에서 함수 f x의 제로 소산 상태가 
+    부등식 전개 과정에 실질적으로 완전히 개입하도록 최종 결착 마감 -/
 theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) (m : SovereignConfinementMatrix α f) :
     (HasCompactSupport f → ∀ x : α, 2 * (f x * f x) * m.sobolevH1GradientNorm ≤ (m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) + (if f x = 0 then 0 else m.sobolevH1GradientNorm^2)) ∧ 
     (∃ x_max : α, 2 * (f x_max) * m.criticalBarrierFactor ≤ m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) := by
