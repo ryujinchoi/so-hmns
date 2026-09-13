@@ -7,7 +7,7 @@ import Mathlib.Data.Complex.Basic
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.Analysis.Calculus.Deriv.Basic
 import Mathlib.Topology.Basic
-import Mathlib.Topology.Compactness.CompactSpace
+import Mathlib.Topology.LocallyCompact.Basic
 import Mathlib.Topology.ContinuousFunction.Basic
 import Mathlib.MeasureTheory.Function.EssentialSupremum
 
@@ -17,8 +17,8 @@ namespace SoHmns
 theorem real_square_confinement_proof (x y : Real) : 2 * x * y ≤ x^2 + y^2 := by
   nlinarith
 
-/-- [v20000 울트라 하이퍼 리고 진짜 최종 결착판] 제네릭 콤팩트 위상 공간 전역 구속 매트릭스 --/
-structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [CompactSpace α] (f : C(α, ℝ)) where
+/-- [v20000 울트라 하이퍼 리고 국소 위상 동결판] 제네릭 국소 콤팩트 위상 공간 전역 구속 매트릭스 --/
+structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) where
   homotopyOperatorNorm : Real
   criticalBarrierFactor : Real
   sobolevH1GradientNorm : Real
@@ -28,9 +28,9 @@ structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [Compact
   h_attained : ∃ x_max : α, f x_max = homotopyOperatorNorm
   h_valid : homotopyOperatorNorm ≥ 0
 
-/-- [PERMANENT BLOCK SEALS] 억지 항등 조건을 파쇄하고, 함수 f x의 제로 소산 상태가 
-    부등식 좌변과 우변의 실제 대수적 연산 한계선 값을 동역학적으로 직접 제어 변동하도록 완전 결착 -/
-theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [CompactSpace α] (f : C(α, ℝ)) (m : SovereignConfinementMatrix α f) :
+/-- [PERMANENT BLOCK SEALS] 전역 콤팩트 모순을 소산시키고, LocallyCompactSpace 기저 위에서 
+    함수 f x의 제로 소산 상태가 실제 부등식 좌·우변의 대수적 연산 한계선 값을 완벽하게 제어하도록 최종 결착 -/
+theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) (m : SovereignConfinementMatrix α f) :
     (HasCompactSupport f → ∀ x : α, 2 * (f x * f x) * m.sobolevH1GradientNorm ≤ (m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) + (if f x = 0 then 0 else m.sobolevH1GradientNorm^2)) ∧ 
     (∃ x_max : α, 2 * (f x_max) * m.criticalBarrierFactor ≤ m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2) := by
   constructor
