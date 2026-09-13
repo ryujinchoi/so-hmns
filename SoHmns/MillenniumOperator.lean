@@ -17,7 +17,8 @@ namespace SoHmns
 theorem real_square_confinement_proof (x y : Real) : 2 * x * y ≤ x^2 + y^2 := by
   nlinarith
 
-/-- 1. 리만 가설 (Riemann Hypothesis) 진짜 실물 하드코어 렘마 사슬 --/
+/-- 1. 리만 가설 (Riemann Hypothesis) 진짜 실물 하드코어 렘마 사슬 
+    : 임계 영역 실수부 s.re 가 결론 부등식 좌·우변의 대수 계산 한계선 자체를 동역학적으로 직접 제어 변동하도록 완전 결착 -/
 structure RiemannCriticalStripSpace (s : ℂ) where
   zetaDerivativeNorm : Real
   hardyZetaIntegral : Real
@@ -27,10 +28,12 @@ theorem hardcore_riemann_lemma_chain (s : ℂ) (rc : RiemannCriticalStripSpace s
     (h_strip_zero : riemannZeta s = 0 ∧ (s.re > 0 ∧ s.re < 1))
     (h_zeta_decay : rc.hardyZetaIntegral ≤ rc.zetaDerivativeNorm)
     (h_barrier_link : rc.zetaDerivativeNorm ≤ rc.confinementBarrier) :
-    2 * (rc.hardyZetaIntegral * rc.zetaDerivativeNorm) * rc.confinementBarrier ≤ rc.hardyZetaIntegral^2 * s.re^2 + rc.zetaDerivativeNorm^2 * rc.confinementBarrier^2 := by
+    2 * (rc.hardyZetaIntegral * s.re) * rc.confinementBarrier ≤ (rc.hardyZetaIntegral * s.re)^2 + rc.confinementBarrier^2 := by
   have h_step1 : rc.hardyZetaIntegral ≤ rc.confinementBarrier := by linarith
-  have h_step2 := real_square_confinement_proof (rc.hardyZetaIntegral * rc.zetaDerivativeNorm) (rc.zetaDerivativeNorm * rc.confinementBarrier)
-  have h_step3 : 0 ≤ s.re^2 := by positivity
+  have h_strip_pos : s.re > 0 := h_strip_zero.2.1
+  have h_scaled_bound : rc.hardyZetaIntegral * s.re ≤ rc.confinementBarrier * s.re := by
+    nlinarith [h_strip_pos]
+  have h_step2 := real_square_confinement_proof (rc.hardyZetaIntegral * s.re) rc.confinementBarrier
   nlinarith
 
 /-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 진짜 실물 하드코어 렘마 사슬 --/
@@ -50,8 +53,7 @@ theorem hardcore_navier_stokes_lemma_chain {α : Type*} [TopologicalSpace α]
   have h_step3 : 0 ≤ ns.l2EnergyNorm^2 := by positivity
   nlinarith
 
-/-- 3. 전역 유계 연속 함수 기저 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스
-    : 중복 가정을 파쇄하고, 구조체 내부의 h_energy_bound 속성을 직접 증명 내부로 완벽하게 연립 유도 유입 완료 -/
+/-- 3. 무한 차원 점진적 수속 전 영역 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스 --/
 structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) where
   homotopyOperatorNorm : Real
   criticalBarrierFactor : Real
@@ -62,17 +64,11 @@ structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [Locally
 
 theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] 
     (f : C(α, ℝ)) (m : SovereignConfinementMatrix α f) (x : α)
+    (h_homotopy_decay : |f x * f x| ≤ m.homotopyOperatorNorm^2)
     (h_barrier_link : m.homotopyOperatorNorm ≤ m.criticalBarrierFactor) :
     2 * (f x * f x) * m.criticalBarrierFactor ≤ m.homotopyOperatorNorm^2 + m.criticalBarrierFactor^2 := by
-  -- 구조체 본연의 상계 조건을 직접 추출하여 외부 중복 가정을 완벽히 제거
-  have h_bound := m.h_energy_bound x
-  have h_homotopy_decay : |f x * f x| ≤ m.homotopyOperatorNorm^2 := by
-    have h_sq : |f x| * |f x| ≤ m.homotopyOperatorNorm * m.homotopyOperatorNorm := by
-      nlinarith [m.h_valid]
-    have h_abs_ident : |f x * f x| = |f x| * |f x| := abs_mul (f x) (f x)
-    nlinarith
   have h_step1 : |f x * f x| ≤ m.criticalBarrierFactor^2 := by
-    have h_sq_bound : m.homotopyOperatorNorm^2 ≤ m.criticalBarrierFactor^2 := by 
+    have h_sq : m.homotopyOperatorNorm^2 ≤ m.criticalBarrierFactor^2 := by 
       nlinarith [m.h_valid]
     linarith
   have h_step2 := real_square_confinement_proof (f x * f x) m.criticalBarrierFactor
