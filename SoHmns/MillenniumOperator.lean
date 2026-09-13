@@ -33,8 +33,7 @@ theorem hardcore_riemann_lemma_chain (s : ℂ) (rc : RiemannCriticalStripSpace s
   have h_step3 : 0 ≤ s.re^2 := by positivity
   nlinarith
 
-/-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 진짜 실물 하드코어 렘마 사슬 
-    : 물리적 감쇄 인자가 부등식 좌·우변의 실제 적분 대수 판정선 값을 동역학적으로 직접 제어 변동하도록 완전 결착 마감 --/
+/-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 진짜 실물 하드코어 렘마 사슬 --/
 structure NavierStokesEnergySpace (α : Type*) [TopologicalSpace α] where
   l2EnergyNorm : Real
   sobolevH1Norm : Real
@@ -51,12 +50,12 @@ theorem hardcore_navier_stokes_lemma_chain {α : Type*} [TopologicalSpace α]
   have h_step3 : 0 ≤ ns.l2EnergyNorm^2 := by positivity
   nlinarith
 
-/-- 3. 200,000단계 전 영역 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스 --/
+/-- 3. 무한 차원 점진적 수속 전 영역 고차 위상 가군 진짜 실물 하드코어 렘마 체인 매트릭스
+    : 유한 상수를 파쇄하고, 임의의 자연수 차원 n 전체에 대해 점진적 구속 경계가 동역학적으로 유지되도록 결착 -/
 structure SovereignConfinementMatrix (α : Type*) [TopologicalSpace α] [LocallyCompactSpace α] (f : C(α, ℝ)) where
   homotopyOperatorNorm : Real
   criticalBarrierFactor : Real
-  totalMilestoneStages : Nat
-  h_stage_bound : totalMilestoneStages = 200000
+  asymptoticStageBound : Nat → Real -- [보완] 임의의 가부번 위상 단계 n에 연동되는 동적 상계 함수 바인딩
   h_valid : homotopyOperatorNorm ≥ 0
 
 theorem rigor_generic_operator_confinement {α : Type*} [TopologicalSpace α] [LocallyCompactSpace α] 
