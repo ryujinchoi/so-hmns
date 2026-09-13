@@ -1,6 +1,8 @@
 set_option maxHeartbeats 0
 set_option maxRecDepth 1000000
 
+noncomputable section
+
 import Mathlib.Data.Complex.Basic
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.Topology.Basic
