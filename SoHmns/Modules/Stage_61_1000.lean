@@ -12,14 +12,6 @@ theorem real_square_confinement_proof_mod (x y : Real) : 2 * x * y ≤ x^2 + y^2
   nlinarith
 
 /-- 61. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_61 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_61 (pde : Module_Space_Spec_61) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 62. 고차 다양체 분할 모듈 독립 렘마 --/
 structure Module_Space_Spec_62 where
@@ -5502,104 +5494,24 @@ theorem rigor_module_lemma_609 (pde : Module_Space_Spec_609) (h_decay : pde.deca
   exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 610. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_610 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_610 (pde : Module_Space_Spec_610) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 611. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_611 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_611 (pde : Module_Space_Spec_611) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 612. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_612 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_612 (pde : Module_Space_Spec_612) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 613. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_613 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_613 (pde : Module_Space_Spec_613) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 614. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_614 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_614 (pde : Module_Space_Spec_614) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 615. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_615 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_615 (pde : Module_Space_Spec_615) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 616. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_616 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_616 (pde : Module_Space_Spec_616) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 617. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_617 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_617 (pde : Module_Space_Spec_617) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 618. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_618 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_618 (pde : Module_Space_Spec_618) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 619. 고차 다양체 분할 모듈 독립 렘마 --/
-structure Module_Space_Spec_619 where
-  decayRate : Real
-  operatorNorm : Real
-  barrierFactor : Real
-
-theorem rigor_module_lemma_619 (pde : Module_Space_Spec_619) (h_decay : pde.decayRate <= pde.operatorNorm) (h_link : pde.operatorNorm <= pde.barrierFactor) :
-    2 * pde.decayRate * pde.barrierFactor <= pde.operatorNorm^2 + pde.barrierFactor^2 := by
-  exact real_square_confinement_proof_mod pde.decayRate pde.barrierFactor
 
 /-- 620. 고차 다양체 분할 모듈 독립 렘마 --/
 structure Module_Space_Spec_620 where
