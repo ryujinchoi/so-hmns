@@ -10,6 +10,7 @@ import Mathlib.Topology.Basic
 import Mathlib.Topology.LocallyCompact.Basic
 import Mathlib.Topology.ContinuousFunction.Basic
 import Mathlib.Analysis.Calculus.FDeriv.Basic
-import SoHmns.Modules.Stage_61_1000 -- [보완] 분할 모듈 원장 상호 연립 참조 고정
+import SoHmns.Modules.Stage_61_1000
+import SoHmns.Modules.Stage_1001_5000 -- [보완] 2차 분할 모듈 원장 상호 연립 참조 고정
 
 namespace SoHmns
