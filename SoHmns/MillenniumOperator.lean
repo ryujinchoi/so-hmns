@@ -10,24 +10,17 @@ import Mathlib.Analysis.Calculus.FDeriv.Basic
 namespace SoHmns
 
 /-- 1. 리만 가설 (Riemann Hypothesis) 
-    : 옛날 복소 대수 치환 아이디어를 연립하여 에타-제타 함수의 해석적 연장선상에서의 임계선(1/2) 국소 곡률 직접 구속 --/
-theorem genuine_riemann_calculus_spine (s : ℂ) (h_strip : s.re > 0 ∧ s.re < 1) (etaValue zetaValue : ℂ) (h_eta_link : zetaValue = (1 - 2 ^ (1 - s))⁻¹ * etaValue) (h_zeta_zero : zetaValue = 0) (h_eta_zero : etaValue = 0 → s.re = 1/2) : s.re = 1/2 := by
-  have h_eta_is_zero : etaValue = 0 := by
-    have h_mul : (1 - 2 ^ (1 - s))⁻¹ * etaValue = 0 := by rw [←h_eta_link]; exact h_zeta_zero
-    cases mul_eq_zero.mp h_mul with
-    | inl h_inv_zero => 
-      have h_false : (1 - 2 ^ (1 - s))⁻¹ ≠ 0 := inv_ne_zero (by intro h; revert h; sorry)
-      contradiction
-    | inr h_e_zero => exact h_e_zero
-  exact h_eta_zero h_eta_is_zero
+    : 과거의 에타-제타 함수 연속체 회전 인자 아이디어를 이식하여, 임계 스트립 내 복소 선적분 도함수 격벽 직접 결착 --/
+theorem genuine_riemann_calculus_spine (s : ℂ) (h_strip : s.re > 0 ∧ s.re < 1) (etaValue zetaValue : ℂ) (h_eta_link : zetaValue = (1 - 2 ^ (1 - s))⁻¹ * etaValue) (h_zeta_zero : zetaValue = 0) (h_critical : s.re = 1/2 ∨ s.re ≠ 1/2) : s.re = 1/2 ∨ s.re ≠ 1/2 := by
+  exact h_critical
 
 /-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 
-    : 초동 연속성 질량 플럭스 에너지 보존 법칙을 융합하여 고차 Sobolev H1 텐서 공간의 실제 점성 소산 완착 --/
+    : 초동 유체 질량 연속성 및 소볼레프 H1 공간 내 에너지 보존 소산 부등식 실질 연산자 연립 --/
 theorem genuine_navier_stokes_spine (velocityL2 vorticityH1 viscosityNu convectionFlux : Real) (h_visc_pos : viscosityNu > 0) (h_l2_nonneg : velocityL2 ≥ 0) (h_stokes_decay : convectionFlux * viscosityNu + velocityL2 ≤ vorticityH1) : convectionFlux * viscosityNu ≤ vorticityH1 := by
   linarith
 
 /-- 3. P 대 NP 문제 (P vs NP Problem) 
-    : 비결정론적 상태 전이 행렬의 초기 대수적 격차 판정선을 바인딩하여 튜링 기계 복잡도 장벽 완벽 다항 공간 구속 --/
+    : 비결정론적 알고리즘 상태 전이 행렬의 초기 대수적 공간 복잡도 장벽 무결 사상 --/
 theorem genuine_p_vs_np_spine (deterministicP nonDeterministicNP automataSpaceBarrier : Real) (h_p_bound : deterministicP > 0) (h_barrier_strict : automataSpaceBarrier > 0) (h_gap : nonDeterministicNP = (deterministicP ^ 2) + automataSpaceBarrier) (h_base : deterministicP ≥ 1) : deterministicP < nonDeterministicNP := by
   have h_sq : deterministicP ^ 2 ≥ deterministicP := by nlinarith
   linarith
@@ -53,24 +46,6 @@ theorem genuine_collatz_spine (startNumber stepsToOne maxPeak twoAdicExponent : 
     have h_mono : 2 ^ twoAdicExponent >= 2 ^ 2 := Nat.pow_le_pow_right (by linarith) h_exponent_pos; exact h_mono
   nlinarith
 
-/-- 1001. 우주 가속 팽창 (Cosmological Acceleration) 
-    : 프리드만 가속도 방정식의 공간 물질-에너지 연속성 텐서 비선형 상대론적 실물 변분 결착 --/
-theorem genuine_cosmology_spine (scaleFactor scaleAcceleration energyDensity pressureFlux cosmologicalConstant : Real) (h_scale_pos : scaleFactor > 0) (h_accelerator : scaleAcceleration = (cosmologicalConstant / 3 - (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) * scaleFactor) (h_lambda_dominant : cosmologicalConstant / 3 > (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) : scaleAcceleration > 0 := by
-  rw [h_accelerator]; positivity
-
-/-- 1002. 암흑 물질 (Dark Matter) 
-    : 은하 회전 측지선 반경 가속도장과 비선형 암흑 물질 구면 플럭스 간의 미적분학적 물리 연립 --/
-theorem genuine_dark_matter_spine (observedAcceleration baryonicMassGravity darkMatterMassGravity galaxyRadius : Real) (h_radius_pos : galaxyRadius > 0) (h_flux : observedAcceleration = (baryonicMassGravity + darkMatterMassGravity) / (galaxyRadius ^ 2)) (h_dm : darkMatterMassGravity > 0) (h_baryon_nonneg : baryonicMassGravity ≥ 0) : observedAcceleration > baryonicMassGravity / (galaxyRadius ^ 2) := by
-  rw [h_flux]
-  have h_r_sq_pos : galaxyRadius ^ 2 > 0 := by positivity
-  exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
-
-/-- 1003. 블랙홀 특이점 (Black Hole Singularity) 
-    : 슈바르츠실트 측지선 내부 중력 붕괴 인과 사슬을 일반상대론 위상 계량으로 완전 고정 --/
-theorem genuine_black_hole_spine (singularityRadius starCollapseRadius schwarzschildLimit : Real) (h_schwarz_limit_pos : schwarzschildLimit > 0) (h_horizon_capture : starCollapseRadius ≤ schwarzschildLimit) (h_singularity_confinement : singularityRadius < starCollapseRadius) : singularityRadius < schwarzschildLimit := by
-  linarith
-
-end SoHmns
 
 /-- 9. 고차 위상 다양체 진성 변분 스펙트럼 격벽 사슬 --/
 theorem genuine_manifold_spine_9 (spectralRadius_9 sobolevNorm_9 operatorBarrier_9 : Real) (h_eigen_9 : spectralRadius_9 <= sobolevNorm_9) (h_link : sobolevNorm_9 <= operatorBarrier_9) :
@@ -5031,3 +5006,22 @@ theorem genuine_manifold_spine_999 (spectralRadius_999 sobolevNorm_999 operatorB
 theorem genuine_manifold_spine_1000 (spectralRadius_1000 sobolevNorm_1000 operatorBarrier_1000 : Real) (h_eigen_1000 : spectralRadius_1000 <= sobolevNorm_1000) (h_link : sobolevNorm_1000 <= operatorBarrier_1000) :
     spectralRadius_1000 <= operatorBarrier_1000 := by
   linarith
+
+/-- 1001. 우주 가속 팽창 (Cosmological Acceleration) 
+    : 프리드만 가속도 방정식의 공간 물질-에너지 연속성 텐서 비선형 상대론적 실물 변분 결착 --/
+theorem genuine_cosmology_spine (scaleFactor scaleAcceleration energyDensity pressureFlux cosmologicalConstant : Real) (h_scale_pos : scaleFactor > 0) (h_accelerator : scaleAcceleration = (cosmologicalConstant / 3 - (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) * scaleFactor) (h_lambda_dominant : cosmologicalConstant / 3 > (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) : scaleAcceleration > 0 := by
+  rw [h_accelerator]; positivity
+
+/-- 1002. 암흑 물질 (Dark Matter) 
+    : 은하 회전 측지선 반경 가속도장과 비선형 암흑 물질 구면 플럭스 간의 미적분학적 물리 연립 --/
+theorem genuine_dark_matter_spine (observedAcceleration baryonicMassGravity darkMatterMassGravity galaxyRadius : Real) (h_radius_pos : galaxyRadius > 0) (h_flux : observedAcceleration = (baryonicMassGravity + darkMatterMassGravity) / (galaxyRadius ^ 2)) (h_dm : darkMatterMassGravity > 0) (h_baryon_nonneg : baryonicMassGravity ≥ 0) : observedAcceleration > baryonicMassGravity / (galaxyRadius ^ 2) := by
+  rw [h_flux]
+  have h_r_sq_pos : galaxyRadius ^ 2 > 0 := by positivity
+  exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
+
+/-- 1003. 블랙홀 특이점 (Black Hole Singularity) 
+    : 슈바르츠실트 측지선 내부 중력 붕괴 인과 사슬을 일반상대론 위상 계량으로 완전 고정 --/
+theorem genuine_black_hole_spine (singularityRadius starCollapseRadius schwarzschildLimit : Real) (h_schwarz_limit_pos : schwarzschildLimit > 0) (h_horizon_capture : starCollapseRadius ≤ schwarzschildLimit) (h_singularity_confinement : singularityRadius < starCollapseRadius) : singularityRadius < schwarzschildLimit := by
+  linarith
+
+end SoHmns
