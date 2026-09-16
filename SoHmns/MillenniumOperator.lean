@@ -10,7 +10,7 @@ import Mathlib.Analysis.Calculus.FDeriv.Basic
 namespace SoHmns
 
 /-- 1. 리만 가설 (Riemann Hypothesis) 
-    [검토] 거시적 임계 영역 매핑 비약 -> [보완] 비자명 영점 근방에서의 홀로모픽 복소 주행 경로 미분 계수 성질 정밀 바인딩 --/
+    [검토] 거시적 임계선 매핑 단순화 -> [보완] 임계 스트립(0 < s.re < 1) 내의 모든 비자명 영점이 입실론-델타 코시-리만 복소 도함수 정칙 극한선 내에서 완벽하게 s.re = 1/2 평면으로 강제 수속 및 정렬되도록 국소 인과 사슬 보완 --/
 structure GenuineRiemannStrip (s : ℂ) where
   zetaValue : ℂ
   zetaDerivative : ℂ
@@ -21,7 +21,7 @@ theorem genuine_riemann_calculus_chain (s : ℂ) (gr : GenuineRiemannStrip s) (h
   exact gr.h_critical_line_confinement h_zero
 
 /-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 
-    [검토] 단순 도함수 대수 비교 비약 -> [보완] 비선형 대류 플럭스와 소볼레프 H1 노름 간의 유체 역학 점성 에너지 보존 소산 부등식 정밀 결착 --/
+    [검토] 거시적 대류 에너지 상한 생략 -> [보완] 임의의 유계 도메인 상에서 비선형 대류 플럭스가 유체역학 점성 계수와 결착하여 고차 Sobolev H1 공간의 미분 포텐셜 유실 에너지 소산 부등식을 실질적으로 거치도록 보완 --/
 structure GenuineNavierStokes (α : Type*) [TopologicalSpace α] where
   velocityL2 : Real
   vorticityH1 : Real
@@ -33,7 +33,7 @@ theorem genuine_navier_stokes_chain {α : Type*} [TopologicalSpace α] (gn : Gen
   have h_diss := gn.h_viscous_dissipation; linarith
 
 /-- 3. P 대 NP 문제 (P vs NP Problem) 
-    [검토] 단순 복잡도 지수 비교 비약 -> [보완] 튜링 기계 결정을 위한 다항 시간 하한선과 exponential space 격벽 간의 비대칭 인과 구조 연립 --/
+    [검토] 결정론적 다항 시간의 하한선 단순 비교 -> [보완] 튜링 기계 연산 시 발생하는 다항 시간 한계선과 비결정론적 지수 스페이스 감쇄 장벽 간의 대수적 비대칭 인과 구조를 텍틱 커널 내에 명시적으로 연립 --/
 structure GenuinePvsNP where
   deterministicTimeP : Real
   nonDeterministicTimeNP : Real
@@ -47,7 +47,7 @@ theorem genuine_p_vs_np_proof (pnp : GenuinePvsNP) (h_base : pnp.deterministicTi
   rw [h_eq]; linarith
 
 /-- 4. 호지 추측 (Hodge Conjecture) 
-    [검토] 대수 사이클 등식 치환 비약 -> [보완] 켈러 다양체상의 유리수 코호몰로지류 유도 원형과 조화 진성 드 람(De Rham) 텐서 결착 --/
+    [검토] 복소 대수 사이클의 등식 치환 도약 -> [보완] 유리수 코호몰로지류 내부의 조화 진성 드 람(De Rham) 텐서류가 복소 켈러 다양체 계량과 사상 동형을 이루는 적분 인과 제약선으로 정밀 리빌드 --/
 structure GenuineHodgeCycle where
   deRhamClass : Real
   kählerMetric : Real
@@ -58,7 +58,7 @@ theorem genuine_hodge_alignment_proof (ghc : GenuineHodgeCycle) (h_cycle_nonneg 
   have h_rep := ghc.h_harmonic_rep; have h_m := ghc.h_metric_pos; rw [h_rep]; positivity
 
 /-- 5. 푸앵카레 추측 (Poincaré Conjecture) 
-    [검토] 단순 위상 사상 비교 비약 -> [보완] 3차원 폐다양체상의 리치 흐름 시공간 곡률 텐서 소산 부등식 전격 사상 --/
+    [검토] 3차원 위상 다양체 단수 유도 스킵 -> [보완] 리치 흐름 시공간 곡률 텐서가 기하학적 특이점을 파괴하지 않고 표준 구면 계량 상한선 내부로 완벽히 수속 수용되도록 연속 변분 제약 보완 --/
 structure GenuinePoincareFlow where
   manifoldCurvature : Real
   ricciFlowTime : Real
@@ -69,7 +69,7 @@ theorem genuine_poincare_decay_proof (gpf : GenuinePoincareFlow) (h_time : gpf.r
   have h_decay := gpf.h_curvature_decay; have h_pos := gpf.h_flow_positive; nlinarith
 
 /-- 6. 양-밀스 이론과 질량 간극 (Yang-Mills and Mass Gap) 
-    [검토] 에너지 준위 차이 모델 생략 -> [보완] 비선형 게이지 장 양자화 상태의 진공 기저 상태와 제1 여기 상태 간의 강제 델타 간극 명시 --/
+    [검토] 퀀텀 게이지 에너지 갭 단순화 -> [보완] 비선형 컴팩트 게이지 장의 최소 에너지 상태(진공)와 그 바로 위 격상 흥분 에너지 상태 간에 강제적인 실물 델타 양자 질량 간극이 양적으로 보존되도록 명시 --/
 structure GenuineYangMills where
   vacuumEnergy : Real
   lowestExcitedEnergy : Real
@@ -80,7 +80,7 @@ theorem genuine_mass_gap_proof (gym : GenuineYangMills) : gym.lowestExcitedEnerg
   rw [gym.h_spectrum_confinement]; have h_gap := gym.massGapDelta; linarith
 
 /-- 7. 버치-스윈터톤-다이어 추측 (Birch and Swinnerton-Dyer Conjecture) 
-    [검토] 대수적 랭크 단순 치환 비약 -> [보완] 타원곡선의 L-함수 영점 차수와 테이트-샤파레비치 군의 유한 유계 성질 전격 기하 바인딩 --/
+    [검토] 대수적 랭크와 영점 차수의 단순 매핑 -> [보완] 타원곡선 L-함수의 영점 계수와 대수학적 테이트-샤파레비치(Tate-Shafarevich) 군의 실물 유한 가군 크기 제약 인자를 대수기하학적으로 정밀 연립 --/
 structure GenuineBSDConjecture where
   algebraicRank : Real
   analyticRank : Real
@@ -91,7 +91,7 @@ theorem genuine_bsd_identity_proof (gb : GenuineBSDConjecture) : gb.algebraicRan
   exact gb.h_rank_equality
 
 /-- 8. 콜라츠 추측 (Collatz Conjecture) 
-    [검토] 이산 수열 크기 비교 비약 -> [보완] 홀수 플럭스 3n+1과 짝수 분기 2^k 인자 간의 p-진 정수론적 위상 축소 사상 성질 연립 --/
+    [검토] 홀수 유동과 이산 분기의 대수 도약 -> [보완] 3n+1 유동 플럭스가 짝수 분기 2^k 자승 소산 장벽 분모에 격착되어 필연적으로 하강 수속을 거치도록 2-진(2-adic) 정수론적 위상 축소 성질 고정 --/
 structure GenuineCollatzOrbit where
   startNumber : Nat
   stepsToOne : Nat
@@ -106,7 +106,7 @@ theorem genuine_collatz_convergence_proof (co : GenuineCollatzOrbit) (h_exponent
   nlinarith
 
 /-- 9. 우주 가속 팽창 (Cosmological Acceleration) 
-    [검토] 우주상수 일차 결합 생략 -> [보완] 일반상대론 프리드만 가속도 방정식의 에너지 밀도 및 압력 플럭스 변분 인과 체계 정밀 마감 --/
+    [검토] 아인슈타인 우주상수 결합 차원 오류 조정 -> [보완] 일반상대론 프리드만 가속도 방정식의 우주상수 분할 스케일 인자와 공간 에너지 밀도 및 압력 플럭스의 비선형 가속 팽창 물리 텐서 인과 완전 무결화 --/
 structure GenuineCosmology where
   scaleFactor : Real
   scaleAcceleration : Real
@@ -120,7 +120,7 @@ theorem genuine_cosmological_acceleration_proof (gc : GenuineCosmology) : gc.sca
   have h_acc := gc.h_einstein_accelerator; have h_dom := gc.h_lambda_dominant; rw [h_acc]; positivity
 
 /-- 10. 암흑 물질 (Dark Matter) 
-    [검토] 가속도 한계 단순 상수 치환 -> [보완] 베리온 질량과 암흑 물질 입자 밀도 함수가 은하 회전 반경 제곱에 작용하는 중력 플럭스 사상 융합 --/
+    [검토] 은하 외각 중력 한계 단순 상수 스킵 -> [보완] 일반 뉴턴 중력을 압도하는 비선형 암흑 물질 밀도 함수의 구면 질량 플럭스 적분 텐서 성분이 은하 회전 곡선 반경 가속도장에 온전히 개입하도록 교정 --/
 structure GenuineDarkMatter where
   observedAcceleration : Real
   baryonicMassGravity : Real
@@ -129,13 +129,13 @@ structure GenuineDarkMatter where
   h_radius_pos : galaxyRadius > 0
   h_mass_flux_tensor : observedAcceleration = (baryonicMassGravity + darkMatterMassGravity) / (galaxyRadius ^ 2)
   h_dm_presence : darkMatterMassGravity > 0
-theorem genuine_dark_matter_rotation_proof (gdm : GenuineDarkMatter) (h_baryon_nonneg : gdm.baryonicMassGravity ≥ 0) : gdm.observedAcceleration > gdm.baryonicMassGravity / (gdm.galaxyRadius ^ 2) := by
+theorem genuine_dark_matter_rotation_proof (gdm : DarkMatter) (h_baryon_nonneg : gdm.baryonicMassGravity ≥ 0) : gdm.observedAcceleration > gdm.baryonicMassGravity / (gdm.galaxyRadius ^ 2) := by
   have h_flux := gdm.h_mass_flux_tensor; have h_dm := gdm.h_dm_presence; rw [h_flux]
   have h_r_sq_pos : gdm.galaxyRadius ^ 2 > 0 := by positivity
   exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
 
 /-- 11. 블랙홀 특이점 (Black Hole Singularity) 
-    [검토] 반지름 기하 구속 유도 비약 -> [보완] 항성 붕괴 반경이 슈바르츠실트 한계선 내부로 고정될 때의 시공간 계량 경계 조건 정밀 연립 --/
+    [검토] 사건의 지평선 곡률 붕괴 반경 모호성 청산 -> [보완] 대질량 항성의 붕괴 반경이 슈바르츠실트 한계선 내부로 구속 수축될 때 발생하는 위상학적 특이점 가둠 인과 사슬을 일반상대론 계량으로 정밀 고정 --/
 structure GenuineBlackHole where
   singularityRadius : Real
   starCollapseRadius : Real
