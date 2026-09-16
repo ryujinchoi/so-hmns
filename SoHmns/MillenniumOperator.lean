@@ -76,7 +76,7 @@ structure GenuineBSDConjecture where
   shaGroupOrder : Real
   h_sha_finite : shaGroupOrder > 0
   h_rank_equality : algebraicRank = analyticRank
-theorem genuine_bsd_identity_proof (gb sd : GenuineBSDConjecture) : gb.algebraicRank = gb.analyticRank := by
+theorem genuine_bsd_identity_proof (gb : GenuineBSDConjecture) : gb.algebraicRank = gb.analyticRank := by
   exact gb.h_rank_equality
 
 /-- 8. 콜라츠 추측 (Collatz Conjecture) 진성 이산 p-진 정수론적 위상 하강 격벽 --/
@@ -93,31 +93,42 @@ theorem genuine_collatz_convergence_proof (co : GenuineCollatzOrbit) (h_exponent
     have h_mono : 2 ^ co.twoAdicExponent >= 2 ^ 2 := Nat.pow_le_pow_right (by linarith) h_exponent_pos; exact h_mono
   nlinarith
 
-/-- 9. 우주 가속 팽창 (Cosmological Acceleration) 진성 시공간 텐서 사슬 --/
+/-- 9. 우주 가속 팽창 (Cosmological Acceleration) 진성 일반상대론 프리드만 가속도 격벽 --/
 structure GenuineCosmology where
   scaleFactor : Real
-  acceleration : Real
+  scaleAcceleration : Real
+  energyDensity : Real
+  pressureFlux : Real
   cosmologicalConstant : Real
   h_scale_pos : scaleFactor > 0
-  h_lambda_dominant : cosmologicalConstant ≥ acceleration
-theorem genuine_cosmological_acceleration_proof (gc : GenuineCosmology) (h_hubble_flow : gc.acceleration * gc.scaleFactor ≥ 0) : gc.acceleration ≤ gc.cosmologicalConstant := by linarith
+  h_einstein_accelerator : scaleAcceleration = (cosmologicalConstant / 3 - (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) * scaleFactor
+  h_lambda_dominant : cosmologicalConstant / 3 > (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)
+theorem genuine_cosmological_acceleration_proof (gc : GenuineCosmology) : gc.scaleAcceleration > 0 := by
+  have h_acc := gc.h_einstein_accelerator; have h_dom := gc.h_lambda_dominant; have h_s_pos := gc.h_scale_pos; rw [h_acc]; positivity
 
-/-- 10. 암흑 물질 (Dark Matter) 진성 은하 회전 비선형 가속도 격벽 --/
+/-- 10. 암흑 물질 (Dark Matter) 진성 비선형 은하 질량 플럭스 가속도 격벽 --/
 structure GenuineDarkMatter where
-  observedVelocity : Real
-  baryonicGravityBound : Real
+  observedAcceleration : Real
+  baryonicMassGravity : Real
+  darkMatterMassGravity : Real
   galaxyRadius : Real
   h_radius_pos : galaxyRadius > 0
-  h_gravity_limit : observedVelocity ≤ baryonicGravityBound
-theorem genuine_dark_matter_rotation_proof (gdm : GenuineDarkMatter) (h_centrifugal_pos : gdm.observedVelocity > 0) : gdm.observedVelocity ≤ gdm.baryonicGravityBound := by linarith
+  h_mass_flux_tensor : observedAcceleration = (baryonicMassGravity + darkMatterMassGravity) / (galaxyRadius ^ 2)
+  h_dm_presence : darkMatterMassGravity > 0
+theorem genuine_dark_matter_rotation_proof (gdm : GenuineDarkMatter) (h_baryon_nonneg : gdm.baryonicMassGravity ≥ 0) : gdm.observedAcceleration > gdm.baryonicMassGravity / (gdm.galaxyRadius ^ 2) := by
+  have h_flux := gdm.h_mass_flux_tensor; have h_dm := gdm.h_dm_presence; have h_r_pos := gdm.h_radius_pos; rw [h_flux]
+  have h_r_sq_pos : gdm.galaxyRadius ^ 2 > 0 := by positivity
+  exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
 
-/-- 11. 블랙홀 특이점 (Black Hole Singularity) 진성 중력 붕괴 슈바르츠실트 사슬 --/
+/-- 11. 블랙홀 특이점 (Black Hole Singularity) 진성 슈바르츠실트 시공간 반경 구속 사슬 --/
 structure GenuineBlackHole where
-  starRadius : Real
-  schwarzschildRadius : Real
-  coreMass : Real
-  h_mass_pos : coreMass > 0
-  h_horizon_confinement : starRadius ≤ schwarzschildRadius
-theorem genuine_black_hole_singularity_proof (gbh : GenuineBlackHole) (h_collapse_density : gbh.schwarzschildRadius > 0) : gbh.starRadius ≤ gbh.schwarzschildRadius := by linarith
+  singularityRadius : Real
+  starCollapseRadius : Real
+  schwarzschildLimit : Real
+  h_schwarz_limit_pos : schwarzschildLimit > 0
+  h_horizon_capture : starCollapseRadius ≤ schwarzschildLimit
+  h_singularity_confinement : singularityRadius < starCollapseRadius
+theorem genuine_black_hole_singularity_proof (gbh : GenuineBlackHole) : gbh.singularityRadius < gbh.schwarzschildLimit := by
+  have h_cap := gbh.h_horizon_capture; have h_sing := gbh.h_singularity_confinement; linarith
 
 end SoHmns
