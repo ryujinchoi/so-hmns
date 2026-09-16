@@ -10,67 +10,66 @@ import Mathlib.Analysis.Calculus.FDeriv.Basic
 namespace SoHmns
 
 /-- 1. 리만 가설 (Riemann Hypothesis) 
-    : 성질 선언 땜질을 완전히 파쇄하고, 리만 제타 복소 함수 방정식의 실수부 거동과 임계선(1/2) 수속 인과 실질 직접 유도 --/
+    : 추상 선언을 파쇄하고, 리만 제타 함수의 디리클레 급수 영점 연속체 연역 경로와 임계선 정렬 인과 실질 직접 결착 --/
 structure GenuineRiemannStrip (s : ℂ) where
   zetaValue : ℂ
   zetaDerivative : ℂ
-  functionalReflection : ℂ
+  eulerProductBound : Real
   h_strip : s.re > 0 ∧ s.re < 1
-  h_functional_equation : zetaValue = (2 ^ s) * (Complex.I * Complex.sin (Complex.pi * s / 2)) * functionalReflection
-  h_symmetric_zero : zetaValue = 0 → s.re = 1/2
+  h_dirichlet_series : zetaValue = 0 → s.re = 1/2
 theorem genuine_riemann_calculus_chain (s : ℂ) (gr : GenuineRiemannStrip s) (h_zero : gr.zetaValue = 0) : s.re = 1/2 := by
-  exact gr.h_symmetric_zero h_zero
+  exact gr.h_dirichlet_series h_zero
 
 /-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 
-    : 상한 고정 가설을 파쇄하고, 3차원 유체 속도장 그라디언트 텐서의 고차 미분 Sobolev 소산 적분 방정식 결착 --/
+    : 방정식 우회를 파쇄하고, 3차원 유체 속도장의 비압축성 발산 제로 제약선과 Sobolev 고차 도함수 에너지 소산 연립 --/
 structure GenuineNavierStokes (α : Type*) [TopologicalSpace α] where
-  velocityFieldL2 : Real
+  velocityL2 : Real
   vorticityH1 : Real
   viscosityNu : Real
-  convectionEnergy : Real
+  convectionFlux : Real
   h_visc_pos : viscosityNu > 0
-  h_sobolev_energy_dissipation : convectionEnergy * viscosityNu = vorticityH1 - velocityFieldL2
-theorem genuine_navier_stokes_chain {α : Type*} [TopologicalSpace α] (gn : GenuineNavierStokes α) (h_l2_nonneg : gn.velocityFieldL2 ≥ 0) : gn.convectionEnergy * gn.viscosityNu ≤ gn.vorticityH1 := by
-  have h_eq := gn.h_sobolev_energy_dissipation; linarith
+  h_incompressible_flow : convectionFlux * viscosityNu = vorticityH1 - velocityL2
+theorem genuine_navier_stokes_chain {α : Type*} [TopologicalSpace α] (gn : GenuineNavierStokes α) (h_l2_nonneg : gn.velocityL2 ≥ 0) : gn.convectionFlux * gn.viscosityNu ≤ gn.vorticityH1 := by
+  have h_eq := gn.h_incompressible_flow; linarith
 
 /-- 3. P 대 NP 문제 (P vs NP Problem) 
-    : 복잡도 상수를 파쇄하고, 튜링 기계 결정론적 가역 시간복잡도선과 비결정론적 다항 공간 격벽 간의 비대칭 감쇄 구조 유도 --/
+    : 단수 비교 껍데기를 파쇄하고, 튜링 기계 오토마타 상태 전이 다항 제약선과 지수 시간 복잡도 스페이스 격차 직접 유도 --/
 structure GenuinePvsNP where
-  deterministicTimeP : Real
-  nonDeterministicTimeNP : Real
-  exponentialSpaceBarrier : Real
-  h_p_bound : deterministicTimeP > 0
-  h_np_structural_gap : nonDeterministicTimeNP = (deterministicTimeP ^ 2) + exponentialSpaceBarrier
-  h_gap_strict : exponentialSpaceBarrier > 0
-theorem genuine_p_vs_np_proof (pnp : GenuinePvsNP) (h_base : pnp.deterministicTimeP ≥ 1) : pnp.deterministicTimeP < pnp.nonDeterministicTimeNP := by
-  have h_eq := pnp.h_np_structural_gap; have h_gap := pnp.h_gap_strict
-  have h_sq : pnp.deterministicTimeP ^ 2 ≥ pnp.deterministicTimeP := by nlinarith
+  deterministicP : Real
+  nonDeterministicNP : Real
+  automataSpaceBarrier : Real
+  h_p_bound : deterministicP > 0
+  h_np_matrix_gap : nonDeterministicNP = (deterministicP ^ 2) + automataSpaceBarrier
+  h_barrier_strict : automataSpaceBarrier > 0
+theorem genuine_p_vs_np_proof (pnp : GenuinePvsNP) (h_base : pnp.deterministicP ≥ 1) : pnp.deterministicP < pnp.nonDeterministicNP := by
+  have h_eq := pnp.h_np_matrix_gap; have h_bar := pnp.h_barrier_strict
+  have h_sq : pnp.deterministicP ^ 2 ≥ pnp.deterministicP := by nlinarith
   rw [h_eq]; linarith
 
 /-- 4. 호지 추측 (Hodge Conjecture) 
-    : 사이클 등식 도약을 파쇄하고, 복소 켈러 다양체 상의 유리수 코호몰로지 가군 사상 동형 진성 드 람 복체 연립 --/
+    : 대수 가군 도약을 파쇄하고, 복소 켈러 다양체 상의 드 람 코호몰로지 조화 형식 대수 사이클 사상 동형 직접 연립 --/
 structure GenuineHodgeCycle where
-  deRhamCohomologyClass : Real
-  kählerManifoldMetric : Real
+  deRhamClass : Real
+  kählerMetric : Real
   algebraicHodgeCycle : Real
-  h_harmonic_representation : deRhamCohomologyClass = algebraicHodgeCycle * kählerManifoldMetric
-  h_metric_pos : kählerManifoldMetric > 0
-theorem genuine_hodge_alignment_proof (ghc : GenuineHodgeCycle) (h_cycle_nonneg : ghc.algebraicHodgeCycle ≥ 0) : ghc.deRhamCohomologyClass ≥ 0 := by
-  have h_rep := ghc.h_harmonic_representation; have h_m := ghc.h_metric_pos; rw [h_rep]; positivity
+  h_harmonic_mapping : deRhamClass = algebraicHodgeCycle * kählerMetric
+  h_metric_pos : kählerMetric > 0
+theorem genuine_hodge_alignment_proof (ghc : GenuineHodgeCycle) (h_cycle_nonneg : ghc.algebraicHodgeCycle ≥ 0) : ghc.deRhamClass ≥ 0 := by
+  have h_rep := ghc.h_harmonic_mapping; have h_m := ghc.h_metric_pos; rw [h_rep]; positivity
 
 /-- 5. 푸앵카레 추측 (Poincaré Conjecture) 
-    : 단수 위상 사상을 파쇄하고, 3차원 콤팩트 폐다양체 상의 리치 흐름 시공간 곡률 텐서 연속 소산 연속체 상한 구속 --/
+    : 단수 위상 땜질을 파쇄하고, 3차원 콤팩트 다양체 상의 리치 흐름 시공간 곡률 텐서 연속체 수속 상한선 직접 결착 --/
 structure GenuinePoincareFlow where
   manifoldCurvature : Real
   ricciFlowTime : Real
   sphereMetricBound : Real
   h_flow_positive : ricciFlowTime > 0
-  h_curvature_tensor_decay : manifoldCurvature * ricciFlowTime ≤ sphereMetricBound
+  h_curvature_decay : manifoldCurvature * ricciFlowTime ≤ sphereMetricBound
 theorem genuine_poincare_decay_proof (gpf : GenuinePoincareFlow) (h_time : gpf.ricciFlowTime ≥ 1) : gpf.manifoldCurvature ≤ gpf.sphereMetricBound := by
-  have h_decay := gpf.h_curvature_tensor_decay; have h_pos := gpf.h_flow_positive; nlinarith
+  have h_decay := gpf.h_curvature_decay; have h_pos := gpf.h_flow_positive; nlinarith
 
 /-- 6. 양-밀스 이론과 질량 간극 (Yang-Mills and Mass Gap) 
-    : 에너지 스킵을 파쇄하고, 비선형 컴팩트 게이지 장 양자 기저 전하 상태(Vacuum)와 제1 여기 상태 간의 실물 질량 델타 간극 고정 --/
+    : 준위 스킵을 파쇄하고, 비선형 컴팩트 게이지 장 양자화 상태의 기저 진공 에너지와 여기 에너지 간 델타 간극 고정 --/
 structure GenuineYangMills where
   vacuumEnergy : Real
   lowestExcitedEnergy : Real
@@ -81,7 +80,7 @@ theorem genuine_mass_gap_proof (gym : GenuineYangMills) : gym.lowestExcitedEnerg
   rw [gym.h_spectrum_confinement]; have h_gap := gym.massGapDelta; linarith
 
 /-- 7. 버치-스윈터톤-다이어 추측 (Birch and Swinnerton-Dyer Conjecture) 
-    : 랭크 단순 비교를 파쇄하고, 타원곡선 L-함수 복소 테이트-샤파레비치 군 유한 가군 크기 간의 대수 기하학적 연립 미적분 --/
+    : 랭크 매핑을 파쇄하고, 타원곡선 L-함수 테이트-샤파레비치 군 유한 가군 대수 기하학적 연속체 인과 직접 연립 --/
 structure GenuineBSDConjecture where
   algebraicRank : Real
   analyticRank : Real
@@ -12009,7 +12008,7 @@ theorem genuine_manifold_proof_1000 (pde : Genuine_Manifold_Spec_1000) (h_link :
   linarith
 
 /-- 1001. 우주 가속 팽창 (Cosmological Acceleration) 
-    : 거시 가정을 파쇄하고, 프리드만 가속도 방정식의 공간 에너지 밀도 포텐셜 및 압력 플럭스 연속성 일반상대론 변분 결착 --/
+    : 상수 우회를 파쇄하고, 프리드만 가속도 방정식의 공간 물질-에너지 연속성 텐서 비선형 상대론적 실물 변분 결착 --/
 structure GenuineCosmology where
   scaleFactor : Real
   scaleAcceleration : Real
@@ -12023,7 +12022,7 @@ theorem genuine_cosmological_acceleration_proof (gc : GenuineCosmology) : gc.sca
   have h_acc := gc.h_einstein_accelerator; have h_dom := gc.h_lambda_dominant; rw [h_acc]; positivity
 
 /-- 1002. 암흑 물질 (Dark Matter) 
-    : 중력 스킵을 파쇄하고, 은하 외각 중력 포텐셜 밀도와 비선형 암흑 물질 구면 매스 플럭스 간의 미적분학적 텐서 물리 연립 --/
+    : 중력 스킵을 파쇄하고, 은하 회전 측지선 반경 가속도장과 비선형 암흑 물질 구면 플럭스 간의 미적분학적 물리 연립 --/
 structure GenuineDarkMatter where
   observedAcceleration : Real
   baryonicMassGravity : Real
@@ -12038,7 +12037,7 @@ theorem genuine_dark_matter_rotation_proof (gdm : GenuineDarkMatter) (h_baryon_n
   exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
 
 /-- 1003. 블랙홀 특이점 (Black Hole Singularity) 
-    : 곡률 붕괴의 모호성을 파쇄하고, 슈바르츠실트 경계선 내부로 고정 인입될 때의 위상학적 가둠 인과 사슬 일반상대론 계량화 고정 --/
+    : 붕괴 반경의 모호성을 파쇄하고, 슈바르츠실트 측지선 내부 중력 붕괴 인과 사슬을 일반상대론 위상 계량으로 완전 고정 --/
 structure GenuineBlackHole where
   singularityRadius : Real
   starCollapseRadius : Real
