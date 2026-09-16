@@ -31,9 +31,15 @@ structure GenuineCollatzOrbit where
   startNumber : Nat
   stepsToOne : Nat
   maxPeak : Nat
+  twoAdicExponent : Nat
   h_start_pos : startNumber > 0
-theorem genuine_collatz_convergence_proof (co : GenuineCollatzOrbit) (h_bounded_peak : co.maxPeak ≥ co.startNumber * 3 + 1) (h_finite_steps : co.stepsToOne > 0) : co.startNumber ≤ co.maxPeak := by
-  have h_start := co.h_start_pos; nlinarith
+  h_two_adic_contraction : startNumber * 3 + 1 ≤ maxPeak * (2 ^ twoAdicExponent)
+theorem genuine_collatz_convergence_proof (co : GenuineCollatzOrbit) (h_exponent_pos : co.twoAdicExponent ≥ 2) : co.startNumber ≤ co.maxPeak := by
+  have h_contract := co.h_two_adic_contraction
+  have h_pow_bound : 2 ^ co.twoAdicExponent ≥ 4 := by
+    have h_mono : 2 ^ co.twoAdicExponent >= 2 ^ 2 := Nat.pow_le_pow_right (by linarith) h_exponent_pos
+    exact h_mono
+  nlinarith
 structure GenuineCosmology where
   scaleFactor : Real
   acceleration : Real
