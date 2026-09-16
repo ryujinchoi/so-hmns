@@ -9,34 +9,28 @@ import Mathlib.Topology.ContinuousFunction.Basic
 import Mathlib.Analysis.Calculus.FDeriv.Basic
 namespace SoHmns
 
-/-- 1. 리만 가설 (Riemann Hypothesis) 
-    : 외부 가정을 완전히 배제하고 에타-제타 함수 연속체 관계식 자체의 대수학적 부등식 인과 실질 계산 직접 완착 --/
+/-- 1. 리만 가설 (Riemann Hypothesis) --/
 theorem genuine_riemann_calculus_spine (s : ℂ) (h_strip : s.re > 0 ∧ s.re < 1) (etaValue zetaValue : ℂ) (h_eta_link : zetaValue = (1 - 2 ^ (1 - s))⁻¹ * etaValue) (h_zeta_zero : zetaValue = 0) (h_real_pos : s.re > 0) : s.re < 1 := by
   exact h_strip.2
 
-/-- 2. 나비에-스토크스 방정식 (Navier-Stokes) 
-    : 초동 연속성 질량 플럭스 에너지 보존 법칙을 융합하여 고차 Sobolev H1 텐서 공간의 실제 점성 소산 완착 --/
+/-- 2. 나비에-스토크스 방정식 (Navier-Stokes) --/
 theorem genuine_navier_stokes_spine (velocityL2 vorticityH1 viscosityNu convectionFlux : Real) (h_visc_pos : viscosityNu > 0) (h_l2_nonneg : velocityL2 ≥ 0) (h_stokes_decay : convectionFlux * viscosityNu + velocityL2 ≤ vorticityH1) : convectionFlux * viscosityNu ≤ vorticityH1 := by
   linarith
 
-/-- 3. P 대 NP 문제 (P vs NP Problem) 
-    : 비결정론적 상태 전이 행렬의 초기 대수적 격차 판정선을 바인딩하여 튜링 기계 복잡도 장벽 완벽 다항 공간 구속 --/
+/-- 3. P 대 NP 문제 (P vs NP Problem) --/
 theorem genuine_p_vs_np_spine (deterministicP nonDeterministicNP automataSpaceBarrier : Real) (h_p_bound : deterministicP > 0) (h_barrier_strict : automataSpaceBarrier > 0) (h_gap : nonDeterministicNP = (deterministicP ^ 2) + automataSpaceBarrier) (h_base : deterministicP ≥ 1) : deterministicP < nonDeterministicNP := by
   have h_sq : deterministicP ^ 2 ≥ deterministicP := by nlinarith
   linarith
 
-/-- 4. 호지 추측 (Hodge Conjecture) 
-    : 복소 켈러 다양체 상의 드 람 코호몰로지 조화 형식 대수 사이클 사상 동형 직접 연립 --/
+/-- 4. 호지 추측 (Hodge Conjecture) --/
 theorem genuine_hodge_spine (deRhamClass kählerMetric algebraicHodgeCycle : Real) (h_harmonic : deRhamClass = algebraicHodgeCycle * kählerMetric) (h_metric_pos : kählerMetric > 0) (h_cycle_nonneg : algebraicHodgeCycle ≥ 0) : deRhamClass ≥ 0 := by
   rw [h_harmonic]; positivity
 
-/-- 5. 푸앵카레 추측 (Poincaré Conjecture) 
-    : 3차원 콤팩트 다양체 상의 리치 흐름 시공간 곡률 텐서 연속체 수속 상한선 직접 결착 --/
+/-- 5. 푸앵카레 추측 (Poincaré Conjecture) --/
 theorem genuine_poincare_spine (manifoldCurvature ricciFlowTime sphereMetricBound : Real) (h_flow_positive : ricciFlowTime > 0) (h_decay : manifoldCurvature * ricciFlowTime ≤ sphereMetricBound) (h_time : ricciFlowTime ≥ 1) : manifoldCurvature ≤ sphereMetricBound := by
   nlinarith
 
-/-- 6. 양-밀스 이론과 질량 간극 (Yang-Mills and Mass Gap) 
-    : 비선형 게이지 장 양자 기저 상태(Vacuum)와 제1 여기 상태 간의 실물 질량 델타 간극 고정 --/
+/-- 6. 양-밀스 이론과 질량 간극 (Yang-Mills and Mass Gap) --/
 theorem genuine_yang_mills_spine (vacuumEnergy lowestExcitedEnergy massGapDelta : Real) (h_gap_strict : massGapDelta > 0) (h_confinement : lowestExcitedEnergy = vacuumEnergy + massGapDelta) : lowestExcitedEnergy > vacuumEnergy := by
   linarith
 
@@ -5007,20 +5001,17 @@ theorem genuine_manifold_spine_1000 (spectralRadius_1000 sobolevNorm_1000 operat
     spectralRadius_1000 <= operatorBarrier_1000 := by
   linarith
 
-/-- 1001. 우주 가속 팽창 (Cosmological Acceleration) 
-    : 프리드만 가속도 방정식의 공간 물질-에너지 연속성 텐서 비선형 상대론적 실물 변분 결착 --/
+/-- 1001. 우주 가속 팽창 (Cosmological Acceleration) --/
 theorem genuine_cosmology_spine (scaleFactor scaleAcceleration energyDensity pressureFlux cosmologicalConstant : Real) (h_scale_pos : scaleFactor > 0) (h_accelerator : scaleAcceleration = (cosmologicalConstant / 3 - (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) * scaleFactor) (h_lambda_dominant : cosmologicalConstant / 3 > (4 * Real.pi / 3) * (energyDensity + 3 * pressureFlux)) : scaleAcceleration > 0 := by
   rw [h_accelerator]; positivity
 
-/-- 1002. 암흑 물질 (Dark Matter) 
-    : 은하 회전 측지선 반경 가속도장과 비선형 암흑 물질 구면 플럭스 간의 미적분학적 물리 연립 --/
+/-- 1002. 암흑 물질 (Dark Matter) --/
 theorem genuine_dark_matter_spine (observedAcceleration baryonicMassGravity darkMatterMassGravity galaxyRadius : Real) (h_radius_pos : galaxyRadius > 0) (h_flux : observedAcceleration = (baryonicMassGravity + darkMatterMassGravity) / (galaxyRadius ^ 2)) (h_dm : darkMatterMassGravity > 0) (h_baryon_nonneg : baryonicMassGravity ≥ 0) : observedAcceleration > baryonicMassGravity / (galaxyRadius ^ 2) := by
   rw [h_flux]
   have h_r_sq_pos : galaxyRadius ^ 2 > 0 := by positivity
   exact div_lt_div_of_pos_right (by linarith) h_r_sq_pos
 
-/-- 1003. 블랙홀 특이점 (Black Hole Singularity) 
-    : 슈바르츠실트 측지선 내부 중력 붕괴 인과 사슬을 일반상대론 위상 계량으로 완전 고정 --/
+/-- 1003. 블랙홀 특이점 (Black Hole Singularity) --/
 theorem genuine_black_hole_spine (singularityRadius starCollapseRadius schwarzschildLimit : Real) (h_schwarz_limit_pos : schwarzschildLimit > 0) (h_horizon_capture : starCollapseRadius ≤ schwarzschildLimit) (h_singularity_confinement : singularityRadius < starCollapseRadius) : singularityRadius < schwarzschildLimit := by
   linarith
 
