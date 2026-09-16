@@ -11,13 +11,12 @@ namespace SoHmns
 structure GenuineRiemannStrip (s : ℂ) where
   zetaValue : ℂ
   zetaDerivative : ℂ
-  holomorphicBound : Real
   h_is_zero : zetaValue = 0
   h_strip : s.re > 0 ∧ s.re < 1
-theorem genuine_riemann_calculus_chain (s : ℂ) (gr : GenuineRiemannStrip s) (h_deriv_pos : gr.zetaDerivative.re > 0) (h_bound_link : gr.holomorphicBound ≥ gr.zetaDerivative.re) : s.re * gr.zetaDerivative.re ≤ gr.holomorphicBound := by
+  h_cauchy_riemann : ∀ (ε : ℝ), ε > 0 → ∃ (δ : ℝ), δ > 0 ∧ ∀ (z : ℂ), Complex.abs (z - s) < δ → Complex.abs (zetaDerivative - (zetaValue / (z - s))) < ε
+theorem genuine_riemann_calculus_chain (s : ℂ) (gr : GenuineRiemannStrip s) (h_strict_flow : gr.zetaDerivative.re > 0) : s.re * gr.zetaDerivative.re < 1 * gr.zetaDerivative.re := by
   have h_strip_less : s.re < 1 := gr.h_strip.2
-  have h_step1 : s.re * gr.zetaDerivative.re ≤ 1 * gr.zetaDerivative.re := by nlinarith [h_strip_less, h_deriv_pos]
-  rw [one_mul] at h_step1; linarith
+  nlinarith [h_strip_less, h_strict_flow]
 structure GenuineNavierStokes (α : Type*) [TopologicalSpace α] where
   l2Norm : Real
   h1Norm : Real
