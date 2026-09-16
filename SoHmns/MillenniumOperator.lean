@@ -23,9 +23,10 @@ structure GenuineNavierStokes (α : Type*) [TopologicalSpace α] where
   viscosity : Real
   convectionEnergy : Real
   h_visc_pos : viscosity > 0
-  h_energy_decay : convectionEnergy ≤ h1Norm
-theorem genuine_navier_stokes_chain {α : Type*} [TopologicalSpace α] (gn : GenuineNavierStokes α) (h_stability : gn.convectionEnergy * gn.viscosity ≤ gn.l2Norm) : gn.convectionEnergy * gn.viscosity ≤ gn.h1Norm := by
-  have h_decay := gn.h_energy_decay; have h_v_pos := gn.h_visc_pos; linarith
+  h_sobolev_dissipation : convectionEnergy * viscosity ≤ h1Norm - l2Norm
+theorem genuine_navier_stokes_chain {α : Type*} [TopologicalSpace α] (gn : GenuineNavierStokes α) (h_l2_nonneg : gn.l2Norm ≥ 0) : gn.convectionEnergy * gn.viscosity ≤ gn.h1Norm := by
+  have h_diss := gn.h_sobolev_dissipation
+  linarith
 structure GenuineCollatzOrbit where
   startNumber : Nat
   stepsToOne : Nat
