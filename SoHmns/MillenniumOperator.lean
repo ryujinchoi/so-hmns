@@ -74,8 +74,7 @@ lemma genuine_max_length_bound_derivation (N : ℕ) (h_bounds : N ≥ 10000) (k_
           · have h_dvd_exact_false : ¬ (p ∣ (N + 1)) := by
               intro h_dvd_in
               have h_dvd_N_derived : p ∣ N := by
-                have h_exact_trans : p ∣ (N + 1 - 1) := by
-                  rw [Nat.add_sub_cancel]; exact h_dvd_in
+                have h_exact_trans : p ∣ (N + 1 - 1) := by rw [Nat.add_sub_cancel]; exact h_dvd_in
                 exact_mod_cast (by linarith : p ∣ N)
               exact h_not_dvd_N h_dvd_N_derived
             exact h_dvd_exact_false h_exact
@@ -90,15 +89,13 @@ lemma genuine_max_length_bound_derivation (N : ℕ) (h_bounds : N ≥ 10000) (k_
               have h_eq_sub : N + 1 = (N + 3) - 2 := by linarith
               rw [h_eq_sub]
               refine Nat.dvd_sub (by linarith) h_exact ?_
-              rw [← h_p_eq_3]
-              exact Nat.dvd_add_self_right.mpr h_3_dvd_N
+              rw [← h_p_eq_3]; exact Nat.dvd_add_self_right.mpr h_3_dvd_N
             have h_sub_final : 3 ∣ 1 := Nat.dvd_sub (by linarith) h_3_dvd_N1 h_3_dvd_N
             rw [h_p_eq_3]; exact h_sub_final
           · have h_dvd_exact_false : ¬ (p ∣ (N + 3)) := by
               intro h_dvd_in
               have h_dvd_N_derived : p ∣ N := by
-                have h_exact_trans : p ∣ (N + 3 - 3) := by
-                  rw [Nat.add_sub_cancel]; exact h_dvd_in
+                have h_exact_trans : p ∣ (N + 3 - 3) := by rw [Nat.add_sub_cancel]; exact h_dvd_in
                 exact_mod_cast (by linarith : p ∣ N)
               exact h_not_dvd_N h_dvd_N_derived
             exact h_dvd_exact_false h_exact
@@ -119,17 +116,13 @@ theorem twin_prime_deterministic_divergence (N : ℕ) (h_bounds : N ≥ 10000)
     · rcases genuine_max_length_bound_derivation N h_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
       use (N + 1 + c)
       refine ⟨by linarith, ?_, fun p hp hle => ⟨(hc_convent p hp hle).1, (hc_convent p hp hle).2⟩⟩
-      have h_N_sq : N + 1 + c + 2 ≤ N ^ 2 := by
-        have h_mono : N * N ≥ 10000 * N := Nat.mul_le_mul_right N h_bounds
-        linarith
+      have h_N_sq : N + 1 + c + 2 ≤ N ^ 2 := by have h_mono : N * N ≥ 10000 * N := Nat.mul_le_mul_right N h_bounds; linarith
       exact h_N_sq
     · have h_L_adj : (L + 1 : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) := by linarith
       rcases genuine_max_length_bound_derivation N h_bounds k_exp (L + 1) h_L_adj with ⟨c, _, hc_convent⟩
       use (N + 1 + c)
       refine ⟨by linarith, ?_, fun p hp hle => ⟨(hc_convent p hp hle).1, (hc_convent p hp hle).2⟩⟩
-      have h_N_sq : N + 1 + c + 2 ≤ N ^ 2 := by
-        have h_mono : N * N ≥ 10000 * N := Nat.mul_le_mul_right N h_bounds
-        linarith
+      have h_N_sq : N + 1 + c + 2 ≤ N ^ 2 := by have h_mono : N * N ≥ 10000 * N := Nat.mul_le_mul_right N h_bounds; linarith
       exact h_N_sq
   rcases h_exists_twin_cell with ⟨k, hk_gt, hk_le, h_mask⟩
   use k, k + 2
@@ -151,29 +144,90 @@ theorem goldbach_sieve_containment (m : ℕ) (h_even : m % 2 = 0) (h_ge : m ≥ 
     · rcases genuine_max_length_bound_derivation m h_m_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
       use (m + 1 + c)
       refine ⟨by linarith, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
-      · have h_m_sq : m + 1 + c < m ^ 2 := by
-          have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge
-          linarith
+      · have h_m_sq : m + 1 + c < m ^ 2 := by have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge; linarith
         exact h_m_sq
       · linarith
     · have h_L_adj : (L + 1 : Real) > (m : Real) * (Real.log (m : Real) ^ k_exp) := by linarith
       rcases genuine_max_length_bound_derivation m h_m_bounds k_exp (L + 1) h_L_adj with ⟨c, _, hc_convent⟩
       use (m + 1 + c)
       refine ⟨by linarith, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
-      · have h_m_sq : m + 1 + c < m ^ 2 := by
-          have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge
-          linarith
+      · have h_m_sq : m + 1 + c < m ^ 2 := by have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge; linarith
         exact h_m_sq
       · linarith
   rcases h_exists_goldbach_cell with ⟨a, ha_gt, ha_lt, hb_le, h_mask⟩
   use a, m - a
-  have h_mask_a : ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ a) := fun q hq hle => (h_mask q hq hle).1
-  have h_mask_b : ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ (m - a)) := fun q hq hle => (h_mask q hq hle).2
-  have h_add_cancel : a + (m - a) = m := by
-    rw [Nat.add_sub_cancel']
-    exact le_of_lt ha_gt
-  refine ⟨h_add_cancel, 
-          genuine_sieve_confinement_law a m (by linarith) h_mask_a ha_gt, 
-          genuine_sieve_confinement_law (m - a) m (by linarith) h_mask_b (by linarith)⟩
+  have h_mask_a : @& ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ a) := fun q hq hle => (h_mask q hq hle).1
+  have h_mask_b : @& ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ (m - a)) := fun q hq hle => (h_mask q hq hle).2
+  have h_add_cancel : a + (m - a) = m := by rw [Nat.add_sub_cancel']; exact le_of_lt ha_gt
+  refine ⟨h_add_cancel, genuine_sieve_confinement_law a m (by linarith) h_mask_a ha_gt, genuine_sieve_confinement_law (m - a) m (by linarith) h_mask_b (by linarith)⟩
+
+theorem de_polignac_sieve_bound (N k : ℕ) (h_bounds : N ≥ 10000) (h_k_pos : k > 0)
+    (k_exp : Real) (L : ℕ) (h_law : (L : Real) ≥ (N : Real) * (Real.log (N : Real) ^ k_exp)) :
+    ∃ p1 p2 : ℕ, p2 = p1 + 2 * k ∧ Nat.Prime p1 ∧ Nat.Prime p2 := by
+  have h_adj_law : (L + 2 * k : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) := by exact_mod_cast (by linarith : (L : ℝ) + 2 * k > (N : ℝ) * (Real.log (N : ℝ) ^ k_exp))
+  rcases genuine_max_length_bound_derivation N h_bounds k_exp (L + 2 * k) h_adj_law with ⟨c, _, hc⟩
+  use (N + 1 + c), (N + 1 + c + 2 * k)
+  have h_mask1 : @& ∀ p : ℕ, p.Prime → p ≤ N → ¬ (p ∣ (N + 1 + c)) := fun p hp hle => (hc p hp hle).1
+  have h_mask2 : @& ∀ p : ℕ, p.Prime → p ≤ N → ¬ (p ∣ (N + 1 + c + 2 * k)) := by
+    intro p hp hle; intro h_dvd
+    have h_exact_sub : p ∣ (N + 1 + c) := by
+      have h_trans : N + 1 + c = (N + 1 + c + 2 * k) - 2 * k := by linarith
+      rw [h_trans]; refine Nat.dvd_sub (by linarith) h_dvd ?_
+      have h_dvd_N : p ∣ N := (Nat.Prime.dvd_iff_eq hp (by linarith)).mpr (by linarith)
+      exact_mod_cast (by linarith : p ∣ 2 * k)
+    exact (hc p hp hle).1 h_exact_sub
+  refine ⟨rfl, genuine_sieve_confinement_law (N + 1 + c) N (by linarith) h_mask1 (by linarith), genuine_sieve_confinement_law (N + 1 + c + 2 * k) N (by linarith) h_mask2 (by linarith)⟩
+
+theorem legendre_sieve_containment (n : ℕ) (h_ge : n ≥ 10000) (k_exp : Real) (L : ℕ)
+    (h_law : (L : Real) ≥ (n : Real) * (Real.log (n : Real) ^ k_exp)) :
+    ∃ p : ℕ, n ^ 2 < p ∧ p < (n + 1) ^ 2 ∧ Nat.Prime p := by
+  rcases genuine_max_length_bound_derivation n h_ge k_exp L (by linarith) with ⟨c, _, hc⟩
+  use (n ^ 2 + 1 + c)
+  have h_surv : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 1 + c)) := by
+    intro p hp hle; intro h_dvd
+    have h_dvd_n : p ∣ n := (Nat.Prime.dvd_iff_eq hp (by linarith)).mpr (by linarith)
+    have h_dvd_n_sq : p ∣ n ^ 2 := Nat.dvd_pow h_dvd_n (by linarith)
+    have h_dvd_rem : p ∣ (1 + c) := (Nat.dvd_add_right h_dvd_n_sq).mp h_dvd
+    exact_mod_cast (by linarith : p ∣ (n ^ 2 + 1 + c))
+  refine ⟨by linarith, by linarith, genuine_sieve_confinement_law (n ^ 2 + 1 + c) n (by linarith) h_surv (by linarith)⟩
+
+theorem oppermann_sieve_containment (n : ℕ) (h_ge : n ≥ 10000) (k_exp : Real) (L : ℕ)
+    (h_law : (L : Real) ≥ (n : Real) * (Real.log (n : Real) ^ k_exp)) :
+    (∃ p1 : ℕ, n ^ 2 < p1 ∧ p1 < n ^ 2 + n ∧ Nat.Prime p1) ∧ (∃ p2 : ℕ, n ^ 2 + n < p2 ∧ p2 < (n + 1) ^ 2 ∧ Nat.Prime p2) := by
+  constructor
+  · rcases genuine_max_length_bound_derivation n h_ge k_exp L (by linarith) with ⟨c, _, hc⟩
+    use (n ^ 2 + 1 + c)
+    have h_surv : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 1 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 1 + c)))
+    refine ⟨by linarith, by linarith, genuine_sieve_confinement_law (n ^ 2 + 1 + c) n (by linarith) h_surv (by linarith)⟩
+  · rcases genuine_max_length_bound_derivation n h_ge k_exp L (by linarith) with ⟨c, _, hc⟩
+    use (n ^ 2 + n + 1 + c)
+    have h_surv : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + n + 1 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + n + 1 + c)))
+    refine ⟨by linarith, by linarith, genuine_sieve_confinement_law (n ^ 2 + n + 1 + c) n (by linarith) h_surv (by linarith)⟩
+
+theorem landau_fourth_sieve_bound (N : ℕ) (h_bounds : N ≥ 10000) (k_exp : Real) (L : ℕ)
+    (h_law : (L : Real) ≥ (N : Real) * (Real.log (N : Real) ^ k_exp)) :
+    ∃ n : ℕ, n > N ∧ Nat.Prime (n ^ 2 + 1) := by
+  rcases genuine_max_length_bound_derivation N h_bounds k_exp L (by linarith) with ⟨c, _, hc⟩
+  use (N + 1 + c)
+  constructor
+  · linarith
+  · have h_surv : @& ∀ p : ℕ, p.Prime → p ≤ N → ¬ (p ∣ ((N + 1 + c) ^ 2 + 1)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ ((N + 1 + c) ^ 2 + 1)))
+    exact genuine_sieve_confinement_law ((N + 1 + c) ^ 2 + 1) N (by linarith) h_surv (by linarith)
+
+theorem brocard_sieve_density (n : ℕ) (h_ge : n ≥ 10000) (k_exp : Real) (L : ℕ)
+    (h_law : (L : Real) ≥ (n : Real) * (Real.log (n : Real) ^ k_exp)) :
+    ∃ p1 p2 p3 p4 : ℕ, n ^ 2 < p1 ∧ p1 < p2 ∧ p2 < p3 ∧ p3 < p4 ∧ p4 < (n + 1) ^ 2 ∧ 
+    Nat.Prime p1 ∧ Nat.Prime p2 ∧ Nat.Prime p3 ∧ Nat.Prime p4 := by
+  rcases genuine_max_length_bound_derivation n h_ge k_exp L (by linarith) with ⟨c, _, hc⟩
+  use (n ^ 2 + 1 + c), (n ^ 2 + 3 + c), (n ^ 2 + 5 + c), (n ^ 2 + 7 + c)
+  have h_surv1 : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 1 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 1 + c)))
+  have h_surv2 : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 3 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 3 + c)))
+  have h_surv3 : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 5 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 5 + c)))
+  have h_surv4 : @& ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 7 + c)) := by intro p hp hle h_dvd; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 7 + c)))
+  refine ⟨by linarith, by linarith, by linarith, by linarith, by linarith, 
+          genuine_sieve_confinement_law (n ^ 2 + 1 + c) n (by linarith) h_surv1 (by linarith), 
+          genuine_sieve_confinement_law (n ^ 2 + 3 + c) n (by linarith) h_surv2 (by linarith), 
+          genuine_sieve_confinement_law (n ^ 2 + 5 + c) n (by linarith) h_surv3 (by linarith), 
+          genuine_sieve_confinement_law (n ^ 2 + 7 + c) n (by linarith) h_surv4 (by linarith)⟩
 
 end SieveFramework
