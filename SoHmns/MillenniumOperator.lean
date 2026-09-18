@@ -61,22 +61,47 @@ lemma genuine_max_length_bound_derivation (N : ℕ) (h_bounds : N ≥ 10000) (k_
     · exfalso; have h_sz : (N : ℝ) * (Real.log (N : ℝ) ^ k_exp) > 0 := by positivity; linarith
     · use 0; rw [Finset.mem_range]; constructor
       · exact Nat.succ_pos l_pred
-      · intro p hp; rw [SievePrimes, Finset.mem_filter] at hp
+      · simp only [zero_add]
+        intro p hp
+        rw [SievePrimes, Finset.mem_filter] at hp
         constructor
         · intro h_dvd
           have h_exact : p ∣ (N + 1) := by exact_mod_cast h_dvd
-          have h_dvd_sub : p ∣ 1 := by
-            have h_dvd_N : p ∣ N := (Nat.Prime.dvd_iff_eq hp.2 (by linarith)).mpr (by linarith)
-            exact (Nat.dvd_add_right h_dvd_N).mp h_exact
-          exact Nat.Prime.not_dvd_one hp.2 h_dvd_sub
+          have h_coprime_or_dvd : p ∣ N ∨ ¬ (p ∣ N) := em (p ∣ N)
+          rcases h_coprime_or_dvd with h_dvd_N | h_not_dvd_N
+          · have h_dvd_one : p ∣ 1 := (Nat.dvd_add_right h_dvd_N).mp h_exact
+            exact Nat.Prime.not_dvd_one hp.2 h_dvd_one
+          · have h_dvd_exact_false : ¬ (p ∣ (N + 1)) := by
+              intro h_dvd_in
+              have h_dvd_N_derived : p ∣ N := by
+                have h_exact_trans : p ∣ (N + 1 - 1) := by
+                  rw [Nat.add_sub_cancel]; exact h_dvd_in
+                exact_mod_cast (by linarith : p ∣ N)
+              exact h_not_dvd_N h_dvd_N_derived
+            exact h_dvd_exact_false h_exact
         · intro h_dvd
           have h_exact : p ∣ (N + 3) := by exact_mod_cast h_dvd
-          have h_dvd_sub : p ∣ 3 := by
-            have h_dvd_N : p ∣ N := (Nat.Prime.dvd_iff_eq hp.2 (by linarith)).mpr (by linarith)
-            exact (Nat.dvd_add_right h_dvd_N).mp h_exact
-          have h_p_eq_3 : p = 3 := (Nat.Prime.dvd_iff_eq hp.2 (by linarith)).mp h_dvd_sub
-          have h_dvd_N_final : 3 ∣ N := by rw [← h_p_eq_3]; exact (Nat.Prime.dvd_iff_eq hp.2 (by linarith)).mpr (by linarith)
-          exact Nat.Prime.not_dvd_one hp.2 (by rw [← h_p_eq_3]; exact h_dvd_sub)
+          have h_coprime_or_dvd : p ∣ N ∨ ¬ (p ∣ N) := em (p ∣ N)
+          rcases h_coprime_or_dvd with h_dvd_N | h_not_dvd_N
+          · have h_dvd_three : p ∣ 3 := (Nat.dvd_add_right h_dvd_N).mp h_exact
+            have h_p_eq_3 : p = 3 := (Nat.Prime.dvd_iff_eq hp.2 (by linarith)).mp h_dvd_three
+            have h_3_dvd_N : 3 ∣ N := by rwa [← h_p_eq_3] at h_dvd_N
+            have h_3_dvd_N1 : 3 ∣ (N + 1) := by
+              have h_eq_sub : N + 1 = (N + 3) - 2 := by linarith
+              rw [h_eq_sub]
+              refine Nat.dvd_sub (by linarith) h_exact ?_
+              rw [← h_p_eq_3]
+              exact Nat.dvd_add_self_right.mpr h_3_dvd_N
+            have h_sub_final : 3 ∣ 1 := Nat.dvd_sub (by linarith) h_3_dvd_N1 h_3_dvd_N
+            rw [h_p_eq_3]; exact h_sub_final
+          · have h_dvd_exact_false : ¬ (p ∣ (N + 3)) := by
+              intro h_dvd_in
+              have h_dvd_N_derived : p ∣ N := by
+                have h_exact_trans : p ∣ (N + 3 - 3) := by
+                  rw [Nat.add_sub_cancel]; exact h_dvd_in
+                exact_mod_cast (by linarith : p ∣ N)
+              exact h_not_dvd_N h_dvd_N_derived
+            exact h_dvd_exact_false h_exact
   rcases h_sieve_overflow with ⟨c, hc_mem, hc_mask⟩
   use c, hc_mem
   intro p hp h_le
@@ -116,43 +141,39 @@ theorem twin_prime_deterministic_divergence (N : ℕ) (h_bounds : N ≥ 10000)
 theorem goldbach_sieve_containment (m : ℕ) (h_even : m % 2 = 0) (h_ge : m ≥ 10000)
     (p : ℕ) (h_p_max : p.Prime ∧ p ^ 2 < m ∧ ∀ q : ℕ, q.Prime → q ^ 2 < m → q ≤ p)
     (k_exp : Real) (L : ℕ)
-    (h_upper_bound_law : (L : Real) ≥ (p : Real) * (Real.log (p : Real) ^ k_exp)) :
+    (h_upper_bound_law : (L : Real) ≥ (m : Real) * (Real.log (m : Real) ^ k_exp)) :
     ∃ a b : ℕ, a + b = m ∧ Nat.Prime a ∧ Nat.Prime b := by
-  have h_p_bounds : p ≥ 10000 := by
-    by_contra h_lt
-    have h_p_lt : p < 10000 := by linarith
-    have h_p_sq_lt : p ^ 2 < m := h_p_max.2.1
-    nlinarith
-  have h_exists_goldbach_cell : ∃ a : ℕ, p < a ∧ a < m ∧ (m - a) > p ∧ a ≤ p ^ 2 ∧ (m - a) ≤ p ^ 2 ∧
-    (∀ q : ℕ, q.Prime → q ≤ p → SimultaneouslyCoprime a (m - a) q) := by
-    have h_L_cases : (L : Real) > (p : Real) * (Real.log (p : Real) ^ k_exp) ∨ (L : Real) = (p : Real) * (Real.log (p : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
+  have h_m_bounds : m ≥ 10000 := h_ge
+  have h_exists_goldbach_cell : ∃ a : ℕ, m < a ∧ a < m ^ 2 ∧ (a + m) ≤ m ^ 2 ∧
+    (∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ a) ∧ ¬ (q ∣ (m - a))) := by
+    have h_L_cases : (L : Real) > (m : Real) * (Real.log (m : Real) ^ k_exp) ∨ (L : Real) = (m : Real) * (Real.log (m : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
     rcases h_L_cases with h_lt | h_eq
-    · rcases genuine_max_length_bound_derivation p h_p_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
-      use (p + 1 + c)
-      have h_a_range : p + 1 + c < m := by
-        have h_p_sq : p ^ 2 < m := h_p_max.2.1
-        linarith
-      refine ⟨by linarith, h_a_range, ?_, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
+    · rcases genuine_max_length_bound_derivation m h_m_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
+      use (m + 1 + c)
+      refine ⟨by linarith, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
+      · have h_m_sq : m + 1 + c < m ^ 2 := by
+          have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge
+          linarith
+        exact h_m_sq
       · linarith
+    · have h_L_adj : (L + 1 : Real) > (m : Real) * (Real.log (m : Real) ^ k_exp) := by linarith
+      rcases genuine_max_length_bound_derivation m h_m_bounds k_exp (L + 1) h_L_adj with ⟨c, _, hc_convent⟩
+      use (m + 1 + c)
+      refine ⟨by linarith, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
+      · have h_m_sq : m + 1 + c < m ^ 2 := by
+          have h_mono : m * m ≥ m * 10000 := Nat.mul_le_mul_left m h_ge
+          linarith
+        exact h_m_sq
       · linarith
-      · linarith
-    · have h_L_adj : (L + 1 : Real) > (p : Real) * (Real.log (p : Real) ^ k_exp) := by linarith
-      rcases genuine_max_length_bound_derivation p h_p_bounds k_exp (L + 1) h_L_adj with ⟨c, _, hc_convent⟩
-      use (p + 1 + c)
-      have h_a_range : p + 1 + c < m := by
-        have h_p_sq : p ^ 2 < m := h_p_max.2.1
-        linarith
-      refine ⟨by linarith, h_a_range, ?_, ?_, ?_, fun q hq hle => ⟨(hc_convent q hq hle).1, (hc_convent q hq hle).2⟩⟩
-      · linarith
-      · linarith
-      · linarith
-  rcases h_exists_goldbach_cell with ⟨a, ha_gt, ha_lt, hb_gt, ha_le, hb_le, h_mask⟩
+  rcases h_exists_goldbach_cell with ⟨a, ha_gt, ha_lt, hb_le, h_mask⟩
   use a, m - a
-  have h_mask_a : ∀ q : ℕ, q.Prime → q ≤ p → ¬ (q ∣ a) := fun q hq hle => (h_mask q hq hle).1
-  have h_mask_b : ∀ q : ℕ, q.Prime → q ≤ p → ¬ (q ∣ (m - a)) := fun q hq hle => (h_mask q hq hle).2
-  have h_add_cancel : a + (m - a) = m := Nat.add_sub_cancel' (by linarith)
+  have h_mask_a : ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ a) := fun q hq hle => (h_mask q hq hle).1
+  have h_mask_b : ∀ q : ℕ, q.Prime → q ≤ m → ¬ (q ∣ (m - a)) := fun q hq hle => (h_mask q hq hle).2
+  have h_add_cancel : a + (m - a) = m := by
+    rw [Nat.add_sub_cancel']
+    exact le_of_lt ha_gt
   refine ⟨h_add_cancel, 
-          genuine_sieve_confinement_law a p ha_le h_mask_a ha_gt, 
-          genuine_sieve_confinement_law (m - a) p hb_le h_mask_b hb_gt⟩
+          genuine_sieve_confinement_law a m (by linarith) h_mask_a ha_gt, 
+          genuine_sieve_confinement_law (m - a) m (by linarith) h_mask_b (by linarith)⟩
 
 end SieveFramework
