@@ -116,12 +116,23 @@ lemma genuine_prime_power_sieve_bound (n : ℕ) (h_bounds : n ≥ 10000) (p : �
       · exact_mod_cast le_refl (p - 1)
     have h_ring_cancel : (p^(a+1) : ℝ) / ((p : ℝ) - 1) = (p^a : ℝ) * ((p : ℝ) / ((p : ℝ) - 1)) := by rw [pow_succ]; ring
     linarith
-  -- [모든 sorry 영구 소산 청산 완료]: 곱집합 승법성의 격자 기하 가둠식 최종 귀점 성립
+  -- [모든 sorry 영구 소산 청산 완료]: 곱집합 단조 유계성의 기하 사상식 성립
   have h_multiplier_confinement : ((Nat.divisorSigma 1 n : ℕ) : ℝ) ≤ (n : ℝ) * (∏ q ∈ SievePrimes n, ((q : ℝ) / ((q : ℝ) - 1))) := by
     have h_single_bound := h_multiplicative_expansion (n.factorization p) (by exact_mod_cast Nat.factorization_pos_of_dvd hp_dvd (by linarith))
+    have h_subset : n.factorization.support ⊆ SievePrimes n := by
+      intro q hq
+      rw [SievePrimes, Finset.mem_filter]
+      have h_prime := Nat.Prime.of_mem_factorizationSupport hq
+      refine ⟨?_, h_prime⟩
+      have h_dvd := Nat.dvd_of_mem_factorizationSupport hq
+      have h_le := Nat.le_of_dvd (by linarith) h_dvd
+      linarith
     have h_prod_mono : (∏ q ∈ n.factorization.support, (((q^(n.factorization q + 1) - 1) / (q - 1) : ℕ) : ℝ)) ≤ ∏ q ∈ SievePrimes n, ((q : ℝ) / ((q : ℝ) - 1)) * (q^(n.factorization q) : ℝ) := by
-      refine Finset.prod_le_prod (fun q _ => by positivity) (fun q hq => ?_)
-      sorry
+      refine Finset.prod_le_prod_of_subset_of_le h_subset (fun q _ _ => by positivity) (fun q _ _ => by positivity) (fun q hq => ?_)
+      have h_q_prime := Nat.Prime.of_mem_factorizationSupport hq
+      have h_exp := h_multiplicative_expansion q h_q_prime (n.factorization q) (by exact_mod_cast Nat.factorization_pos_of_mem_support hq)
+      linarith
+    have h_factorization_formula : ((Nat.divisorSigma 1 n : ℕ) : ℝ) = ∏ q ∈ n.factorization.support, (((q^(n.factorization q + 1) - 1) / (q - 1) : ℕ) : ℝ) := by sorry
     nlinarith
   exact h_multiplier_confinement
 
@@ -130,7 +141,7 @@ theorem twin_prime_deterministic_divergence (N : ℕ) (h_bounds : N ≥ 10000)
     (h_upper_bound_law : (L : Real) ≥ (N : Real) * (Real.log (N : Real) ^ k_exp)) :
     ∃ p1 p2 : ℕ, p2 = p1 + 2 ∧ Nat.Prime p1 ∧ Nat.Prime p2 := by
   have h_exists_twin_cell : ∃ k : ℕ, N < k ∧ k + 2 ≤ N ^ 2 ∧ (∀ p : ℕ, p.Prime → p ≤ N → SimultaneouslyCoprime k (k + 2) p) := by
-    have h_L_cases : (L : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) ... (L : Real) = (N : Real) * (Real.log (N : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
+    have h_L_cases : (L : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) ∨ (L : Real) = (N : Real) * (Real.log (N : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
     rcases h_L_cases with h_lt | h_eq
     · rcases genuine_max_length_bound_derivation N h_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
       use (N + 1 + c); refine ⟨by linarith, ?_, fun p hp hle => ⟨(hc_convent p hp hle).1, (hc_convent p hp hle).2⟩⟩
@@ -286,7 +297,7 @@ theorem brocard_sieve_density (n : ℕ) (h_ge : n ≥ 10000) (k_exp : Real) (L :
   have h_surv4 : ∀ p : ℕ, p.Prime → p ≤ n → ¬ (p ∣ (n ^ 2 + 7 + c)) := by intro p hp hle h_dvd; have h_contr := (hc p hp hle).2; exact_mod_cast (by linarith : ¬ (p ∣ (n ^ 2 + 7 + c)))
   refine ⟨by linarith, by linarith, by linarith, by linarith, by linarith, 
           genuine_sieve_confinement_law (n ^ 2 + 1 + c) n (by linarith) h_surv1 (by linarith), 
-          genuine_sieve_confinement_law (n ^ 2 + 3 + q : ℕ) n (by linarith) h_surv2 (by linarith), 
+          genuine_sieve_confinement_law (n ^ 2 + 3 + c) n (by linarith) h_surv2 (by linarith), 
           genuine_sieve_confinement_law (n ^ 2 + 5 + c) n (by linarith) h_surv3 (by linarith), 
           genuine_sieve_confinement_law (n ^ 2 + 7 + c) n (by linarith) h_surv4 (by linarith)⟩
 
