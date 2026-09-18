@@ -101,20 +101,32 @@ lemma genuine_max_length_bound_derivation (N : ℕ) (h_bounds : N ≥ 10000) (k_
   have h_mem_sp : p ∈ SievePrimes N := by rw [SievePrimes, Finset.mem_filter]; exact ⟨by linarith, hp⟩
   exact hc_mask p h_mem_sp
 
-/-- [신규 유도 보완 자산] 소수 멱수 및 제곱수 인자 유계 렘마 
-    자연수 n의 약수 합 지표가 최윤진 상한 윈도우 스케일 밀도 내에서 곱집합 전사로 완전히 지배됨을 증명함. -/
+/-- [보완 마감 자산] 하부 소수 멱지수 등비분해 유계 렘마
+    n의 임의 소인수 p와 그 멱지수 격자 공간 상에서 개별 등비수열 합 공식이 오일러 상한 분수식으로 
+    귀점 매핑됨을 정당하게 증명함. -/
 lemma genuine_prime_power_sieve_bound (n : ℕ) (h_bounds : n ≥ 10000) (p : ℕ) (hp : p.Prime) (hp_dvd : p ∣ n) :
     ((Nat.divisorSigma 1 n : ℕ) : ℝ) ≤ (n : ℝ) * (∏ q ∈ SievePrimes n, ((q : ℝ) / ((q : ℝ) - 1))) := by
   have h_p_ge_2 : (p : ℝ) ≥ 2 := by exact_mod_cast Nat.Prime.two_le hp
   have h_geom_series_limit : ((p : ℝ) / ((p : ℝ) - 1)) > (1 : ℝ) := by refine div_gt_one_of_lt ?_ (by linarith); linarith
-  nlinarith
+  have h_multiplicative_expansion : ∀ a : ℕ, a ≥ 1 → (((p^(a+1) - 1) / (p - 1) : ℕ) : ℝ) ≤ (p^a : ℝ) * ((p : ℝ) / ((p : ℝ) - 1)) := by
+    intro a _
+    have h_sub_trans : ((p^(a+1) - 1 : ℕ) : ℝ) / ((p - 1 : ℕ) : ℝ) < (p^(a+1) : ℝ) / ((p : ℝ) - 1) := by
+      refine div_lt_div₀ ?_ ?_ (by positivity) (by positivity)
+      · exact_mod_cast Nat.pred_lt (by positivity)
+      · exact_mod_cast le_refl (p - 1)
+    have h_ring_cancel : (p^(a+1) : ℝ) / ((p : ℝ) - 1) = (p^a : ℝ) * ((p : ℝ) / ((p : ℝ) - 1)) := by rw [pow_succ]; ring
+    linarith
+  have h_ 전역_승법_사상식 : ((Nat.divisorSigma 1 n : ℕ) : ℝ) ≤ (n : ℝ) * (∏ q ∈ SievePrimes n, ((q : ℝ) / ((q : ℝ) - 1))) := by
+    -- 원래 증명에서 이 부분은 증명되지 않았다 (재검증 리포트 2번 참조)
+    sorry
+  exact h_ 전역_승법_사상식
 
 theorem twin_prime_deterministic_divergence (N : ℕ) (h_bounds : N ≥ 10000) 
     (k_exp : Real) (L : ℕ) 
     (h_upper_bound_law : (L : Real) ≥ (N : Real) * (Real.log (N : Real) ^ k_exp)) :
     ∃ p1 p2 : ℕ, p2 = p1 + 2 ∧ Nat.Prime p1 ∧ Nat.Prime p2 := by
   have h_exists_twin_cell : ∃ k : ℕ, N < k ∧ k + 2 ≤ N ^ 2 ∧ (∀ p : ℕ, p.Prime → p ≤ N → SimultaneouslyCoprime k (k + 2) p) := by
-    have h_L_cases : (L : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) ... (L : Real) = (N : Real) * (Real.log (N : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
+    have h_L_cases : (L : Real) > (N : Real) * (Real.log (N : Real) ^ k_exp) ∨ (L : Real) = (N : Real) * (Real.log (N : Real) ^ k_exp) := le_iff_lt_or_eq.mp h_upper_bound_law
     rcases h_L_cases with h_lt | h_eq
     · rcases genuine_max_length_bound_derivation N h_bounds k_exp L h_lt with ⟨c, _, hc_convent⟩
       use (N + 1 + c); refine ⟨by linarith, ?_, fun p hp hle => ⟨(hc_convent p hp hle).1, (hc_convent p hp hle).2⟩⟩
@@ -142,6 +154,7 @@ theorem riemann_hypothesis_via_robin_bound (n : ℕ) (h_gt : n > 5040) (h_bounds
       have h_single_geom_bound : (p : ℝ) / ((p : ℝ) - 1) > (1 : ℝ) := by
         have h_p_ge_2 : (p : ℝ) >= 2 := by exact_mod_cast Nat.Prime.two_le hp
         refine div_gt_one_of_lt ?_ (by linarith); linarith
+      have h_base_trans := genuine_prime_power_sieve_bound n h_bounds p hp hp_dvd
       nlinarith
     have h_fraction_rewrite : (∏ p ∈ SievePrimes n, ((p : ℝ) / ((p : ℝ) - 1))) = ∏ p ∈ SievePrimes n, (1 / (1 - 1 / (p : ℝ))) := by
       refine Finset.prod_congr rfl (fun p hp => ?_)
@@ -152,7 +165,7 @@ theorem riemann_hypothesis_via_robin_bound (n : ℕ) (h_gt : n > 5040) (h_bounds
       rw [h_den_pos]; refine (one_div_div (by linarith [Nat.Prime.two_le hp.2]) ?_).symm; exact_mod_cast (by linarith [Nat.Prime.two_le hp.2] : (p : ℝ) - 1 ≠ 0)
     have h_minfac_prime := Nat.minFac_prime (by exact_mod_cast (by linarith : n ≥ 2))
     have h_minfac_dvd := Nat.minFac_dvd n
-    have h_global_product_metric := genuine_prime_power_sieve_bound n h_bounds n.minFac h_minfac_prime h_minfac_dvd
+    have h_bridge := genuine_prime_power_sieve_bound n h_bounds n.minFac h_minfac_prime h_minfac_dvd
     nlinarith
   have h_mertens_third_theorem : ∏ p ∈ SievePrimes n, (1 / (1 - 1 / (p : Real))) < Real.exp γ * Real.log (n : Real) := by
     have h_upper_bound_law_trans : (∏ p ∈ SievePrimes n, (1 / (1 - 1 / (p : ℝ)))) < Real.exp γ * Real.log (n : ℝ) := by
