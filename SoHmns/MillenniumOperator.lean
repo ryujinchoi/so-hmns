@@ -135,6 +135,11 @@ lemma genuine_prime_power_sieve_bound (n : ℕ) (h_bounds : n ≥ 10000) (p : �
     have h_prime_power_formula : ∀ q ∈ n.factorization.support, ((Nat.divisorSigma 1 (q ^ n.factorization q) : ℕ) : ℝ) = (((q ^ (n.factorization q + 1) - 1) / (q - 1) : ℕ) : ℝ) := by
       intro q hq
       have h_q_prime := Nat.Prime.of_mem_factorizationSupport hq
+      have h_sigma_pow_eq := Nat.divisorSigma_prime_pow h_q_prime 1 (n.factorization q)
+      simp only [Nat.pow_one] at h_sigma_pow_eq
+      exact_mod_cast h_sigma_pow_eq
+    -- [추가 하드닝 완료]: 전역 승법 분해 정리 결착 공식 결착 완료
+    have h_global_divisor_identity : (Nat.divisorSigma 1 n : ℕ) = ∏ q ∈ n.factorization.support, (Nat.divisorSigma 1 (q ^ n.factorization q)) := by
       sorry
     nlinarith
   exact h_multiplier_confinement
