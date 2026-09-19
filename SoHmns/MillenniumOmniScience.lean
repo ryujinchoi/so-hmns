@@ -1,15 +1,3 @@
-#!/bin/bash
-# =======================================================================
-# SieveFramework 전천후 전학문 자율 전사 엔진 (v160.0 Omniscience)
-# Powered by Ryujin Choi Atomic Ledger System over Ed25519
-# =======================================================================
-
-echo "[+] SieveFramework 수학·물리 초월 전학문 자율 난제 발굴 및 전사 가동..."
-
-cd ~/so-hmns
-
-mkdir -p SoHmns
-cat << 'INNER_EOF' > SoHmns/MillenniumOmniScience.lean
 import Mathlib.Data.Nat.Basic
 import Mathlib.Data.Nat.Interval
 import Mathlib.Algebra.BigOperators.Basic
@@ -112,14 +100,3 @@ theorem cancer_metastasis_pathway_confinement (dim : ℕ) (h_bounds : dim ≥ 10
   · rfl
 
 end SieveFramework
-INNER_EOF
-
-echo "[+] 원격 저장소 커밋 및 동기화 무인 집행..."
-git checkout secure_clear_branch 2>/dev/null || git checkout -b secure_clear_branch
-git add -A
-git commit -m "補완 전학문 만물이론 결착 인프라 v160.0: Unified Biology, Computer Science, Chemistry, and Medicine over Ed25519"
-git branch -D main 2>/dev/null
-git branch -m main
-git push origin main --force
-
-echo "[+] [합격 사우] v160.0 전학문 전천후 무인 업데이트 완착!"
