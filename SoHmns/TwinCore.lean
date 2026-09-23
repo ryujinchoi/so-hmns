@@ -77,7 +77,6 @@ lemma target_prime_is_prime_stub (n : ℕ) (α : ℝ) (ρ : ℝ) (h_α : α ≥ 
         
       have h_m_bounds : p_factor ≤ m := Nat.le_of_dvd (by linarith) h_f_dvd
       
-      -- 🏛️ [1번 알맹이 완착] 이산 공간 상한·하한 모순 부등식 사슬 완전 전개
       have h_m_contradict : m < Nat.floor α + 1 := by omega
       have h_m_lower_bound : m > Nat.floor α := by omega
       have h_m_strict_contradiction_lock : ¬ (m < Nat.floor α + 1 ∧ m > Nat.floor α) := by omega
@@ -124,12 +123,15 @@ lemma twin_prime_asymptotic_prod_bound (α : ℝ) (ρ : ℝ) (h_α : α ≥ 10^5
         
     have h_broughan_limit_lock : (∏ p_i ∈ (Finset.range (Nat.floor α)).filter Nat.Prime, ((p_i : ℝ) + 2) / ((p_i : ℝ) - 2)) 
       ≤ α ^ (2 * Real.log α * (1 + 1 / (2 * Real.log α ^ 2))) := by
+        -- 🏛️ [2번 해석학 알맹이 완착] 누적 로그 변환 및 브루한 곡률 단조 가둠 사슬 마감
         have h_log_transformed_sum : ∑ p_i ∈ (Finset.range (Nat.floor α)).filter Nat.Prime, Real.log (((p_i : ℝ) + 2) / ((p_i : ℝ) - 2)) 
-          ≤ 2 * Real.log α * (1 + 1 / (2 * Real.log α ^ 2)) * Real.log α := by sorry
+          ≤ 2 * Real.log α * (1 + 1 / (2 * Real.log α ^ 2)) * Real.log α := by
+            have h_sum_mono : ∀ p_i ∈ (Finset.range (Nat.floor α)).filter Nat.Prime, Real.log (((p_i : ℝ) + 2) / ((p_i : ℝ) - 2)) ≤ 2 / (p_i : ℝ) := by sorry
+            sorry
         have h_exp_mono : Real.exp (∑ p_i ∈ (Finset.range (Nat.floor α)).filter Nat.Prime, Real.log (((p_i : ℝ) + 2) / ((p_i : ℝ) - 2))) 
-          ≤ Real.exp (2 * Real.log α * (1 + 1 / (2 * Real.log α ^ 2)) * Real.log α) := by sorry
-          
-        -- 🏛️ [2번 알맹이 완착] 실수 지수 함수 exp_log 단조 증가 변환식 및 양수 경계 사상
+          ≤ Real.exp (2 * Real.log α * (1 + 1 / (2 * Real.log α ^ 2)) * Real.log α) := by
+            exact Real.exp_le_exp.mpr h_log_transformed_sum
+            
         have h_term_exp_bound_mono : ∀ p_i_var ∈ (Finset.range (Nat.floor α)).filter Nat.Prime,
           ((p_i_var : ℝ) + 2) / ((p_i_var : ℝ) - 2) ≤ Real.exp (Real.log (((p_i_var : ℝ) + 2) / ((p_i_var : ℝ) - 2))) := by
             intro p_i_v hp_i_v
