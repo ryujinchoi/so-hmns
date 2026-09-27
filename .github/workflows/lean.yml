@@ -1,25 +1,17 @@
-name: 🏛️ Master Ryujin Choi Automated Omni-Science Review
-
+name: Review
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: 1. Checkout Certified Master Ledger
-      uses: actions/checkout@v3
-
-    - name: 2. Install Elan (Lean Version Manager) Master Hub
+    - uses: actions/checkout@v3
+    - name: Install
       run: |
         curl https://githubusercontent.com -sSf | sh -s -- -y
         echo "$HOME/.elan/bin" >> $GITHUB_PATH
-
-    - name: 3. Terminate Continuous Noise & Run Pure Lean 4 Kernel Review
+    - name: Run
       run: |
         elan default leanprover/lean4:stable
         lake build SieveFramework
