@@ -11,17 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 원격 가상머신 내부선 상으로 소스코드 인출
+    # 1. 저장소 코드 인출
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. leanprover 공식 액션을 사용하여 가상머신에 elan 및 툴체인(v4.11.0) 자동 연립 이식
+    # 2. 잘못된 매개변수 주입을 전면 제거하고 leanprover 공식 액션 기본값으로 가상머신 툴체인 이식
     - name: Setup Lean 4
       uses: leanprover/lean-action@v1
-      with:
-        elan-version: 'v4.11.0'
 
-    # 3. Mathlib 4 캐시 동기화 및 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
+    # 3. Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
     - name: Build Project
       run: |
         lake exe cache get
