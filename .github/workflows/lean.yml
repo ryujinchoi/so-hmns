@@ -15,12 +15,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. 공식 인증된 leanprover/lean-action@v1 기본 사양으로 가상머신 툴체인 완착 이식
-    - name: Setup Lean 4
-      uses: leanprover/lean-action@v1
-
-    # 3. Mathlib 4 캐시 전량 동기화 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
-    - name: Build Project
+    # 2. configure 단계를 가진 외부 플러그인 없이, 순수 리눅스 셸 명령어로 elan과 툴체인을 단일 블록 내에서 직격 빌드 주행
+    - name: Direct Non-stop Lean 4 Setup and Build
       run: |
+        # 1) elan 공식 바이너리 관리자 자동 주입 (인터넷 직격 인출)
+        curl https://githubusercontent.com -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.11.0
+        
+        # 2) 현재 실행 중인 단일 셸 세션 내부 기저선에 elan 경로 강제 연립 적용
+        export PATH="$HOME/.elan/bin:$PATH"
+        
+        # 3) 주입된 경로선 위에서 Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 구동
         lake exe cache get
         lake build
