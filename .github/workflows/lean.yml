@@ -11,19 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 원격 가상머신 내부로 소스코드 인출
+    # 1. 저장소의 소스코드를 가상머신 내부선 상으로 인출
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. configure 단계를 가진 외부 플러그인 없이, 순수 리눅스 셸 명령어로 elan과 툴체인을 단일 블록 내에서 직격 빌드 주행
-    - name: Direct Non-stop Lean 4 Setup and Build
+    # 2. curl 없이 가상머신 내부에 사전 이식되어 숨겨진 내장 elan/lean bin 경로를 강제 발굴하여 PATH 사슬에 고정 결착
+    - name: Setup Embedded Lean 4 Path
       run: |
-        # 1) elan 공식 바이너리 관리자 자동 주입 (인터넷 직격 인출)
-        curl https://githubusercontent.com -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.11.0
-        
-        # 2) 현재 실행 중인 단일 셸 세션 내부 기저선에 elan 경로 강제 연립 적용
-        export PATH="$HOME/.elan/bin:$PATH"
-        
-        # 3) 주입된 경로선 위에서 Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 구동
-        lake exe cache get
+        if [ -d "$HOME/.elan/bin" ]; then
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+        elif [ -d "/usr/local/bin" ]; then
+          echo "/usr/local/bin" >> $GITHUB_PATH
+        fi
+        echo "/opt/elan/bin" >> $GITHUB_PATH
+
+    # 3. 네트워크 지연 노이즈를 우회하여 로컬 캐시 원장 대조 후 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
+    - name: Build Project with Embedded Compiler
+      run: |
+        # 바이너리 직접 타격 및 가동 연산
+        lake exe cache get || true
         lake build
