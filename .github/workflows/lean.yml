@@ -1,17 +1,28 @@
-name: Review
+name: lean
+
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Install
+    # 저장소의 소스코드를 가상머신으로 인출
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # elan 및 lean 4 컴파일러 환경을 원격 가상머신에 완벽하게 하드웨이적 자동 이식
+    - name: Setup Lean 4
+      uses: leanprover/lean-action@v1
+      with:
+        elan-version: 'stable'
+
+    # 수학/대수학 라이브러리 Mathlib 4 캐시 동기화 및 39대 Landmark 전체 파일 최종 컴파일 주행
+    - name: Build Project
       run: |
-        curl https://githubusercontent.com -sSf | sh -s -- -y
-        echo "$HOME/.elan/bin" >> $GITHUB_PATH
-    - name: Run
-      run: |
-        elan default leanprover/lean4:stable
-        lake build SieveFramework
+        lake exe cache get
+        lake build
