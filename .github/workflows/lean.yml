@@ -11,16 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 저장소의 소스코드를 가상머신 내부로 checkout
+    # 1. 저장소 코드 인출
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. lean-action@v1 기본 설정으로 가상머신에 elan 및 컴파일러 이식 개시
-    - name: Setup Lean 4
-      uses: leanprover/lean-action@v1
-
-    # 3. Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
-    - name: Build Project
+    # 2. 순수 셸 스크립트로 가상머신 내부에 elan 및 v4.11.0 컴파일러 엔진 강제 완착 설치
+    - name: Install Elan & Lean 4 Compiler
       run: |
+        curl https://githubusercontent.com -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.11.0
+        echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+    # 3. 환경 변수 동기화 후 Mathlib 4 캐시 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
+    - name: Build Project with Mathlib 4
+      run: |
+        export PATH="$HOME/.elan/bin:$PATH"
         lake exe cache get
         lake build
