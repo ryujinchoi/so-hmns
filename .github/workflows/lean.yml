@@ -15,14 +15,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. 순수 셸 스크립트로 elan을 설치하고 현재 단계의 GITHUB_PATH 환경 변수 사슬에 즉시 강제 각인
+    # 2. 순수 셸 스크립트로 elan 및 v4.11.0 컴파일러 강제 설치
     - name: Install Elan & Lean 4 Compiler
       run: |
         curl https://githubusercontent.com -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.11.0
-        echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
-    # 3. 인계된 경로 위에서 Mathlib 4 캐시 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
+    # 3. 환경 변수 누수 격벽을 깨부수고 바이너리 절대 경로($HOME/.elan/bin/)를 직격 투사하여 Mathlib 4 캐시 및 최종 빌드 주행
     - name: Build Project with Mathlib 4
       run: |
-        lake exe cache get
-        lake build
+        $HOME/.elan/bin/lake exe cache get
+        $HOME/.elan/bin/lake build
