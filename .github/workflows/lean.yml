@@ -15,11 +15,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. leanprover 공식 정식 액션을 통해 가상머신에 elan 및 v4.11.0 커널 엔진을 완벽무결하게 자동 조립 이식
+    # 2. 잘못된 elan-version 인자를 전면 제거하고 공식 액션 기본 사양으로 가상머신에 Lean 4 환경 자동 이식
     - name: Setup Lean 4
       uses: leanprover/lean-action@v1
-      with:
-        elan-version: 'stable'
 
     # 3. Mathlib 4 캐시 전량 동기화 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
     - name: Build Project
