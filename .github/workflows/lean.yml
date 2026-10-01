@@ -11,15 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 원격 가상머신 내부선 상으로 최류진 저장소 소스코드 인출
+    # 1. 저장소의 소스코드를 가상머신 내부선 상으로 인출
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    # 2. curl 없이 공식 leanprover 정식 액션 기본 사양으로 가상머신에 Lean 4 환경 자동 이식
+    # 2. 최신 공인 lean-action@v4 규격을 결착하여 가상 OS와의 동적 연결 마찰을 원천 차단하고 환경 이식
     - name: Setup Lean 4
-      uses: leanprover/lean-action@v1
+      uses: leanprover/lean-action@v4
 
-    # 3. Mathlib 4 캐시 전량 동기화 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
+    # 3. Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 빌드 주행
     - name: Build Project
       run: |
         lake exe cache get
