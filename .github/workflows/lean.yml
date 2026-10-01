@@ -15,15 +15,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # 2. 순수 셸 스크립트로 가상머신 내부에 elan 및 v4.11.0 컴파일러 엔진 강제 완착 설치
+    # 2. 순수 셸 스크립트로 elan을 설치하고 현재 단계의 GITHUB_PATH 환경 변수 사슬에 즉시 강제 각인
     - name: Install Elan & Lean 4 Compiler
       run: |
         curl https://githubusercontent.com -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.11.0
         echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
-    # 3. 환경 변수 동기화 후 Mathlib 4 캐시 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
+    # 3. 인계된 경로 위에서 Mathlib 4 캐시 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
     - name: Build Project with Mathlib 4
       run: |
-        export PATH="$HOME/.elan/bin:$PATH"
         lake exe cache get
         lake build
