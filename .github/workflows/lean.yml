@@ -11,17 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 저장소의 소스코드를 가상머신으로 인출
+    # 1. 저장소의 소스코드를 가상머신 내부로 checkout
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # elan 및 lean 4 컴파일러 환경을 원격 가상머신에 완벽하게 하드웨이적 자동 이식
+    # 2. lean-action@v1 기본 설정으로 가상머신에 elan 및 컴파일러 이식 개시
     - name: Setup Lean 4
       uses: leanprover/lean-action@v1
-      with:
-        elan-version: 'stable'
 
-    # 수학/대수학 라이브러리 Mathlib 4 캐시 동기화 및 39대 Landmark 전체 파일 최종 컴파일 주행
+    # 3. Mathlib 4 캐시 전량 인출 및 39대 Landmark 전체 파일 최종 컴파일 주행
     - name: Build Project
       run: |
         lake exe cache get
