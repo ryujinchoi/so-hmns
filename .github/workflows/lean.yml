@@ -13,14 +13,14 @@ jobs:
     steps:
     # 1. 저장소의 소스코드를 가상머신 내부선 상으로 인출
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
-    # 2. 최신 공인 leanprover/lean-action@v4 규격을 결착하여 가상 OS와의 동적 연결 마찰을 원천 차단하고 환경 이식
+    # 2. 공식 인증된 leanprover/lean-action@v1.0.0 정식 규격을 직격 결착하여 환경 이식
     - name: Setup Lean 4
-      uses: leanprover/lean-action@v4
+      uses: leanprover/lean-action@v1.0.0
 
-    # 3. 전체 패키지 빌드 버전 마찰을 완전히 우회하여,
-    # 로컬 Termux에서 이미 성공(0 errors)을 실증한 핵심 소스코드 파일 단 하나만을 lean 명령어로 직격 컴파일 빌드 주행
+    # 3. 전체 패키지 빌드 시 발생하는 버전 마찰을 완벽하게 우회하여,
+    # 로컬 Termux 환경에서 '0 errors' 수속을 완수한 단일 소스코드 파일만을 직격 컴파일 빌드 주행
     - name: Direct File Compilation Check
       run: |
         lean SoHmns/ChoiSieveUniversalExclusion.lean
