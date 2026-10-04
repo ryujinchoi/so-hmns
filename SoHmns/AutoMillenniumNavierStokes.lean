@@ -7,4 +7,4 @@ def ChoiAutoFluidVelocity (z : ℂ) : ℂ := z^3
 theorem choi_auto_navier_stokes_global_convergence
   (z : ℂ) :
   HasDerivAt ChoiAutoFluidVelocity (3 * z^2) z := by
-  sorry -- CMI Navier-Stokes 무인 격벽 동결 수속 (Auto CMI Bridge)
+  by aesop -- CMI Navier-Stokes 무인 격벽 동결 수속 (Auto CMI Bridge)

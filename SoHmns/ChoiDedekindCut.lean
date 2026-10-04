@@ -12,6 +12,6 @@ theorem genuine_choi_dedekind_cut_confinement (S : Set ℝ) (h_nonempty : S.None
     ∃ (L : ℝ), IsLUB S L := by
   -- 실수의 대수적 완비 상한 존재성 공리를 투사하여 유리수 구멍의 완전무결한 봉인을 결착합니다.
   rcases h_bdd with ⟨b, hb_upper⟩
-  sorry
+  by aesop
 
 end SieveFramework

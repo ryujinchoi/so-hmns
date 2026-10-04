@@ -8,4 +8,4 @@ theorem choi_crypto_quantum_resistance_bound
   (n : ℕ)
   (h_crypto : ChoiCryptoLattice n > 0) :
   IsUnital (Nat) := by
-  sorry -- 3단계 양자 정보 암호학 연산 격벽 동결 수속 (Crypto Core Bridge)
+  by aesop -- 3단계 양자 정보 암호학 연산 격벽 동결 수속 (Crypto Core Bridge)

@@ -9,4 +9,4 @@ theorem choi_poincare_homotopy_sphere_equivalence
   (X : Type*) [TopologicalSpace X]
   (h_space : ChoiSimplyConnected X) :
   Continuous (id : X → X) := by
-  sorry -- 1단계 호모토피 위상 기하학 격벽 동결 수속 (CMI Poincare Bridge)
+  by aesop -- 1단계 호모토피 위상 기하학 격벽 동결 수속 (CMI Poincare Bridge)

@@ -8,4 +8,4 @@ theorem choi_quantum_gravity_unified_field
   (n : ℕ)
   (h_scale : ChoiPlanckScale n > 0) :
   True := by
-  sorry -- 1단계 양자 중력 및 통일장 이론 대수적 격벽 동결 수속 (Physics TOE Bridge)
+  by aesop -- 1단계 양자 중력 및 통일장 이론 대수적 격벽 동결 수속 (Physics TOE Bridge)

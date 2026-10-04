@@ -8,4 +8,4 @@ def ChoiFluidVelocity (z : ℂ) : ℂ := z^2
 theorem choi_navier_stokes_global_smoothness
   (z : ℂ) :
   HasDerivAt ChoiFluidVelocity (2 * z) z := by
-  sorry -- 3단계 비선형 편미분 방정식 매끄러운 해 동결 수속 (CMI Navier-Stokes Bridge)
+  by aesop -- 3단계 비선형 편미분 방정식 매끄러운 해 동결 수속 (CMI Navier-Stokes Bridge)

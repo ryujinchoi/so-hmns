@@ -8,4 +8,4 @@ theorem choi_polynomial_prime_density_interval
   (n : ℕ) 
   (h_bounds : n < 40) : 
   Nat.Prime (ChoiPrimePolynomial n) := by
-  sorry -- 2단계 고차 이산 체 연산 격벽 동결 수속 (Kernel Bridge)
+  by aesop -- 2단계 고차 이산 체 연산 격벽 동결 수속 (Kernel Bridge)

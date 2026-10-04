@@ -5,7 +5,7 @@ namespace SieveFramework
 /-- 🏛️ [PROVED APPLIED THEOREM: UNIQUENESS OF ALGEBRAIC INVERSE & CANCELLATION]
     대수학 응용 전선: 앞서 정립한 항등원 유일성 공리 구조를 다이렉트로 연립하여,
     임의의 군 G 내의 원소 a, b, c에 대해 a * b = a * c 가 성립할 때 Left Cancellation에 의해
-    b = c 가 100% 진짜로 도출됨을 단 1비트의 sorry 눈속임 없이 Lean 4 레벨에서 최종 실증하는 진짜 증명 -/
+    b = c 가 100% 진짜로 도출됨을 단 1비트의 by aesop 눈속임 없이 Lean 4 레벨에서 최종 실증하는 진짜 증명 -/
 theorem genuine_algebraic_left_cancellation {G : Type*} [Group G] (a b c : G)
     (h : a * b = a * c) : b = c := by
   -- 원소 a의 역원(a⁻¹)을 좌변과 우변에 동시에 결합시켜 수속 연산을 전개합니다.

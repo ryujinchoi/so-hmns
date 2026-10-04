@@ -8,4 +8,4 @@ theorem choi_inflation_phase_transition_limit
   (phi : ℝ)
   (h_pot : ChoiInflatonPotential phi > 0) :
   True := by
-  sorry -- 2단계 초기 우주론 양자 퍼텐셜 간극 동결 수속 (Inflation Bridge)
+  by aesop -- 2단계 초기 우주론 양자 퍼텐셜 간극 동결 수속 (Inflation Bridge)

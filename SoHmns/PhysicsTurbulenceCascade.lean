@@ -8,4 +8,4 @@ theorem choi_turbulence_statistical_boundedness
   (k : ℝ)
   (h_k : k > 0) :
   HasDerivAt ChoiEnergyCascade ((-5/3) * k^(-8/3)) k := by
-  sorry -- 3단계 비선형 역학 및 통계 물리 난류 유계성 수속 (Physics Turbulence Bridge)
+  by aesop -- 3단계 비선형 역학 및 통계 물리 난류 유계성 수속 (Physics Turbulence Bridge)

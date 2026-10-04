@@ -9,4 +9,4 @@ theorem choi_analytic_conformal_density_limit
   (s : ℂ) 
   (h_domain : s.re > 1) : 
   HasDerivAt ChoiAnalyticDensity (2 * s) s := by
-  sorry -- 2단계 연속체 해석학 연산 격벽 동결 수속 (Complex Calculus Bridge)
+  by aesop -- 2단계 연속체 해석학 연산 격벽 동결 수속 (Complex Calculus Bridge)

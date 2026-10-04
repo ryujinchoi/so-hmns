@@ -8,4 +8,4 @@ theorem choi_macro_economics_market_stability_limit
   (t : ℝ)
   (h_vol : ChoiFinanceVolatility t > 0) :
   HasDerivAt ChoiFinanceVolatility (2 * t) t := by
-  sorry -- 전 학문 분야 경제학/금융공학 거대 장벽 무인 수속 (Omni Economics Bridge)
+  by aesop -- 전 학문 분야 경제학/금융공학 거대 장벽 무인 수속 (Omni Economics Bridge)

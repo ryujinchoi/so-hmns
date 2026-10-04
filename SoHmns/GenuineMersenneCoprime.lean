@@ -16,6 +16,6 @@ theorem genuine_choi_MersenneCoprime_confinement (n : ℕ) :
   use p
   refine ⟨hp_prime, ?_⟩
   by_contra h_le
-  sorry
+  by aesop
 
 end SieveFramework

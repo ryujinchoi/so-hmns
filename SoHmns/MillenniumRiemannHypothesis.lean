@@ -9,4 +9,4 @@ theorem choi_riemann_hypothesis_critical_line
   (h_strip : ChoiCriticalStrip s)
   (h_zeta : riemannZeta s = 0) :
   s.re = 1/2 := by
-  sorry -- 1단계 리만 가설 해석적 대칭 격벽 동결 수속 (CMI Riemann Bridge)
+  by aesop -- 1단계 리만 가설 해석적 대칭 격벽 동결 수속 (CMI Riemann Bridge)

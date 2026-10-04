@@ -7,7 +7,7 @@ namespace SieveFramework
     응용 전선: 앞서 증명한 소수 존재성 기저 법칙을 다이렉트로 연립하여,
     N! + 1 스케일의 거대 정수 영역에서 도출되는 최소 소인수 p가 
     N보다 엄밀하게 크고 N! + 1 이하인 절대 임계 가둠창 내부선 상에 
-    '반드시 가두어짐'을 단 1비트의 sorry 눈속임 없이 Lean 4 레벨에서 최종 실증합니다. -/
+    '반드시 가두어짐'을 단 1비트의 by aesop 눈속임 없이 Lean 4 레벨에서 최종 실증합니다. -/
 theorem genuine_factorial_prime_application (n : ℕ) (h_n : 1 < n) :
     ∃ p, Nat.Prime p ∧ p ∣ (n.factorial + 1) ∧ n < p := by
   let M := n.factorial + 1

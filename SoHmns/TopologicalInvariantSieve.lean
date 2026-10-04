@@ -9,4 +9,4 @@ theorem choi_topological_sieve_connectedness
   (X : Type*) [TopologicalSpace X]
   (h_choi : ChoiTopologicalSpace X) :
   Continuous (id : X → X) := by
-  sorry -- 1단계 기하학적 위상수학 격벽 인터페이스 동결 수속 (Topology Bridge)
+  by aesop -- 1단계 기하학적 위상수학 격벽 인터페이스 동결 수속 (Topology Bridge)

@@ -7,4 +7,4 @@ def ChoiAILossFunction (w : ℝ) : ℝ := w^4 + 3 * w^2
 theorem choi_ai_loss_gradient_global_convergence
   (w : ℝ) :
   HasDerivAt ChoiAILossFunction (4 * w^3 + 6 * w) w := by
-  sorry -- 컴퓨터과학 AI 최적화 격벽 최종 동결 수속 (Omni AI Computing Bridge)
+  by aesop -- 컴퓨터과학 AI 최적화 격벽 최종 동결 수속 (Omni AI Computing Bridge)

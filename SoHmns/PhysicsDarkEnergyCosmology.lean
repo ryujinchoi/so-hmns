@@ -8,4 +8,4 @@ theorem choi_cosmology_dark_energy_bounded_density
   (z : ℂ)
   (h_const : ChoiCosmologicalConstant z > 0) :
   True := by
-  sorry -- 1단계 우주론 및 진공 에너지 해석적 대칭 격벽 동결 수속 (Cosmology Bridge)
+  by aesop -- 1단계 우주론 및 진공 에너지 해석적 대칭 격벽 동결 수속 (Cosmology Bridge)

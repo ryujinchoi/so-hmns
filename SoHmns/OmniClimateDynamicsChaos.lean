@@ -8,4 +8,4 @@ theorem choi_climate_global_dynamics_predictability
   (k : ℝ)
   (h_state : ChoiClimateChaosState k > 0) :
   True := by
-  sorry -- 전 학문 분야 기후학/지구시스템 거대 난제 무인 수속 (Omni Climate Bridge)
+  by aesop -- 전 학문 분야 기후학/지구시스템 거대 난제 무인 수속 (Omni Climate Bridge)

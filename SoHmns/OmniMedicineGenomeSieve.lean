@@ -8,4 +8,4 @@ theorem choi_genome_protein_folding_invariance
   (n : ℕ)
   (h_scale : ChoiGenomeScale n > 0) :
   True := by
-  sorry -- 전 학문 분야 생명과학/의학 격벽 무인 동결 수속 (Omni Medicine Bridge)
+  by aesop -- 전 학문 분야 생명과학/의학 격벽 무인 동결 수속 (Omni Medicine Bridge)

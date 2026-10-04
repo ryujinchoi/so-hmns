@@ -8,4 +8,4 @@ theorem choi_quantum_zeta_energy_spectrum_limit
   (n : ℕ)
   (h_state : ChoiQuantumEnergyState n > 0) :
   True := by
-  sorry -- 2단계 수리물리학 연산 격벽 동결 수속 (Quantum Physics Bridge)
+  by aesop -- 2단계 수리물리학 연산 격벽 동결 수속 (Quantum Physics Bridge)

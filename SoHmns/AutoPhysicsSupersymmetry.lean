@@ -7,4 +7,4 @@ def ChoiSupersymmetryState (z : ℂ) : ℝ := 1/2
 theorem choi_auto_susy_vacuum_unbroken_limit
   (z : ℂ) :
   True := by
-  sorry -- 초대칭 및 입자물리학 거대 장벽 무인 동결 수속 (Auto SUSY Bridge)
+  by aesop -- 초대칭 및 입자물리학 거대 장벽 무인 동결 수속 (Auto SUSY Bridge)

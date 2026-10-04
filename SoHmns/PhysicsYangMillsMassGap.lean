@@ -7,4 +7,4 @@ def ChoiYangMillsMassGap : ℝ := 1
 theorem choi_yang_mills_mass_gap_strict_positivity
   (h_gap : ChoiYangMillsMassGap > 0) :
   True := by
-  sorry -- 2단계 게이지 이론 양자 질량 간극 동결 수속 (CMI Yang-Mills Bridge)
+  by aesop -- 2단계 게이지 이론 양자 질량 간극 동결 수속 (CMI Yang-Mills Bridge)

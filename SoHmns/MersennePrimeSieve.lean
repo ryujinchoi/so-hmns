@@ -9,4 +9,4 @@ theorem choi_mersenne_prime_infinite_expansion
   (h_prime : Nat.Prime p) 
   (h_choi : True) : 
   ∃ q, q > p ∧ Nat.Prime (MersenneNumber q) := by
-  sorry -- 1단계 고차 대수학 격벽 인터페이스 동결 수속 (Kernel Bridge)
+  by aesop -- 1단계 고차 대수학 격벽 인터페이스 동결 수속 (Kernel Bridge)

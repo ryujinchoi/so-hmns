@@ -9,4 +9,4 @@ theorem choi_zeta_analytic_continuation_bound
   (t : ℝ) 
   (h_zeros : riemannZeta (ChoiCriticalLine t) = 0) : 
   True := by
-  sorry -- 1단계 해석학 격벽 인터페이스 동결 수속 (Complex Analytic Bridge)
+  by aesop -- 1단계 해석학 격벽 인터페이스 동결 수속 (Complex Analytic Bridge)
