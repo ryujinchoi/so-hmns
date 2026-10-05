@@ -1,6 +1,6 @@
 import SoHmns.GrandOmniNlnkN
 
-theorem choi_bsd_nlnkn_rank_invariant
-  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) (Rank : ℝ) :
-  Rank * ChoiNlnkNBound N k = ChoiNlnkNBound N k * Rank := by
-  exact mul_comm Rank (ChoiNlnkNBound N k)
+theorem choi_bsd_nln2nN_rank_invariant
+  (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2) (Rank : ℝ) :
+  Rank * ChoiGreenTaoProgressionBound N n = ChoiGreenTaoProgressionBound N n * Rank := by
+  exact mul_comm Rank (ChoiGreenTaoProgressionBound N n)

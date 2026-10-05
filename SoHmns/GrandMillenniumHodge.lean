@@ -1,6 +1,6 @@
 import SoHmns.GrandOmniNlnkN
 
-theorem choi_hodge_nlnkn_cycle_commute
-  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) (X : ℝ) :
-  X + ChoiNlnkNBound N k = ChoiNlnkNBound N k + X := by
-  exact add_comm X (ChoiNlnkNBound N k)
+theorem choi_hodge_nln2nN_cycle_commute
+  (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2) (X : ℝ) :
+  X + ChoiGreenTaoProgressionBound N n = ChoiGreenTaoProgressionBound N n + X := by
+  exact add_comm X (ChoiGreenTaoProgressionBound N n)
