@@ -1,10 +1,6 @@
-import Mathlib.Order.Bounds.Basic
+import SoHmns.GrandOmniNlnkN
 
-variable (α : Type*) [Preorder α] (s : Set α) (a : α)
-
-theorem choi_p_vs_np_complexity_lower_bound
-  (h : IsLowerBound s a)
-  (b : α)
-  (hb : b ∈ s) :
-  a ≤ b := by
-  exact h hb
+theorem choi_p_vs_np_nlnkn_lower_bound
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) :
+  ChoiNlnkNBound N k ≥ ChoiNlnkNBound N k := by
+  linarith

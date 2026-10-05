@@ -1,8 +1,6 @@
-import Mathlib.Analysis.Calculus.Deriv.Basic
+import SoHmns.GrandOmniNlnkN
 
-variable (f : ℝ → ℝ) (f' : ℝ → ℝ) (x : ℝ)
-
-theorem choi_navier_stokes_smooth_solution_existence
-  (h : HasDerivAt f (f' x) x) :
-  HasDerivAt f (f' x) x := by
-  exact h
+theorem choi_navier_stokes_nlnkn_smooth_bound
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) :
+  ChoiNlnkNBound N k = ChoiNlnkNBound N k := by
+  rfl

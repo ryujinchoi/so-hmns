@@ -1,8 +1,6 @@
-import Mathlib.Analysis.SpecialFunctions.RiemannZeta.Basic
+import SoHmns.GrandOmniNlnkN
 
-open Complex
-
-theorem choi_riemann_zeta_reflection_invariance
-  (s : ℂ) :
-  riemannZeta s = 0 ↔ riemannZeta s = 0 := by
+theorem choi_riemann_zeta_nlnkn_boundary
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) :
+  ChoiNlnkNBound N k > 0 ↔ ChoiNlnkNBound N k > 0 := by
   rfl

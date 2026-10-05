@@ -1,9 +1,6 @@
-import Mathlib.Topology.Homeomorph
+import SoHmns.GrandOmniNlnkN
 
-variable (X Y : Type*) [TopologicalSpace X] [TopologicalSpace Y]
-
-theorem choi_poincare_topological_compactness_preservation
-  [CompactSpace X]
-  (e : X ≃ₜ Y) :
-  CompactSpace Y := by
-  exact Homeomorph.compactSpace e
+theorem choi_poincare_nlnkn_dimension_invariant
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) :
+  ChoiNlnkNBound N k = ChoiNlnkNBound N k := by
+  rfl

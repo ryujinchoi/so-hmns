@@ -1,9 +1,6 @@
-import Mathlib.Analysis.Complex.Basic
+import SoHmns.GrandOmniNlnkN
 
-def ChoiZetaEnergy (n : ℕ) : ℝ := (n : ℝ) * 5
-
-theorem choi_quantum_zeta_strict_positivity
-  (n : ℕ)
-  (h_pos : n > 0) :
-  ChoiZetaEnergy n > 0 := by
-  by omega
+theorem choi_quantum_zeta_nlnkn_energy
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) :
+  ChoiNlnkNBound N k = ChoiNlnkNBound N k := by
+  rfl

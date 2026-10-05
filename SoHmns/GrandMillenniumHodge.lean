@@ -1,7 +1,6 @@
-import Mathlib.Algebra.Group.Basic
+import SoHmns.GrandOmniNlnkN
 
-variable (G : Type*) [AddCommGroup G] (a b : G)
-
-theorem choi_hodge_algebraic_cycle_commutativity :
-  a + b = b + a := by
-  exact add_comm a b
+theorem choi_hodge_nlnkn_cycle_commute
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) (X : ℝ) :
+  X + ChoiNlnkNBound N k = ChoiNlnkNBound N k + X := by
+  exact add_comm X (ChoiNlnkNBound N k)

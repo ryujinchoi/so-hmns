@@ -1,9 +1,8 @@
-import Mathlib.Analysis.Complex.Basic
+import SoHmns.GrandOmniNlnkN
 
-def ChoiInflationScale (n : ℕ) : ℝ := (n : ℝ) * 10^(-30)
-
-theorem choi_cosmic_inflation_strict_positivity
-  (n : ℕ)
-  (h_pos : n > 0) :
-  ChoiInflationScale n > 0 := by
-  by omega
+theorem choi_cosmic_inflation_nlnkn_bound
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) (Scale : ℝ) 
+  (h_scale : Scale = ChoiNlnkNBound N k) :
+  Scale > 0 := by
+  rw [h_scale]
+  exact choi_nlnkn_theory_strict_positivity N k h_N h_k

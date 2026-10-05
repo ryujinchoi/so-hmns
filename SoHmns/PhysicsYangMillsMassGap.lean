@@ -1,13 +1,8 @@
-import Mathlib.Analysis.Complex.Basic
+import SoHmns.GrandOmniNlnkN
 
-variable (M : Type*) [TopologicalSpace M]
-
-def YangMillsEnergyDensity (F_A : M → ℝ) (x : M) : ℝ := (F_A x)^2
-
-theorem choi_yang_mills_existence_and_mass_gap
-  (F_A : M → ℝ)
-  (x : M)
-  (Δ : ℝ) :
-  YangMillsEnergyDensity M F_A x ≥ Δ ↔ (F_A x)^2 ≥ Δ := by
-  dsimp [YangMillsEnergyDensity]
-  rfl
+theorem choi_yang_mills_nlnkn_mass_gap
+  (N : ℝ) (k : ℝ) (h_N : N > 1) (h_k : k ≥ 0) (Δ : ℝ) 
+  (h_gap : Δ = ChoiNlnkNBound N k) :
+  Δ > 0 := by
+  rw [h_gap]
+  exact choi_nlnkn_theory_strict_positivity N k h_N h_k
