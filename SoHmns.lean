@@ -7,3 +7,4 @@ import SoHmns.PhysicsQuantumZeta
 import SoHmns.PhysicsTurbulenceCascade
 import SoHmns.PhysicsYangMillsMassGap
 import SoHmns.TopologicalInvariantSieve
+import SoHmns.GrandOmniNlnkN
