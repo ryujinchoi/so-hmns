@@ -1,12 +1,10 @@
-import Mathlib.Topology.Basic
+import Mathlib.Topology.Homeomorph
 
-variable (X Y Z : Type*) [TopologicalSpace X] [TopologicalSpace Y] [TopologicalSpace Z]
+variable (X Y : Type*) [TopologicalSpace X] [TopologicalSpace Y]
 
--- [★비자명 완전 증명] X→Y, Y→Z 연속 사상이 존재한다는 독립된 가설로부터, 그 합성 사상(g ∘ f) 역시 연속성을 만족함을 대수적 사상 공리로 유도
-theorem choi_poincare_pure_topological_invariance
-  (f : X → Y)
-  (g : Y → Z)
-  (hf : Continuous f)
-  (hg : Continuous g) :
-  Continuous (g ∘ f) := by
-  exact Continuous.comp hg hf
+-- X가 컴팩트 공간이고 X, Y가 위상동형이면 Y도 컴팩트 공간임을 Mathlib 정리를 통해 실증
+theorem choi_poincare_topological_compactness_preservation
+  [hX : CompactSpace X]
+  (e : X ≃ₜ Y) :
+  CompactSpace Y := by
+  exact Homeomorph.compactSpace e
