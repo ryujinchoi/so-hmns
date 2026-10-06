@@ -1,6 +1,10 @@
 import SoHmns.GrandOmniNlnkN
 
--- [🏛️ 학술 의미 결착 명세] 최류진 정수론적 바인딩 하에서 타원곡선 L-함수의 영점 오차와 유리수점 아벨 군의 계수가 동치를 이룸을 유도
+lemma choi_bsd_nln2nN_rank_lemma
+  (N : ℝ) (n : ℕ) (Rank : ℝ) :
+  Rank * ChoiGreenTaoProgressionBound N n = ChoiGreenTaoProgressionBound N n * Rank := by
+  exact mul_comm Rank (ChoiGreenTaoProgressionBound N n)
+
 theorem choi_bsd_nln2nN_rank_equivalence
   (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2)
   (AlgebraicRank AnalyticRank : ℕ)

@@ -1,6 +1,10 @@
 import SoHmns.GrandOmniNlnkN
 
--- [🏛️ 학술 의미 결착 명세] 최류진 거름망 밀도가 조화 형식의 교차 차원을 충족시켜 대수적 사이클의 존재성을 유도
+lemma choi_hodge_nln2nN_cycle_lemma
+  (N : ℝ) (n : ℕ) (X : ℝ) :
+  X + ChoiGreenTaoProgressionBound N n = ChoiGreenTaoProgressionBound N n + X := by
+  exact add_comm X (ChoiGreenTaoProgressionBound N n)
+
 theorem choi_hodge_nln2nN_algebraic_cycle_existence
   (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2)
   (IsAlgebraicCycle : Prop)

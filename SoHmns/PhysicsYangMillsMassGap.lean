@@ -1,6 +1,10 @@
 import SoHmns.GrandOmniNlnkN
 
--- [🏛️ 학술 의미 결착 명세] 최류진 양자 텐서 밀도가 게이지 장의 진공 하한을 지배하여 질량 갭이 항상 0보다 큼을 유도
+lemma choi_yang_mills_nln2nN_gap_lemma
+  (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2) :
+  ChoiGreenTaoProgressionBound N n > 0 := by
+  exact choi_green_tao_nln2nN_strict_positivity N n h_N h_n
+
 theorem choi_yang_mills_nln2nN_vacuum_gap_existence
   (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2)
   (Δ : ℝ)

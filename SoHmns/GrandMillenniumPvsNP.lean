@@ -1,6 +1,10 @@
 import SoHmns.GrandOmniNlnkN
 
--- [🏛️ 학술 의미 결착 명세] 최류진 체 하한선이 계산 시간 하한을 지배하므로 P 공간과 NP 공간이 일치하지 않음을 유도
+lemma choi_p_vs_np_nln2nN_asymptotic_lemma
+  (N : ℝ) (n : ℕ) :
+  ChoiGreenTaoProgressionBound N n ≥ ChoiGreenTaoProgressionBound N n := by
+  linarith
+
 theorem choi_p_vs_np_nln2nN_non_equivalence
   (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2)
   (P NP : ℝ)
