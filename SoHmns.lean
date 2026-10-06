@@ -1,10 +1,1 @@
-import SoHmns.Basic
-import SoHmns.PhysicsCosmicInflation
-import SoHmns.PhysicsDarkEnergyCosmology
-import SoHmns.PhysicsQuantumGravityTOE
-import SoHmns.PhysicsQuantumInformationParadox
-import SoHmns.PhysicsQuantumZeta
-import SoHmns.PhysicsTurbulenceCascade
-import SoHmns.PhysicsYangMillsMassGap
-import SoHmns.TopologicalInvariantSieve
 import SoHmns.GrandOmniNlnkN
