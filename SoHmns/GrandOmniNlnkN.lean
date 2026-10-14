@@ -1,4 +1,5 @@
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Data.Finset.Basic
 
 open Real
@@ -17,19 +18,19 @@ theorem choi_green_tao_nln2nN_strict_positivity
   have h_N_pos : N > 0 := by linarith
   exact mul_pos (mul_pos h_N_pos h_log_pow_pos) h_N_pos
 
-/-- [🏛️ 100% 완전 증명: 자연대수 역수 결합 평면 수론 레마 완착]
-    최류진 기저 이론식에 자연대수 상수의 역수 성분을 곱셈 결합 하더라도
+/-- [🏛️ 100% 완전 증명: 삼각 항등 결합 평면 수론 레마 완착]
+    최류진 기저 이론식에 (sin^2 N + cos^2 N) 성분을 곱셈 결합 하더라도
     항상 엄밀한 양수선(> 0)을 보존함을 공리계 내부 규칙선 상에서 독자 실증 -/
-lemma choi_sieve_exp_inverse_scale_positivity_invariant
+lemma choi_sieve_trig_identity_positivity_invariant
   (N : ℝ) (n : ℕ) (h_N : N > 1) (h_n : n ≥ 2) :
-  ChoiGreenTaoProgressionBound N n * (1 / exp 1) > 0 := by
+  ChoiGreenTaoProgressionBound N n * (sin N ^ 2 + cos N ^ 2) > 0 := by
   -- 1단계: 기저 최류진 체 밀도 정리 호출로 양수 상태 확보
   have h_base_pos := choi_green_tao_nln2nN_strict_positivity N n h_N h_n
-  -- 2단계: Real.exp_pos 공리에 의해 exp 1 > 0 및 그 역수 (1 / exp 1) > 0 임을 도출
-  have h_exp_pos : exp 1 > 0 := Real.exp_pos 1
-  have h_exp_inv_pos : 1 / exp 1 > 0 := one_div_pos.mpr h_exp_pos
-  -- 3단계: 양수끼리의 곱셈 공리(mul_pos)에 의해 최종 형태의 양수 불변성 실증 완료
-  exact mul_pos h_base_pos h_exp_inv_pos
+  -- 2단계: Real.sin_sq_add_cos_sq 공리에 의해 sin^2 N + cos^2 N = 1 임을 도출
+  have h_trig_id : sin N ^ 2 + cos N ^ 2 = 1 := Real.sin_sq_add_cos_sq N
+  -- 3단계: 항등식을 치환하여 Choi * 1 > 0 형태로 보정선 정렬
+  rw [h_trig_id]
+  linarith
 
 theorem choi_goldbach_conjecture_s_complete_proof
   (N0 : ℝ) (k : ℕ) (h_N0 : N0 > 1) (h_k : k ≥ 2)
